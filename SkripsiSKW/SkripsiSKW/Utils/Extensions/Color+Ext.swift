@@ -8,6 +8,10 @@
 import SwiftUI
 
 extension Color {
+    public static var sambucus: Color {
+        return Color("191B2D")
+    }
+    
     public static var blueDepths: Color {
         return Color("2A2F54")
     }

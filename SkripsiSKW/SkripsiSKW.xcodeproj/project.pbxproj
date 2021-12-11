@@ -16,6 +16,7 @@
 		E1F88D17276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */; };
 		E1F88D292764511200357A45 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D282764511200357A45 /* Color+Ext.swift */; };
 		E1F88D30276452AC00357A45 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D2F276452AC00357A45 /* SignInView.swift */; };
+		E1F88D3327645B1100357A45 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D3227645B1100357A45 /* FormField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1F88D282764511200357A45 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		E1F88D2F276452AC00357A45 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		E1F88D3227645B1100357A45 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		E1F88D23276450D700357A45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E1F88D3127645B0200357A45 /* Components */,
 				E1F88D272764510000357A45 /* Extensions */,
 			);
 			path = Utils;
@@ -195,6 +198,14 @@
 				E1F88D2F276452AC00357A45 /* SignInView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E1F88D3127645B0200357A45 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D3227645B1100357A45 /* FormField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
