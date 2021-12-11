@@ -17,6 +17,8 @@
 		E1F88D292764511200357A45 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D282764511200357A45 /* Color+Ext.swift */; };
 		E1F88D30276452AC00357A45 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D2F276452AC00357A45 /* SignInView.swift */; };
 		E1F88D3327645B1100357A45 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D3227645B1100357A45 /* FormField.swift */; };
+		E1F88D352764723800357A45 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D342764723800357A45 /* RoundedButton.swift */; };
+		E1F88D38276472E700357A45 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D37276472E700357A45 /* Screen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		E1F88D282764511200357A45 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		E1F88D2F276452AC00357A45 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		E1F88D3227645B1100357A45 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		E1F88D342764723800357A45 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		E1F88D37276472E700357A45 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 		E1F88D23276450D700357A45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E1F88D36276472D200357A45 /* Helpers */,
 				E1F88D3127645B0200357A45 /* Components */,
 				E1F88D272764510000357A45 /* Extensions */,
 			);
@@ -204,8 +209,17 @@
 			isa = PBXGroup;
 			children = (
 				E1F88D3227645B1100357A45 /* FormField.swift */,
+				E1F88D342764723800357A45 /* RoundedButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E1F88D36276472D200357A45 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D37276472E700357A45 /* Screen.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F88D38276472E700357A45 /* Screen.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
+				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
