@@ -14,6 +14,8 @@
 		E1F88D0B276428F600357A45 /* SkripsiSKWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D0A276428F600357A45 /* SkripsiSKWTests.swift */; };
 		E1F88D15276428F600357A45 /* SkripsiSKWUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D14276428F600357A45 /* SkripsiSKWUITests.swift */; };
 		E1F88D17276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */; };
+		E1F88D292764511200357A45 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D282764511200357A45 /* Color+Ext.swift */; };
+		E1F88D30276452AC00357A45 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D2F276452AC00357A45 /* SignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		E1F88D10276428F600357A45 /* SkripsiSKWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkripsiSKWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88D14276428F600357A45 /* SkripsiSKWUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWUITests.swift; sourceTree = "<group>"; };
 		E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1F88D282764511200357A45 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		E1F88D2F276452AC00357A45 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +98,11 @@
 		E1F88CF8276428F500357A45 /* SkripsiSKW */ = {
 			isa = PBXGroup;
 			children = (
-				E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */,
-				E1F88CFB276428F500357A45 /* ContentView.swift */,
-				E1F88CFD276428F600357A45 /* Assets.xcassets */,
+				E1F88D26276450F100357A45 /* App */,
+				E1F88D25276450E400357A45 /* Navigation */,
+				E1F88D2B2764515F00357A45 /* Authentication */,
+				E1F88D23276450D700357A45 /* Utils */,
+				E1F88D24276450DC00357A45 /* Resources */,
 				E1F88CFF276428F600357A45 /* Preview Content */,
 			);
 			path = SkripsiSKW;
@@ -125,6 +131,70 @@
 				E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */,
 			);
 			path = SkripsiSKWUITests;
+			sourceTree = "<group>";
+		};
+		E1F88D23276450D700357A45 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D272764510000357A45 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E1F88D24276450DC00357A45 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88CFD276428F600357A45 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E1F88D25276450E400357A45 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88CFB276428F500357A45 /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E1F88D26276450F100357A45 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E1F88D272764510000357A45 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D282764511200357A45 /* Color+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E1F88D2B2764515F00357A45 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D2C2764527800357A45 /* SignIn */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E1F88D2C2764527800357A45 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D2D2764528C00357A45 /* Views */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		E1F88D2D2764528C00357A45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D2F276452AC00357A45 /* SignInView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +329,8 @@
 			files = (
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
+				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
+				E1F88D292764511200357A45 /* Color+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
