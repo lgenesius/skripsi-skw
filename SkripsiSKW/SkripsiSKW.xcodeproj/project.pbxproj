@@ -19,6 +19,7 @@
 		E1F88D3327645B1100357A45 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D3227645B1100357A45 /* FormField.swift */; };
 		E1F88D352764723800357A45 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D342764723800357A45 /* RoundedButton.swift */; };
 		E1F88D38276472E700357A45 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D37276472E700357A45 /* Screen.swift */; };
+		E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88D3B2764BB9B00357A45 /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		E1F88D3227645B1100357A45 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		E1F88D342764723800357A45 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E1F88D37276472E700357A45 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		E1F88D3B2764BB9B00357A45 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 		E1F88D2B2764515F00357A45 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				E1F88D392764BB8900357A45 /* SignUp */,
 				E1F88D2C2764527800357A45 /* SignIn */,
 			);
 			path = Authentication;
@@ -220,6 +223,22 @@
 				E1F88D37276472E700357A45 /* Screen.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E1F88D392764BB8900357A45 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D3A2764BB8F00357A45 /* Views */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		E1F88D3A2764BB8F00357A45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1F88D3B2764BB9B00357A45 /* SignUpView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +375,7 @@
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
+				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1F88D292764511200357A45 /* Color+Ext.swift in Sources */,

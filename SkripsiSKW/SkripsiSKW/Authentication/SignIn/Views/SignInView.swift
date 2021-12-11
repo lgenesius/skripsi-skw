@@ -11,8 +11,6 @@ struct SignInView: View {
     @State private var email = ""
     @State private var password = ""
     
-    @State private var errorMessage: String = ""
-    @State private var showingAlert = false
     @State private var isLoading = false
     
     var body: some View {
@@ -43,7 +41,7 @@ struct SignInView: View {
                             .foregroundColor(.white)
                         
                         NavigationLink {
-                            EmptyView()
+                           SignUpView()
                         } label: {
                             Text("Register Here")
                                 .font(Font.system(size: 14, weight: .bold, design: .default))

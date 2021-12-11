@@ -25,7 +25,7 @@ struct FormField: View {
             .disableAutocorrection(true)
             .font(Font.system(size: 17))
             .foregroundColor(.white)
-            .padding(15)
+            .padding(10)
             .background(Color.blueDepths)
             .cornerRadius(5)
             .overlay {
@@ -40,7 +40,7 @@ struct FormField: View {
                                 .foregroundColor(.gray)
                             Spacer()
                         }
-                        .padding(.leading)
+                        .padding(.leading, 10)
                     }
                 }
                 .allowsHitTesting(false)
@@ -59,7 +59,7 @@ struct FormField: View {
             .disableAutocorrection(true)
             .font(Font.system(size: 17))
             .foregroundColor(.white)
-            .padding(15)
+            .padding(10)
             .background(Color.blueDepths)
             .cornerRadius(5)
             .overlay(
@@ -74,7 +74,7 @@ struct FormField: View {
                                 .foregroundColor(.gray)
                             Spacer()
                         }
-                        .padding(.leading)
+                        .padding(.leading, 10)
                     }
                 }
                 .allowsHitTesting(false)
