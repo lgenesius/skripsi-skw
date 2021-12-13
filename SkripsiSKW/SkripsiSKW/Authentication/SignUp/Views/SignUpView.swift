@@ -10,48 +10,42 @@ import SwiftUI
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var username = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
+    @StateObject private var signUpVM = SignUpViewModel()
     
     var body: some View {
         ZStack {
             Color.sambucus
                 .ignoresSafeArea()
             
-            VStack {
-                HStack {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color.notYoCheese)
-                            .frame(width: 20, height: 20)
+            ScrollView {
+                VStack {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(Color.notYoCheese)
+                                .frame(width: 20, height: 20)
+                        }
+                        Spacer()
                     }
+                    .padding(.leading)
+                    
+                    Text("Let's Get Started!")
+                        .font(Font.system(size: 24, weight: .medium, design: .default))
+                        .foregroundColor(.white)
+                    
+                    signUpTextField
+                    
+                    signUpSecureField
+                    
+                    RoundedButton(title: "Register") {
+                        signUpVM.signUp()
+                    }
+                    .padding(.top, 30)
+                    
                     Spacer()
                 }
-                .padding(.leading)
-                
-                Text("Let's Get Started!")
-                    .font(Font.system(size: 24, weight: .medium, design: .default))
-                    .foregroundColor(.white)
-                
-                Spacer()
-                
-                signUpTextField
-                
-                signUpSecureField
-                
-                Spacer()
-                
-                RoundedButton(title: "Register") {
-                    
-                }
-                
-                Spacer()
             }
         }
         .navigationBarHidden(true)
@@ -71,8 +65,9 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $firstName, placeholder: "Enter your first name...")
+                FormField(value: $signUpVM.firstName, placeholder: "Enter your first name...")
             }
+            .padding(.top, 25)
             
             VStack(spacing: 5) {
                 HStack {
@@ -82,7 +77,7 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $lastName, placeholder: "Enter your last name...")
+                FormField(value: $signUpVM.lastName, placeholder: "Enter your last name...")
             }
             .padding(.top, 10)
             
@@ -94,7 +89,7 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $username, placeholder: "Enter your username...")
+                FormField(value: $signUpVM.username, placeholder: "Enter your username...")
             }
             .padding(.top, 10)
             
@@ -106,7 +101,7 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $email, placeholder: "Enter your email...")
+                FormField(value: $signUpVM.email, placeholder: "Enter your email...")
             }
             .padding(.top, 10)
         }
@@ -123,7 +118,7 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $password, placeholder: "Enter your password...", isSecure: true)
+                FormField(value: $signUpVM.password, placeholder: "Enter your password...", isSecure: true)
             }
             .padding(.top, 10)
             
@@ -135,7 +130,7 @@ extension SignUpView {
                 }
                 .padding(.leading)
                 
-                FormField(value: $confirmPassword, placeholder: "Re-enter your password...", isSecure: true)
+                FormField(value: $signUpVM.confirmPassword, placeholder: "Re-enter your password...", isSecure: true)
             }
             .padding(.top, 10)
         }

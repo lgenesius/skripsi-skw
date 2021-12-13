@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @State private var email = ""
-    @State private var password = ""
-    
-    @State private var isLoading = false
+    @StateObject private var signInVM = SignInViewModel()
     
     var body: some View {
         ZStack {
@@ -23,15 +20,15 @@ struct SignInView: View {
                         .frame(width: 114, height: 114)
                     
                     VStack(spacing: 15) {
-                        FormField(value: $email, placeholder: "Enter your email...")
+                        FormField(value: $signInVM.email, placeholder: "Enter your email...")
                         
-                        FormField(value: $password, placeholder: "Enter your password...", isSecure: true)
+                        FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
                         
                     }
                     .padding(.top, 104)
                     
                     RoundedButton(title: "Sign In") {
-                        
+                        signInVM.signIn()
                     }
                     .padding(.top, 30)
                     

@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var sessionVM: SessionViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color.sambucus
                     .ignoresSafeArea()
-                SignInView()
+                
+                if sessionVM.isLoading == false {
+                    if sessionVM.authUser != nil {
+                        ChallengesView()
+                    } else {
+                        SignInView()
+                    }
+                }
             }
+        }
+        .onAppear {
+            sessionVM.listen()
         }
     }
 }
