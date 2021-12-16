@@ -1,0 +1,6 @@
+framework module Pods_SkripsiSKWTests {
+  umbrella header "Pods-SkripsiSKWTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
