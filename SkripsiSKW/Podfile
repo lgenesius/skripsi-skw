@@ -9,7 +9,6 @@ target 'SkripsiSKW' do
  pod 'Firebase/Auth'
  pod 'Firebase/Storage'
  pod 'Firebase/Firestore'
- pod 'URLImage'
 
   target 'SkripsiSKWTests' do
     inherit! :search_paths
