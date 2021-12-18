@@ -16,12 +16,9 @@ class SignInViewModel: ObservableObject {
     @Published var passwordErrorMessage = ""
     
     func signIn() {
+        guard validateValue() else { return }
+        
         isLoading = true
-        
-        if !validateValue() {
-            return
-        }
-        
         AuthManager.shared.signIn(email: email, password: password) { [weak self] user, error in
             self?.isLoading = false
             if let error = error {

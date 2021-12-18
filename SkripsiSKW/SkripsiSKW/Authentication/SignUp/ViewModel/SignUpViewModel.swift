@@ -25,12 +25,9 @@ class SignUpViewModel: ObservableObject {
     @Published var isLoading = false
     
     func signUp(completion: @escaping (() -> Void)) {
+        guard validateValue() else { return }
+        
         isLoading = true
-        
-        if !validateValue() {
-            return
-        }
-        
         AuthManager.shared.signUp(
             email: email,
             password: password,
@@ -87,6 +84,11 @@ class SignUpViewModel: ObservableObject {
         
         if password != confirmPassword {
             confirmPassErrorMessage = "Password doesn't match"
+            return false
+        }
+        
+        if !Validator().checkMoreThan7Chars(password) {
+            passwordErrorMessage = "Password must more than 7 characters"
             return false
         }
         

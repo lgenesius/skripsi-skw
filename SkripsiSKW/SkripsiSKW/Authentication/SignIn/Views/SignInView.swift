@@ -23,26 +23,14 @@ struct SignInView: View {
                         .padding(.top, 104)
                     
                     if !signInVM.emailErrorMessage.isEmpty {
-                        HStack {
-                            Text(signInVM.emailErrorMessage)
-                                .font(Font.system(size: 12))
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                        .padding(.horizontal)
+                        ErrorText(errorMessage: signInVM.emailErrorMessage)
                     }
                     
                     FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
                         .padding(.top, 15)
                     
                     if !signInVM.passwordErrorMessage.isEmpty {
-                        HStack {
-                            Text(signInVM.passwordErrorMessage)
-                                .font(Font.system(size: 12))
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                        .padding(.horizontal)
+                        ErrorText(errorMessage: signInVM.passwordErrorMessage)
                     }
                     
                     RoundedButton(title: "Sign In") {
@@ -62,7 +50,6 @@ struct SignInView: View {
                                 .font(Font.system(size: 14, weight: .bold, design: .default))
                                 .foregroundColor(.white)
                         }
-
                     }
                 }
                 Spacer()
