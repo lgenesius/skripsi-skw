@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UIActivityIndicator: UIViewRepresentable {
+struct ActivityIndicator: UIViewRepresentable {
     func makeUIView(context: Context) -> some UIView {
         let view = UIActivityIndicatorView(style: .large)
         view.color = .label

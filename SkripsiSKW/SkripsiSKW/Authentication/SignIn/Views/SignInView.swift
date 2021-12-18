@@ -55,6 +55,8 @@ struct SignInView: View {
                 Spacer()
                 Spacer()
             }
+            
+            LoadingCard(isLoading: signInVM.isLoading, message: "Signing In...")
         }
         .navigationBarHidden(true)
     }

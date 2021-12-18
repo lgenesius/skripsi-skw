@@ -52,6 +52,8 @@ struct SignUpView: View {
                     Spacer()
                 }
             }
+            
+            LoadingCard(isLoading: signUpVM.isLoading, message: "Registering Account...")
         }
         .navigationBarHidden(true)
     }
