@@ -21,7 +21,7 @@ struct FormField: View {
                     TextField("", text: $value)
                 }
             }
-            .textInputAutocapitalization(.none)
+            .autocapitalization(.none)
             .disableAutocorrection(true)
             .font(Font.system(size: 17))
             .foregroundColor(.white)

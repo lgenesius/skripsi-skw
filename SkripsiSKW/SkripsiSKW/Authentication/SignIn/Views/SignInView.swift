@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @StateObject private var signInVM = SignInViewModel()
+    @ObservedObject var signInVM = SignInViewModel()
     
     var body: some View {
         ZStack {
@@ -27,6 +27,16 @@ struct SignInView: View {
                     }
                     .padding(.top, 104)
                     
+                    if !signInVM.errorMessage.isEmpty {
+                        HStack {
+                            Text(signInVM.errorMessage)
+                                .font(Font.system(size: 12))
+                                .foregroundColor(.red)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                    }
+                    
                     RoundedButton(title: "Sign In") {
                         signInVM.signIn()
                     }
@@ -38,7 +48,7 @@ struct SignInView: View {
                             .foregroundColor(.white)
                         
                         NavigationLink {
-                           SignUpView()
+                           SignUpView(signUpVM: SignUpViewModel())
                         } label: {
                             Text("Register Here")
                                 .font(Font.system(size: 14, weight: .bold, design: .default))

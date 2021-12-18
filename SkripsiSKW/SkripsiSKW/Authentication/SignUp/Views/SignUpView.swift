@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var sessionVM: SessionViewModel
     
-    @StateObject private var signUpVM = SignUpViewModel()
+    @ObservedObject var signUpVM: SignUpViewModel
     
     var body: some View {
         ZStack {
@@ -40,7 +41,11 @@ struct SignUpView: View {
                     signUpSecureField
                     
                     RoundedButton(title: "Register") {
-                        signUpVM.signUp()
+                        signUpVM.signUp {
+                            sessionVM.listen()
+                            
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                     .padding(.top, 30)
                     
@@ -139,6 +144,6 @@ extension SignUpView {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(signUpVM: SignUpViewModel())
     }
 }

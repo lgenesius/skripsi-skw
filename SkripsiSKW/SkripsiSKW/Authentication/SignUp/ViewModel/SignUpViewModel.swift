@@ -17,7 +17,7 @@ class SignUpViewModel: ObservableObject {
     
     @Published var isLoading = false
     
-    func signUp() {
+    func signUp(completion: @escaping (() -> Void)) {
         isLoading = true
         AuthManager.shared.signUp(
             email: email,
@@ -26,7 +26,7 @@ class SignUpViewModel: ObservableObject {
             username: username
         ) { [weak self] user, error in
             self?.isLoading = false
-            print(error)
+            completion()
         }
     }
 }

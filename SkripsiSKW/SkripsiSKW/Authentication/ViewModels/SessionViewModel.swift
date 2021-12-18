@@ -38,8 +38,6 @@ class SessionViewModel: ObservableObject {
                         guard let decodedUser = try? User.init(fromDictionary: dict) else { return }
                         self.authUser = decodedUser
                     }
-                    
-                    print("The Auth User ", self.authUser)
                 }
             } else {
                 self.isLoading = false

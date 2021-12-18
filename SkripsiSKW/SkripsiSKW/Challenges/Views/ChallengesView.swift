@@ -16,7 +16,6 @@ struct ChallengesView: View {
         } label: {
             Text("Logout")
         }
-
     }
 }
 

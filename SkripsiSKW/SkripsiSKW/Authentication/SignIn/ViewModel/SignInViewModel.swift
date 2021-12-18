@@ -12,12 +12,20 @@ class SignInViewModel: ObservableObject {
     @Published var password = ""
     
     @Published var isLoading = false
+    @Published var errorMessage = ""
     
     func signIn() {
         isLoading = true
         AuthManager.shared.signIn(email: email, password: password) { [weak self] user, error in
             self?.isLoading = false
-            print(error)
+            if let error = error {
+                self?.errorMessage = error.localizedDescription
+                return
+            }
+            
+            self?.errorMessage = ""
+            self?.email = ""
+            self?.password = ""
         }
     }
 }

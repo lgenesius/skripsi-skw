@@ -20,7 +20,7 @@ struct ContentView: View {
                     if sessionVM.authUser != nil {
                         ChallengesView()
                     } else {
-                        SignInView()
+                        SignInView(signInVM: SignInViewModel())
                     }
                 }
             }
