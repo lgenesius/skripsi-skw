@@ -14,7 +14,7 @@ struct LoadingCard: View {
     var body: some View {
         if isLoading {
             Rectangle()
-                .fill(Color.notYoCheese)
+                .fill(Color.blueDepths)
                 .frame(width: 200, height: 150)
                 .cornerRadius(20)
                 .overlay(
@@ -22,10 +22,12 @@ struct LoadingCard: View {
                         ActivityIndicator()
                         
                         Text(message)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                     }
                 )
+                .clipped()
+                .shadow(color: Color.black, radius: 10, x: 0, y: 0)
         }
     }
 }
