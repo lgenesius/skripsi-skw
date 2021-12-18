@@ -20,6 +20,7 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1F32E62276DC54C0072E548 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E61276DC54C0072E548 /* Validator.swift */; };
 		E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */; };
 		E1F88CFC276428F500357A45 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88CFB276428F500357A45 /* ContentView.swift */; };
 		E1F88CFE276428F600357A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F88CFD276428F600357A45 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1F32E61276DC54C0072E548 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E1F88CF6276428F500357A45 /* SkripsiSKW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkripsiSKW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWApp.swift; sourceTree = "<group>"; };
 		E1F88CFB276428F500357A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		E1F88D36276472D200357A45 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E1F32E61276DC54C0072E548 /* Validator.swift */,
 				E1F88D37276472E700357A45 /* Screen.swift */,
 			);
 			path = Helpers;
@@ -618,6 +621,7 @@
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1C9B0C1276788BF00611DAE /* AuthManager.swift in Sources */,
+				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
 				E1C9B0CA27678B1600611DAE /* ChallengesView.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
 				E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */,

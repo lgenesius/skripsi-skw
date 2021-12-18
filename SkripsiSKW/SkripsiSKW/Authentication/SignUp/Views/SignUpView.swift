@@ -62,82 +62,148 @@ extension SignUpView {
     @ViewBuilder
     var signUpTextField: some View {
         Group {
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("First Name")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 25)
                 
                 FormField(value: $signUpVM.firstName, placeholder: "Enter your first name...")
+                    .padding(.top, 2)
+                
+                if !signUpVM.firstNameErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.firstNameErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 25)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Last Name")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.lastName, placeholder: "Enter your last name...")
+                    .padding(.top, 5)
+                
+                if !signUpVM.lastNameErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.lastNameErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Username")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.username, placeholder: "Enter your username...")
+                    .padding(.top, 5)
+                
+                if !signUpVM.usernameErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.usernameErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Email")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.email, placeholder: "Enter your email...")
+                    .padding(.top, 5)
+                
+                if !signUpVM.emailErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.emailErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 10)
         }
     }
     
     @ViewBuilder
     var signUpSecureField: some View {
         Group {
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Password")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.password, placeholder: "Enter your password...", isSecure: true)
+                    .padding(.top, 5)
+                
+                if !signUpVM.passwordErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.passwordErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Re-type Password")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.confirmPassword, placeholder: "Re-enter your password...", isSecure: true)
+                    .padding(.top, 5)
+                
+                if !signUpVM.confirmPassErrorMessage.isEmpty {
+                    HStack {
+                        Text(signUpVM.confirmPassErrorMessage)
+                            .font(Font.system(size: 12))
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
             }
-            .padding(.top, 10)
         }
     }
 }

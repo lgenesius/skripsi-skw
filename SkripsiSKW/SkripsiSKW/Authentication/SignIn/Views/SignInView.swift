@@ -19,17 +19,25 @@ struct SignInView: View {
                         .foregroundColor(.red)
                         .frame(width: 114, height: 114)
                     
-                    VStack(spacing: 15) {
-                        FormField(value: $signInVM.email, placeholder: "Enter your email...")
-                        
-                        FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
-                        
-                    }
-                    .padding(.top, 104)
+                    FormField(value: $signInVM.email, placeholder: "Enter your email...")
+                        .padding(.top, 104)
                     
-                    if !signInVM.errorMessage.isEmpty {
+                    if !signInVM.emailErrorMessage.isEmpty {
                         HStack {
-                            Text(signInVM.errorMessage)
+                            Text(signInVM.emailErrorMessage)
+                                .font(Font.system(size: 12))
+                                .foregroundColor(.red)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                    }
+                    
+                    FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
+                        .padding(.top, 15)
+                    
+                    if !signInVM.passwordErrorMessage.isEmpty {
+                        HStack {
+                            Text(signInVM.passwordErrorMessage)
                                 .font(Font.system(size: 12))
                                 .foregroundColor(.red)
                             Spacer()
