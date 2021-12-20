@@ -126,6 +126,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6006B5B327708A7D00177FFB /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
 		90CE4EC55003718049573A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +245,7 @@
 		E1F88CF8276428F500357A45 /* SkripsiSKW */ = {
 			isa = PBXGroup;
 			children = (
+				6006B5B327708A7D00177FFB /* Badges */,
 				E1F88D26276450F100357A45 /* App */,
 				E1F88D25276450E400357A45 /* Navigation */,
 				E1F88D2B2764515F00357A45 /* Authentication */,
