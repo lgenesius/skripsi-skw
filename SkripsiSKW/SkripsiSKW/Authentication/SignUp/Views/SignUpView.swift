@@ -77,9 +77,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.firstName, placeholder: "Enter your first name...")
                 
-                if !signUpVM.firstNameErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.firstNameErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.firstNameErrorMessage)
             }
             
             Group {
@@ -93,9 +91,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.lastName, placeholder: "Enter your last name...")
                 
-                if !signUpVM.lastNameErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.lastNameErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.lastNameErrorMessage)
             }
             
             Group {
@@ -123,9 +119,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.email, placeholder: "Enter your email...")
                 
-                if !signUpVM.emailErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.emailErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.emailErrorMessage)
             }
         }
     }
@@ -158,9 +152,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.confirmPassword, placeholder: "Re-enter your password...", isSecure: true)
                 
-                if !signUpVM.confirmPassErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.confirmPassErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.confirmPassErrorMessage)
             }
         }
     }
