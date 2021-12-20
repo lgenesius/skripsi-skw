@@ -16,7 +16,15 @@ struct ChallengesView: View {
             
             titleApp
             
-            competitionButtons
+            ScrollView {
+                LazyVStack {
+                    competitionButtons
+                    
+                    DailyChallengesView()
+                    
+                    ExercisesList()
+                }
+            }
             
             Button {
                 sessionVM.logout()
@@ -36,8 +44,7 @@ extension ChallengesView {
     var dateAndPhotoProfile: some View {
         HStack {
             Text(DateManager.shared.getCurrentDayAndDateLongVersion())
-                .foregroundColor(Color.notYoCheese)
-                .font(Font.system(size: 17))
+                .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
             Circle()
                 .frame(width: 36, height: 36)
@@ -51,8 +58,7 @@ extension ChallengesView {
     var titleApp: some View {
         HStack {
             Text("Nama App")
-                .foregroundColor(.white)
-                .font(Font.system(size: 34, weight: .medium, design: .default))
+                .modifier(TextModifier(color: .white, size: 34, weight: .medium))
             Spacer()
         }
         .padding(.leading)
@@ -65,8 +71,7 @@ extension ChallengesView {
                 print("Join competition")
             } label: {
                 Text("Join a Competition")
-                    .font(Font.system(size: 14, weight: .medium, design: .default))
-                    .foregroundColor(.white)
+                    .modifier(TextModifier(color: .white, size: 14, weight: .medium))
                     .frame(width: 165, height: 37)
                     .background(Color.insignia)
                     .cornerRadius(6)
@@ -78,8 +83,7 @@ extension ChallengesView {
                 print("Create competition")
             } label: {
                 Text("Create a Competition")
-                    .font(Font.system(size: 14, weight: .medium, design: .default))
-                    .foregroundColor(.white)
+                    .modifier(TextModifier(color: .white, size: 14, weight: .medium))
                     .frame(width: 165, height: 37)
                     .background(Color.insignia)
                     .cornerRadius(6)
