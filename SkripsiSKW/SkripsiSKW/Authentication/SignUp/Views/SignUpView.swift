@@ -48,6 +48,8 @@ struct SignUpView: View {
                         }
                     }
                     .padding(.top, 30)
+                    .opacity(signUpVM.isValid ? 1.0 : 0.5)
+                    .disabled(!signUpVM.isValid)
                     
                     Spacer()
                 }
@@ -107,9 +109,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.username, placeholder: "Enter your username...")
                 
-                if !signUpVM.usernameErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.usernameErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.usernameErrorMessage)
             }
             
             Group {
@@ -144,9 +144,7 @@ extension SignUpView {
                 
                 FormField(value: $signUpVM.password, placeholder: "Enter your password...", isSecure: true)
                 
-                if !signUpVM.passwordErrorMessage.isEmpty {
-                    ErrorText(errorMessage: signUpVM.passwordErrorMessage)
-                }
+                ErrorText(errorMessage: signUpVM.passwordErrorMessage)
             }
             
             Group {
