@@ -12,16 +12,10 @@ struct ChallengesView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Monday, October 25")
-                    .foregroundColor(Color.notYoCheese)
-                    .font(Font.system(size: 17))
-                Spacer()
-                Circle()
-                    .frame(width: 36, height: 36)
-                    .foregroundColor(Color.notYoCheese)
-            }
-            .padding()
+            dateAndPhotoProfile
+            
+            titleApp
+            
             Button {
                 sessionVM.logout()
             } label: {
@@ -31,6 +25,35 @@ struct ChallengesView: View {
             Spacer()
         }
         .navigationBarHidden(true)
+    }
+}
+
+extension ChallengesView {
+    
+    @ViewBuilder
+    var dateAndPhotoProfile: some View {
+        HStack {
+            Text("Monday, October 25")
+                .foregroundColor(Color.notYoCheese)
+                .font(Font.system(size: 17))
+            Spacer()
+            Circle()
+                .frame(width: 36, height: 36)
+                .foregroundColor(Color.notYoCheese)
+        }
+        .padding(.horizontal)
+        .padding(.top)
+    }
+    
+    @ViewBuilder
+    var titleApp: some View {
+        HStack {
+            Text("Nama App")
+                .foregroundColor(.white)
+                .font(Font.system(size: 34, weight: .medium, design: .default))
+            Spacer()
+        }
+        .padding(.leading)
     }
 }
 
