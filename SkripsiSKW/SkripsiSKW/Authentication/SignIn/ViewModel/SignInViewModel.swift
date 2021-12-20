@@ -12,20 +12,46 @@ class SignInViewModel: ObservableObject {
     @Published var password = ""
     
     @Published var isLoading = false
-    @Published var errorMessage = ""
+    @Published var emailErrorMessage = ""
+    @Published var passwordErrorMessage = ""
     
     func signIn() {
+        guard validateValue() else { return }
+        
         isLoading = true
         AuthManager.shared.signIn(email: email, password: password) { [weak self] user, error in
             self?.isLoading = false
             if let error = error {
-                self?.errorMessage = error.localizedDescription
+                self?.emailErrorMessage = error.localizedDescription
                 return
             }
             
-            self?.errorMessage = ""
+            self?.emailErrorMessage = ""
+            self?.passwordErrorMessage = ""
             self?.email = ""
             self?.password = ""
         }
+    }
+    
+    private func validateValue() -> Bool {
+        emailErrorMessage = ""
+        passwordErrorMessage = ""
+        
+        if email.isEmpty {
+            emailErrorMessage = "Email must not empty"
+            return false
+        }
+        
+        if password.isEmpty {
+            passwordErrorMessage = "Password must not empty"
+            return false
+        }
+        
+        if !Validator().checkEmailAuthenticity(email) {
+            emailErrorMessage = "Email must contain '@' character"
+            return false
+        }
+        
+        return true
     }
 }

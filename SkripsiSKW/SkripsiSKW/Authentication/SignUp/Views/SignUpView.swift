@@ -52,6 +52,8 @@ struct SignUpView: View {
                     Spacer()
                 }
             }
+            
+            LoadingCard(isLoading: signUpVM.isLoading, message: "Registering Account...")
         }
         .navigationBarHidden(true)
     }
@@ -62,82 +64,106 @@ extension SignUpView {
     @ViewBuilder
     var signUpTextField: some View {
         Group {
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("First Name")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 25)
                 
                 FormField(value: $signUpVM.firstName, placeholder: "Enter your first name...")
+                
+                if !signUpVM.firstNameErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.firstNameErrorMessage)
+                }
             }
-            .padding(.top, 25)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Last Name")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.lastName, placeholder: "Enter your last name...")
+                
+                if !signUpVM.lastNameErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.lastNameErrorMessage)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Username")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.username, placeholder: "Enter your username...")
+                
+                if !signUpVM.usernameErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.usernameErrorMessage)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Email")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.email, placeholder: "Enter your email...")
+                
+                if !signUpVM.emailErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.emailErrorMessage)
+                }
             }
-            .padding(.top, 10)
         }
     }
     
     @ViewBuilder
     var signUpSecureField: some View {
         Group {
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Password")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.password, placeholder: "Enter your password...", isSecure: true)
+                
+                if !signUpVM.passwordErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.passwordErrorMessage)
+                }
             }
-            .padding(.top, 10)
             
-            VStack(spacing: 5) {
+            Group {
                 HStack {
                     Text("Re-type Password")
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 10)
                 
                 FormField(value: $signUpVM.confirmPassword, placeholder: "Re-enter your password...", isSecure: true)
+                
+                if !signUpVM.confirmPassErrorMessage.isEmpty {
+                    ErrorText(errorMessage: signUpVM.confirmPassErrorMessage)
+                }
             }
-            .padding(.top, 10)
         }
     }
 }

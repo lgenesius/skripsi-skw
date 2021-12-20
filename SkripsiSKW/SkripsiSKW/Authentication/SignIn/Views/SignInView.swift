@@ -19,22 +19,18 @@ struct SignInView: View {
                         .foregroundColor(.red)
                         .frame(width: 114, height: 114)
                     
-                    VStack(spacing: 15) {
-                        FormField(value: $signInVM.email, placeholder: "Enter your email...")
-                        
-                        FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
-                        
-                    }
-                    .padding(.top, 104)
+                    FormField(value: $signInVM.email, placeholder: "Enter your email...")
+                        .padding(.top, 104)
                     
-                    if !signInVM.errorMessage.isEmpty {
-                        HStack {
-                            Text(signInVM.errorMessage)
-                                .font(Font.system(size: 12))
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                        .padding(.horizontal)
+                    if !signInVM.emailErrorMessage.isEmpty {
+                        ErrorText(errorMessage: signInVM.emailErrorMessage)
+                    }
+                    
+                    FormField(value: $signInVM.password, placeholder: "Enter your password...", isSecure: true)
+                        .padding(.top, 15)
+                    
+                    if !signInVM.passwordErrorMessage.isEmpty {
+                        ErrorText(errorMessage: signInVM.passwordErrorMessage)
                     }
                     
                     RoundedButton(title: "Sign In") {
@@ -54,12 +50,13 @@ struct SignInView: View {
                                 .font(Font.system(size: 14, weight: .bold, design: .default))
                                 .foregroundColor(.white)
                         }
-
                     }
                 }
                 Spacer()
                 Spacer()
             }
+            
+            LoadingCard(isLoading: signInVM.isLoading, message: "Signing In...")
         }
         .navigationBarHidden(true)
     }

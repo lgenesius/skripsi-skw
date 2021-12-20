@@ -15,9 +15,18 @@ class SignUpViewModel: ObservableObject {
     @Published var password = ""
     @Published var confirmPassword = ""
     
+    @Published var firstNameErrorMessage = ""
+    @Published var lastNameErrorMessage = ""
+    @Published var usernameErrorMessage = ""
+    @Published var emailErrorMessage = ""
+    @Published var passwordErrorMessage = ""
+    @Published var confirmPassErrorMessage = ""
+    
     @Published var isLoading = false
     
     func signUp(completion: @escaping (() -> Void)) {
+        guard validateValue() else { return }
+        
         isLoading = true
         AuthManager.shared.signUp(
             email: email,
@@ -26,7 +35,72 @@ class SignUpViewModel: ObservableObject {
             username: username
         ) { [weak self] user, error in
             self?.isLoading = false
+            
+            if let error = error {
+                self?.confirmPassErrorMessage = error.localizedDescription
+                return
+            }
             completion()
         }
+    }
+    
+    private func validateValue() -> Bool {
+        clearErrorMessage()
+        
+        if firstName.isEmpty {
+            firstNameErrorMessage = "First Name must not empty"
+            return false
+        }
+        
+        if lastName.isEmpty {
+            lastNameErrorMessage = "Last Name must not empty"
+            return false
+        }
+        
+        if username.isEmpty {
+            usernameErrorMessage = "Username must not empty"
+            return false
+        }
+        
+        if email.isEmpty {
+            emailErrorMessage = "Email must not empty"
+            return false
+        }
+        
+        if !Validator().checkEmailAuthenticity(email) {
+            emailErrorMessage = "Email must contain '@'"
+            return false
+        }
+        
+        if password.isEmpty {
+            passwordErrorMessage = "Password must not empty"
+            return false
+        }
+        
+        if confirmPassword.isEmpty {
+            confirmPassErrorMessage = "Confirm Password must not empty"
+            return false
+        }
+        
+        if password != confirmPassword {
+            confirmPassErrorMessage = "Password doesn't match"
+            return false
+        }
+        
+        if !Validator().checkMoreThan7Chars(password) {
+            passwordErrorMessage = "Password must more than 7 characters"
+            return false
+        }
+        
+        return true
+    }
+    
+    private func clearErrorMessage() {
+        firstNameErrorMessage = ""
+        lastNameErrorMessage = ""
+        usernameErrorMessage = ""
+        emailErrorMessage = ""
+        passwordErrorMessage = ""
+        confirmPassErrorMessage = ""
     }
 }
