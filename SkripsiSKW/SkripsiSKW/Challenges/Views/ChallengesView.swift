@@ -16,6 +16,8 @@ struct ChallengesView: View {
             
             titleApp
             
+            competitionButtons
+            
             Button {
                 sessionVM.logout()
             } label: {
@@ -33,7 +35,7 @@ extension ChallengesView {
     @ViewBuilder
     var dateAndPhotoProfile: some View {
         HStack {
-            Text("Monday, October 25")
+            Text(DateManager.shared.getCurrentDayAndDateLongVersion())
                 .foregroundColor(Color.notYoCheese)
                 .font(Font.system(size: 17))
             Spacer()
@@ -54,6 +56,36 @@ extension ChallengesView {
             Spacer()
         }
         .padding(.leading)
+    }
+    
+    @ViewBuilder
+    var competitionButtons: some View {
+        HStack {
+            Button {
+                print("Join competition")
+            } label: {
+                Text("Join a Competition")
+                    .font(Font.system(size: 14, weight: .medium, design: .default))
+                    .foregroundColor(.white)
+                    .frame(width: 165, height: 37)
+                    .background(Color.insignia)
+                    .cornerRadius(6)
+            }
+
+            Spacer()
+            
+            Button {
+                print("Create competition")
+            } label: {
+                Text("Create a Competition")
+                    .font(Font.system(size: 14, weight: .medium, design: .default))
+                    .foregroundColor(.white)
+                    .frame(width: 165, height: 37)
+                    .background(Color.insignia)
+                    .cornerRadius(6)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

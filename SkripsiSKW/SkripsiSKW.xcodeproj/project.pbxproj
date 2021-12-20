@@ -20,6 +20,7 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
 		E1F32E62276DC54C0072E548 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E61276DC54C0072E548 /* Validator.swift */; };
 		E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E64276DD2380072E548 /* ActivityIndicator.swift */; };
 		E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E66276DD2B20072E548 /* ErrorText.swift */; };
@@ -76,6 +77,7 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		E1F32E61276DC54C0072E548 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E1F32E64276DD2380072E548 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E1F32E66276DD2B20072E548 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
@@ -205,6 +207,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E1E18DF1277068590004436D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1E18DF22770687C0004436D /* DateManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E1F32E63276DD21E0072E548 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +288,7 @@
 		E1F88D23276450D700357A45 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E1E18DF1277068590004436D /* Managers */,
 				E1F88D36276472D200357A45 /* Helpers */,
 				E1F88D3127645B0200357A45 /* Components */,
 				E1F88D272764510000357A45 /* Extensions */,
@@ -633,6 +644,7 @@
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
+				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
