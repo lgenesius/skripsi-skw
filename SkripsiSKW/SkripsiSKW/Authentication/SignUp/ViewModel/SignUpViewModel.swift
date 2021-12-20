@@ -41,15 +41,29 @@ class SignUpViewModel: ObservableObject {
             })
             .store(in: &cancellableSet)
         
+        isFirstNameValidPublisher
+            .subscribe(on: DispatchQueue(label: "background queue"))
+            .receive(on: RunLoop.main)
+            .map { valid in
+                valid ? "" : "First Name must not empty"
+            }
+            .sink(receiveValue: { [weak self] message in
+                guard let self = self else { return }
+                self.firstNameErrorMessage = message
+            })
+            .store(in: &cancellableSet)
+        
         isPasswordValidPublisher
             .subscribe(on: DispatchQueue(label: "background queue"))
             .receive(on: RunLoop.main)
             .map { passwordCheck -> String in
                 switch passwordCheck {
                     case .empty:
-                      return "Password must not be empty"
+                      return "Password must not empty"
                     case .noMatch:
                       return "Passwords don't match"
+                    case .lessThan7:
+                      return "Password must more than 7 characters"
                     default:
                       return ""
                 }
@@ -65,16 +79,19 @@ class SignUpViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .map { emailCheck -> String in
                 switch emailCheck {
-                    case .lessThanSeven:
-                        return ""
                     case .empty:
-                        return ""
+                        return "Email must not empty"
                     case .atNotValid:
-                        return ""
+                        return "Email must contain '@'"
                     default:
                         return ""
                 } 
             }
+            .sink { [weak self] passwordMessage in
+                guard let self = self else { return }
+                self.emailErrorMessage = passwordMessage
+            }
+            .store(in: &cancellableSet)
         
         isFormValidPublisher
           .receive(on: RunLoop.main)
@@ -109,33 +126,8 @@ class SignUpViewModel: ObservableObject {
     private func validateValue() -> Bool {
         clearErrorMessage()
         
-        if firstName.isEmpty {
-            firstNameErrorMessage = "First Name must not empty"
-            return false
-        }
-        
         if lastName.isEmpty {
             lastNameErrorMessage = "Last Name must not empty"
-            return false
-        }
-        
-        if username.isEmpty {
-            usernameErrorMessage = "Username must not empty"
-            return false
-        }
-        
-        if email.isEmpty {
-            emailErrorMessage = "Email must not empty"
-            return false
-        }
-        
-        if !Validator().checkEmailAuthenticity(email) {
-            emailErrorMessage = "Email must contain '@'"
-            return false
-        }
-        
-        if !Validator().checkMoreThan7Chars(password) {
-            passwordErrorMessage = "Password must more than 7 characters"
             return false
         }
         
@@ -154,6 +146,16 @@ class SignUpViewModel: ObservableObject {
 
 //MARK: -List of Publishers
 extension SignUpViewModel {
+    private var isFirstNameValidPublisher: AnyPublisher<Bool, Never> {
+        $firstName
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { input in
+                return input.count > 0
+            }
+            .eraseToAnyPublisher()
+    }
+    
     private var isUsernameValidPublisher: AnyPublisher<Bool, Never> {
         $username
             .debounce(for: 0.5, scheduler: RunLoop.main)
@@ -165,9 +167,9 @@ extension SignUpViewModel {
     }
     
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(isUsernameValidPublisher, isPasswordValidPublisher)
-          .map { userNameIsValid, passwordIsValid in
-            return userNameIsValid && (passwordIsValid == .valid)
+        Publishers.CombineLatest4(isUsernameValidPublisher, isPasswordValidPublisher, isEmailValidPublisher, isFirstNameValidPublisher)
+          .map { userNameIsValid, passwordIsValid, emailIsValid, firstNameIsValid in
+              return userNameIsValid && (passwordIsValid == .valid) && (emailIsValid == .valid) && firstNameIsValid
           }
         .eraseToAnyPublisher()
     }
@@ -179,6 +181,7 @@ extension SignUpViewModel {
         case valid
         case empty
         case noMatch
+        case lessThan7
     }
     
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
@@ -200,14 +203,28 @@ extension SignUpViewModel {
           .eraseToAnyPublisher()
     }
     
+    
+    private var isPasswordMoreThan7: AnyPublisher<Bool, Never> {
+        $password
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { password in
+                return Validator().checkMoreThan7Chars(password)
+            }
+            .eraseToAnyPublisher()
+    }
+    
     private var isPasswordValidPublisher: AnyPublisher<PasswordCheck, Never> {
-        Publishers.CombineLatest(isPasswordEmptyPublisher, arePasswordsEqualPublisher)
-          .map { passwordIsEmpty, passwordsAreEqual in
+        Publishers.CombineLatest3(isPasswordEmptyPublisher, arePasswordsEqualPublisher, isPasswordMoreThan7)
+          .map { passwordIsEmpty, passwordsAreEqual, passwordMoreThan7 in
             if (passwordIsEmpty) {
               return .empty
             }
             else if (!passwordsAreEqual) {
               return .noMatch
+            }
+            else if (!passwordMoreThan7) {
+              return .lessThan7
             }
             else {
               return .valid
@@ -222,19 +239,8 @@ extension SignUpViewModel {
 extension SignUpViewModel {
     enum EmailCheck {
         case empty
-        case lessThanSeven
         case atNotValid
         case valid
-    }
-    
-    private var isEmailMoreThan7: AnyPublisher<Bool, Never> {
-        $email
-            .debounce(for: 0.5, scheduler: RunLoop.main)
-            .removeDuplicates()
-            .map { input in
-                return input.count >= 7
-            }
-            .eraseToAnyPublisher()
     }
     
     private var isEmailEmptyPublisher: AnyPublisher<Bool, Never> {
@@ -258,11 +264,9 @@ extension SignUpViewModel {
     }
     
     private var isEmailValidPublisher: AnyPublisher<EmailCheck, Never> {
-        Publishers.CombineLatest3(isEmailMoreThan7, isEmailEmptyPublisher, isEmailAtValidPublisher)
-            .map { emailMoreThan7, emailIsEmpty, emailIsAtValid in
-                if (!emailMoreThan7) {
-                    return .lessThanSeven
-                } else if (emailIsEmpty) {
+        Publishers.CombineLatest(isEmailEmptyPublisher, isEmailAtValidPublisher)
+            .map { emailIsEmpty, emailIsAtValid in
+                if (emailIsEmpty) {
                     return .empty
                 } else if (!emailIsAtValid) {
                     return .atNotValid
