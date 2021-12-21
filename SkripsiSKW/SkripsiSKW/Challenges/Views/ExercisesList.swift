@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExercisesList: View {
     @State private var isDropDown = true
+    private let exercises = ["Squat", "Push Up", "Sit Up"]
     
     var body: some View {
         VStack {
@@ -29,11 +30,31 @@ struct ExercisesList: View {
             
             
             if isDropDown {
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(0..<6) { _ in
-                            RoundedRectangle(cornerRadius: 13)
-                                .frame(width: Screen.width-75, height: 187)
+                        ForEach(0..<3) { index in
+                            NavigationLink {
+                                
+                            } label: {
+                                if #available(iOS 15.0, *) {
+                                    RoundedRectangle(cornerRadius: 13)
+                                        .fill(Color.midnightExpress)
+                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
+                                        .overlay {
+                                            Text(exercises[index])
+                                                .foregroundColor(.white)
+                                        }
+                                } else {
+                                    // Fallback on earlier versions
+                                    RoundedRectangle(cornerRadius: 13)
+                                        .fill(Color.midnightExpress)
+                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
+                                        .overlay(
+                                            Text(exercises[index])
+                                                .foregroundColor(.white)
+                                        )
+                                }
+                            }
                         }
                     }
                 }

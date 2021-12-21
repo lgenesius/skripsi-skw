@@ -29,10 +29,11 @@ struct DailyChallengesView: View {
             
             
             if isDropDown {
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<6) { _ in
                             RoundedRectangle(cornerRadius: 13)
+                                .fill(Color.midnightExpress)
                                 .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
                         }
                     }

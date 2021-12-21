@@ -29,10 +29,11 @@ struct ActiveCompetitions: View {
             
             
             if isDropDown {
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<6) { _ in
                             RoundedRectangle(cornerRadius: 13)
+                                .fill(Color.midnightExpress)
                                 .frame(width: Screen.width-75, height: 187)
                         }
                     }
