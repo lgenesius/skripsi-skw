@@ -25,13 +25,9 @@ struct ChallengesView: View {
                     ExercisesList()
                     
                     ActiveCompetitions()
+                    
+                    BadgesView()
                 }
-            }
-            
-            Button {
-                sessionVM.logout()
-            } label: {
-                Text("Logout")
             }
             
             Spacer()
@@ -48,9 +44,17 @@ extension ChallengesView {
             Text(DateManager.shared.getCurrentDayAndDateLongVersion())
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
-            Circle()
-                .frame(width: 36, height: 36)
-                .foregroundColor(Color.notYoCheese)
+            NavigationLink {
+                Button {
+                    sessionVM.logout()
+                } label: {
+                    Text("Logout")
+                }
+            } label: {
+                Circle()
+                    .frame(width: 36, height: 36)
+                    .foregroundColor(Color.notYoCheese)
+            }
         }
         .padding(.horizontal)
         .padding(.top)

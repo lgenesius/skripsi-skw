@@ -20,6 +20,8 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
+		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
 		E1E18DF627706C620004436D /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF527706C620004436D /* TextModifier.swift */; };
 		E1E18DF82770750C0004436D /* DailyChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF72770750C0004436D /* DailyChallengesView.swift */; };
@@ -81,6 +83,8 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		E1E18DF527706C620004436D /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		E1E18DF72770750C0004436D /* DailyChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengesView.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				E1E18DF72770750C0004436D /* DailyChallengesView.swift */,
 				E1E18DF927707CA70004436D /* ExercisesList.swift */,
 				E1E18DFB277084050004436D /* ActiveCompetitions.swift */,
+				E1E18D072771A1F200C19E60 /* BadgesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 			children = (
 				E1F32E61276DC54C0072E548 /* Validator.swift */,
 				E1F88D37276472E700357A45 /* Screen.swift */,
+				E1E18D092771A57400C19E60 /* GeometryGetter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
+				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
@@ -679,6 +686,7 @@
 				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
 				E1C9B0CA27678B1600611DAE /* ChallengesView.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
+				E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */,
 				E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */,
 				E1C9B0C627678AC700611DAE /* Decodable+Ext.swift in Sources */,
 				E1E18DFA27707CA70004436D /* ExercisesList.swift in Sources */,
