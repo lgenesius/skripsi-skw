@@ -31,4 +31,8 @@ extension Color {
     public static var notYoCheese: Color {
         return Color("FBC12C")
     }
+    
+    public static var midnightExpress: Color {
+        return Color("20233A")
+    }
 }
