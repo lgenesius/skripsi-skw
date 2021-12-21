@@ -23,6 +23,8 @@ struct ChallengesView: View {
                     DailyChallengesView()
                     
                     ExercisesList()
+                    
+                    ActiveCompetitions()
                 }
             }
             

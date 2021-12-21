@@ -24,6 +24,7 @@
 		E1E18DF627706C620004436D /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF527706C620004436D /* TextModifier.swift */; };
 		E1E18DF82770750C0004436D /* DailyChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF72770750C0004436D /* DailyChallengesView.swift */; };
 		E1E18DFA27707CA70004436D /* ExercisesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF927707CA70004436D /* ExercisesList.swift */; };
+		E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DFB277084050004436D /* ActiveCompetitions.swift */; };
 		E1F32E62276DC54C0072E548 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E61276DC54C0072E548 /* Validator.swift */; };
 		E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E64276DD2380072E548 /* ActivityIndicator.swift */; };
 		E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E66276DD2B20072E548 /* ErrorText.swift */; };
@@ -84,6 +85,7 @@
 		E1E18DF527706C620004436D /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		E1E18DF72770750C0004436D /* DailyChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengesView.swift; sourceTree = "<group>"; };
 		E1E18DF927707CA70004436D /* ExercisesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesList.swift; sourceTree = "<group>"; };
+		E1E18DFB277084050004436D /* ActiveCompetitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitions.swift; sourceTree = "<group>"; };
 		E1F32E61276DC54C0072E548 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E1F32E64276DD2380072E548 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E1F32E66276DD2B20072E548 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				E1C9B0C927678B1600611DAE /* ChallengesView.swift */,
 				E1E18DF72770750C0004436D /* DailyChallengesView.swift */,
 				E1E18DF927707CA70004436D /* ExercisesList.swift */,
+				E1E18DFB277084050004436D /* ActiveCompetitions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
+				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,

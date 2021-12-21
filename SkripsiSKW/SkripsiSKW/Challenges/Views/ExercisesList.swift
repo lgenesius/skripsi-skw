@@ -33,7 +33,7 @@ struct ExercisesList: View {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<6) { _ in
                             RoundedRectangle(cornerRadius: 13)
-                                .frame(width: 321, height: 187)
+                                .frame(width: Screen.width-75, height: 187)
                         }
                     }
                 }

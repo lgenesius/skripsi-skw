@@ -1,5 +1,5 @@
 //
-//  DailyChallengesView.swift
+//  ActiveCompetitions.swift
 //  SkripsiSKW
 //
 //  Created by Luis Genesius on 20/12/21.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct DailyChallengesView: View {
+struct ActiveCompetitions: View {
     @State private var isDropDown = true
     
     var body: some View {
         VStack {
             HStack {
-                Text("Daily Challenges")
+                Text("My Active Competitions")
                     .modifier(TextModifier(color: .white, size: 24, weight: .medium))
                 Spacer()
                 Button {
@@ -44,8 +44,8 @@ struct DailyChallengesView: View {
     }
 }
 
-struct DailyChallengesView_Previews: PreviewProvider {
+struct ActiveCompetitions_Previews: PreviewProvider {
     static var previews: some View {
-        DailyChallengesView()
+        ActiveCompetitions()
     }
 }
