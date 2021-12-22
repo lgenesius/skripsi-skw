@@ -12,11 +12,16 @@ struct ProfileView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     
     var navigationTitle: NavigationTitle
+    var userId: String?
     
     @State private var presentLogoutAlert = false
     
-    init(from navigationTitle: NavigationTitle) {
+    init(from navigationTitle: NavigationTitle, uId: String? = nil) {
         self.navigationTitle = navigationTitle
+        
+        if let uId = uId {
+            userId = uId
+        }
     }
     
     var body: some View {
@@ -24,7 +29,12 @@ struct ProfileView: View {
             Color.sambucus
                 .ignoresSafeArea()
             
-            
+            ScrollView {
+                VStack {
+                    headerProfile
+                    Spacer()
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text(""))
@@ -65,8 +75,78 @@ struct ProfileView: View {
     }
 }
 
+extension ProfileView {
+    @ViewBuilder
+    var headerProfile: some View {
+        HStack(alignment: .center) {
+            Circle()
+                .fill(Color.notYoCheese)
+                .frame(width: 110, height: 110)
+            Spacer()
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Kevin Leon Luis Genesius")
+                    .modifier(TextModifier(
+                        color: .white,
+                        size: 24,
+                        weight: .bold
+                    ))
+                    .lineLimit(1)
+                Text(userId == nil ? "3260 Points Gained": "231 Points")
+                    .modifier(TextModifier(
+                        color: .notYoCheese,
+                        size: 18,
+                        weight: .medium
+                    ))
+                
+                HStack {
+                    if userId != nil {
+                        if #available(iOS 15.0, *) {
+                            Circle()
+                                .fill(Color.bubonicBrown)
+                                .frame(width: 34, height: 34)
+                                .overlay {
+                                    Text("2nd")
+                                        .modifier(TextModifier(
+                                            color: .white,
+                                            size: 12,
+                                            weight: .medium
+                                        ))
+                                }
+                        } else {
+                            // Fallback on earlier versions
+                            Circle()
+                                .fill(Color.bubonicBrown)
+                                .frame(width: 34, height: 34)
+                                .overlay(
+                                    Text("2nd")
+                                        .modifier(TextModifier(
+                                            color: .white,
+                                            size: 12,
+                                            weight: .medium
+                                        ))
+                                )
+                        }
+                    }
+                    
+                    Text("8 Badges")
+                        .modifier(TextModifier(
+                            color: .white,
+                            size: 18,
+                            weight: .bold
+                        ))
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .background(Color.blueDepths)
+                        .cornerRadius(10)
+                }
+            }
+        }
+        .padding()
+    }
+}
+
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(from: .challenges)
+        ProfileView(from: .challenges, uId: "123")
     }
 }
