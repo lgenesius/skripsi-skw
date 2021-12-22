@@ -45,11 +45,7 @@ extension ChallengesView {
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
             NavigationLink {
-                Button {
-                    sessionVM.logout()
-                } label: {
-                    Text("Logout")
-                }
+                ProfileView(from: .challenges)
             } label: {
                 Circle()
                     .frame(width: 36, height: 36)
