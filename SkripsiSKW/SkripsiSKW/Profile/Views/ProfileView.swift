@@ -15,6 +15,11 @@ struct ProfileView: View {
     var userId: String?
     
     @State private var presentLogoutAlert = false
+    private let gridLayout = [
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
     
     init(from navigationTitle: NavigationTitle, uId: String? = nil) {
         self.navigationTitle = navigationTitle
@@ -29,10 +34,12 @@ struct ProfileView: View {
             Color.sambucus
                 .ignoresSafeArea()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     headerProfile
-                    Spacer()
+                    top3Badges
+                    latestBadges
+                    listOfBadges
                 }
             }
         }
@@ -142,6 +149,75 @@ extension ProfileView {
             }
         }
         .padding()
+    }
+    
+    @ViewBuilder
+    var top3Badges: some View {
+        VStack(alignment: .leading) {
+            Text("Top 3 Badges")
+                .modifier(TextModifier(
+                    color: .white,
+                    size: 24,
+                    weight: .medium
+                ))
+            
+            HStack(spacing: 15) {
+                ForEach(0..<3) { _ in
+                    Button {
+                        
+                    } label: {
+                        RoundedRectangle(cornerRadius: 13)
+                            .fill(Color.blueDepths)
+                            .frame(maxWidth: .infinity, minHeight: 125)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    var latestBadges: some View {
+        VStack(alignment: .leading) {
+            Text("Latest Badges")
+                .modifier(TextModifier(
+                    color: .white,
+                    size: 24,
+                    weight: .medium
+                ))
+            
+            HStack(spacing: 15) {
+                ForEach(0..<3) { _ in
+                    RoundedRectangle(cornerRadius: 13)
+                        .fill(Color.blueDepths)
+                        .frame(maxWidth: .infinity, minHeight: 125)
+                }
+            }
+        }
+        .padding(.top, 20)
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    var listOfBadges: some View {
+        VStack(alignment: .leading) {
+            Text("List of Badges")
+                .modifier(TextModifier(
+                    color: .white,
+                    size: 24,
+                    weight: .medium
+                ))
+            
+            LazyVGrid(columns: gridLayout, spacing: 15) {
+                ForEach(0..<9) { _ in
+                    RoundedRectangle(cornerRadius: 13)
+                        .fill(Color.blueDepths)
+                        .frame(maxWidth: .infinity, minHeight: 125)
+                }
+            }
+        }
+        .padding(.top, 20)
+        .padding(.horizontal)
     }
 }
 
