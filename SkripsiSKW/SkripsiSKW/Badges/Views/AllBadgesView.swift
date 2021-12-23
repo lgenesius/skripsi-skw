@@ -1,13 +1,13 @@
 //
-//  BadgesView.swift
+//  AllBadgesView.swift
 //  SkripsiSKW
 //
-//  Created by Kevin Leon on 21/12/21.
+//  Created by Kevin Leon on 23/12/21.
 //
 
 import SwiftUI
 
-struct BadgesView: View {
+struct AllBadgesView: View {
     var body: some View {
         NavigationView{
             ZStack{
@@ -21,13 +21,11 @@ struct BadgesView: View {
         
         .navigationBarTitle(Text("Badges"))
         }
-            
-        
     }
 }
 
-struct BadgesView_Previews: PreviewProvider {
+struct AllBadgesView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgesView()
+        AllBadgesView()
     }
 }
