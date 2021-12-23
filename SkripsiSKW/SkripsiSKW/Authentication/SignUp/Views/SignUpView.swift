@@ -20,18 +20,6 @@ struct SignUpView: View {
             
             ScrollView {
                 VStack {
-                    HStack {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color.notYoCheese)
-                                .frame(width: 20, height: 20)
-                        }
-                        Spacer()
-                    }
-                    .padding(.leading)
-                    
                     Text("Let's Get Started!")
                         .font(Font.system(size: 24, weight: .medium, design: .default))
                         .foregroundColor(.white)
@@ -57,7 +45,21 @@ struct SignUpView: View {
             
             LoadingCard(isLoading: signUpVM.isLoading, message: "Registering Account...")
         }
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(Text(""))
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.notYoCheese)
+                    }
+                }
+            }
+        }
     }
 }
 
