@@ -10,6 +10,8 @@
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
+		E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22927730D5D001FE151 /* ProfileView.swift */; };
+		E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22B27731210001FE151 /* NavigationTitle.swift */; };
 		E1C9B0B927677FAC00611DAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */; };
 		E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0BA276783CF00611DAE /* AppDelegate.swift */; };
 		E1C9B0BE2767885A00611DAE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0BD2767885A00611DAE /* User.swift */; };
@@ -73,6 +75,8 @@
 		91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW_SkripsiSKWUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96565C964DF2ACB2F357A178 /* Pods-SkripsiSKW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW/Pods-SkripsiSKW.debug.xcconfig"; sourceTree = "<group>"; };
 		B3671EDFA3CF35AEC2BF12B3 /* Pods-SkripsiSKW-SkripsiSKWUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E195A22927730D5D001FE151 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E195A22B27731210001FE151 /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
 		E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1C9B0BA276783CF00611DAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1C9B0BD2767885A00611DAE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,6 +165,22 @@
 				40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E195A22727730D43001FE151 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E195A22827730D51001FE151 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E195A22827730D51001FE151 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E195A22927730D5D001FE151 /* ProfileView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E1C9B0BC2767880B00611DAE /* Models */ = {
@@ -276,6 +296,7 @@
 				E1F88D25276450E400357A45 /* Navigation */,
 				E1F88D2B2764515F00357A45 /* Authentication */,
 				E1C9B0C727678AFC00611DAE /* Challenges */,
+				E195A22727730D43001FE151 /* Profile */,
 				E1F88D23276450D700357A45 /* Utils */,
 				E1F88D24276450DC00357A45 /* Resources */,
 				E1F88CFF276428F600357A45 /* Preview Content */,
@@ -403,6 +424,7 @@
 				E1F32E61276DC54C0072E548 /* Validator.swift */,
 				E1F88D37276472E700357A45 /* Screen.swift */,
 				E1E18D092771A57400C19E60 /* GeometryGetter.swift */,
+				E195A22B27731210001FE151 /* NavigationTitle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -674,6 +696,7 @@
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
+				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
@@ -688,6 +711,7 @@
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
 				E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */,
 				E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */,
+				E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */,
 				E1C9B0C627678AC700611DAE /* Decodable+Ext.swift in Sources */,
 				E1E18DFA27707CA70004436D /* ExercisesList.swift in Sources */,
 				E1F88D292764511200357A45 /* Color+Ext.swift in Sources */,
