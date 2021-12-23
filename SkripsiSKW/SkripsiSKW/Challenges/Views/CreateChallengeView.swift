@@ -18,12 +18,14 @@ struct CreateChallengeView: View {
             Color.sambucus
                 .ignoresSafeArea()
             
-            VStack (alignment: .leading, spacing: 8) {
+            VStack (alignment: .leading, spacing: 24) {
                 competitionName
                 competitionDecription
+                competitionPeriodSegmented
                 datePicker
                 Spacer()
             }
+            .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
             .navigationBarBackButtonHidden(true)
@@ -71,12 +73,15 @@ extension CreateChallengeView {
                 Color.navyPeony
                     .ignoresSafeArea()
                     .opacity(0.5)
-                    .onTapGesture {
-                        withAnimation {
-                            self.startButton.toggle()
+                    .gesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                withAnimation {
+                                    self.startButton.toggle()
+                                }
                         }
-                    }
-                    .animation(.easeInOut(duration: 0.2))
+                    )
+                    .animation(.easeInOut(duration: 0.5))
                     
                 DatePickerView(selectedDate: $formVM.startDate, dateDescription: "Start Date")
                     .background(Color.blueDepths)
@@ -99,10 +104,15 @@ extension CreateChallengeView {
                 Color.navyPeony
                     .ignoresSafeArea()
                     .opacity(0.5)
-                    .onTapGesture {
-                        self.endButton.toggle()
-                    }
-                    .animation(.easeInOut(duration: 0.2))
+                    .gesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                withAnimation {
+                                    self.endButton.toggle()
+                                }
+                        }
+                    )
+                    .animation(.easeInOut(duration: 0.5))
                 
                 DatePickerView(selectedDate: $formVM.endDate, dateDescription: "End Date")
                     .padding(.horizontal, 16)
@@ -115,7 +125,7 @@ extension CreateChallengeView {
                     )
                     .frame(width: Screen.width-24)
             }
-            .animation(.easeInOut(duration: 0.2))
+            .animation(.easeInOut(duration: 052))
         }
     }
     
@@ -131,7 +141,32 @@ extension CreateChallengeView {
     }
     
     @ViewBuilder
+    private var competitionPeriodSegmented: some View {
+        VStack(alignment: .leading) {
+            Text("Competition Period")
+                .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
+                .padding(.horizontal)
+            
+            Picker("", selection: $formVM.competitionField) {
+                ForEach(competitionPeriod.allCases, id: \.self) {
+                    Text($0.rawValue)
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal, 16)
+        }
+    }
+    
+    
+    @ViewBuilder
     private var datePicker: some View {
+        VStack(spacing: 14) {
+            datePickerStart
+            datePickerEnd
+        }
+    }
+    
+    @ViewBuilder
+    private var datePickerStart: some View {
         HStack {
             Text("Start Date")
                 .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .regular))
@@ -153,7 +188,10 @@ extension CreateChallengeView {
             .allowsHitTesting(false)
         )
         .padding(.horizontal)
-        
+    }
+    
+    @ViewBuilder
+    private var datePickerEnd: some View {
         HStack {
             Text("End Date")
                 .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .regular))
