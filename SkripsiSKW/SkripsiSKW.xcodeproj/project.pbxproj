@@ -12,6 +12,8 @@
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
 		49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* ChallengeFormViewModel.swift */; };
 		49B943972774996F0039FD84 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943962774996F0039FD84 /* Date+Ext.swift */; };
+		49B943992774A5370039FD84 /* TextEditorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943982774A5370039FD84 /* TextEditorField.swift */; };
+		49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439A2774AE850039FD84 /* PlainButton.swift */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
 		E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22927730D5D001FE151 /* ProfileView.swift */; };
@@ -78,6 +80,8 @@
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		49B94394277474030039FD84 /* ChallengeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFormViewModel.swift; sourceTree = "<group>"; };
 		49B943962774996F0039FD84 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		49B943982774A5370039FD84 /* TextEditorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorField.swift; sourceTree = "<group>"; };
+		49B9439A2774AE850039FD84 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838076E1490E903C83A6062 /* Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW_SkripsiSKWUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -450,6 +454,8 @@
 				E1F32E66276DD2B20072E548 /* ErrorText.swift */,
 				E1F32E68276DEDAD0072E548 /* LoadingCard.swift */,
 				49B9438F277468A90039FD84 /* DatePickerView.swift */,
+				49B943982774A5370039FD84 /* TextEditorField.swift */,
+				49B9439A2774AE850039FD84 /* PlainButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -733,10 +739,12 @@
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
+				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
 				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
+				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,

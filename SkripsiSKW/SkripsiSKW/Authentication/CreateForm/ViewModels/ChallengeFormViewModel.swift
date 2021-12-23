@@ -10,10 +10,11 @@ import SwiftUI
 import Combine
 
 class ChallengeFormViewModel: ObservableObject {
-    @Published var startDate: Date = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-    @Published var endDate: Date = Date()
+    @Published var startDate: Date = Date()
+    @Published var endDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
     @Published var isDateValid: Bool = false
     @Published var competitionName: String = ""
+    @Published var competitionDescription: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -31,7 +32,7 @@ class ChallengeFormViewModel: ObservableObject {
 extension ChallengeFormViewModel {
     private func addStartDateSubscriber() {
         $startDate
-            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .map { [unowned self] (dateStart) -> (Date, Date) in
@@ -41,17 +42,12 @@ extension ChallengeFormViewModel {
                 } else {
                     let today = Date().shortDate
                     let endDate = self.endDate.shortDate
-                    if dateStart > self.endDate {
-                        return (self.getPastDate(past: 7, currentDate: self.endDate), self.endDate)
-                    }
-                    else {
                         if endDate == today {
-                            return (self.getPastDate(past: 7, currentDate: self.endDate), self.endDate)
+                            return (dateStart, self.getPastDate(past: -7, currentDate: dateStart))
                         }
                         else {
                             return (dateStart, self.getPastDate(past: -7, currentDate: dateStart))
                         }
-                    }
                 }
             }
             .sink { [weak self] (dateStart, dateEnd) in
@@ -64,7 +60,7 @@ extension ChallengeFormViewModel {
     
     private func addEndDateSubscriber() {
         $endDate
-            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .map { [unowned self] (endDate) -> (Date, Date) in
@@ -81,5 +77,21 @@ extension ChallengeFormViewModel {
                 self.startDate = dateStart
             }
             .store(in: &cancellableSet)
+    }
+}
+
+extension ChallengeFormViewModel {
+    private func dateFormatter(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    func startDateString() -> String {
+        return dateFormatter(date: startDate)
+    }
+    
+    func endDateString() -> String {
+        return dateFormatter(date: endDate)
     }
 }

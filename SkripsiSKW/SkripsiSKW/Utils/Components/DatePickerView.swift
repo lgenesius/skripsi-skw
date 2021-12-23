@@ -14,9 +14,12 @@ struct DatePickerView: View {
     
     var body: some View {
         VStack {
-            DatePicker(selection: $selectedDate, in: ...Date(), displayedComponents: .date) {
+            DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
                 Text(dateDescription ?? "Selected Date")
-            }
+                    .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .regular))
+            }.datePickerStyle(
+                GraphicalDatePickerStyle()
+            )
         }
         
     }
