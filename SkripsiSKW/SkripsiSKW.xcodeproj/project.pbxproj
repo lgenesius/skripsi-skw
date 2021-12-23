@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
+		49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438D277465550039FD84 /* CreateChallengeView.swift */; };
+		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
+		49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* ChallengeFormViewModel.swift */; };
+		49B943972774996F0039FD84 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943962774996F0039FD84 /* Date+Ext.swift */; };
+		49B943992774A5370039FD84 /* TextEditorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943982774A5370039FD84 /* TextEditorField.swift */; };
+		49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439A2774AE850039FD84 /* PlainButton.swift */; };
 		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
@@ -75,6 +81,12 @@
 		3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKWTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.release.xcconfig"; sourceTree = "<group>"; };
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
+		49B9438D277465550039FD84 /* CreateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeView.swift; sourceTree = "<group>"; };
+		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		49B94394277474030039FD84 /* ChallengeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFormViewModel.swift; sourceTree = "<group>"; };
+		49B943962774996F0039FD84 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		49B943982774A5370039FD84 /* TextEditorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorField.swift; sourceTree = "<group>"; };
+		49B9439A2774AE850039FD84 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
 		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
@@ -154,6 +166,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49B94391277473A50039FD84 /* CreateForm */ = {
+			isa = PBXGroup;
+			children = (
+				49B94392277473CA0039FD84 /* ViewModels */,
+				49B94393277473D90039FD84 /* Models */,
+			);
+			path = CreateForm;
+			sourceTree = "<group>";
+		};
+		49B94392277473CA0039FD84 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				49B94394277474030039FD84 /* ChallengeFormViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49B94393277473D90039FD84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6006B5B327708A7D00177FFB /* Badges */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +297,7 @@
 				E1E18DF927707CA70004436D /* ExercisesList.swift */,
 				E1E18DFB277084050004436D /* ActiveCompetitions.swift */,
 				E1E18D072771A1F200C19E60 /* BadgesView.swift */,
+				49B9438D277465550039FD84 /* CreateChallengeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +448,7 @@
 				E1F88D282764511200357A45 /* Color+Ext.swift */,
 				E1C9B0C527678AC700611DAE /* Decodable+Ext.swift */,
 				E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */,
+				49B943962774996F0039FD84 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +461,7 @@
 				E1C9B0BF276788AC00611DAE /* Managers */,
 				E1F88D392764BB8900357A45 /* SignUp */,
 				E1F88D2C2764527800357A45 /* SignIn */,
+				49B94391277473A50039FD84 /* CreateForm */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -453,6 +492,9 @@
 				E1F88D342764723800357A45 /* RoundedButton.swift */,
 				E1F32E66276DD2B20072E548 /* ErrorText.swift */,
 				E1F32E68276DEDAD0072E548 /* LoadingCard.swift */,
+				49B9438F277468A90039FD84 /* DatePickerView.swift */,
+				49B943982774A5370039FD84 /* TextEditorField.swift */,
+				49B9439A2774AE850039FD84 /* PlainButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -732,17 +774,23 @@
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
+				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
 				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
 				60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */,
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
+				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
 				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
+				49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
+				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
+				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
+				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
