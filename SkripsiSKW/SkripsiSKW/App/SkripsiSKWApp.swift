@@ -15,6 +15,7 @@ struct SkripsiSKWApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(SessionViewModel())
+                .preferredColorScheme(.dark)
         }
     }
 }
