@@ -35,6 +35,7 @@ class ChallengeFormViewModel: ObservableObject {
                 self.cancellableSet.removeAll()
                 switch competitionPeriodSelected {
                     case .oneWeek:
+                        self.endDate = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
                         self.addStartDateOneWeekSubscriber()
                         self.addEndDateOneWeekSubscriber()
                     case .twoWeek:
