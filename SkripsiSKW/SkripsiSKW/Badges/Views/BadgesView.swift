@@ -9,11 +9,20 @@ import SwiftUI
 
 struct BadgesView: View {
     var body: some View {
-        ZStack{
-            
+        NavigationView{
+            ZStack{
+                ScrollView{
+                    BadgeLatest()
+                    BadgesGrid()
+                }.padding()
+                
+                
+            }
+        
+        .navigationBarTitle(Text("Badges"))
         }
-        .navigationBarTitle(Text("Badges")).navigationBarHidden(false).foregroundColor(.orange)
-        .toolbar(content: <#T##() -> View#>)
+            
+        
     }
 }
 

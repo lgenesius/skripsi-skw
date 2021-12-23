@@ -10,6 +10,9 @@
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
 		6006B5B627719AD300177FFB /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B527719AD300177FFB /* BadgesView.swift */; };
 		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
+		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
+		605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75722773402C00C6EBE7 /* BadgeLatest.swift */; };
+		60DD5D3D2771D39F001A5421 /* BadgeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DD5D3C2771D39F001A5421 /* BadgeItem.swift */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
 		E1C9B0B927677FAC00611DAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */; };
@@ -65,6 +68,9 @@
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6006B5B527719AD300177FFB /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
+		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
+		605B75722773402C00C6EBE7 /* BadgeLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLatest.swift; sourceTree = "<group>"; };
+		60DD5D3C2771D39F001A5421 /* BadgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeItem.swift; sourceTree = "<group>"; };
 		86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838076E1490E903C83A6062 /* Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW_SkripsiSKWUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				6006B5B82771B4DB00177FFB /* BadgesGrid.swift */,
+				60DD5D3C2771D39F001A5421 /* BadgeItem.swift */,
+				605B75702773400F00C6EBE7 /* BadgeAdd.swift */,
+				605B75722773402C00C6EBE7 /* BadgeLatest.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -670,12 +679,15 @@
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
+				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
+				605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */,
 				E1C9B0C1276788BF00611DAE /* AuthManager.swift in Sources */,
 				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
 				E1C9B0CA27678B1600611DAE /* ChallengesView.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
+				60DD5D3D2771D39F001A5421 /* BadgeItem.swift in Sources */,
 				E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */,
 				E1C9B0C627678AC700611DAE /* Decodable+Ext.swift in Sources */,
 				E1F88D292764511200357A45 /* Color+Ext.swift in Sources */,
@@ -840,7 +852,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -871,7 +883,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -901,7 +913,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -927,7 +939,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -952,7 +964,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -976,7 +988,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = XJ33WS9HWL;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

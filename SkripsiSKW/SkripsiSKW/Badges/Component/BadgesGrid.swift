@@ -13,14 +13,17 @@ struct BadgesGrid: View {
     ]
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+            Text("All Badge" ).font(.system(size: 24))
             LazyVGrid(columns: columnsLayout){
-               
-                    Image(Color.red).resizable().frame(width: Screen.width/3.5, height: Screen.height/6)
+                ForEach((1...10), id: \.self) {_ in
+                    BadgeItem()
+                }
+                
                 
                 
             }
-        }
+        }.padding()
     }
 }
 
