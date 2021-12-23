@@ -48,8 +48,10 @@ struct CreateChallengeView: View {
                     }
                 }
             }
-            startDatePicker
-            endDatePicker
+            VStack {
+                startDatePicker
+                endDatePicker
+            }
         }
     }
 }
