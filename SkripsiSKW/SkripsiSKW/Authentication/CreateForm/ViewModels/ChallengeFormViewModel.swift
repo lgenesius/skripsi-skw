@@ -9,10 +9,11 @@ import Foundation
 import SwiftUI
 import Combine
 
-class FormViewModel: ObservableObject {
+class ChallengeFormViewModel: ObservableObject {
     @Published var startDate: Date = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
     @Published var endDate: Date = Date()
     @Published var isDateValid: Bool = false
+    @Published var competitionName: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -27,7 +28,7 @@ class FormViewModel: ObservableObject {
 }
 
 //MARK: Adding Subscription Identifier
-extension FormViewModel {
+extension ChallengeFormViewModel {
     private func addStartDateSubscriber() {
         $startDate
             .debounce(for: 0.5, scheduler: RunLoop.main)

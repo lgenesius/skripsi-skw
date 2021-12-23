@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateChallengeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject private var formVM: FormViewModel = FormViewModel()
+    @StateObject private var formVM: ChallengeFormViewModel = ChallengeFormViewModel()
     
     var body: some View {
         ZStack {
@@ -17,10 +17,9 @@ struct CreateChallengeView: View {
                 .ignoresSafeArea()
             
             VStack {
-                DatePickerView(selectedDate: $formVM.startDate, dateDescription: "Start Date")
-                DatePickerView(selectedDate: $formVM.endDate, dateDescription: "End Date")
+                competitionField
+                datePicker
             }
-            .padding(16)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
             .navigationBarBackButtonHidden(true)
@@ -48,9 +47,19 @@ struct CreateChallengeView: View {
 }
 
 extension CreateChallengeView {
-//    private var datePicker: some View {
-//
-//    }
+    
+    @ViewBuilder
+    private var competitionField: some View {
+        FormField(value: $formVM.competitionName, placeholder: "competition name")
+    }
+    
+    @ViewBuilder
+    private var datePicker: some View {
+        VStack {
+            DatePickerView(selectedDate: $formVM.startDate, dateDescription: "Start Date")
+            DatePickerView(selectedDate: $formVM.endDate, dateDescription: "End Date")
+        }.padding(16)
+    }
 }
 
 struct CreateChallengeView_Previews: PreviewProvider {

@@ -10,7 +10,7 @@
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
 		49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438D277465550039FD84 /* CreateChallengeView.swift */; };
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
-		49B94395277474030039FD84 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* FormViewModel.swift */; };
+		49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* ChallengeFormViewModel.swift */; };
 		49B943972774996F0039FD84 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943962774996F0039FD84 /* Date+Ext.swift */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
@@ -76,7 +76,7 @@
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49B9438D277465550039FD84 /* CreateChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChallengeView.swift; sourceTree = "<group>"; };
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		49B94394277474030039FD84 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		49B94394277474030039FD84 /* ChallengeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFormViewModel.swift; sourceTree = "<group>"; };
 		49B943962774996F0039FD84 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838076E1490E903C83A6062 /* Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 		49B94392277473CA0039FD84 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				49B94394277474030039FD84 /* FormViewModel.swift */,
+				49B94394277474030039FD84 /* ChallengeFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -739,7 +739,7 @@
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
-				49B94395277474030039FD84 /* FormViewModel.swift in Sources */,
+				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
 				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
