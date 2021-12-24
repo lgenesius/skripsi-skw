@@ -18,7 +18,8 @@ struct CompetitionLeaderboard: View {
             VStack(alignment: .leading, spacing: 16) {
                 competitionPoint
                 competitionRank
-                Spacer()
+                Spacer(minLength: 120)
+                competitionButtons
             }
             .padding(.top, 24)
             .navigationTitle("Competition Name")
@@ -58,7 +59,7 @@ extension CompetitionLeaderboard {
     @ViewBuilder
     private var competitionRank: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant())")
+            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant()))")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
             HStack {
                 Text("1st Rank")
@@ -78,6 +79,35 @@ extension CompetitionLeaderboard {
     @ViewBuilder
     private var competitionLeaderboardList: some View {
         LeaderboardList(listOfData: $competitionVM.dummyData)
+    }
+    
+    
+    @ViewBuilder
+    var competitionButtons: some View {
+        GeometryReader { geo in
+            HStack {
+                NavigationLink {
+
+                } label: {
+                    Text("Invite Others")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: geo.size.width * 0.48, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
+
+                Spacer()
+                NavigationLink {
+
+                } label: {
+                    Text("Leave Competition")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: geo.size.width * 0.48, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
+            }
+        }.padding(.horizontal)
     }
 }
 
