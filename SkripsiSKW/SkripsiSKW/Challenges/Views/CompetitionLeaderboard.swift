@@ -15,8 +15,9 @@ struct CompetitionLeaderboard: View {
         ZStack {
             Color.sambucus.ignoresSafeArea()
             
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 16) {
                 competitionPoint
+                competitionRank
                 Spacer()
             }
             .padding(.top, 24)
@@ -45,13 +46,38 @@ extension CompetitionLeaderboard {
     
     @ViewBuilder
     private var competitionPoint : some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("TOTAL POINTS (300 Max)")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
             Text("245 Points")
                 .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
-            ProgressBar(value: $competitionVM.dummyTotalPointPercentage).frame(height: 20)
+            ProgressBar(value: $competitionVM.dummyTotalPointPercentage, backgroundColor: Color.oldSilver, progressBarColor: Color.notYoCheese, height: CGFloat(15))
         }.padding()
+    }
+    
+    @ViewBuilder
+    private var competitionRank: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant())")
+                .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
+            HStack {
+                Text("1st Rank")
+                    .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
+                Spacer()
+                NavigationLink {
+                    CompetitionLeaderboardDetail(competitionVM: competitionVM)
+                } label: {
+                    Text("See All")
+                        .modifier(TextModifier(color: .notYoCheese, size: 14, weight: .regular))
+                }
+            }
+            competitionLeaderboardList
+        }.padding()
+    }
+    
+    @ViewBuilder
+    private var competitionLeaderboardList: some View {
+        LeaderboardList(listOfData: $competitionVM.dummyData)
     }
 }
 
