@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
 		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
+		600929942775CA0A0061D107 /* DailyChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600929932775CA0A0061D107 /* DailyChallengeCard.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
 		605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75722773402C00C6EBE7 /* BadgeLatest.swift */; };
@@ -76,6 +77,7 @@
 		40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.release.xcconfig"; sourceTree = "<group>"; };
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
+		600929932775CA0A0061D107 /* DailyChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeCard.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
 		605B75722773402C00C6EBE7 /* BadgeLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLatest.swift; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		600929922775C9F10061D107 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				600929932775CA0A0061D107 /* DailyChallengeCard.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		90CE4EC55003718049573A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +258,7 @@
 		E1C9B0C727678AFC00611DAE /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
+				600929922775C9F10061D107 /* Component */,
 				E1C9B0C827678B0900611DAE /* Views */,
 			);
 			path = Challenges;
@@ -743,6 +754,7 @@
 				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
+				600929942775CA0A0061D107 /* DailyChallengeCard.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
