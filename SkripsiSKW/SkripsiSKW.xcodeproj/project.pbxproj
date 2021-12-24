@@ -14,6 +14,8 @@
 		49B943972774996F0039FD84 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943962774996F0039FD84 /* Date+Ext.swift */; };
 		49B943992774A5370039FD84 /* TextEditorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943982774A5370039FD84 /* TextEditorField.swift */; };
 		49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439A2774AE850039FD84 /* PlainButton.swift */; };
+		49B9439D27756FFC0039FD84 /* JoinChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439C27756FFC0039FD84 /* JoinChallengeView.swift */; };
+		49B9439F2775711B0039FD84 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439E2775711B0039FD84 /* CustomToolbar.swift */; };
 		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
@@ -87,6 +89,8 @@
 		49B943962774996F0039FD84 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		49B943982774A5370039FD84 /* TextEditorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorField.swift; sourceTree = "<group>"; };
 		49B9439A2774AE850039FD84 /* PlainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButton.swift; sourceTree = "<group>"; };
+		49B9439C27756FFC0039FD84 /* JoinChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeView.swift; sourceTree = "<group>"; };
+		49B9439E2775711B0039FD84 /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				E1E18DFB277084050004436D /* ActiveCompetitions.swift */,
 				E1E18D072771A1F200C19E60 /* BadgesView.swift */,
 				49B9438D277465550039FD84 /* CreateChallengeView.swift */,
+				49B9439C27756FFC0039FD84 /* JoinChallengeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				49B9438F277468A90039FD84 /* DatePickerView.swift */,
 				49B943982774A5370039FD84 /* TextEditorField.swift */,
 				49B9439A2774AE850039FD84 /* PlainButton.swift */,
+				49B9439E2775711B0039FD84 /* CustomToolbar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -788,12 +794,14 @@
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
+				49B9439D27756FFC0039FD84 /* JoinChallengeView.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
 				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
+				49B9439F2775711B0039FD84 /* CustomToolbar.swift in Sources */,
 				605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */,
 				E1E18DF82770750C0004436D /* DailyChallengesView.swift in Sources */,
 				E1C9B0C1276788BF00611DAE /* AuthManager.swift in Sources */,

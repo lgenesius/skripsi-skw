@@ -70,7 +70,7 @@ extension ChallengesView {
     var competitionButtons: some View {
         HStack {
             NavigationLink {
-               Text("Join a Competition")
+               JoinChallengeView()
             } label: {
                 Text("Join a Competition")
                     .modifier(TextModifier(color: .white, size: 14, weight: .medium))
