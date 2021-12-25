@@ -48,6 +48,7 @@
 		E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */; };
 		E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */; };
 		E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F827770DB700ECAD39 /* View+Ext.swift */; };
+		E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */; };
 		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
@@ -139,6 +140,7 @@
 		E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNavigation.swift; sourceTree = "<group>"; };
 		E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		E1D7E4F827770DB700ECAD39 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRotationView.swift; sourceTree = "<group>"; };
 		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				E1D7E4FA27770DE100ECAD39 /* Rotation */,
 				E1D7E4F32776E91A00ECAD39 /* Navigation */,
 				E14C056B2775CDDE008DC3AF /* Helpers */,
 				E14C055C2775BC6F008DC3AF /* Info */,
@@ -428,6 +431,22 @@
 				E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E1D7E4FA27770DE100ECAD39 /* Rotation */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7E4FB27770DEE00ECAD39 /* Views */,
+			);
+			path = Rotation;
+			sourceTree = "<group>";
+		};
+		E1D7E4FB27770DEE00ECAD39 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E1E18DF1277068590004436D /* Managers */ = {
@@ -896,6 +915,7 @@
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */,
+				E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
 				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
