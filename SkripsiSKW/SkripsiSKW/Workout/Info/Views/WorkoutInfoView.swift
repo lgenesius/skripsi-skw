@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct WorkoutInfoView: View {
+    @Binding var isInfoPresent: Bool
     let workoutType: WorkoutType
     let infos: [Info]
     
-    init(workout: WorkoutType) {
+    init(status: Binding<Bool>, workout: WorkoutType) {
+        _isInfoPresent = status
         workoutType = workout
         infos = Infos.getInfos(workoutType: workoutType)
     }
@@ -26,9 +28,16 @@ struct WorkoutInfoView: View {
             VStack {
                 SkipButtonView(currentIndex: $currentIndex)
                 
-                InfoTabView(currentIndex: $currentIndex, infos: infos)
+                InfoTabView(
+                    isInfoPresent: $isInfoPresent,
+                    currentIndex: $currentIndex,
+                    infos: infos
+                )
                 
-                TabIndicator(count: 3, current: $currentIndex)
+                TabIndicator(
+                    count: 3,
+                    current: $currentIndex
+                )
             }
         }
         .navigationBarHidden(true)

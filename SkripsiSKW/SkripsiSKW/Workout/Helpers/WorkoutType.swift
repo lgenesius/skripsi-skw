@@ -59,11 +59,11 @@ enum WorkoutType {
     private var workoutTypeKey: String {
         switch self {
         case .squat:
-            return "WorkoutType-Squat"
+            return "WorkoutType-Squat-Info"
         case .plank:
-            return "WorkoutType-Plank"
+            return "WorkoutType-Plank-Info"
         case .pushup:
-            return "WorkoutType-PushUp"
+            return "WorkoutType-PushUp-Info"
         }
     }
     

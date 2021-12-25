@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct InfoView: View {
+    @Binding var isInfoPresent: Bool
     let info: Info
     var isLastInfo = false
+    
+    @State private var isBoxChecked = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -35,9 +38,23 @@ struct InfoView: View {
             Spacer()
             
             if isLastInfo {
-                Text("Don't show this again")
+                HStack(spacing: 5) {
+                    Image(systemName: isBoxChecked ? "checkmark.square.fill": "square")
+                        .foregroundColor(isBoxChecked ? Color(UIColor.systemBlue): Color.white)
+                    Text("Don't show this again")
+                }
+                .onTapGesture {
+                    isBoxChecked.toggle()
+                }
+                
                 RoundedButton(title: "Start") {
+                    if isBoxChecked {
+                        info.completion?(true)
+                    }
                     
+                    withAnimation {
+                        isInfoPresent = false
+                    }
                 }
             }
         }

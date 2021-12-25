@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InfoTabView: View {
+    @Binding var isInfoPresent: Bool
     @Binding var currentIndex: Int
     let infos: [Info]
     
@@ -15,9 +16,16 @@ struct InfoTabView: View {
         TabView(selection: $currentIndex) {
             ForEach(0..<3) { index in
                 if index == 2 {
-                    InfoView(info: infos[index], isLastInfo: true)
+                    InfoView(
+                        isInfoPresent: $isInfoPresent,
+                        info: infos[index],
+                        isLastInfo: true
+                    )
                 } else {
-                    InfoView(info: infos[index])
+                    InfoView(
+                        isInfoPresent: $isInfoPresent,
+                        info: infos[index]
+                    )
                 }
             }
         }

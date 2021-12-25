@@ -12,6 +12,7 @@ struct Info: Identifiable {
     let imageName: String
     let title: String
     let description: String
+    var completion: ((Bool) -> Void)?
 }
 
 struct Infos {
@@ -19,7 +20,15 @@ struct Infos {
         var infos = [Info]()
         infos.append(Info(imageName: workoutType.imageString, title: workoutType.title, description: workoutType.workoutDesc))
         infos.append(Info(imageName: workoutType.imageString, title: "Benefits", description: workoutType.benefitsDesc))
-        infos.append(Info(imageName: workoutType.imageString, title: "Don't Forget to Warm Up!", description: "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."))
+        infos.append(
+            Info(imageName: workoutType.imageString,
+                 title: "Don't Forget to Warm Up!",
+                 description: "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen.",
+                 completion: { status in
+                     workoutType.setDefaultStatus(status)
+                 }
+                )
+        )
         return infos
     }
 }
