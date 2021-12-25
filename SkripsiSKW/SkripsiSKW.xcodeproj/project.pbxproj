@@ -284,8 +284,8 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
-				E1D7E4FA27770DE100ECAD39 /* Rotation */,
 				E1D7E4F32776E91A00ECAD39 /* Navigation */,
+				E1D7E4FA27770DE100ECAD39 /* Rotation */,
 				E14C056B2775CDDE008DC3AF /* Helpers */,
 				E14C055C2775BC6F008DC3AF /* Info */,
 			);
