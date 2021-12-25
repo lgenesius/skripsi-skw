@@ -32,6 +32,7 @@
 		E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05642775CB91008DC3AF /* SkipButtonView.swift */; };
 		E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05662775CC5E008DC3AF /* InfoView.swift */; };
 		E14C056A2775CC7C008DC3AF /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05692775CC7C008DC3AF /* Info.swift */; };
+		E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C056C2775D963008DC3AF /* TabIndicator.swift */; };
 		E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22927730D5D001FE151 /* ProfileView.swift */; };
 		E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22B27731210001FE151 /* NavigationTitle.swift */; };
 		E1C9B0B927677FAC00611DAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */; };
@@ -119,6 +120,7 @@
 		E14C05642775CB91008DC3AF /* SkipButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButtonView.swift; sourceTree = "<group>"; };
 		E14C05662775CC5E008DC3AF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E14C05692775CC7C008DC3AF /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		E14C056C2775D963008DC3AF /* TabIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndicator.swift; sourceTree = "<group>"; };
 		E195A22927730D5D001FE151 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E195A22B27731210001FE151 /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
 		E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				E1D7E4F32776E91A00ECAD39 /* Navigation */,
 				E14C056B2775CDDE008DC3AF /* Helpers */,
 				E14C055C2775BC6F008DC3AF /* Info */,
 			);
@@ -303,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				E14C05612775CAB8008DC3AF /* InfoTabView.swift */,
+				E14C056C2775D963008DC3AF /* TabIndicator.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -410,6 +414,13 @@
 				E1C9B0D12767913E00611DAE /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1D7E4F32776E91A00ECAD39 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		E1E18DF1277068590004436D /* Managers */ = {
@@ -889,6 +900,7 @@
 				49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
+				E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */,
 				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				49B9439D27756FFC0039FD84 /* JoinChallengeView.swift in Sources */,

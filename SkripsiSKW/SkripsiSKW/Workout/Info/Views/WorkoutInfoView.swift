@@ -9,6 +9,12 @@ import SwiftUI
 
 struct WorkoutInfoView: View {
     let workoutType: WorkoutType
+    let infos: [Info]
+    
+    init(workout: WorkoutType) {
+        workoutType = workout
+        infos = Infos.getInfos(workoutType: workoutType)
+    }
     
     @State var currentIndex = 0
     
@@ -20,7 +26,9 @@ struct WorkoutInfoView: View {
             VStack {
                 SkipButtonView(currentIndex: $currentIndex)
                 
-                InfoTabView(currentIndex: $currentIndex)
+                InfoTabView(currentIndex: $currentIndex, infos: infos)
+                
+                TabIndicator(count: 3, current: $currentIndex)
             }
         }
         .navigationBarHidden(true)

@@ -26,18 +26,18 @@ enum WorkoutType {
     var imageString: String {
         switch self {
         case .squat:
-            return ""
+            return "dummy"
         case .plank:
-            return ""
+            return "dummy"
         case .pushup:
-            return ""
+            return "dummy"
         }
     }
     
     var workoutDesc: String {
         switch self {
         case .squat:
-            return ""
+            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
         case .plank:
             return ""
         case .pushup:
@@ -48,11 +48,22 @@ enum WorkoutType {
     var benefitsDesc: String {
         switch self {
         case .squat:
-            return ""
+            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
         case .plank:
             return ""
         case .pushup:
             return ""
+        }
+    }
+    
+    private var workoutTypeKey: String {
+        switch self {
+        case .squat:
+            return "WorkoutType-Squat"
+        case .plank:
+            return "WorkoutType-Plank"
+        case .pushup:
+            return "WorkoutType-PushUp"
         }
     }
     
@@ -65,5 +76,13 @@ enum WorkoutType {
         case .pushup:
             return .landscape
         }
+    }
+    
+    func getDefaultStatus() -> Bool {
+        UserDefaults.standard.bool(forKey: workoutTypeKey)
+    }
+    
+    func setDefaultStatus(_ status: Bool) {
+        UserDefaults.standard.set(status, forKey: workoutTypeKey)
     }
 }

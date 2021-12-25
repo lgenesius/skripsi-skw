@@ -9,6 +9,7 @@ import SwiftUI
 
 struct InfoView: View {
     let info: Info
+    var isLastInfo = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -18,17 +19,27 @@ struct InfoView: View {
                     size: 34,
                     weight: .bold
                 ))
+                .multilineTextAlignment(.center)
             
             Spacer()
             
-            Image(systemName: "chevron.top")
+            Image(info.imageName)
+                .frame(width: 250, height: 250)
             
             Spacer()
             
             Text(info.description)
+                .multilineTextAlignment(.center)
             
             Spacer()
             Spacer()
+            
+            if isLastInfo {
+                Text("Don't show this again")
+                RoundedButton(title: "Start") {
+                    
+                }
+            }
         }
         .padding()
     }
