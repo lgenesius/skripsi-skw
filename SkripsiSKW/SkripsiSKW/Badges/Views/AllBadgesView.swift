@@ -11,16 +11,21 @@ struct AllBadgesView: View {
     var body: some View {
         NavigationView{
             ZStack{
+                Color.sambucus
+                    .ignoresSafeArea()
                 ScrollView{
-                    BadgeLatest()
-                    BadgesGrid()
-                }.padding()
+                    LatestBadge()
+                    ListOfBadge()
+                }
                 
+                BadgeAdd().opacity(0)
                 
             }
         
-        .navigationBarTitle(Text("Badges"))
+            .navigationBarTitle(Text("Badges"))
+            
         }
+        .preferredColorScheme(.dark)
     }
 }
 
