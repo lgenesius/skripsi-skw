@@ -37,22 +37,24 @@ struct ExercisesList: View {
                                 
                             } label: {
                                 if #available(iOS 15.0, *) {
-                                    RoundedRectangle(cornerRadius: 13)
-                                        .fill(Color.midnightExpress)
-                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
-                                        .overlay {
-                                            Text(exercises[index])
-                                                .foregroundColor(.white)
-                                        }
+//                                    RoundedRectangle(cornerRadius: 13)
+//                                        .fill(Color.midnightExpress)
+//                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
+//                                        .overlay {
+//                                            Text(exercises[index])
+//                                                .foregroundColor(.white)
+//                                        }
+                                    ExerciseCard()
                                 } else {
                                     // Fallback on earlier versions
-                                    RoundedRectangle(cornerRadius: 13)
-                                        .fill(Color.midnightExpress)
-                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
-                                        .overlay(
-                                            Text(exercises[index])
-                                                .foregroundColor(.white)
-                                        )
+//                                    RoundedRectangle(cornerRadius: 13)
+//                                        .fill(Color.midnightExpress)
+//                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
+//                                        .overlay(
+//                                            Text(exercises[index])
+//                                                .foregroundColor(.white)
+//                                        )
+                                    ExerciseCard()
                                 }
                             }
                         }

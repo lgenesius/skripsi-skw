@@ -11,6 +11,7 @@
 		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
 		600929942775CA0A0061D107 /* DailyChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600929932775CA0A0061D107 /* DailyChallengeCard.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
+		602AB8632779E8A900DFBA1F /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AB8622779E8A900DFBA1F /* ExerciseCard.swift */; };
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
 		605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75722773402C00C6EBE7 /* BadgeLatest.swift */; };
 		60DD5D3D2771D39F001A5421 /* BadgeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DD5D3C2771D39F001A5421 /* BadgeItem.swift */; };
@@ -79,6 +80,7 @@
 		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
 		600929932775CA0A0061D107 /* DailyChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeCard.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
+		602AB8622779E8A900DFBA1F /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
 		605B75722773402C00C6EBE7 /* BadgeLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLatest.swift; sourceTree = "<group>"; };
 		60DD5D3C2771D39F001A5421 /* BadgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeItem.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				600929932775CA0A0061D107 /* DailyChallengeCard.swift */,
+				602AB8622779E8A900DFBA1F /* ExerciseCard.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
+				602AB8632779E8A900DFBA1F /* ExerciseCard.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				600929942775CA0A0061D107 /* DailyChallengeCard.swift in Sources */,
