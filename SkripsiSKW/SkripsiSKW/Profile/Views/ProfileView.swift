@@ -38,8 +38,8 @@ struct ProfileView: View {
                 VStack {
                     headerProfile
                     top3Badges
-                    latestBadges
-                    listOfBadges
+                    LatestBadge()
+                    ListOfBadge()
                 }
             }
         }

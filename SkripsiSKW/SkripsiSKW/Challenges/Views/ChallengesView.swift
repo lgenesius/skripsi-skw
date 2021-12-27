@@ -69,8 +69,8 @@ extension ChallengesView {
     @ViewBuilder
     var competitionButtons: some View {
         HStack {
-            Button {
-                print("Join competition")
+            NavigationLink {
+               JoinChallengeView()
             } label: {
                 Text("Join a Competition")
                     .modifier(TextModifier(color: .white, size: 14, weight: .medium))
@@ -80,9 +80,8 @@ extension ChallengesView {
             }
 
             Spacer()
-            
-            Button {
-                print("Create competition")
+            NavigationLink {
+               CreateChallengeView()
             } label: {
                 Text("Create a Competition")
                     .modifier(TextModifier(color: .white, size: 14, weight: .medium))

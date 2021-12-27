@@ -12,18 +12,6 @@ struct BadgesView: View {
     
     var body: some View {
         VStack {
-            NavigationView{
-                ZStack{
-                    ScrollView{
-                        BadgeLatest()
-                        BadgesGrid()
-                    }.padding()
-                    
-                    
-                }
-            
-            .navigationBarTitle(Text("Badges"))
-            }
             HStack {
                 Text("Badges")
                     .modifier(TextModifier(color: .white, size: 24, weight: .medium))
