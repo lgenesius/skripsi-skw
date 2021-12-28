@@ -39,4 +39,8 @@ extension Color {
     public static var bubonicBrown: Color {
         return Color("CB8600")
     }
+    
+    public static var oldSilver: Color {
+        return Color("858585")
+    }
 }
