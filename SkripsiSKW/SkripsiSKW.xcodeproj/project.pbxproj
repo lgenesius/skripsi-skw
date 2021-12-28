@@ -57,6 +57,7 @@
 		E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */; };
 		E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */; };
 		E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFA277B04C6005B3282 /* CameraView.swift */; };
+		E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */; };
 		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
@@ -157,6 +158,7 @@
 		E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRotationView.swift; sourceTree = "<group>"; };
 		E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCameraView.swift; sourceTree = "<group>"; };
 		E1DF1EFA277B04C6005B3282 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 		E1DF1EF7277B0478005B3282 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E1DF1EFC277B058A005B3282 /* Representable */,
 				E1DF1EF9277B0483005B3282 /* View */,
 				E1DF1EF8277B047D005B3282 /* Controllers */,
 			);
@@ -513,6 +516,7 @@
 		E1DF1EF8277B047D005B3282 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -523,6 +527,13 @@
 				E1DF1EFA277B04C6005B3282 /* CameraView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E1DF1EFC277B058A005B3282 /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Representable;
 			sourceTree = "<group>";
 		};
 		E1E18DF1277068590004436D /* Managers */ = {
@@ -993,6 +1004,7 @@
 				49B943A7277575A50039FD84 /* TextFieldModifier.swift in Sources */,
 				E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */,
 				49B943B62775BF870039FD84 /* LeaderboardRow.swift in Sources */,
+				E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */,
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				60AFCE3D277902F800DDF951 /* ListOfBadge.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
