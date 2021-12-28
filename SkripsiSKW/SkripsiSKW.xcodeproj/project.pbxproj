@@ -25,7 +25,6 @@
 		49B943B22775BE4E0039FD84 /* CompetitionLeaderboardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943B12775BE4E0039FD84 /* CompetitionLeaderboardDetail.swift */; };
 		49B943B42775BF5C0039FD84 /* LeaderboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943B32775BF5C0039FD84 /* LeaderboardList.swift */; };
 		49B943B62775BF870039FD84 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943B52775BF870039FD84 /* LeaderboardRow.swift */; };
-		6006B5B92771B4DB00177FFB /* BadgesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006B5B82771B4DB00177FFB /* BadgesGrid.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
 		60AFCE3D277902F800DDF951 /* ListOfBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AFCE3C277902F800DDF951 /* ListOfBadge.swift */; };
@@ -56,6 +55,8 @@
 		E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */; };
 		E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F827770DB700ECAD39 /* View+Ext.swift */; };
 		E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */; };
+		E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */; };
+		E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFA277B04C6005B3282 /* CameraView.swift */; };
 		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
@@ -121,7 +122,6 @@
 		49B943B12775BE4E0039FD84 /* CompetitionLeaderboardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionLeaderboardDetail.swift; sourceTree = "<group>"; };
 		49B943B32775BF5C0039FD84 /* LeaderboardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardList.swift; sourceTree = "<group>"; };
 		49B943B52775BF870039FD84 /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
-		6006B5B82771B4DB00177FFB /* BadgesGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGrid.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
 		60AFCE3C277902F800DDF951 /* ListOfBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBadge.swift; sourceTree = "<group>"; };
@@ -155,6 +155,8 @@
 		E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		E1D7E4F827770DB700ECAD39 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRotationView.swift; sourceTree = "<group>"; };
+		E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCameraView.swift; sourceTree = "<group>"; };
+		E1DF1EFA277B04C6005B3282 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				E1DF1EF2277B02E9005B3282 /* Core */,
 				E1D7E4F32776E91A00ECAD39 /* Navigation */,
 				E1D7E4FA27770DE100ECAD39 /* Rotation */,
 				E14C056B2775CDDE008DC3AF /* Helpers */,
@@ -471,6 +474,55 @@
 				E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E1DF1EF2277B02E9005B3282 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF6277B0473005B3282 /* Components */,
+				E1DF1EF5277B0349005B3282 /* Views */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E1DF1EF5277B0349005B3282 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1DF1EF6277B0473005B3282 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF7277B0478005B3282 /* UIKit */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E1DF1EF7277B0478005B3282 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF9277B0483005B3282 /* View */,
+				E1DF1EF8277B047D005B3282 /* Controllers */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		E1DF1EF8277B047D005B3282 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1DF1EF9277B0483005B3282 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EFA277B04C6005B3282 /* CameraView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E1E18DF1277068590004436D /* Managers */ = {
@@ -947,6 +999,7 @@
 				E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */,
 				E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
+				E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */,
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
 				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
 				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
@@ -957,6 +1010,7 @@
 				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
 				E14C055A2775BC2F008DC3AF /* ViewOrientation.swift in Sources */,
 				E14C055F2775BC8E008DC3AF /* WorkoutInfoView.swift in Sources */,
+				E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */,
 				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				49B9438E277465550039FD84 /* CreateChallengeView.swift in Sources */,
@@ -964,7 +1018,6 @@
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */,
-				605B75732773402C00C6EBE7 /* BadgeLatest.swift in Sources */,
 				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
 				49B943AE2775ABA30039FD84 /* ActiveCompetition.swift in Sources */,
 				49B9439D27756FFC0039FD84 /* JoinChallengeView.swift in Sources */,
