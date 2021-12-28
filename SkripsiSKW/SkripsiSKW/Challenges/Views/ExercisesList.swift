@@ -34,7 +34,7 @@ struct ExercisesList: View {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<3) { index in
                             NavigationLink {
-                                
+                                WorkoutNavigation(workout: .squat)
                             } label: {
                                 if #available(iOS 15.0, *) {
 //                                    RoundedRectangle(cornerRadius: 13)
