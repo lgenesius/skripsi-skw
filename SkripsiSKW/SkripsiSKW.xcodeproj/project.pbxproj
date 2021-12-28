@@ -58,6 +58,7 @@
 		E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */; };
 		E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFA277B04C6005B3282 /* CameraView.swift */; };
 		E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */; };
+		E1DF1F00277B109F005B3282 /* CameraViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */; };
 		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
@@ -159,6 +160,7 @@
 		E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCameraView.swift; sourceTree = "<group>"; };
 		E1DF1EFA277B04C6005B3282 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewWrapper.swift; sourceTree = "<group>"; };
 		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 		E1DF1EFC277B058A005B3282 /* Representable */ = {
 			isa = PBXGroup;
 			children = (
+				E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */,
 			);
 			path = Representable;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 			files = (
 				E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */,
 				E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */,
+				E1DF1F00277B109F005B3282 /* CameraViewWrapper.swift in Sources */,
 				49B943A5277574C60039FD84 /* JoinChallengeViewModel.swift in Sources */,
 				49B943AB2775A8D20039FD84 /* CompetitionViewModel.swift in Sources */,
 				E1F88D38276472E700357A45 /* Screen.swift in Sources */,
