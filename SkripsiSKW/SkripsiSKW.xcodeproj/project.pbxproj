@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
+		493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E0277AFF1500D6F794 /* FinishingChallenge.swift */; };
+		493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */; };
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
 		49B943992774A5370039FD84 /* TextEditorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943982774A5370039FD84 /* TextEditorField.swift */; };
 		49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9439A2774AE850039FD84 /* PlainButton.swift */; };
@@ -105,6 +107,8 @@
 		3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKWTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.release.xcconfig"; sourceTree = "<group>"; };
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
+		493871E0277AFF1500D6F794 /* FinishingChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishingChallenge.swift; sourceTree = "<group>"; };
+		493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewWrapper.swift; sourceTree = "<group>"; };
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		49B94394277474030039FD84 /* ChallengeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeFormViewModel.swift; sourceTree = "<group>"; };
 		49B943962774996F0039FD84 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -217,6 +221,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		493871E2277B079D00D6F794 /* FinishChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				493871E0277AFF1500D6F794 /* FinishingChallenge.swift */,
+				493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */,
+			);
+			path = FinishChallenge;
+			sourceTree = "<group>";
+		};
 		49B94391277473A50039FD84 /* CreateForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +320,7 @@
 		602AB8A3277ADC5100DFBA1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				493871E2277B079D00D6F794 /* FinishChallenge */,
 				602AB8A4277ADC5100DFBA1F /* ExercisesList.swift */,
 				602AB8A5277ADC5100DFBA1F /* BadgesView.swift */,
 				602AB8A6277ADC5100DFBA1F /* CreateChallengeView.swift */,
@@ -994,7 +1008,9 @@
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
 				602AB8AD277ADC5100DFBA1F /* CompetitionViewModel.swift in Sources */,
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
+				493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */,
 				E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */,
+				493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */,
 				602AB8AF277ADC5100DFBA1F /* ExerciseCard.swift in Sources */,
 				E14C056A2775CC7C008DC3AF /* Info.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
