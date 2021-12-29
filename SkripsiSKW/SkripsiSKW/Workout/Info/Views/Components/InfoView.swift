@@ -43,6 +43,7 @@ struct InfoView: View {
                         .foregroundColor(isBoxChecked ? Color(UIColor.systemBlue): Color.white)
                     Text("Don't show this again")
                 }
+                .padding(.bottom)
                 .onTapGesture {
                     isBoxChecked.toggle()
                 }

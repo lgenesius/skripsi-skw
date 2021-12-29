@@ -56,17 +56,6 @@ enum WorkoutType {
         }
     }
     
-    private var workoutTypeKey: String {
-        switch self {
-        case .squat:
-            return "WorkoutType-Squat-Info"
-        case .plank:
-            return "WorkoutType-Plank-Info"
-        case .pushup:
-            return "WorkoutType-PushUp-Info"
-        }
-    }
-    
     var orientation: ViewOrientation {
         switch self {
         case .squat:
@@ -75,6 +64,17 @@ enum WorkoutType {
             return .landscape
         case .pushup:
             return .landscape
+        }
+    }
+    
+    private var workoutTypeKey: String {
+        switch self {
+        case .squat:
+            return "WorkoutType-Squat-Info"
+        case .plank:
+            return "WorkoutType-Plank-Info"
+        case .pushup:
+            return "WorkoutType-PushUp-Info"
         }
     }
     
