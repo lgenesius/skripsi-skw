@@ -13,6 +13,16 @@ struct WorkoutCameraView: View {
     @State private var isOrientationPresent = true
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            GeometryReader { geo in
+                CameraViewWrapper()
+                
+                if workoutType.orientation == .portrait && isOrientationPresent {
+                    WorkoutRotationView(isOrientationPresent: $isOrientationPresent) {
+                        print("hehe")
+                    }
+                }
+            }
+        }
     }
 }

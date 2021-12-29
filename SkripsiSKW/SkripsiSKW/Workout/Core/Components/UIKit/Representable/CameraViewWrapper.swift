@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 
 struct CameraViewWrapper: UIViewControllerRepresentable {
+    @State private var cameraVC = CameraViewController()
     func makeUIViewController(context: Context) -> some UIViewController {
-        let cvc = CameraViewController()
-        return cvc
+        return cameraVC
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        cameraVC.updateVideoOrientation()
+    }
 }

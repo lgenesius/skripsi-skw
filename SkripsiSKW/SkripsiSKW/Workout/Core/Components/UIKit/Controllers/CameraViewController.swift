@@ -16,7 +16,7 @@ class CameraViewController: UIViewController {
     private var cameraView: CameraView { view as! CameraView }
     
     override func loadView() {
-        view = cameraView
+        view = CameraView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,5 +59,26 @@ class CameraViewController: UIViewController {
         
         session.commitConfiguration()
         cameraSession = session
+    }
+    
+    func updateVideoOrientation() {
+        guard cameraView.previewLayer.connection != nil, cameraView.previewLayer.connection!.isVideoOrientationSupported else { return }
+        let statusBarOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        let videoOrientation: AVCaptureVideoOrientation = statusBarOrientation?.videoOrientation ?? .portrait
+        cameraView.previewLayer.frame = view.layer.bounds
+        cameraView.previewLayer.connection?.videoOrientation = videoOrientation
+        cameraView.previewLayer.removeAllAnimations()
+    }
+}
+
+extension UIInterfaceOrientation {
+    var videoOrientation: AVCaptureVideoOrientation? {
+        switch self {
+        case .portraitUpsideDown: return .portraitUpsideDown
+        case .landscapeRight: return .landscapeRight
+        case .landscapeLeft: return .landscapeLeft
+        case .portrait: return .portrait
+        default: return nil
+        }
     }
 }
