@@ -12,13 +12,14 @@ struct WorkoutCameraView: View {
     
     let workoutType: WorkoutType
     
+    @StateObject private var poseEstimator = PoseEstimator()
     @State private var isOrientationPresent = true
     @State private var isCountdownPresent = true
     
     var body: some View {
         ZStack {
             GeometryReader { geo in
-                CameraViewWrapper()
+                CameraViewWrapper(poseEstimator: poseEstimator)
                     .ignoresSafeArea()
                 
                 if isCountdownPresent {
@@ -31,16 +32,20 @@ struct WorkoutCameraView: View {
                                 AppDelegate.orientationLock = .landscape
                             }
                         } else {
-                            WorkoutCountdownView(isCountdownPresent: $isCountdownPresent)
+                            WorkoutCountdownView(isCountdownPresent: $isCountdownPresent, completion: {
+                                poseEstimator.isActive = true
+                                poseEstimator.start()
+                            })
                         }
                     }
                 } else {
                     // Vision Body Pose View
-                    Text("MANTAP")
+                    StickFigureView(poseEstimator: poseEstimator, size: geo.size)
                 }
             }
         }
         .onAppear {
+            poseEstimator.workoutType = workoutType
             if workoutType.orientation == .landscape {
                 AppDelegate.orientationLock = .all
             } else {

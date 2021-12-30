@@ -9,8 +9,12 @@ import Foundation
 import SwiftUI
 
 struct CameraViewWrapper: UIViewControllerRepresentable {
+    var poseEstimator: PoseEstimator
+    
     @State private var cameraVC = CameraViewController()
+    
     func makeUIViewController(context: Context) -> some UIViewController {
+        cameraVC.delegate = poseEstimator
         return cameraVC
     }
     

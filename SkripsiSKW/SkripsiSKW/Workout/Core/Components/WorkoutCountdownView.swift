@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutCountdownView: View {
     @Binding var isCountdownPresent: Bool
+    var completion: (() -> Void)
     
     @State private var isActive = true
     @State private var timeRemaining = 5
@@ -28,6 +29,7 @@ struct WorkoutCountdownView: View {
                     timeRemaining -= 1
                 } else {
                     isCountdownPresent = false
+                    completion()
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
