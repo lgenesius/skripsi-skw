@@ -42,7 +42,10 @@ struct WorkoutTimerPointView: View {
         .onAppear(perform: {
             countdownManager.secondsRemaining = poseEstimator.getWorkoutSeconds()
             countdownManager.completion = {
-                isWorkoutFinish = true
+                withAnimation {
+                    isWorkoutFinish = true
+                }
+                poseEstimator.isActive = false
             }
             
             countdownManager.startCountdown()

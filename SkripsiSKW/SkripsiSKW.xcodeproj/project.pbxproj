@@ -53,6 +53,7 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */; };
 		E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */; };
 		E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */; };
 		E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F827770DB700ECAD39 /* View+Ext.swift */; };
@@ -161,6 +162,7 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFinishView.swift; sourceTree = "<group>"; };
 		E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNavigation.swift; sourceTree = "<group>"; };
 		E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		E1D7E4F827770DB700ECAD39 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				E1DFB1C8277C595400EE18C0 /* StickFigureView.swift */,
 				E1DFB1C2277C4CF800EE18C0 /* WorkoutCountdownView.swift */,
 				E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */,
+				E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
 				E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */,
+				E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */,
 				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E14C05582775BC01008DC3AF /* WorkoutType.swift in Sources */,

@@ -20,6 +20,7 @@ final class PoseEstimator: NSObject, ObservableObject {
     
     var workoutType: WorkoutType?
     
+    private var wasInBottomPosition = false
     private let sequenceHandler = VNSequenceRequestHandler()
     private var subscriptions = Set<AnyCancellable>()
     
@@ -64,10 +65,23 @@ final class PoseEstimator: NSObject, ObservableObject {
               let leftAnkle = bodyParts[.leftAnkle]?.location
         else { return }
         
-        print("The rightKnee ", rightKnee)
-        print("The leftKnee ", leftKnee)
-        print("The leftAnkle ", leftAnkle)
-        print("The rightAnkle ", rightAnkle)
+        let firstAngle = atan2(rightHip.y - rightKnee.y, rightHip.x - rightKnee.x)
+        let secondAngle = atan2(rightAnkle.y - rightKnee.y, rightAnkle.x - rightKnee.x)
+        var angleDiffRadians = firstAngle - secondAngle
+        while angleDiffRadians < 0 {
+            angleDiffRadians += CGFloat(2 * Double.pi)
+        }
+        let angleDiffDegrees = Int(angleDiffRadians * 180 / .pi)
+        if angleDiffDegrees > 150 && self.wasInBottomPosition {
+            self.count += 1
+            self.wasInBottomPosition = false
+        }
+        
+        let hipHeight = rightHip.y
+        let kneeHeight = rightKnee.y
+        if hipHeight < kneeHeight {
+            self.wasInBottomPosition = true
+        }
     }
     
     deinit {
@@ -97,7 +111,6 @@ extension PoseEstimator: AVCaptureVideoDataOutputSampleBufferDelegate {
     private func detectedBodyPose(request: VNRequest, error: Error?) {
         guard let bodyPoseResults = request.results as? [VNHumanBodyPoseObservation] else { return }
         guard let bodyParts = try? bodyPoseResults.first?.recognizedPoints(.all) else { return }
-        print("hehe")
         DispatchQueue.main.async { [weak self] in
             self?.bodyParts = bodyParts
         }

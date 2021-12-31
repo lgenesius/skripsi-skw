@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WorkoutCameraView: View {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     let workoutType: WorkoutType
     
@@ -40,11 +39,18 @@ struct WorkoutCameraView: View {
                             })
                         }
                     }
-                } else {
+                } else if !isCountdownPresent && !isWorkoutFinish {
                     // Vision Body Pose View
                     StickFigureView(poseEstimator: poseEstimator, size: geo.size)
                     
                     WorkoutTimerPointView(poseEstimator: poseEstimator, isWorkoutFinish: $isWorkoutFinish)
+                } else {
+                    ZStack {
+                        Color.black.opacity(0.7)
+                            .ignoresSafeArea()
+                        
+                        WorkoutFinishView(poseEstimator: poseEstimator)
+                    }
                 }
             }
         }
