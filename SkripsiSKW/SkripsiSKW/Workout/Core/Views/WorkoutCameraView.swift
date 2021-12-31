@@ -9,12 +9,14 @@ import SwiftUI
 
 struct WorkoutCameraView: View {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     let workoutType: WorkoutType
     
     @StateObject private var poseEstimator = PoseEstimator()
     @State private var isOrientationPresent = true
     @State private var isCountdownPresent = true
+    @State private var isWorkoutFinish = false
     
     var body: some View {
         ZStack {
@@ -41,6 +43,8 @@ struct WorkoutCameraView: View {
                 } else {
                     // Vision Body Pose View
                     StickFigureView(poseEstimator: poseEstimator, size: geo.size)
+                    
+                    WorkoutTimerPointView(poseEstimator: poseEstimator, isWorkoutFinish: $isWorkoutFinish)
                 }
             }
         }

@@ -59,7 +59,7 @@ enum WorkoutType {
     var orientation: ViewOrientation {
         switch self {
         case .squat:
-            return .portrait
+            return .landscape
         case .plank:
             return .landscape
         case .pushup:

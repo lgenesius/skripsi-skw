@@ -11,32 +11,29 @@ struct WorkoutCountdownView: View {
     @Binding var isCountdownPresent: Bool
     var completion: (() -> Void)
     
-    @State private var isActive = true
-    @State private var timeRemaining = 5
-    let timer = Timer.publish(every: 1, on: .main, in: .common)
-        .autoconnect()
+    @StateObject private var countDownManager = CountdownManager()
     
     var body: some View {
-        Text(timeRemaining != 0 ? "\(timeRemaining)": "Go!")
+        Text(countDownManager.secondsRemaining != 0 ? "\(countDownManager.secondsRemaining)": "Go!")
             .modifier(TextModifier(
-                color: timeRemaining != 0 ? .white: .notYoCheese,
+                color: countDownManager.secondsRemaining != 0 ? .white: .notYoCheese,
                 size: 100,
                 weight: .bold
             ))
-            .onReceive(timer) { time in
-                guard isActive else { return }
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
-                } else {
+            .onAppear(perform: {
+                countDownManager.secondsRemaining = 5
+                countDownManager.completion = {
                     isCountdownPresent = false
                     completion()
                 }
-            }
+                
+                countDownManager.startCountdown()
+            })
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-                isActive = false
+                countDownManager.pause()
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                isActive = true
+                countDownManager.startCountdown()
             }
     }
 }

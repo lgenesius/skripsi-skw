@@ -9,10 +9,14 @@ import Foundation
 import Vision
 import AVFoundation
 import Combine
+import UIKit
 
 final class PoseEstimator: NSObject, ObservableObject {
     @Published var bodyParts = [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]()
     @Published var isActive = false
+    
+    @Published var timeRemaining = 0
+    @Published var count = 0
     
     var workoutType: WorkoutType?
     
@@ -26,6 +30,18 @@ final class PoseEstimator: NSObject, ObservableObject {
                 self?.doOperation(bodyParts: bodyParts)
             }
             .store(in: &subscriptions)
+    }
+    
+    func getWorkoutSeconds() -> Int {
+        guard let workoutType = workoutType else { return 0 }
+        switch workoutType {
+        case .squat:
+            return 45
+        case .plank:
+            return 45
+        case .pushup:
+            return 45
+        }
     }
     
     private func doOperation(bodyParts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) {
@@ -49,6 +65,9 @@ final class PoseEstimator: NSObject, ObservableObject {
         else { return }
         
         print("The rightKnee ", rightKnee)
+        print("The leftKnee ", leftKnee)
+        print("The leftAnkle ", leftAnkle)
+        print("The rightAnkle ", rightAnkle)
     }
     
     deinit {
@@ -58,10 +77,18 @@ final class PoseEstimator: NSObject, ObservableObject {
 
 extension PoseEstimator: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard isActive else { return }
+        guard isActive, let orientation = workoutType?.orientation else { return }
         let humanBodyRequest = VNDetectHumanBodyPoseRequest(completionHandler: detectedBodyPose(request:error:))
         do {
-            try sequenceHandler.perform([humanBodyRequest], on: sampleBuffer, orientation: .right)
+            if orientation == .portrait {
+                try sequenceHandler.perform([humanBodyRequest], on: sampleBuffer, orientation: .right)
+            } else {
+                if UIDevice.current.orientation == .landscapeLeft {
+                    try sequenceHandler.perform([humanBodyRequest], on: sampleBuffer, orientation: .down)
+                } else {
+                    try sequenceHandler.perform([humanBodyRequest], on: sampleBuffer)
+                }
+            }
         } catch {
             print(error.localizedDescription)
         }
@@ -70,8 +97,9 @@ extension PoseEstimator: AVCaptureVideoDataOutputSampleBufferDelegate {
     private func detectedBodyPose(request: VNRequest, error: Error?) {
         guard let bodyPoseResults = request.results as? [VNHumanBodyPoseObservation] else { return }
         guard let bodyParts = try? bodyPoseResults.first?.recognizedPoints(.all) else { return }
-        DispatchQueue.main.async {
-            self.bodyParts = bodyParts
+        print("hehe")
+        DispatchQueue.main.async { [weak self] in
+            self?.bodyParts = bodyParts
         }
     }
 }

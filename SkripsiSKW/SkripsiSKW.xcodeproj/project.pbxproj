@@ -39,6 +39,8 @@
 		E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05662775CC5E008DC3AF /* InfoView.swift */; };
 		E14C056A2775CC7C008DC3AF /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05692775CC7C008DC3AF /* Info.swift */; };
 		E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C056C2775D963008DC3AF /* TabIndicator.swift */; };
+		E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */; };
+		E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1871707277DB46300A2D25A /* CountdownManager.swift */; };
 		E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22927730D5D001FE151 /* ProfileView.swift */; };
 		E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22B27731210001FE151 /* NavigationTitle.swift */; };
 		E1C9B0B927677FAC00611DAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */; };
@@ -145,6 +147,8 @@
 		E14C05662775CC5E008DC3AF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E14C05692775CC7C008DC3AF /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		E14C056C2775D963008DC3AF /* TabIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndicator.swift; sourceTree = "<group>"; };
+		E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimerPointView.swift; sourceTree = "<group>"; };
+		E1871707277DB46300A2D25A /* CountdownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownManager.swift; sourceTree = "<group>"; };
 		E195A22927730D5D001FE151 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E195A22B27731210001FE151 /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
 		E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				E1871706277DB45500A2D25A /* Managers */,
 				E1DF1EF2277B02E9005B3282 /* Core */,
 				E1D7E4F32776E91A00ECAD39 /* Navigation */,
 				E1D7E4FA27770DE100ECAD39 /* Rotation */,
@@ -381,6 +386,14 @@
 				E1DFB1C4277C550E00EE18C0 /* PoseEstimator.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E1871706277DB45500A2D25A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1871707277DB46300A2D25A /* CountdownManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E195A22727730D43001FE151 /* Profile */ = {
@@ -513,6 +526,7 @@
 				E1DFB1C6277C592500EE18C0 /* Stick.swift */,
 				E1DFB1C8277C595400EE18C0 /* StickFigureView.swift */,
 				E1DFB1C2277C4CF800EE18C0 /* WorkoutCountdownView.swift */,
+				E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1017,6 +1031,7 @@
 				49B943AB2775A8D20039FD84 /* CompetitionViewModel.swift in Sources */,
 				E1F88D38276472E700357A45 /* Screen.swift in Sources */,
 				E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */,
+				E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
 				49B943A7277575A50039FD84 /* TextFieldModifier.swift in Sources */,
@@ -1055,6 +1070,7 @@
 				E1DFB1C9277C595400EE18C0 /* StickFigureView.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
+				E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */,
 				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E14C05582775BC01008DC3AF /* WorkoutType.swift in Sources */,
