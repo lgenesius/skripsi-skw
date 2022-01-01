@@ -48,6 +48,8 @@
 		E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05662775CC5E008DC3AF /* InfoView.swift */; };
 		E14C056A2775CC7C008DC3AF /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05692775CC7C008DC3AF /* Info.swift */; };
 		E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C056C2775D963008DC3AF /* TabIndicator.swift */; };
+		E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */; };
+		E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1871707277DB46300A2D25A /* CountdownManager.swift */; };
 		E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22927730D5D001FE151 /* ProfileView.swift */; };
 		E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195A22B27731210001FE151 /* NavigationTitle.swift */; };
 		E1C9B0B927677FAC00611DAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */; };
@@ -59,10 +61,20 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */; };
 		E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */; };
 		E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */; };
 		E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F827770DB700ECAD39 /* View+Ext.swift */; };
 		E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */; };
+		E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */; };
+		E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFA277B04C6005B3282 /* CameraView.swift */; };
+		E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */; };
+		E1DF1F00277B109F005B3282 /* CameraViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */; };
+		E1DFB1C3277C4CF800EE18C0 /* WorkoutCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFB1C2277C4CF800EE18C0 /* WorkoutCountdownView.swift */; };
+		E1DFB1C5277C550E00EE18C0 /* PoseEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFB1C4277C550E00EE18C0 /* PoseEstimator.swift */; };
+		E1DFB1C7277C592500EE18C0 /* Stick.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFB1C6277C592500EE18C0 /* Stick.swift */; };
+		E1DFB1C9277C595400EE18C0 /* StickFigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DFB1C8277C595400EE18C0 /* StickFigureView.swift */; };
+		E1E18D082771A1F200C19E60 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D072771A1F200C19E60 /* BadgesView.swift */; };
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
 		E1E18DF627706C620004436D /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF527706C620004436D /* TextModifier.swift */; };
@@ -153,6 +165,8 @@
 		E14C05662775CC5E008DC3AF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		E14C05692775CC7C008DC3AF /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		E14C056C2775D963008DC3AF /* TabIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabIndicator.swift; sourceTree = "<group>"; };
+		E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTimerPointView.swift; sourceTree = "<group>"; };
+		E1871707277DB46300A2D25A /* CountdownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownManager.swift; sourceTree = "<group>"; };
 		E195A22927730D5D001FE151 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E195A22B27731210001FE151 /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
 		E1C9B0B827677FAC00611DAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -164,10 +178,20 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFinishView.swift; sourceTree = "<group>"; };
 		E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNavigation.swift; sourceTree = "<group>"; };
 		E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		E1D7E4F827770DB700ECAD39 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRotationView.swift; sourceTree = "<group>"; };
+		E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCameraView.swift; sourceTree = "<group>"; };
+		E1DF1EFA277B04C6005B3282 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewWrapper.swift; sourceTree = "<group>"; };
+		E1DFB1C2277C4CF800EE18C0 /* WorkoutCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCountdownView.swift; sourceTree = "<group>"; };
+		E1DFB1C4277C550E00EE18C0 /* PoseEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimator.swift; sourceTree = "<group>"; };
+		E1DFB1C6277C592500EE18C0 /* Stick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stick.swift; sourceTree = "<group>"; };
+		E1DFB1C8277C595400EE18C0 /* StickFigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickFigureView.swift; sourceTree = "<group>"; };
+		E1E18D072771A1F200C19E60 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		E1E18DF527706C620004436D /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
@@ -370,6 +394,8 @@
 		E14C055B2775BC68008DC3AF /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				E1871706277DB45500A2D25A /* Managers */,
+				E1DF1EF2277B02E9005B3282 /* Core */,
 				E1D7E4F32776E91A00ECAD39 /* Navigation */,
 				E1D7E4FA27770DE100ECAD39 /* Rotation */,
 				E14C056B2775CDDE008DC3AF /* Helpers */,
@@ -428,8 +454,17 @@
 			children = (
 				E14C05592775BC2F008DC3AF /* ViewOrientation.swift */,
 				E14C05572775BC01008DC3AF /* WorkoutType.swift */,
+				E1DFB1C4277C550E00EE18C0 /* PoseEstimator.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E1871706277DB45500A2D25A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E1871707277DB46300A2D25A /* CountdownManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		E195A22727730D43001FE151 /* Profile */ = {
@@ -510,6 +545,70 @@
 				E1D7E4FC27770E0000ECAD39 /* WorkoutRotationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E1DF1EF2277B02E9005B3282 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF6277B0473005B3282 /* Components */,
+				E1DF1EF5277B0349005B3282 /* Views */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E1DF1EF5277B0349005B3282 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF3277B033F005B3282 /* WorkoutCameraView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1DF1EF6277B0473005B3282 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EF7277B0478005B3282 /* UIKit */,
+				E1DFB1C6277C592500EE18C0 /* Stick.swift */,
+				E1DFB1C8277C595400EE18C0 /* StickFigureView.swift */,
+				E1DFB1C2277C4CF800EE18C0 /* WorkoutCountdownView.swift */,
+				E1871704277D8F7200A2D25A /* WorkoutTimerPointView.swift */,
+				E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E1DF1EF7277B0478005B3282 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EFC277B058A005B3282 /* Representable */,
+				E1DF1EF9277B0483005B3282 /* View */,
+				E1DF1EF8277B047D005B3282 /* Controllers */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		E1DF1EF8277B047D005B3282 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EFD277B05C6005B3282 /* CameraViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E1DF1EF9277B0483005B3282 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EFA277B04C6005B3282 /* CameraView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1DF1EFC277B058A005B3282 /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				E1DF1EFF277B109F005B3282 /* CameraViewWrapper.swift */,
+			);
+			path = Representable;
 			sourceTree = "<group>";
 		};
 		E1E18DF1277068590004436D /* Managers */ = {
@@ -975,14 +1074,21 @@
 				602AB8B8277ADC5100DFBA1F /* CompetitionLeaderboard.swift in Sources */,
 				E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */,
 				E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */,
+				E1DF1F00277B109F005B3282 /* CameraViewWrapper.swift in Sources */,
+				49B943A5277574C60039FD84 /* JoinChallengeViewModel.swift in Sources */,
+				E1DFB1C7277C592500EE18C0 /* Stick.swift in Sources */,
+				E1DFB1C3277C4CF800EE18C0 /* WorkoutCountdownView.swift in Sources */,
+				49B943AB2775A8D20039FD84 /* CompetitionViewModel.swift in Sources */,
 				E1F88D38276472E700357A45 /* Screen.swift in Sources */,
 				E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */,
+				E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
 				602AB8B3277ADC5100DFBA1F /* BadgesView.swift in Sources */,
 				49B943A7277575A50039FD84 /* TextFieldModifier.swift in Sources */,
 				E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */,
 				49B943B62775BF870039FD84 /* LeaderboardRow.swift in Sources */,
+				E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */,
 				602AB8AE277ADC5100DFBA1F /* JoinChallengeViewModel.swift in Sources */,
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				60AFCE3D277902F800DDF951 /* ListOfBadge.swift in Sources */,
@@ -990,6 +1096,7 @@
 				E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */,
 				E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
+				E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */,
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
 				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
 				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
@@ -1002,6 +1109,7 @@
 				E14C055A2775BC2F008DC3AF /* ViewOrientation.swift in Sources */,
 				602AB8B5277ADC5100DFBA1F /* DailyChallengesView.swift in Sources */,
 				E14C055F2775BC8E008DC3AF /* WorkoutInfoView.swift in Sources */,
+				E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */,
 				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				49B943B42775BF5C0039FD84 /* LeaderboardList.swift in Sources */,
@@ -1010,10 +1118,18 @@
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */,
 				E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */,
+				E1E18DFC277084050004436D /* ActiveCompetitions.swift in Sources */,
+				49B943AE2775ABA30039FD84 /* ActiveCompetition.swift in Sources */,
+				49B9439D27756FFC0039FD84 /* JoinChallengeView.swift in Sources */,
 				493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */,
 				602AB8AF277ADC5100DFBA1F /* ExerciseCard.swift in Sources */,
 				E14C056A2775CC7C008DC3AF /* Info.swift in Sources */,
+				E1DFB1C9277C595400EE18C0 /* StickFigureView.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
+				49B94395277474030039FD84 /* ChallengeFormViewModel.swift in Sources */,
+				E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */,
+				E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */,
+				49B943972774996F0039FD84 /* Date+Ext.swift in Sources */,
 				602AB8B0277ADC5100DFBA1F /* DailyChallengeCard.swift in Sources */,
 				602AB8B1277ADC5100DFBA1F /* ActiveCompetition.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
@@ -1027,6 +1143,8 @@
 				605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */,
 				E1C9B0C1276788BF00611DAE /* AuthManager.swift in Sources */,
 				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
+				E1C9B0CA27678B1600611DAE /* ChallengesView.swift in Sources */,
+				E1DFB1C5277C550E00EE18C0 /* PoseEstimator.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
 				602AB8B6277ADC5100DFBA1F /* JoinChallengeView.swift in Sources */,
 				49B943B02775B5D30039FD84 /* ProgressBar.swift in Sources */,
@@ -1198,12 +1316,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = XJ33WS9HWL;
+				DEVELOPMENT_TEAM = A5LXCCW6FT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1229,12 +1349,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = XJ33WS9HWL;
+				DEVELOPMENT_TEAM = A5LXCCW6FT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
