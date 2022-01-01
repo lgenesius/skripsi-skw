@@ -16,6 +16,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
+    static var orientationLock = UIInterfaceOrientationMask.all
+
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return AppDelegate.orientationLock
     }
