@@ -83,7 +83,35 @@ final class PoseEstimator: NSObject, ObservableObject {
             self.wasInBottomPosition = true
         }
     }
-    
+    private func countPlank(bodyParts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) {
+        guard let rightKnee = bodyParts[.rightKnee]?.location,
+              let leftKnee = bodyParts[.leftKnee]?.location,
+              let rightAnkle = bodyParts[.rightAnkle]?.location,
+              let leftAnkle = bodyParts[.leftAnkle]?.location,
+              let leftShoulder = bodyParts[.leftShoulder]?.location,
+              let leftElbow = bodyParts[.leftElbow]?.location,
+              let leftWrist = bodyParts[.leftWrist]?.location
+        else { return }
+        
+        let firstAngle = atan2(rightHip.y - rightKnee.y, rightHip.x - rightKnee.x)
+        let secondAngle = atan2(rightAnkle.y - rightKnee.y, rightAnkle.x - rightKnee.x)
+        var angleDiffRadians = firstAngle - secondAngle
+        while angleDiffRadians < 0 {
+            angleDiffRadians += CGFloat(2 * Double.pi)
+        }
+        let angleDiffDegrees = Int(angleDiffRadians * 180 / .pi)
+        if angleDiffDegrees > 150 && self.wasInBottomPosition {
+            self.count += 1
+            self.wasInBottomPosition = false
+        }
+        
+        let hipHeight = rightHip.y
+        let kneeHeight = rightKnee.y
+        if hipHeight < kneeHeight {
+            self.wasInBottomPosition = true
+        }
+    }
+
     deinit {
         subscriptions.removeAll()
     }
