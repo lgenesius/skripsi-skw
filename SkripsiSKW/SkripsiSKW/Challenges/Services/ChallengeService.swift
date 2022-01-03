@@ -34,7 +34,8 @@ class ChallengeService {
             "users": [
                 userId
             ],
-            "isRunning": true
+            "isRunning": true,
+            "competitionCode": UUID().uuidString.prefix(5).uppercased()
         ]) { error in
             if error == nil {
                 onSuccess()
@@ -44,8 +45,25 @@ class ChallengeService {
         }
     }
     
-    static func CheckValidity() -> Bool{
+    static func CheckValidity(completion: @escaping (Int?, Error?) -> Void){
+        var data = [QueryDocumentSnapshot]()
         
-        return true
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        Challenges.whereField("users", arrayContains: userId)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    completion(nil, err)
+                    
+                } else {
+                    _ = querySnapshot?.documents.map {
+                        data.append($0)
+                    }
+                    
+                    completion(data.count, nil)
+                }
+        }
     }
 }

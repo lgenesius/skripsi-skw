@@ -44,7 +44,10 @@ struct CreateChallengeView: View {
                     Button {
                         createFormVM
                             .createChallenge {
-                                presentationMode.wrappedValue.dismiss()
+                                if !createFormVM.alertPresented {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                                createFormVM.isLoading = false
                             }
                     } label: {
                         Text("Save")
@@ -59,7 +62,7 @@ struct CreateChallengeView: View {
                 endDatePicker
             }
             
-            LoadingCard(isLoading: createFormVM.isLoading, message: "Registering Account...")
+            LoadingCard(isLoading: createFormVM.isLoading, message: "Creating Competition...")
         }
         .alert(isPresented: $createFormVM.alertPresented) {
             Alert(title: Text(createFormVM.getAlertData().title), message: Text(createFormVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
