@@ -18,15 +18,52 @@ enum competitionPeriod: String, CaseIterable {
 class ChallengeFormViewModel: ObservableObject {
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
-    @Published var isDateValid: Bool = false
     @Published var competitionName: String = ""
     @Published var competitionDescription: String = ""
     @Published var competitionField: competitionPeriod = .oneWeek
     
+    @Published var isValid: Bool = false
+    @Published var competitionNameErrorMessage = ""
+    @Published var competitionDescriptionErrorMessage = ""
+    
     private var cancellableSet: Set<AnyCancellable> = []
+    private var formCancellableSet: Set<AnyCancellable> = []
     private var selectedSubscriberCancellable: AnyCancellable?
     
     init() {
+        
+        isCompetitionNameValidPublisher
+            .subscribe(on: DispatchQueue(label: "background queue"))
+            .receive(on: RunLoop.main)
+            .map { valid in
+                valid ? "" : "Competition Name must not empty"
+            }
+            .sink(receiveValue: { [weak self] message in
+                guard let self = self else { return }
+                self.competitionNameErrorMessage = message
+            })
+            .store(in: &formCancellableSet)
+        
+        isCompetitionDescriptionValidPublisher
+            .subscribe(on: DispatchQueue(label: "background queue"))
+            .receive(on: RunLoop.main)
+            .map { valid in
+                valid ? "" : "Competition Description must not empty"
+            }
+            .sink(receiveValue: { [weak self] message in
+                guard let self = self else { return }
+                self.competitionDescriptionErrorMessage = message
+            })
+            .store(in: &formCancellableSet)
+        
+        isFormValidPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isValid in
+                guard let self = self else { return }
+                self.isValid = isValid
+            }
+            .store(in: &formCancellableSet)
+        
         selectedSubscriberCancellable = selectedSubscriber
             .subscribe(on: DispatchQueue(label: "background queue"))
             .receive(on: RunLoop.main)
@@ -49,10 +86,42 @@ class ChallengeFormViewModel: ObservableObject {
     deinit {
         cancellableSet.removeAll()
         selectedSubscriberCancellable?.cancel()
+        formCancellableSet.removeAll()
     }
     
     private func getPastDate(past dateTo: Int, currentDate date: Date) -> Date {
         return Calendar.current.date(byAdding: .day, value: -(dateTo), to: date) ?? date
+    }
+}
+
+//MARK: List of Subscribers
+extension ChallengeFormViewModel {
+    private var isCompetitionNameValidPublisher: AnyPublisher<Bool, Never> {
+        $competitionName
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { input in
+                return input.count > 0
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var isCompetitionDescriptionValidPublisher: AnyPublisher<Bool, Never> {
+        $competitionDescription
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { input in
+                return input.count > 0
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private var isFormValidPublisher: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(isCompetitionNameValidPublisher, isCompetitionDescriptionValidPublisher)
+            .map { competitionNameValidity, competitionDescriptionValidity in
+                return competitionNameValidity && competitionDescriptionValidity
+            }
+            .eraseToAnyPublisher()
     }
 }
 
