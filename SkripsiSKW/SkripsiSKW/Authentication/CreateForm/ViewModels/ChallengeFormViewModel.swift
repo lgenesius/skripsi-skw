@@ -28,6 +28,8 @@ class ChallengeFormViewModel: ObservableObject {
     @Published var competitionNameErrorMessage = ""
     @Published var competitionDescriptionErrorMessage = ""
     
+    @Published var alertPresented = false
+    
     private var cancellableSet: Set<AnyCancellable> = []
     private var formCancellableSet: Set<AnyCancellable> = []
     private var selectedSubscriberCancellable: AnyCancellable?
@@ -91,8 +93,16 @@ class ChallengeFormViewModel: ObservableObject {
         formCancellableSet.removeAll()
     }
     
+    func getAlertData() -> (title: String, message: String) {
+        return (title: "Limit", message: "You've already joined 2 competitions")
+    }
+    
     func createChallenge(completion: @escaping (() -> Void)) {
         isLoading = true
+        
+        //TODO: Check Challenge Service, kalau tidak valid maka alertPresented = true, kalau ga false
+        
+        
         ChallengeService.createChallenge(competitionName: self.competitionName, competitionDescription: self.competitionDescription, startDate: self.startDate, endDate: self.endDate) {
             self.isLoading = false
             completion()

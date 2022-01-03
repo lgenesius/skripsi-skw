@@ -12,12 +12,8 @@ import FirebaseFirestore
 
 class ChallengeService {
     
-    static var Challenges = AuthManager.db.collection("Competition")
-    
-//    static func ChallengesUserId(userId: String) -> DocumentReference {
-//        return Challenges.document(userId)
-//    }
-    
+    static var Challenges = AuthManager.db.collection("Competitions")
+
     static func createChallenge(
         competitionName: String,
         competitionDescription: String,
@@ -33,22 +29,23 @@ class ChallengeService {
         Challenges.addDocument(data: [
             "competitionName": competitionName,
             "competitionDescription": competitionDescription,
-            "endDateEvent": startDate,
-            "startDateEvent": endDate,
+            "startDateEvent": startDate,
+            "endDateEvent": endDate,
             "users": [
                 userId
-            ]
+            ],
+            "isRunning": true
         ]) { error in
             if error == nil {
                 onSuccess()
             } else {
-                onError("Error")
+                onError(error?.localizedDescription ?? "Error")
             }
         }
-        
-//        let challengeId = ChallengeService.ChallengesUserId(userId: userId).collection("Competitions").document().documentID
-        
     }
     
-    
+    static func CheckValidity() -> Bool{
+        
+        return true
+    }
 }

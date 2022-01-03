@@ -26,8 +26,6 @@ struct CreateChallengeView: View {
                 datePicker
                 Spacer()
             }
-            
-            LoadingCard(isLoading: createFormVM.isLoading, message: "Registering Account...")
             .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
@@ -44,10 +42,10 @@ struct CreateChallengeView: View {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
-//                        createFormVM
-//                            .createChallenge {
-//                                
-//                            }
+                        createFormVM
+                            .createChallenge {
+                                presentationMode.wrappedValue.dismiss()
+                            }
                     } label: {
                         Text("Save")
                             .foregroundColor(.notYoCheese)
@@ -60,6 +58,11 @@ struct CreateChallengeView: View {
                 startDatePicker
                 endDatePicker
             }
+            
+            LoadingCard(isLoading: createFormVM.isLoading, message: "Registering Account...")
+        }
+        .alert(isPresented: $createFormVM.alertPresented) {
+            Alert(title: Text(createFormVM.getAlertData().title), message: Text(createFormVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
         }
     }
 }
@@ -144,7 +147,7 @@ extension CreateChallengeView {
     @ViewBuilder
     private var competitionDecription: some View {
         VStack(alignment: .leading) {
-            Text("Competition Name")
+            Text("Competition Description")
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
             
