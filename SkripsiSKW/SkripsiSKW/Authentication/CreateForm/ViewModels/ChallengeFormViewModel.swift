@@ -23,6 +23,8 @@ class ChallengeFormViewModel: ObservableObject {
     @Published var competitionField: competitionPeriod = .oneWeek
     
     @Published var isValid: Bool = false
+    @Published var isLoading = false
+    
     @Published var competitionNameErrorMessage = ""
     @Published var competitionDescriptionErrorMessage = ""
     
@@ -89,9 +91,14 @@ class ChallengeFormViewModel: ObservableObject {
         formCancellableSet.removeAll()
     }
     
+    func createChallenge(completion: @escaping (() -> Void)) {
+        isLoading = true
+    }
+    
     private func getPastDate(past dateTo: Int, currentDate date: Date) -> Date {
         return Calendar.current.date(byAdding: .day, value: -(dateTo), to: date) ?? date
     }
+    
 }
 
 //MARK: List of Subscribers

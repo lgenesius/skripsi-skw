@@ -17,6 +17,10 @@ class AuthManager {
         return Firestore.firestore().collection("Users").document(userId)
     }
     
+    func createChallenge() {
+        
+    }
+    
     func signUp(
         email: String,
         password: String,

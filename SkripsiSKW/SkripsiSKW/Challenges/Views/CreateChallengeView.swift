@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CreateChallengeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject private var formVM: ChallengeFormViewModel = ChallengeFormViewModel()
+    @StateObject private var createFormVM: ChallengeFormViewModel = ChallengeFormViewModel()
+    
     @State private var startButton: Bool = false
     @State private var endButton: Bool = false
     
@@ -25,6 +26,8 @@ struct CreateChallengeView: View {
                 datePicker
                 Spacer()
             }
+            
+            LoadingCard(isLoading: createFormVM.isLoading, message: "Registering Account...")
             .padding(.top, 24)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
@@ -46,8 +49,8 @@ struct CreateChallengeView: View {
                         Text("Save")
                             .foregroundColor(.notYoCheese)
                     }
-                    .opacity(formVM.isValid ? 1.0 : 0.5)
-                    .disabled(!formVM.isValid)
+                    .opacity(createFormVM.isValid ? 1.0 : 0.5)
+                    .disabled(!createFormVM.isValid)
                 }
             }
             VStack {
@@ -66,9 +69,9 @@ extension CreateChallengeView {
             Text("Competition Name")
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
-            FormField(value: $formVM.competitionName, placeholder: "competition name")
+            FormField(value: $createFormVM.competitionName, placeholder: "competition name")
             
-            ErrorText(errorMessage: formVM.competitionNameErrorMessage)
+            ErrorText(errorMessage: createFormVM.competitionNameErrorMessage)
         }
     }
     
@@ -89,7 +92,7 @@ extension CreateChallengeView {
                     )
                     .animation(.easeInOut(duration: 0.5))
                     
-                DatePickerView(selectedDate: $formVM.startDate, dateDescription: "Start Date")
+                DatePickerView(selectedDate: $createFormVM.startDate, dateDescription: "Start Date")
                     .background(Color.blueDepths)
                     .overlay(
                         ZStack {
@@ -120,7 +123,7 @@ extension CreateChallengeView {
                     )
                     .animation(.easeInOut(duration: 0.5))
                 
-                DatePickerView(selectedDate: $formVM.endDate, dateDescription: "End Date")
+                DatePickerView(selectedDate: $createFormVM.endDate, dateDescription: "End Date")
                     .padding(.horizontal, 16)
                     .background(Color.blueDepths)
                     .overlay(
@@ -142,9 +145,9 @@ extension CreateChallengeView {
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
             
-            TextEditorField(value: $formVM.competitionDescription, placeholder: "Describe your Competition")
+            TextEditorField(value: $createFormVM.competitionDescription, placeholder: "Describe your Competition")
             
-            ErrorText(errorMessage: formVM.competitionDescriptionErrorMessage)
+            ErrorText(errorMessage: createFormVM.competitionDescriptionErrorMessage)
         }
     }
     
@@ -155,7 +158,7 @@ extension CreateChallengeView {
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
             
-            Picker("", selection: $formVM.competitionField) {
+            Picker("", selection: $createFormVM.competitionField) {
                 ForEach(competitionPeriod.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -179,7 +182,7 @@ extension CreateChallengeView {
             Text("Start Date")
                 .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .regular))
             Spacer()
-            PlainButton(label: formVM.startDateString()) {
+            PlainButton(label: createFormVM.startDateString()) {
                 withAnimation {
                     self.startButton.toggle()
                 }
@@ -204,7 +207,7 @@ extension CreateChallengeView {
             Text("End Date")
                 .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .regular))
             Spacer()
-            PlainButton(label: formVM.endDateString()) {
+            PlainButton(label: createFormVM.endDateString()) {
                 withAnimation {
                     self.endButton.toggle()
                 }
