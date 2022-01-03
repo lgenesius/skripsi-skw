@@ -13,6 +13,8 @@ class AuthManager {
     
     private init() {}
     
+    static var db = Firestore.firestore()
+    
     func getUserDocRef(userId: String) -> DocumentReference {
         return Firestore.firestore().collection("Users").document(userId)
     }

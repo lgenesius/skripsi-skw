@@ -10,6 +10,20 @@ import SwiftUI
 import Combine
 
 
+enum CreateChallengeAlertEnum {
+    case moreThanTwo
+    case gettingDataError
+    
+    fileprivate func getAlertMessage() -> (title: String, message: String) {
+        switch self {
+            case .moreThanTwo:
+                return ("Limit", "You’ve already joined 2 Competitions")
+            case .gettingDataError:
+                return ("Error!", "Getting Data Error, Try again!")
+        }
+    }
+}
+
 enum competitionPeriod: String, CaseIterable {
     case oneWeek = "1 Week"
     case twoWeek = "2 Weeks"
@@ -23,8 +37,16 @@ class ChallengeFormViewModel: ObservableObject {
     @Published var competitionField: competitionPeriod = .oneWeek
     
     @Published var isValid: Bool = false
+    @Published var isLoading = false
+    
     @Published var competitionNameErrorMessage = ""
     @Published var competitionDescriptionErrorMessage = ""
+    
+    @Published var alertPresented = false
+    
+    @Published private var challengeValidatity: CreateChallengeAlertEnum = .moreThanTwo
+    @Published private var alertMessage: String = ""
+    @Published private var alertTitle: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
     private var formCancellableSet: Set<AnyCancellable> = []
@@ -89,9 +111,41 @@ class ChallengeFormViewModel: ObservableObject {
         formCancellableSet.removeAll()
     }
     
+    func getAlertData() -> (title: String, message: String) {
+        return (title: self.challengeValidatity.getAlertMessage().title, message: self.challengeValidatity.getAlertMessage().message)
+    }
+    
+    func createChallenge(completion: @escaping (() -> Void)) {
+        isLoading = true
+        ChallengeService.CheckValidity { [weak self] totalChallenge, error  in
+            guard let self = self else { return }
+            if error != nil {
+                self.challengeValidatity = .gettingDataError
+                self.alertPresented = true
+                return
+            }
+            
+            if let data = totalChallenge, data < 2 {
+                ChallengeService.createChallenge(competitionName: self.competitionName, competitionDescription: self.competitionDescription, startDate: self.startDate, endDate: self.endDate) {
+                    self.isLoading = false
+                    completion()
+                } onError: { errorMessage in
+                    self.isLoading = false
+                    print("error")
+                    completion()
+                }
+            } else {
+                self.challengeValidatity = .moreThanTwo
+                self.alertPresented = true
+                completion()
+            }
+        }
+    }
+    
     private func getPastDate(past dateTo: Int, currentDate date: Date) -> Date {
         return Calendar.current.date(byAdding: .day, value: -(dateTo), to: date) ?? date
     }
+    
 }
 
 //MARK: List of Subscribers
