@@ -93,6 +93,15 @@ class ChallengeFormViewModel: ObservableObject {
     
     func createChallenge(completion: @escaping (() -> Void)) {
         isLoading = true
+        ChallengeService.createChallenge(competitionName: self.competitionName, competitionDescription: self.competitionDescription, startDate: self.startDate, endDate: self.endDate) {
+            self.isLoading = false
+            completion()
+        } onError: { errorMessage in
+            self.isLoading = false
+            print("error")
+            completion()
+        }
+
     }
     
     private func getPastDate(past dateTo: Int, currentDate date: Date) -> Date {
