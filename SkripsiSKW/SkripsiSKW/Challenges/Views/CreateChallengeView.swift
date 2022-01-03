@@ -46,6 +46,8 @@ struct CreateChallengeView: View {
                         Text("Save")
                             .foregroundColor(.notYoCheese)
                     }
+                    .opacity(formVM.isValid ? 1.0 : 0.5)
+                    .disabled(!formVM.isValid)
                 }
             }
             VStack {
@@ -65,6 +67,8 @@ extension CreateChallengeView {
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
             FormField(value: $formVM.competitionName, placeholder: "competition name")
+            
+            ErrorText(errorMessage: formVM.competitionNameErrorMessage)
         }
     }
     
@@ -139,6 +143,8 @@ extension CreateChallengeView {
                 .padding(.horizontal)
             
             TextEditorField(value: $formVM.competitionDescription, placeholder: "Describe your Competition")
+            
+            ErrorText(errorMessage: formVM.competitionDescriptionErrorMessage)
         }
     }
     
