@@ -9,6 +9,7 @@ target 'SkripsiSKW' do
  pod 'Firebase/Auth'
  pod 'Firebase/Storage'
  pod 'Firebase/Firestore'
+ pod 'FirebaseFirestoreSwift', '8.1.0-beta'
 
   target 'SkripsiSKWTests' do
     inherit! :search_paths

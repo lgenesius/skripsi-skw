@@ -14,26 +14,33 @@
  * limitations under the License.
  */
 
-#ifndef FIRESTORE_CORE_SRC_AUTH_EMPTY_CREDENTIALS_PROVIDER_H_
-#define FIRESTORE_CORE_SRC_AUTH_EMPTY_CREDENTIALS_PROVIDER_H_
+#include "Firestore/core/src/credentials/auth_token.h"
 
-#include "Firestore/core/src/auth/credentials_provider.h"
+#include <utility>
+
+#include "Firestore/core/src/util/hard_assert.h"
 
 namespace firebase {
 namespace firestore {
-namespace auth {
+namespace credentials {
 
-/** `EmptyCredentialsProvider` always yields an empty token. */
-class EmptyCredentialsProvider : public CredentialsProvider {
- public:
-  void GetToken(TokenListener completion) override;
-  void InvalidateToken() override;
-  void SetCredentialChangeListener(
-      CredentialChangeListener change_listener) override;
-};
+AuthToken::AuthToken() : token_{}, user_{User::Unauthenticated()} {
+}
 
-}  // namespace auth
+AuthToken::AuthToken(std::string token, User user)
+    : token_{std::move(token)}, user_{std::move(user)} {
+}
+
+const std::string& AuthToken::token() const {
+  HARD_ASSERT(user_.is_authenticated());
+  return token_;
+}
+
+const AuthToken& AuthToken::Unauthenticated() {
+  static const AuthToken kUnauthenticatedToken{};
+  return kUnauthenticatedToken;
+}
+
+}  // namespace credentials
 }  // namespace firestore
 }  // namespace firebase
-
-#endif  // FIRESTORE_CORE_SRC_AUTH_EMPTY_CREDENTIALS_PROVIDER_H_

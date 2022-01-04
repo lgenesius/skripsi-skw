@@ -38,7 +38,7 @@ class AuthManager {
                     }
                     
                     let firestoreDocReference = self.getUserDocRef(userId: userId)
-                    let user = User(uid: userId, email: email, name: name, username: username, badges: [:])
+                    let user = User(uid: userId, email: email, name: name, username: username, badges: [:], challenges: [])
                     
                     guard let dict = try? user.asDictionary() else { return }
                     firestoreDocReference.setData(dict) { error in

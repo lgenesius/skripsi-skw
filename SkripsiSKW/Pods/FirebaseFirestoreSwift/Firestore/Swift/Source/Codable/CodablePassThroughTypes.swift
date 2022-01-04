@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/auth/credentials_provider.h"
+import Foundation
+import FirebaseFirestore
 
-namespace firebase {
-namespace firestore {
-namespace auth {
-
-CredentialsProvider::CredentialsProvider() : change_listener_(nullptr) {
+internal func isFirestorePassthroughType<T: Any>(_ value: T) -> Bool {
+  return
+    T.self == GeoPoint.self ||
+    T.self == Timestamp.self ||
+    T.self == FieldValue.self ||
+    T.self == DocumentReference.self
 }
-
-CredentialsProvider::~CredentialsProvider() = default;
-
-}  // namespace auth
-}  // namespace firestore
-}  // namespace firebase
