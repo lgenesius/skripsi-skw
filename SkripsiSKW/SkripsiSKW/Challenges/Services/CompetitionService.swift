@@ -9,23 +9,24 @@ import Foundation
 import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import SwiftUI
 
 class CompetitionService {
-    
     static var Competitions = AuthManager.db.collection("Competitions")
     private static var competitions: Competition?
     
     static func createCompetition(
         competition: Competition,
         onSuccess: @escaping() -> Void,
-        onError: @escaping (_ errorMessage: String) -> Void
+        onError: @escaping (_ errorMessage: String) -> Void,
+        sessionVM: SessionViewModel
     ) {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         
         do {
-            let newUserData = CompetitionUserData(userId: userId, userCompetitionPoint: 0)
+            let newUserData = CompetitionUserData(userId: userId, userCompetitionPoint: 0, userName: sessionVM.authUser?.name ?? "Nil")
             competitions = competition.addUserId(injectedUser: [newUserData])
             _ = try Competitions.addDocument(from: competitions)
             onSuccess()
@@ -138,22 +139,28 @@ class CompetitionService {
     }
     
     static func getCompetition(completion: @escaping ([Competition]?, Error?) -> Void) {
-        var competitions = [Competition]()
         
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         
-        Competitions.whereField("users", arrayContains: userId).addSnapshotListener { (snapshot, error) in
+        Competitions.order(by: "users", descending: true).getDocuments { (querySnapshot, error) in
             if let error = error {
                 completion(nil, error)
                 return
             }
-            competitions = snapshot?.documents.compactMap {
+            
+            let competitionQueryData = querySnapshot?.documents.compactMap {
                 try? $0.data(as: Competition.self)
             } ?? []
-            
-            completion(competitions, nil)
+        
+            let currentCompetition = competitionQueryData.filter { competitionData in
+                competitionData.users.contains { data in
+                    data.userId == userId
+                }
+            }
+            completion(currentCompetition, nil)
         }
+        
     }
 }

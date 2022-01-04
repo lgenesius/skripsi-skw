@@ -51,7 +51,7 @@ extension CompetitionLeaderboardDetail {
     private var leaderboardList: some View {
         Text("Leaderboard (\(competitionVM.getTotalParticipant()) participants)")
             .modifier(TextModifier(color: Color.snowflake, size: 18, weight: .bold))
-        LeaderboardList(listOfData: $competitionVM.dummyData, incrementIndex: competitionVM.getListIncrement())
+        LeaderboardList(listOfData: $competitionVM.users, incrementIndex: competitionVM.getListIncrement())
     }
     
     @ViewBuilder

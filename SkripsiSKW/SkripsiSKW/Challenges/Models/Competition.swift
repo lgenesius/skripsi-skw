@@ -38,4 +38,5 @@ struct Competition: Codable {
 struct CompetitionUserData: Codable {
     var userId: String
     var userCompetitionPoint: Int
+    var userName: String
 }

@@ -9,11 +9,12 @@ import Foundation
 import Combine
 
 class CompetitionViewModel: ObservableObject {
-    @Published var dummyData: [[String]] = [[]]
     @Published var timer: AnyCancellable?
     @Published var dummyTotalPointPercentage: Float = 0
     
-    @Published private var allDummyData: [[String]] = [[]]
+    @Published var allUsers: [CompetitionUserData] = []
+    @Published var users: [CompetitionUserData] = []
+    
     @Published var nextButton: Bool = false
     @Published var prevButton: Bool = false
     
@@ -24,18 +25,32 @@ class CompetitionViewModel: ObservableObject {
     @Published private var currentPage = 1
     
     var dummyTotalPoint: Int = 245
+    var userID: String = ""
     
     private var timerSubscription: AnyCancellable? = nil
     private var cancellationSet: Set<AnyCancellable> = []
     
     init() {
-        initDummyData()
-        initTimer()
         initiateFirstFive()
     }
     
     deinit {
         self.timerSubscription?.cancel()
+    }
+    
+    func setData(userData: [CompetitionUserData], userID: String) {
+        self.allUsers = userData
+        self.userID = userID
+        
+        let relatedData = self.allUsers.first(where: { userData in
+            userData.userId == self.userID
+        })
+        
+        print(relatedData)
+        print(relatedData?.userCompetitionPoint ?? 0)
+        
+        dummyTotalPoint = relatedData?.userCompetitionPoint ?? 0
+        initTimer()
     }
     
     private func countPage() {
@@ -46,12 +61,12 @@ class CompetitionViewModel: ObservableObject {
     func initiateFirstTen() {
         countPage()
         
-        if self.allDummyData.count > 10 {
+        if self.allUsers.count > 10 {
             self.endIndex = 9
-            self.dummyData = Array(self.allDummyData[startIndex...endIndex])
+            self.users = Array(self.allUsers[startIndex...endIndex])
             self.nextButton = true
         } else {
-            self.dummyData = self.allDummyData
+            self.users = self.allUsers
         }
         
         canNext
@@ -72,14 +87,14 @@ class CompetitionViewModel: ObservableObject {
     }
     
     func next() {
-        if endIndex + 9 >= self.allDummyData.count-1 {
+        if endIndex + 9 >= self.allUsers.count-1 {
             self.startIndex = self.endIndex + 1
-            self.endIndex = self.allDummyData.count - 1
-            self.dummyData = Array(self.allDummyData[startIndex...self.endIndex])
+            self.endIndex = self.allUsers.count - 1
+            self.users = Array(self.allUsers[startIndex...self.endIndex])
         } else {
             self.startIndex = startIndex + 10
             self.endIndex = startIndex + 9
-            self.dummyData = Array(self.allDummyData[startIndex...endIndex])
+            self.users = Array(self.allUsers[startIndex...endIndex])
         }
         
         self.currentPage += 1
@@ -88,7 +103,7 @@ class CompetitionViewModel: ObservableObject {
     func prev() {
         self.endIndex = self.startIndex - 1
         self.startIndex = self.endIndex - 9
-        self.dummyData = Array(self.allDummyData[startIndex...endIndex])
+        self.users = Array(self.allUsers[startIndex...endIndex])
         
         self.currentPage -= 1
     }
@@ -96,10 +111,10 @@ class CompetitionViewModel: ObservableObject {
     private func initiateFirstFive() {
         startIndex = 0
         endIndex = 0
-        if self.allDummyData.count > 5 {
-            self.dummyData = Array(self.allDummyData[startIndex...4])
+        if self.allUsers.count > 5 {
+            self.users = Array(self.allUsers[startIndex...4])
         } else {
-            self.dummyData = self.allDummyData
+            self.users = self.allUsers
         }
     }
     
@@ -122,7 +137,7 @@ class CompetitionViewModel: ObservableObject {
 
 extension CompetitionViewModel {
     func getTotalParticipant() -> Int {
-        return allDummyData.count
+        return allUsers.count
     }
     
     func getListIncrement() -> Int {
@@ -136,7 +151,7 @@ extension CompetitionViewModel {
     }
     
     func getListSize() -> Int {
-        return self.dummyData.count
+        return self.users.count
     }
     
     
@@ -150,8 +165,8 @@ extension CompetitionViewModel {
     private var canNext: AnyPublisher<Bool, Never> {
         $endIndex
             .map { [unowned self] endIndexValue in
-                if self.allDummyData.count < 10 { return false }
-                else if endIndexValue != self.allDummyData.count - 1 { return true }
+                if self.allUsers.count < 10 { return false }
+                else if endIndexValue != self.allUsers.count - 1 { return true }
                 return false
             }
             .eraseToAnyPublisher()
@@ -163,48 +178,5 @@ extension CompetitionViewModel {
                 return startIndexValue != 0
             }
             .eraseToAnyPublisher()
-    }
-}
-
-extension CompetitionViewModel {
-    private func initDummyData() {
-        self.allDummyData = [
-            ["Data 1", "245"],
-            ["Data 2", "243"],
-            ["Data 3", "241"],
-            ["Data 4", "239"],
-            ["Data 5", "238"],
-            ["Data 6", "237"],
-            ["Data 7", "236"],
-            ["Data 8", "235"],
-            ["Data 9", "234"],
-            ["Data 10", "233"],
-            ["Data 11", "232"],
-            ["Data 12", "231"],
-            ["Data 13", "230"],
-            ["Data 14", "0"],
-            ["Data 15", "235"],
-            ["Data 16", "234"],
-            ["Data 17", "233"],
-            ["Data 18", "232"],
-            ["Data 19", "231"],
-            ["Data 20", "230"],
-            ["Data 21", "0"],
-            ["Data 22", "235"],
-            ["Data 23", "234"],
-            ["Data 24", "233"],
-            ["Data 25", "232"],
-            ["Data 26", "231"],
-            ["Data 27", "230"],
-            ["Data 28", "0"],
-            ["Data 29", "0"],
-            ["Data 30", "0"],
-            ["Data 31", "232"],
-            ["Data 32", "231"],
-            ["Data 33", "230"],
-            ["Data 34", "0"],
-            ["Data 35", "0"],
-            ["Data 36", "0"]
-        ]
     }
 }

@@ -115,7 +115,7 @@ class ChallengeFormViewModel: ObservableObject {
         return (title: self.challengeValidatity.getAlertMessage().title, message: self.challengeValidatity.getAlertMessage().message)
     }
     
-    func createChallenge(completion: @escaping (() -> Void)) {
+    func createChallenge(sessionVM: SessionViewModel, completion: @escaping (() -> Void)) {
         isLoading = true
         CompetitionService.CheckValidity { [weak self] totalChallenge, error  in
             guard let self = self else { return }
@@ -127,13 +127,15 @@ class ChallengeFormViewModel: ObservableObject {
             
             if let data = totalChallenge, data < 2 {
                 let newCompetition = Competition(startDateEvent: self.startDate, endDateEvent: self.endDate, competitionName: self.competitionName, competitionDescription: self.competitionDescription, users: [], isRunning: true)
-                CompetitionService.createCompetition(competition: newCompetition) {
+                
+                CompetitionService.createCompetition(competition: newCompetition, onSuccess: {
                     self.isLoading = false
                     completion()
-                } onError: { errorMessage in
+                }, onError: { errorMessage in
                     self.isLoading = false
                     completion()
-                }
+                }, sessionVM: sessionVM)
+                
                 return
             } else {
                 self.challengeValidatity = .moreThanTwo

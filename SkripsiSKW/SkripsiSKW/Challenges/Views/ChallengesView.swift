@@ -24,7 +24,7 @@ struct ChallengesView: View {
                     
                     ExercisesList()
                     
-                    ActiveCompetitions()
+                    ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                     
                     BadgesView()
                 }

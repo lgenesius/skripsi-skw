@@ -13,6 +13,9 @@
 		492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DD278317E300DB5498 /* CompetitionService.swift */; };
 		492F00E32784305E00DB5498 /* CompetitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E22784305E00DB5498 /* CompetitionRepository.swift */; };
 		492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */; };
+		492F00E72784BB8600DB5498 /* ActiveCompetitionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */; };
+		492F00E92784C05600DB5498 /* ActiveCompetitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */; };
+		492F00EB2784C84900DB5498 /* ActiveCompetitionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */; };
 		493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E0277AFF1500D6F794 /* FinishingChallenge.swift */; };
 		493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */; };
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
@@ -127,6 +130,9 @@
 		492F00DD278317E300DB5498 /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		492F00E22784305E00DB5498 /* CompetitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionRepository.swift; sourceTree = "<group>"; };
 		492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeEnum.swift; sourceTree = "<group>"; };
+		492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionListViewModel.swift; sourceTree = "<group>"; };
+		492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionViewModel.swift; sourceTree = "<group>"; };
+		492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionCard.swift; sourceTree = "<group>"; };
 		493871E0277AFF1500D6F794 /* FinishingChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishingChallenge.swift; sourceTree = "<group>"; };
 		493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewWrapper.swift; sourceTree = "<group>"; };
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 			children = (
 				602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */,
 				602AB89D277ADC5100DFBA1F /* JoinChallengeViewModel.swift */,
+				492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */,
+				492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 			children = (
 				602AB89F277ADC5100DFBA1F /* ExerciseCard.swift */,
 				602AB8A0277ADC5100DFBA1F /* DailyChallengeCard.swift */,
+				492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1110,6 +1119,7 @@
 				E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
+				492F00E72784BB8600DB5498 /* ActiveCompetitionListViewModel.swift in Sources */,
 				602AB8B3277ADC5100DFBA1F /* BadgesView.swift in Sources */,
 				49B943A7277575A50039FD84 /* TextFieldModifier.swift in Sources */,
 				E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */,
@@ -1126,6 +1136,7 @@
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
 				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
 				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
+				492F00EB2784C84900DB5498 /* ActiveCompetitionCard.swift in Sources */,
 				60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */,
 				602AB8B2277ADC5100DFBA1F /* ExercisesList.swift in Sources */,
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
@@ -1167,6 +1178,7 @@
 				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
 				E1DFB1C5277C550E00EE18C0 /* PoseEstimator.swift in Sources */,
 				492F00DB2783132B00DB5498 /* Competition.swift in Sources */,
+				492F00E92784C05600DB5498 /* ActiveCompetitionViewModel.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
 				602AB8B6277ADC5100DFBA1F /* JoinChallengeView.swift in Sources */,
 				49B943B02775B5D30039FD84 /* ProgressBar.swift in Sources */,

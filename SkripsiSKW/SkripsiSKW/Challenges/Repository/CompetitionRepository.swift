@@ -27,12 +27,14 @@ final class CompetitionRepository: ObservableObject {
     }
     
     func add(_ competition: Competition,  onSuccess: @escaping() -> Void,
-             onError: @escaping (_ errorMessage: String) -> Void) {
-        CompetitionService.createCompetition(competition: competition) {
+             onError: @escaping (_ errorMessage: String) -> Void, sessionVM: SessionViewModel) {
+        
+        CompetitionService.createCompetition(competition: competition, onSuccess: {
             onSuccess()
-        } onError: { errorMessage in
+        }, onError: { errorMessage in
             onError(errorMessage)
-        }
+        }, sessionVM: sessionVM)
+        
     }
 }
 
