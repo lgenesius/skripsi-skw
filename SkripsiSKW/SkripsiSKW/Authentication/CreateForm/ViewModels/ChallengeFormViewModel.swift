@@ -126,7 +126,6 @@ class ChallengeFormViewModel: ObservableObject {
             }
             
             if let data = totalChallenge, data < 2 {
-                ChallengeService.createChallenge(competitionName: self.competitionName, competitionDescription: self.competitionDescription, startDate: self.startDate, endDate: self.endDate) {
                 let newCompetition = Competition(startDateEvent: self.startDate, endDateEvent: self.endDate, competitionName: self.competitionName, competitionDescription: self.competitionDescription, usersId: [], isRunning: true)
                 CompetitionService.createCompetition(competition: newCompetition) {
                     self.isLoading = false
