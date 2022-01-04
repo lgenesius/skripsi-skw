@@ -12,6 +12,7 @@
 		492F00DB2783132B00DB5498 /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DA2783132B00DB5498 /* Competition.swift */; };
 		492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DD278317E300DB5498 /* CompetitionService.swift */; };
 		492F00E32784305E00DB5498 /* CompetitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E22784305E00DB5498 /* CompetitionRepository.swift */; };
+		492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */; };
 		493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E0277AFF1500D6F794 /* FinishingChallenge.swift */; };
 		493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */; };
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
@@ -125,6 +126,7 @@
 		492F00DA2783132B00DB5498 /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		492F00DD278317E300DB5498 /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		492F00E22784305E00DB5498 /* CompetitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionRepository.swift; sourceTree = "<group>"; };
+		492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeEnum.swift; sourceTree = "<group>"; };
 		493871E0277AFF1500D6F794 /* FinishingChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishingChallenge.swift; sourceTree = "<group>"; };
 		493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewWrapper.swift; sourceTree = "<group>"; };
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				492F00DD278317E300DB5498 /* CompetitionService.swift */,
+				492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1126,6 +1129,7 @@
 				60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */,
 				602AB8B2277ADC5100DFBA1F /* ExercisesList.swift in Sources */,
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
+				492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
 				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
