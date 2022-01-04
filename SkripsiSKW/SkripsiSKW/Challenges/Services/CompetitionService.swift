@@ -41,22 +41,23 @@ class CompetitionService {
             return
         }
         
-        Competitions.addSnapshotListener { (querySnapshot, error) in
+        Competitions.getDocuments { (querySnapshot, error) in
             if let error = error {
                 completion(nil, error)
                 return
             }
+            
             let competitionQueryData = querySnapshot?.documents.compactMap {
                 try? $0.data(as: Competition.self)
             } ?? []
-            
-            let currentUserCompetitionData = competitionQueryData.map {
-                return $0.users.map {
-                    $0.userId == userId
+        
+            let currentCompetitionUsers = competitionQueryData.filter {
+                $0.users.contains { data in
+                    data.userId == userId
                 }
             }
-            print(currentUserCompetitionData.count)
-            completion(currentUserCompetitionData.count, nil)
+            
+            completion(currentCompetitionUsers.count, nil)
         }
     }
     
