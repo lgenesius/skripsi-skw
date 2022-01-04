@@ -13,4 +13,6 @@ struct User: Codable {
     var name: String
     var username: String
     var badges: [String: Bool]
+    var challenges: [Competition]
+    var totalPoint: Int = 0
 }

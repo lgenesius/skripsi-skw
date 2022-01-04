@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,11 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/auth/user.h"
-
-#include <utility>
-
-#include "Firestore/core/src/util/hard_assert.h"
-
-namespace firebase {
-namespace firestore {
-namespace auth {
-
-User::User() : is_authenticated_{false} {
+public enum FirestoreDecodingError: Error {
+  case decodingIsNotSupported(String)
+  case fieldNameConflict(String)
 }
 
-User::User(std::string uid) : uid_{std::move(uid)}, is_authenticated_{true} {
-  HARD_ASSERT(!uid_.empty());
+public enum FirestoreEncodingError: Error {
+  case encodingIsNotSupported(String)
 }
-
-const User& User::Unauthenticated() {
-  static const User* kUnauthenticated = new User();
-  return *kUnauthenticated;
-}
-
-}  // namespace auth
-}  // namespace firestore
-}  // namespace firebase
