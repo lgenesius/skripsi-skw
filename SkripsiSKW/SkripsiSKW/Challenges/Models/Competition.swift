@@ -26,11 +26,16 @@ struct Competition: Codable {
     
     var competitionName: String
     var competitionDescription: String
-    var usersId: [String]
+    var users: [CompetitionUserData]
     var competitionCode: String = UUID().uuidString.prefix(5).uppercased()
     var isRunning: Bool
     
-    func addUserId(userId: [String]) -> Competition {
-        return Competition(id: id, startDateEvent: startDateEvent, endDateEvent: endDateEvent, competitionName: competitionName, competitionDescription: competitionDescription, usersId: userId, competitionCode: competitionCode, isRunning: isRunning)
+    func addUserId(injectedUser: [CompetitionUserData]) -> Competition {
+        return Competition(id: id, startDateEvent: startDateEvent, endDateEvent: endDateEvent, competitionName: competitionName, competitionDescription: competitionDescription, users: injectedUser, competitionCode: competitionCode, isRunning: isRunning)
     }
+}
+
+struct CompetitionUserData: Codable {
+    var userId: String
+    var userCompetitionPoint: Int
 }

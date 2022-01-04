@@ -126,15 +126,15 @@ class ChallengeFormViewModel: ObservableObject {
             }
             
             if let data = totalChallenge, data < 2 {
-                let newCompetition = Competition(startDateEvent: self.startDate, endDateEvent: self.endDate, competitionName: self.competitionName, competitionDescription: self.competitionDescription, usersId: [], isRunning: true)
-                CompetitionService.createCompetition(competition: newCompetition) {
-                    self.isLoading = false
-                    completion()
-                } onError: { errorMessage in
-                    self.isLoading = false
-                    print("error")
-                    completion()
-                }
+//                let newCompetition = Competition(startDateEvent: self.startDate, endDateEvent: self.endDate, competitionName: self.competitionName, competitionDescription: self.competitionDescription, users: [], isRunning: true)
+//                CompetitionService.createCompetition(competition: newCompetition) {
+//                    self.isLoading = false
+//                    completion()
+//                } onError: { errorMessage in
+//                    self.isLoading = false
+//                    print("error")
+//                    completion()
+//                }
             } else {
                 self.challengeValidatity = .moreThanTwo
                 self.alertPresented = true

@@ -25,7 +25,8 @@ class CompetitionService {
         }
         
         do {
-            competitions = competition.addUserId(userId: [userId])
+            let newUserData = CompetitionUserData(userId: userId, userCompetitionPoint: 0)
+            competitions = competition.addUserId(injectedUser: [newUserData])
             _ = try Competitions.addDocument(from: competitions)
             onSuccess()
         } catch {
@@ -35,24 +36,27 @@ class CompetitionService {
     }
     
     static func CheckValidity(completion: @escaping (Int?, Error?) -> Void){
-        var data = [QueryDocumentSnapshot]()
         
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
         
-        Competitions.whereField("users", arrayContains: userId)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    completion(nil, err)
-                    
-                } else {
-                    _ = querySnapshot?.documents.map {
-                        data.append($0)
-                    }
-                    
-                    completion(data.count, nil)
+        Competitions.addSnapshotListener { (querySnapshot, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            let competitionQueryData = querySnapshot?.documents.compactMap {
+                try? $0.data(as: Competition.self)
+            } ?? []
+            
+            let currentUserCompetitionData = competitionQueryData.map {
+                return $0.users.map {
+                    $0.userId == userId
                 }
+            }
+            print(currentUserCompetitionData.count)
+            completion(currentUserCompetitionData.count, nil)
         }
     }
     
