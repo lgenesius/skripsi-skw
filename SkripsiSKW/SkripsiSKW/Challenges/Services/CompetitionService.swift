@@ -100,7 +100,8 @@ class CompetitionService {
                             document?.reference.updateData([
                                 "users": FieldValue.arrayUnion([[
                                     "userCompetitionPoint" : 0,
-                                    "userId" : userId
+                                    "userId" : userId,
+                                    "userName": "tester"
                                 ]])
                             ])
                             completion(.valid, nil)
@@ -161,6 +162,34 @@ class CompetitionService {
             }
             completion(currentCompetition, nil)
         }
-        
     }
+    
+    static func leaveCompetition(_ competitionId: String, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                return
+            }
+            
+            Competitions.document(competitionId).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let competitionQueryData = try? document.data(as: Competition.self)
+                    var users = competitionQueryData?.users
+                    
+                    users = users!.filter { $0.userId == userId }
+                    let newUser = [
+                        "userId": users!.first!.userId,
+                        "userCompetitionPoint": users!.first!.userCompetitionPoint,
+                        "userName": users!.first!.userName,
+                    ] as [String : Any]
+                    
+                    document.reference.updateData([
+                        "users": FieldValue.arrayRemove([newUser])
+                    ])
+                    
+                    onSuccess()
+                } else {
+                    onError("Document does not exist")
+                }
+            }
+        }
 }
+

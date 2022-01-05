@@ -30,13 +30,14 @@ class JoinChallengeViewModel: ObservableObject {
         return (title: self.alertTitle, message: self.alertMessage)
     }
     
-    func joinChallenge() {
+    func joinChallenge(completion: @escaping (JoinChallengeEnum) -> Void) {
         //TODO: Kasi Logic buat check kode competition lalu setup Enum Challenge Validity based on respon yang diberikan
         CompetitionService.JoinCompetition(self.challengeCode) { canJoin, error in
             self.challengeValidatity = canJoin
             self.alertMessage = self.challengeValidatity.getAlertMessage().message
             self.alertTitle = self.challengeValidatity.getAlertMessage().title
             self.alertPresented = true
+            completion(canJoin)
         }
     }
 }
