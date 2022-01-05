@@ -36,6 +36,12 @@ final class CompetitionRepository: ObservableObject {
         }, sessionVM: sessionVM)
         
     }
+    
+    func getOutOfCompetition(_ competitionId: String, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+        CompetitionService.leaveCompetition(competitionId) {
+            onSuccess()
+        } onError: { errorMessage in
+            onError(errorMessage)
+        }
+    }
 }
-
-

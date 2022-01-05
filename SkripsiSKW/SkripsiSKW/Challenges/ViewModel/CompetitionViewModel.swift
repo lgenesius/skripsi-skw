@@ -29,6 +29,7 @@ class CompetitionViewModel: ObservableObject {
     
     private var timerSubscription: AnyCancellable? = nil
     private var cancellationSet: Set<AnyCancellable> = []
+    private var competitionRepository = CompetitionRepository()
     
     init() {
         initiateFirstFive()
@@ -47,6 +48,15 @@ class CompetitionViewModel: ObservableObject {
         })
         dummyTotalPoint = relatedData?.userCompetitionPoint ?? 0
         initTimer()
+    }
+    
+    func leaveCompetition(competitionId: String) {
+        competitionRepository.getOutOfCompetition(competitionId) {
+            self.competitionRepository.get()
+        } onError: { errorMessage in
+            
+        }
+
     }
     
     private func countPage() {

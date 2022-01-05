@@ -11,7 +11,10 @@ struct CompetitionLeaderboard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
     @EnvironmentObject var sessionVM: SessionViewModel
-    var activeCompetitionVM: ActiveCompetitionViewModel
+    @State private var willLeave: Bool = false
+    @State private var presentLoading: Bool = false
+    
+    @ObservedObject var activeCompetitionVM: ActiveCompetitionViewModel
     
     var body: some View {
         ZStack {
@@ -41,10 +44,26 @@ struct CompetitionLeaderboard: View {
                     }
                 }
             }
+            LoadingCard(isLoading: presentLoading, message: "Leaving Competition")
         }
         .onAppear {
             competitionVM.setData(userData: activeCompetitionVM.competition.users, userID: sessionVM.authUser?.uid ?? "")
         }
+        .alert(isPresented: $willLeave) {
+            Alert(
+              title: Text("Leaving Competition"),
+              message: Text("Are you sure you wanted to leave? All your point and ranking will be removed once you leave."),
+              primaryButton: .destructive(Text("Cancel")),
+              secondaryButton: .default(Text("Leave"), action: {
+                  competitionVM.leaveCompetition(competitionId: activeCompetitionVM.id)
+                  self.presentLoading = true
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                      self.presentLoading = false
+                      presentationMode.wrappedValue.dismiss()
+                  }
+              })
+            )
+        }   
     }
 }
 
@@ -102,8 +121,8 @@ extension CompetitionLeaderboard {
                 }
 
                 Spacer()
-                NavigationLink {
-
+                Button {
+                    self.willLeave.toggle()
                 } label: {
                     Text("Leave Competition")
                         .modifier(TextModifier(color: .white, size: 14, weight: .medium))
