@@ -10,7 +10,63 @@ import SwiftUI
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     
+    @State private var noCameraAuthAlertPresent = false
+    
     var body: some View {
+        if #available(iOS 15.0, *) {
+            mainBody
+                .alert(
+                    "Unauthorized Camera Access",
+                    isPresented: $noCameraAuthAlertPresent
+                ) {
+                    Button("Cancel", role: .cancel, action: {})
+                    Button("Open Settings") {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                } message: {
+                    Text("You need to give permission in Settings to access camera in order to use the exercise feature.")
+                }
+        } else {
+            // Fallback on earlier versions
+            mainBody
+                .alert(isPresented: $noCameraAuthAlertPresent) {
+                    Alert(
+                        title: Text("Unauthorized Camera Access"),
+                        message: Text("You need to give permission in Settings to access camera in order to use the exercise feature."),
+                        primaryButton: .cancel(),
+                        secondaryButton: .default(
+                            Text("Open Settings"),
+                            action: {
+                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            })
+                    )
+                }
+        }
+        
+    }
+    
+    private func getCameraStatus() {
+        let cameraAuthStatus = CameraAuthorizationManager.getCameraAuthorizationStatus()
+        
+        switch cameraAuthStatus {
+        case .granted:
+            break
+        case .notRequested:
+            requestCameraAuth()
+        case .unauthorized:
+            break
+        }
+    }
+    
+    private func requestCameraAuth() {
+        CameraAuthorizationManager.requestCameraAuthorization { _ in }
+    }
+}
+
+extension ChallengesView {
+    
+    @ViewBuilder
+    var mainBody: some View {
         VStack {
             dateAndPhotoProfile
             
@@ -33,10 +89,11 @@ struct ChallengesView: View {
             Spacer()
         }
         .navigationBarHidden(true)
+        .onAppear {
+            getCameraStatus()
+            
+        }
     }
-}
-
-extension ChallengesView {
     
     @ViewBuilder
     var dateAndPhotoProfile: some View {
