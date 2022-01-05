@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ExercisesList: View {
-    @Binding var noCamAuthAlertPresent: Bool
+    @Binding var isAlertPresent: Bool
+    @Binding var alertIdentifier: AlertIdentifier
+    @Binding var selectedExercises: WorkoutType
     
     @State private var isDropDown = true
-    @State private var selectedExercises: WorkoutType = .squat
-    @State private var isNavLinkActive = false
     private let exercises: [WorkoutType] = [.squat, .pushup, .plank]
     
     var body: some View {
@@ -34,12 +34,6 @@ struct ExercisesList: View {
             
             
             if isDropDown {
-                NavigationLink(isActive: $isNavLinkActive) {
-                    WorkoutNavigation(workout: selectedExercises)
-                } label: {
-                    EmptyView()
-                }
-
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<3) { index in
@@ -61,18 +55,13 @@ struct ExercisesList: View {
         selectedExercises = exercises[index]
         
         let status = CameraAuthorizationManager.getCameraAuthorizationStatus()
-        
         if status == .unauthorized {
-            noCamAuthAlertPresent = true
+            alertIdentifier = .openSettings
+            isAlertPresent = true
             return
         }
         
-        isNavLinkActive = true
-    }
-}
-
-struct ExercisesList_Previews: PreviewProvider {
-    static var previews: some View {
-        ExercisesList(noCamAuthAlertPresent: .constant(false))
+        alertIdentifier = .caution
+       isAlertPresent = true
     }
 }

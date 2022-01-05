@@ -10,34 +10,38 @@ import SwiftUI
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     
-    @State private var noCameraAuthAlertPresent = false
+    @State private var isAlertPresent = false
+    @State private var alertIdentifier: AlertIdentifier = .caution
+    @State private var selectedExercises: WorkoutType = .squat
+    
+    @State private var isExerciseLinkActivate = false
     
     var body: some View {
         if #available(iOS 15.0, *) {
             mainBody
                 .alert(
-                    "Unauthorized Camera Access",
-                    isPresented: $noCameraAuthAlertPresent
+                    alertIdentifier.title,
+                    isPresented: $isAlertPresent
                 ) {
-                    Button("Cancel", role: .cancel, action: {})
-                    Button("Open Settings") {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
+                    Button(alertIdentifier.secondaryButtonString) {
+                        secondaryAlertAction()
                     }
                 } message: {
-                    Text("You need to give permission in Settings to access camera in order to use the exercise feature.")
+                    Text(alertIdentifier.message)
                 }
         } else {
             // Fallback on earlier versions
             mainBody
-                .alert(isPresented: $noCameraAuthAlertPresent) {
+                .alert(isPresented: $isAlertPresent) {
                     Alert(
-                        title: Text("Unauthorized Camera Access"),
-                        message: Text("You need to give permission in Settings to access camera in order to use the exercise feature."),
+                        title: Text(alertIdentifier.title),
+                        message: Text(alertIdentifier.message),
                         primaryButton: .cancel(),
                         secondaryButton: .default(
-                            Text("Open Settings"),
+                            Text(alertIdentifier.secondaryButtonString),
                             action: {
-                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                secondaryAlertAction()
                             })
                     )
                 }
@@ -50,6 +54,15 @@ struct ChallengesView: View {
         
         if cameraAuthStatus == .notRequested {
             CameraAuthorizationManager.requestCameraAuthorization { _ in }
+        }
+    }
+    
+    private func secondaryAlertAction() {
+        switch alertIdentifier {
+        case .caution:
+            isExerciseLinkActivate = true
+        case .openSettings:
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }
     }
 }
@@ -69,7 +82,13 @@ extension ChallengesView {
                     
                     DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
                     
-                    ExercisesList(noCamAuthAlertPresent: $noCameraAuthAlertPresent)
+                    NavigationLink(isActive: $isExerciseLinkActivate) {
+                        WorkoutNavigation(workout: selectedExercises)
+                    } label: {
+                        EmptyView()
+                    }
+                    
+                    ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
                     
                     ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                     
