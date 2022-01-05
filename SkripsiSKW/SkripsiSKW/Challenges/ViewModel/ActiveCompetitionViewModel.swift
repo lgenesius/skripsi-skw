@@ -8,7 +8,7 @@
 import Combine
 
 final class ActiveCompetitionViewModel: ObservableObject, Identifiable {
-    private let competitionRepository = CompetitionRepository()
+//    private let competitionRepository = CompetitionRepository()
     @Published var competition: Competition
     
     var id = ""

@@ -45,10 +45,6 @@ class CompetitionViewModel: ObservableObject {
         let relatedData = self.allUsers.first(where: { userData in
             userData.userId == self.userID
         })
-        
-        print(relatedData)
-        print(relatedData?.userCompetitionPoint ?? 0)
-        
         dummyTotalPoint = relatedData?.userCompetitionPoint ?? 0
         initTimer()
     }
