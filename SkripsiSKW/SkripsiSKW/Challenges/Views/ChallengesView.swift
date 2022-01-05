@@ -45,21 +45,12 @@ struct ChallengesView: View {
         
     }
     
-    private func getCameraStatus() {
+    private func requestCameraAuth() {
         let cameraAuthStatus = CameraAuthorizationManager.getCameraAuthorizationStatus()
         
-        switch cameraAuthStatus {
-        case .granted:
-            break
-        case .notRequested:
-            requestCameraAuth()
-        case .unauthorized:
-            break
+        if cameraAuthStatus == .notRequested {
+            CameraAuthorizationManager.requestCameraAuthorization { _ in }
         }
-    }
-    
-    private func requestCameraAuth() {
-        CameraAuthorizationManager.requestCameraAuthorization { _ in }
     }
 }
 
@@ -90,8 +81,7 @@ extension ChallengesView {
         }
         .navigationBarHidden(true)
         .onAppear {
-            getCameraStatus()
-            
+            requestCameraAuth()
         }
     }
     
