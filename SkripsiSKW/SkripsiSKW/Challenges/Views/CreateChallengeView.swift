@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateChallengeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var createFormVM: ChallengeFormViewModel = ChallengeFormViewModel()
+    @EnvironmentObject var sessionVM: SessionViewModel
     
     @State private var startButton: Bool = false
     @State private var endButton: Bool = false
@@ -43,7 +44,7 @@ struct CreateChallengeView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button {
                         createFormVM
-                            .createChallenge {
+                            .createChallenge(sessionVM: sessionVM) {
                                 if !createFormVM.alertPresented {
                                     presentationMode.wrappedValue.dismiss()
                                 }

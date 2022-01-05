@@ -13,6 +13,18 @@
 		492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DD278317E300DB5498 /* CompetitionService.swift */; };
 		492F00E32784305E00DB5498 /* CompetitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E22784305E00DB5498 /* CompetitionRepository.swift */; };
 		492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */; };
+		492F00E72784BB8600DB5498 /* ActiveCompetitionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */; };
+		492F00E92784C05600DB5498 /* ActiveCompetitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */; };
+		492F00EB2784C84900DB5498 /* ActiveCompetitionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */; };
+		492F00EF278554BA00DB5498 /* ChallengeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00EE278554BA00DB5498 /* ChallengeRepository.swift */; };
+		492F00F1278554E000DB5498 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00F0278554E000DB5498 /* Challenge.swift */; };
+		492F00F32785553500DB5498 /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00F22785553500DB5498 /* ChallengeService.swift */; };
+		492F00F52785568500DB5498 /* AppCompetitionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00F42785568500DB5498 /* AppCompetitionRepository.swift */; };
+		492F00F7278556BF00DB5498 /* AppCompetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00F6278556BF00DB5498 /* AppCompetition.swift */; };
+		492F00F92785595700DB5498 /* BadgeIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00F82785595700DB5498 /* BadgeIdentifier.swift */; };
+		492F00FB27855D4700DB5498 /* DailyChallengeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00FA27855D4700DB5498 /* DailyChallengeListViewModel.swift */; };
+		492F00FD27855DE100DB5498 /* DailyChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00FC27855DE100DB5498 /* DailyChallengeViewModel.swift */; };
+		492F01012785602500DB5498 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F01002785602500DB5498 /* PreviewProvider.swift */; };
 		493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E0277AFF1500D6F794 /* FinishingChallenge.swift */; };
 		493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */; };
 		49B94390277468A90039FD84 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9438F277468A90039FD84 /* DatePickerView.swift */; };
@@ -127,6 +139,18 @@
 		492F00DD278317E300DB5498 /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		492F00E22784305E00DB5498 /* CompetitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionRepository.swift; sourceTree = "<group>"; };
 		492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeEnum.swift; sourceTree = "<group>"; };
+		492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionListViewModel.swift; sourceTree = "<group>"; };
+		492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionViewModel.swift; sourceTree = "<group>"; };
+		492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveCompetitionCard.swift; sourceTree = "<group>"; };
+		492F00EE278554BA00DB5498 /* ChallengeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRepository.swift; sourceTree = "<group>"; };
+		492F00F0278554E000DB5498 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		492F00F22785553500DB5498 /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
+		492F00F42785568500DB5498 /* AppCompetitionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCompetitionRepository.swift; sourceTree = "<group>"; };
+		492F00F6278556BF00DB5498 /* AppCompetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCompetition.swift; sourceTree = "<group>"; };
+		492F00F82785595700DB5498 /* BadgeIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeIdentifier.swift; sourceTree = "<group>"; };
+		492F00FA27855D4700DB5498 /* DailyChallengeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeListViewModel.swift; sourceTree = "<group>"; };
+		492F00FC27855DE100DB5498 /* DailyChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeViewModel.swift; sourceTree = "<group>"; };
+		492F01002785602500DB5498 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		493871E0277AFF1500D6F794 /* FinishingChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishingChallenge.swift; sourceTree = "<group>"; };
 		493871E3277B07AD00D6F794 /* CustomViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewWrapper.swift; sourceTree = "<group>"; };
 		49B9438F277468A90039FD84 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -256,6 +280,8 @@
 			children = (
 				492F00DD278317E300DB5498 /* CompetitionService.swift */,
 				492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */,
+				492F00F22785553500DB5498 /* ChallengeService.swift */,
+				492F00F82785595700DB5498 /* BadgeIdentifier.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -264,8 +290,28 @@
 			isa = PBXGroup;
 			children = (
 				492F00E22784305E00DB5498 /* CompetitionRepository.swift */,
+				492F00EE278554BA00DB5498 /* ChallengeRepository.swift */,
+				492F00F42785568500DB5498 /* AppCompetitionRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		492F00FE27855DE500DB5498 /* DailyChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				492F00FA27855D4700DB5498 /* DailyChallengeListViewModel.swift */,
+				492F00FC27855DE100DB5498 /* DailyChallengeViewModel.swift */,
+			);
+			path = DailyChallenge;
+			sourceTree = "<group>";
+		};
+		492F00FF27855DF200DB5498 /* ActiveCompetition */ = {
+			isa = PBXGroup;
+			children = (
+				492F00E62784BB8600DB5498 /* ActiveCompetitionListViewModel.swift */,
+				492F00E82784C05600DB5498 /* ActiveCompetitionViewModel.swift */,
+			);
+			path = ActiveCompetition;
 			sourceTree = "<group>";
 		};
 		493871E2277B079D00D6F794 /* FinishChallenge */ = {
@@ -343,6 +389,8 @@
 		602AB89B277ADC5100DFBA1F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				492F00FF27855DF200DB5498 /* ActiveCompetition */,
+				492F00FE27855DE500DB5498 /* DailyChallenge */,
 				602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */,
 				602AB89D277ADC5100DFBA1F /* JoinChallengeViewModel.swift */,
 			);
@@ -354,6 +402,7 @@
 			children = (
 				602AB89F277ADC5100DFBA1F /* ExerciseCard.swift */,
 				602AB8A0277ADC5100DFBA1F /* DailyChallengeCard.swift */,
+				492F00EA2784C84900DB5498 /* ActiveCompetitionCard.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -362,6 +411,8 @@
 			isa = PBXGroup;
 			children = (
 				492F00DA2783132B00DB5498 /* Competition.swift */,
+				492F00F0278554E000DB5498 /* Challenge.swift */,
+				492F00F6278556BF00DB5498 /* AppCompetition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -835,6 +886,7 @@
 				E1F88D37276472E700357A45 /* Screen.swift */,
 				E1E18D092771A57400C19E60 /* GeometryGetter.swift */,
 				E195A22B27731210001FE151 /* NavigationTitle.swift */,
+				492F01002785602500DB5498 /* PreviewProvider.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1098,6 +1150,7 @@
 			files = (
 				602AB8BB277ADCB000DFBA1F /* Date+Ext.swift in Sources */,
 				602AB888277ADB2400DFBA1F /* ChallengeFormViewModel.swift in Sources */,
+				492F00FB27855D4700DB5498 /* DailyChallengeListViewModel.swift in Sources */,
 				602AB8B8277ADC5100DFBA1F /* CompetitionLeaderboard.swift in Sources */,
 				E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */,
 				E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */,
@@ -1106,10 +1159,15 @@
 				E1DFB1C7277C592500EE18C0 /* Stick.swift in Sources */,
 				E1DFB1C3277C4CF800EE18C0 /* WorkoutCountdownView.swift in Sources */,
 				E1F88D38276472E700357A45 /* Screen.swift in Sources */,
+				492F00F92785595700DB5498 /* BadgeIdentifier.swift in Sources */,
 				E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */,
 				E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */,
+				492F01012785602500DB5498 /* PreviewProvider.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
+				492F00E72784BB8600DB5498 /* ActiveCompetitionListViewModel.swift in Sources */,
+				492F00F1278554E000DB5498 /* Challenge.swift in Sources */,
+				492F00FD27855DE100DB5498 /* DailyChallengeViewModel.swift in Sources */,
 				602AB8B3277ADC5100DFBA1F /* BadgesView.swift in Sources */,
 				49B943A7277575A50039FD84 /* TextFieldModifier.swift in Sources */,
 				E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */,
@@ -1126,12 +1184,14 @@
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
 				49B94390277468A90039FD84 /* DatePickerView.swift in Sources */,
 				E1E18DF32770687C0004436D /* DateManager.swift in Sources */,
+				492F00EB2784C84900DB5498 /* ActiveCompetitionCard.swift in Sources */,
 				60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */,
 				602AB8B2277ADC5100DFBA1F /* ExercisesList.swift in Sources */,
 				E1C9B0BB276783CF00611DAE /* AppDelegate.swift in Sources */,
 				492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
+				492F00F32785553500DB5498 /* ChallengeService.swift in Sources */,
 				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
 				E14C055A2775BC2F008DC3AF /* ViewOrientation.swift in Sources */,
 				602AB8B5277ADC5100DFBA1F /* DailyChallengesView.swift in Sources */,
@@ -1145,6 +1205,8 @@
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */,
 				E14C056D2775D963008DC3AF /* TabIndicator.swift in Sources */,
+				492F00F52785568500DB5498 /* AppCompetitionRepository.swift in Sources */,
+				492F00EF278554BA00DB5498 /* ChallengeRepository.swift in Sources */,
 				493871E1277AFF1500D6F794 /* FinishingChallenge.swift in Sources */,
 				602AB8AF277ADC5100DFBA1F /* ExerciseCard.swift in Sources */,
 				E14C056A2775CC7C008DC3AF /* Info.swift in Sources */,
@@ -1166,7 +1228,9 @@
 				E1C9B0C1276788BF00611DAE /* AuthManager.swift in Sources */,
 				E1F32E62276DC54C0072E548 /* Validator.swift in Sources */,
 				E1DFB1C5277C550E00EE18C0 /* PoseEstimator.swift in Sources */,
+				492F00F7278556BF00DB5498 /* AppCompetition.swift in Sources */,
 				492F00DB2783132B00DB5498 /* Competition.swift in Sources */,
+				492F00E92784C05600DB5498 /* ActiveCompetitionViewModel.swift in Sources */,
 				E1C9B0BE2767885A00611DAE /* User.swift in Sources */,
 				602AB8B6277ADC5100DFBA1F /* JoinChallengeView.swift in Sources */,
 				49B943B02775B5D30039FD84 /* ProgressBar.swift in Sources */,

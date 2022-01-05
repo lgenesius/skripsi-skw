@@ -1,14 +1,14 @@
 //
-//  Challenges.swift
+//  AppCompetition.swift
 //  SkripsiSKW
 //
-//  Created by Jackie Leonardy on 03/01/22.
+//  Created by Jackie Leonardy on 05/01/22.
 //
 
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Competition: Codable {
+struct AppCompetition {
     @DocumentID var id: String? = UUID().uuidString
     var startDateEvent: Date
     var endDateEvent: Date
@@ -29,14 +29,9 @@ struct Competition: Codable {
     var users: [CompetitionUserData]
     var competitionCode: String = UUID().uuidString.prefix(5).uppercased()
     var isRunning: Bool
+    var badgeIdentifier: BadgeIdentifier
     
     func addUserId(injectedUser: [CompetitionUserData]) -> Competition {
         return Competition(id: id, startDateEvent: startDateEvent, endDateEvent: endDateEvent, competitionName: competitionName, competitionDescription: competitionDescription, users: injectedUser, competitionCode: competitionCode, isRunning: isRunning)
     }
-}
-
-struct CompetitionUserData: Codable {
-    var userId: String
-    var userCompetitionPoint: Int
-    var userName: String
 }

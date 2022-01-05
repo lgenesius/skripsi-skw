@@ -20,11 +20,11 @@ struct ChallengesView: View {
                 LazyVStack {
                     competitionButtons
                     
-                    DailyChallengesView()
+                    DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
                     
                     ExercisesList()
                     
-                    ActiveCompetitions()
+                    ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                     
                     BadgesView()
                 }

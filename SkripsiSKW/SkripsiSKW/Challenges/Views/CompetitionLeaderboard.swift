@@ -10,6 +10,8 @@ import SwiftUI
 struct CompetitionLeaderboard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
+    @EnvironmentObject var sessionVM: SessionViewModel
+    var activeCompetitionVM: ActiveCompetitionViewModel
     
     var body: some View {
         ZStack {
@@ -22,7 +24,7 @@ struct CompetitionLeaderboard: View {
                 competitionButtons
             }
             .padding(.top, 24)
-            .navigationTitle("Competition Name")
+            .navigationTitle(activeCompetitionVM.competition.competitionName)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .toolbar {
@@ -40,6 +42,9 @@ struct CompetitionLeaderboard: View {
                 }
             }
         }
+        .onAppear {
+            competitionVM.setData(userData: activeCompetitionVM.competition.users, userID: sessionVM.authUser?.uid ?? "")
+        }
     }
 }
 
@@ -50,7 +55,7 @@ extension CompetitionLeaderboard {
         VStack(alignment: .leading, spacing: 8) {
             Text("TOTAL POINTS (300 Max)")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
-            Text("245 Points")
+            Text("\(competitionVM.dummyTotalPoint) Points")
                 .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
             ProgressBar(value: $competitionVM.dummyTotalPointPercentage, backgroundColor: Color.oldSilver, progressBarColor: Color.notYoCheese, height: CGFloat(15))
         }.padding()
@@ -78,7 +83,7 @@ extension CompetitionLeaderboard {
     
     @ViewBuilder
     private var competitionLeaderboardList: some View {
-        LeaderboardList(listOfData: $competitionVM.dummyData)
+        LeaderboardList(listOfData: $competitionVM.allUsers)
     }
     
     
@@ -108,11 +113,5 @@ extension CompetitionLeaderboard {
                 }
             }
         }.padding(.horizontal)
-    }
-}
-
-struct CompetitionLeaderboard_Previews: PreviewProvider {
-    static var previews: some View {
-        CompetitionLeaderboard()
     }
 }
