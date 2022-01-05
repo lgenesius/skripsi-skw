@@ -69,6 +69,12 @@ struct CompetitionLeaderboard: View {
 
 extension CompetitionLeaderboard {
     
+    private func actionSheet() {
+        let string = "Hi, dari aplikasi Singkawang! Ayo join challengeku, masukkan kode \(activeCompetitionVM.competition.competitionCode) untuk mengikuti Challenge: \(activeCompetitionVM.competition.competitionName) yang akan segera dimulai pada tanggal \(activeCompetitionVM.competition.startDateString)"
+        let av = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
+    
     @ViewBuilder
     private var competitionPoint : some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -110,8 +116,8 @@ extension CompetitionLeaderboard {
     var competitionButtons: some View {
         GeometryReader { geo in
             HStack {
-                NavigationLink {
-
+                Button {
+                    actionSheet()
                 } label: {
                     Text("Invite Others")
                         .modifier(TextModifier(color: .white, size: 14, weight: .medium))
