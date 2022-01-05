@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DailyChallengesView: View {
     @State private var isDropDown = true
+    @ObservedObject var dailyChallengeListVM: DailyChallengeListViewModel
+    
     
     var body: some View {
         VStack {
@@ -31,11 +33,8 @@ struct DailyChallengesView: View {
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(0..<6) { _ in
-                            DailyChallengeCard()
-//                            RoundedRectangle(cornerRadius: 13)
-//                                .fill(Color.midnightExpress)
-//                                .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
+                        ForEach(dailyChallengeListVM.dailyChallengeListModel) { dailyChallengeVM in
+                            DailyChallengeCard(dailyChallengeVM:dailyChallengeVM )
                         }
                     }
                 }
@@ -48,6 +47,6 @@ struct DailyChallengesView: View {
 
 struct DailyChallengesView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyChallengesView()
+        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
     }
 }

@@ -43,7 +43,7 @@ struct ActiveCompetitions: View {
             }
         }
         .onAppear(perform: {
-            activeCompetitionVM.competitionRepository.get()
+            activeCompetitionVM.fetchData()
         })
         .padding(.horizontal)
         .padding(.top)

@@ -1,22 +1,22 @@
 //
-//  ActiveCompetitionViewModel.swift
+//  DailyChallengeViewModel.swift
 //  SkripsiSKW
 //
 //  Created by Jackie Leonardy on 05/01/22.
 //
 
+import Foundation
 import Combine
 
-final class ActiveCompetitionViewModel: ObservableObject, Identifiable {
-//    private let competitionRepository = CompetitionRepository()
-    @Published var competition: Competition
+class DailyChallengeViewModel: ObservableObject, Identifiable {
+    @Published var challenge: Challenge
     
     var id = ""
     private var cancellables: Set<AnyCancellable> = []
     
-    init(competition: Competition) {
-        self.competition = competition
-        $competition.compactMap {
+    init(challenge: Challenge) {
+        self.challenge = challenge
+        $challenge.compactMap {
             $0.id
         }
         .sink { [weak self] id in

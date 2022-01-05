@@ -34,3 +34,9 @@ struct ActiveCompetitionCard: View {
         }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
     }
 }
+
+struct ActiveCompetitionCard_Previews: PreviewProvider {
+    static var previews: some View {
+        ActiveCompetitionCard(activeCompetitionVM: dev.activeCompetitionVM)
+    }
+}

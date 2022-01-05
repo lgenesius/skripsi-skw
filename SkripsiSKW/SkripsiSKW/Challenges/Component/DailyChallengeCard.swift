@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DailyChallengeCard: View {
+    var dailyChallengeVM: DailyChallengeViewModel
+    
     var body: some View {
         ZStack(alignment: .topLeading){
             Image("placeholderImage")
@@ -52,8 +54,9 @@ struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
             
     }
 }
+
 struct DailyChallengeCard_Previews: PreviewProvider {
     static var previews: some View {
-        DailyChallengeCard()
+        DailyChallengeCard(dailyChallengeVM: dev.dailyChallengeVM)
     }
 }

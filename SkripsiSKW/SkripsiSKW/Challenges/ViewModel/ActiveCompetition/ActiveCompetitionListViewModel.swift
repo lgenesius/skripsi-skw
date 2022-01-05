@@ -8,7 +8,7 @@
 import Combine
 
 final class ActiveCompetitionListViewModel: ObservableObject {
-    @Published var competitionRepository = CompetitionRepository()
+    @Published private var competitionRepository = CompetitionRepository()
     @Published var competitionListModel: [ActiveCompetitionViewModel] = []
     
     private var cancellables: Set<AnyCancellable> = []
@@ -23,6 +23,10 @@ final class ActiveCompetitionListViewModel: ObservableObject {
                 self.competitionListModel = competitions
             }
             .store(in: &cancellables)
+    }
+    
+    func fetchData() {
+        competitionRepository.get()
     }
     
     
