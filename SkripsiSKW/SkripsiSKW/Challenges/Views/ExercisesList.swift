@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ExercisesList: View {
+    @Binding var noCamAuthAlertPresent: Bool
+    
     @State private var isDropDown = true
-    private let exercises = ["Squat", "Push Up", "Sit Up"]
+    @State private var selectedExercises: WorkoutType = .squat
+    @State private var isNavLinkActive = false
+    private let exercises: [WorkoutType] = [.squat, .pushup, .plank]
     
     var body: some View {
         VStack {
@@ -30,32 +34,19 @@ struct ExercisesList: View {
             
             
             if isDropDown {
+                NavigationLink(isActive: $isNavLinkActive) {
+                    WorkoutNavigation(workout: selectedExercises)
+                } label: {
+                    EmptyView()
+                }
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
                         ForEach(0..<3) { index in
-                            NavigationLink {
-                                WorkoutNavigation(workout: .squat)
+                            Button {
+                                selectCardAction(index: index)
                             } label: {
-                                if #available(iOS 15.0, *) {
-//                                    RoundedRectangle(cornerRadius: 13)
-//                                        .fill(Color.midnightExpress)
-//                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
-//                                        .overlay {
-//                                            Text(exercises[index])
-//                                                .foregroundColor(.white)
-//                                        }
-                                    ExerciseCard()
-                                } else {
-                                    // Fallback on earlier versions
-//                                    RoundedRectangle(cornerRadius: 13)
-//                                        .fill(Color.midnightExpress)
-//                                        .frame(width: Screen.width-75, height: 187) // 75 come from 40 padding horizontal, 15 spacing, and 20 to make the next rectangle appear
-//                                        .overlay(
-//                                            Text(exercises[index])
-//                                                .foregroundColor(.white)
-//                                        )
-                                    ExerciseCard()
-                                }
+                                ExerciseCard()
                             }
                         }
                     }
@@ -65,10 +56,23 @@ struct ExercisesList: View {
         .padding(.horizontal)
         .padding(.top)
     }
+    
+    private func selectCardAction(index: Int) {
+        selectedExercises = exercises[index]
+        
+        let status = CameraAuthorizationManager.getCameraAuthorizationStatus()
+        
+        if status == .unauthorized {
+            noCamAuthAlertPresent = true
+            return
+        }
+        
+        isNavLinkActive = true
+    }
 }
 
 struct ExercisesList_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesList()
+        ExercisesList(noCamAuthAlertPresent: .constant(false))
     }
 }

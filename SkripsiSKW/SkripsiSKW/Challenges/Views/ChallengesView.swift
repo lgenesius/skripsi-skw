@@ -69,7 +69,7 @@ extension ChallengesView {
                     
                     DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
                     
-                    ExercisesList()
+                    ExercisesList(noCamAuthAlertPresent: $noCameraAuthAlertPresent)
                     
                     ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                     
