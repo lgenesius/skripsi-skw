@@ -91,29 +91,26 @@ struct ProfileView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(Text(""))
                 .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button {
+                .navigationBarItems(
+                    leading:
+                        Button(action: {
                             presentationMode.wrappedValue.dismiss()
-                        } label: {
+                        }, label: {
                             HStack {
                                 Image(systemName: "chevron.left")
                                     .foregroundColor(.notYoCheese)
                                 Text(navigationTitle.title)
                                     .foregroundColor(.notYoCheese)
                             }
-                        }
-                    }
-                    
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button {
+                        }),
+                    trailing:
+                        Button(action: {
                             presentLogoutAlert = true
-                        } label: {
+                        }, label: {
                             Text("Logout")
                                 .foregroundColor(.notYoCheese)
-                        }
-                    }
-                }
+                        })
+                )
                 .alert(isPresented: $presentLogoutAlert) {
                     Alert(
                         title: Text("Logout"),
@@ -133,7 +130,8 @@ struct ProfileView: View {
                             }),
                             .default(Text("Remove Picture"), action: {
                                 
-                            })
+                            }),
+                            .cancel()
                         ]
                     )
                 }
