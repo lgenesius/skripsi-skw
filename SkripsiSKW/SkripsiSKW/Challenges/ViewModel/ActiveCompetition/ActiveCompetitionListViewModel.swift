@@ -28,6 +28,4 @@ final class ActiveCompetitionListViewModel: ObservableObject {
     func fetchData() {
         competitionRepository.get()
     }
-    
-    
 }

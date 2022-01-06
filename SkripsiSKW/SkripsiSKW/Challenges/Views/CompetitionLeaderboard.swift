@@ -11,7 +11,10 @@ struct CompetitionLeaderboard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
     @EnvironmentObject var sessionVM: SessionViewModel
-    var activeCompetitionVM: ActiveCompetitionViewModel
+    @State private var willLeave: Bool = false
+    @State private var presentLoading: Bool = false
+    
+    @ObservedObject var activeCompetitionVM: ActiveCompetitionViewModel
     
     var body: some View {
         ZStack {
@@ -41,14 +44,36 @@ struct CompetitionLeaderboard: View {
                     }
                 }
             }
+            LoadingCard(isLoading: presentLoading, message: "Leaving Competition")
         }
         .onAppear {
             competitionVM.setData(userData: activeCompetitionVM.competition.users, userID: sessionVM.authUser?.uid ?? "")
         }
+        .alert(isPresented: $willLeave) {
+            Alert(
+              title: Text("Leaving Competition"),
+              message: Text("Are you sure you wanted to leave? All your point and ranking will be removed once you leave."),
+              primaryButton: .destructive(Text("Cancel")),
+              secondaryButton: .default(Text("Leave"), action: {
+                  competitionVM.leaveCompetition(competitionId: activeCompetitionVM.id)
+                  self.presentLoading = true
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                      self.presentLoading = false
+                      presentationMode.wrappedValue.dismiss()
+                  }
+              })
+            )
+        }   
     }
 }
 
 extension CompetitionLeaderboard {
+    
+    private func actionSheet() {
+        let string = "Hi, dari aplikasi Singkawang! Ayo join challengeku, masukkan kode \(activeCompetitionVM.competition.competitionCode) untuk mengikuti Challenge: \(activeCompetitionVM.competition.competitionName) yang akan segera dimulai pada tanggal \(activeCompetitionVM.competition.startDateString)"
+        let av = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
     
     @ViewBuilder
     private var competitionPoint : some View {
@@ -91,8 +116,8 @@ extension CompetitionLeaderboard {
     var competitionButtons: some View {
         GeometryReader { geo in
             HStack {
-                NavigationLink {
-
+                Button {
+                    actionSheet()
                 } label: {
                     Text("Invite Others")
                         .modifier(TextModifier(color: .white, size: 14, weight: .medium))
@@ -102,8 +127,8 @@ extension CompetitionLeaderboard {
                 }
 
                 Spacer()
-                NavigationLink {
-
+                Button {
+                    self.willLeave.toggle()
                 } label: {
                     Text("Leave Competition")
                         .modifier(TextModifier(color: .white, size: 14, weight: .medium))

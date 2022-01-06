@@ -11,25 +11,89 @@ struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     @StateObject var badgesViewModel = AllBadgeViewModel()
     
+    @State private var isAlertPresent = false
+    @State private var alertIdentifier: AlertIdentifier = .caution
+    @State private var selectedExercises: WorkoutType = .squat
+    
+    @State private var isExerciseLinkActivate = false
+    
     var body: some View {
-        ZStack{
-            VStack {
-                dateAndPhotoProfile
-                
-                titleApp
-                
-                ScrollView {
-                    LazyVStack {
-                        competitionButtons
-                        
-                        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
-                        
-                        ExercisesList()
-                        
-                        ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
-                        
-                        BadgesView(badgesViewModel: badgesViewModel)
+        if #available(iOS 15.0, *) {
+            mainBody
+                .alert(
+                    alertIdentifier.title,
+                    isPresented: $isAlertPresent
+                ) {
+                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
+                    Button(alertIdentifier.secondaryButtonString) {
+                        secondaryAlertAction()
                     }
+                } message: {
+                    Text(alertIdentifier.message)
+                }
+        } else {
+            // Fallback on earlier versions
+            mainBody
+                .alert(isPresented: $isAlertPresent) {
+                    Alert(
+                        title: Text(alertIdentifier.title),
+                        message: Text(alertIdentifier.message),
+                        primaryButton: .cancel(),
+                        secondaryButton: .default(
+                            Text(alertIdentifier.secondaryButtonString),
+                            action: {
+                                secondaryAlertAction()
+                            })
+                    )
+                }
+        }
+        
+    }
+    
+    private func requestCameraAuth() {
+        let cameraAuthStatus = CameraAuthorizationManager.getCameraAuthorizationStatus()
+        
+        if cameraAuthStatus == .notRequested {
+            CameraAuthorizationManager.requestCameraAuthorization { _ in }
+        }
+    }
+    
+    private func secondaryAlertAction() {
+        switch alertIdentifier {
+        case .caution:
+            isExerciseLinkActivate = true
+        case .openSettings:
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }
+    }
+}
+
+extension ChallengesView {
+    
+    @ViewBuilder
+    var mainBody: some View {
+        VStack {
+            dateAndPhotoProfile
+            
+            titleApp
+            
+            ScrollView {
+                LazyVStack {
+                    competitionButtons
+                    
+                    DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
+                    
+                    NavigationLink(isActive: $isExerciseLinkActivate) {
+                        WorkoutNavigation(workout: selectedExercises)
+                    } label: {
+                        EmptyView()
+                    }
+                    
+                    ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
+                    
+                    ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
+                    
+                    BadgesView()
                 }
                 
                 Spacer()
@@ -41,10 +105,10 @@ struct ChallengesView: View {
         }
         
         .navigationBarHidden(true)
+        .onAppear {
+            requestCameraAuth()
+        }
     }
-}
-
-extension ChallengesView {
     
     @ViewBuilder
     var dateAndPhotoProfile: some View {

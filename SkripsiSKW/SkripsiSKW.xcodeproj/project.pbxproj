@@ -100,6 +100,8 @@
 		E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E64276DD2380072E548 /* ActivityIndicator.swift */; };
 		E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E66276DD2B20072E548 /* ErrorText.swift */; };
 		E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E68276DEDAD0072E548 /* LoadingCard.swift */; };
+		E1F3A2A227857F44002181E5 /* CameraAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */; };
+		E1F3A2A42785A072002181E5 /* AlertIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F3A2A32785A072002181E5 /* AlertIdentifier.swift */; };
 		E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */; };
 		E1F88CFC276428F500357A45 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F88CFB276428F500357A45 /* ContentView.swift */; };
 		E1F88CFE276428F600357A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F88CFD276428F600357A45 /* Assets.xcassets */; };
@@ -235,6 +237,8 @@
 		E1F32E64276DD2380072E548 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E1F32E66276DD2B20072E548 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		E1F32E68276DEDAD0072E548 /* LoadingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCard.swift; sourceTree = "<group>"; };
+		E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAuthorizationManager.swift; sourceTree = "<group>"; };
+		E1F3A2A32785A072002181E5 /* AlertIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIdentifier.swift; sourceTree = "<group>"; };
 		E1F88CF6276428F500357A45 /* SkripsiSKW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkripsiSKW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWApp.swift; sourceTree = "<group>"; };
 		E1F88CFB276428F500357A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				492F00E42784546A00DB5498 /* JoinChallengeEnum.swift */,
 				492F00F22785553500DB5498 /* ChallengeService.swift */,
 				492F00F82785595700DB5498 /* BadgeIdentifier.swift */,
+				E1F3A2A32785A072002181E5 /* AlertIdentifier.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -716,6 +721,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E18DF22770687C0004436D /* DateManager.swift */,
+				E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1218,6 +1224,7 @@
 				492F00E52784546A00DB5498 /* JoinChallengeEnum.swift in Sources */,
 				E1F88CFC276428F500357A45 /* ContentView.swift in Sources */,
 				E1F88D3C2764BB9B00357A45 /* SignUpView.swift in Sources */,
+				E1F3A2A42785A072002181E5 /* AlertIdentifier.swift in Sources */,
 				492F00F32785553500DB5498 /* ChallengeService.swift in Sources */,
 				49B9439B2774AE850039FD84 /* PlainButton.swift in Sources */,
 				E14C055A2775BC2F008DC3AF /* ViewOrientation.swift in Sources */,
@@ -1245,6 +1252,7 @@
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
 				E14C05582775BC01008DC3AF /* WorkoutType.swift in Sources */,
 				602AB8B9277ADC5100DFBA1F /* ChallengesView.swift in Sources */,
+				E1F3A2A227857F44002181E5 /* CameraAuthorizationManager.swift in Sources */,
 				E1E18DF627706C620004436D /* TextModifier.swift in Sources */,
 				E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */,
 				602AB8BA277ADC5100DFBA1F /* CompetitionLeaderboardDetail.swift in Sources */,
