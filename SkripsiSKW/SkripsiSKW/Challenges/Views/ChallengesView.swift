@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
-    @StateObject var badgesViewModel = AllBadgeViewModel()
+    @StateObject var badgesViewModel = BadgeListViewModel()
     
     @State private var isAlertPresent = false
     @State private var alertIdentifier: AlertIdentifier = .caution
@@ -94,7 +94,7 @@ extension ChallengesView {
                         
                         ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                         
-                        BadgesView(badgesViewModel: badgesViewModel)
+                        BadgesView(badgesListVM: badgesViewModel)
                     }
                     
                     Spacer()
@@ -105,13 +105,14 @@ extension ChallengesView {
                 badgesViewModel.showBadgeDetail.toggle()
                 
             }
-            BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
         
         
         .navigationBarHidden(true)
         .onAppear {
             requestCameraAuth()
+            badgesViewModel.fetchUserBadges(sessionVM: sessionVM)
         }
     }
     

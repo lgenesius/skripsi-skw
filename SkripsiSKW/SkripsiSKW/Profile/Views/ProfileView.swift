@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var sessionVM: SessionViewModel
-    @ObservedObject var badgesViewModel : AllBadgeViewModel
+    @ObservedObject var badgesViewModel : BadgeListViewModel
     var navigationTitle: NavigationTitle
     var userId: String?
     
@@ -21,7 +21,7 @@ struct ProfileView: View {
         GridItem(.flexible(), spacing: 15)
     ]
     
-    init(from navigationTitle: NavigationTitle, uId: String? = nil, badgesViewModel: AllBadgeViewModel) {
+    init(from navigationTitle: NavigationTitle, uId: String? = nil, badgesViewModel: BadgeListViewModel) {
         self.navigationTitle = navigationTitle
         
         if let uId = uId {
@@ -39,14 +39,14 @@ struct ProfileView: View {
                 VStack {
                     headerProfile
                     top3Badges
-                    LatestBadge(badgesViewModel: badgesViewModel)
-                    ListOfBadge(badgesViewModel: badgesViewModel)
+                    LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
+                    ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
                 }
             }
             Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                 badgesViewModel.showBadgeDetail.toggle()
             }   
-            BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text(""))
@@ -181,48 +181,5 @@ extension ProfileView {
         .padding(.horizontal)
     }
     
-    @ViewBuilder
-    var latestBadges: some View {
-        VStack(alignment: .leading) {
-            Text("Latest Badges")
-                .modifier(TextModifier(
-                    color: .white,
-                    size: 24,
-                    weight: .medium
-                ))
-            
-            HStack(spacing: 15) {
-                ForEach(0..<3) { _ in
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color.blueDepths)
-                        .frame(maxWidth: .infinity, minHeight: 125)
-                }
-            }
-        }
-        .padding(.top, 20)
-        .padding(.horizontal)
-    }
-    
-    @ViewBuilder
-    var listOfBadges: some View {
-        VStack(alignment: .leading) {
-            Text("List of Badges")
-                .modifier(TextModifier(
-                    color: .white,
-                    size: 24,
-                    weight: .medium
-                ))
-            
-            LazyVGrid(columns: gridLayout, spacing: 15) {
-                ForEach(0..<9) { _ in
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color.blueDepths)
-                        .frame(maxWidth: .infinity, minHeight: 125)
-                }
-            }
-        }
-        .padding(.top, 20)
-        .padding(.horizontal)
-    }
 }
 

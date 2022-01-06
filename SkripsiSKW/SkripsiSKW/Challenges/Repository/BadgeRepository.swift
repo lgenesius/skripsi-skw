@@ -11,10 +11,11 @@ import FirebaseFirestore
 import Combine
 
 final class BadgeRepository: ObservableObject {
-    @Published var badges: [Badge] = []
+    @Published private var badges: [Badge] = []
+    @Published var userBadges: [UserBadge] = []
     
     init() {
-//        get()
+  
     }
     
     private func addData(badge: Badge) {
@@ -27,5 +28,14 @@ final class BadgeRepository: ObservableObject {
     
     func getBadges() {
         
+    }
+    
+    func getUserBadges(sessionVM: SessionViewModel) {
+        UserService.getUserBadges(sessionVM: sessionVM) { userBadges, error in
+            if error != nil {
+                return
+            }
+            self.userBadges = userBadges ?? []
+        }
     }
 }

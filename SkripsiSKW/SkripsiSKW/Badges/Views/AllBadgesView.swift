@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct AllBadgesView: View {
-    @ObservedObject var badgesViewModel : AllBadgeViewModel
+    var badgesViewModel : [BadgeViewModel]
+    @ObservedObject var badgesListVM : BadgeListViewModel
+    
     var body: some View {
         ZStack{
             Color.sambucus
                 .ignoresSafeArea()
             ScrollView{
-                LatestBadge(badgesViewModel: badgesViewModel)
-                ListOfBadge(badgesViewModel: badgesViewModel)
+                LatestBadge(badgesViewModel: badgesListVM.topThree(), badgesListVM: badgesListVM)
+                ListOfBadge(badgesViewModel: badgesListVM.userBadgeListViewModel, badgesListVM: badgesListVM)
             }
-            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
-                badgesViewModel.showBadgeDetail.toggle()
+            Rectangle().fill(Color.black).opacity(badgesListVM.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                badgesListVM.showBadgeDetail.toggle()
             }
-            BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesListVM.selectedBadgeViewModel, badgesListVM: badgesListVM ).opacity(badgesListVM.showBadgeDetail  ? 1 : 0)
             
         }
         .navigationTitle(Text("Badges"))
