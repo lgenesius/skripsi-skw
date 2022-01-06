@@ -91,9 +91,34 @@ extension ProfileView {
     @ViewBuilder
     var headerProfile: some View {
         HStack(alignment: .center) {
-            Circle()
-                .fill(Color.notYoCheese)
-                .frame(width: 110, height: 110)
+            Button {
+                print("Tapped!")
+            } label: {
+                if #available(iOS 15.0, *) {
+                    Circle()
+                        .fill(Color.notYoCheese)
+                        .frame(width: 110, height: 110)
+                        .overlay(alignment: .bottomTrailing) {
+                            Image(systemName: "pencil.circle.fill")
+                                .foregroundColor(.white)
+                                .scaleEffect(2)
+                                .opacity(userId == nil ? 1: 0)
+                        }
+                } else {
+                    // Fallback on earlier versions
+                    Circle()
+                        .fill(Color.notYoCheese)
+                        .frame(width: 110, height: 110)
+                        .overlay(
+                            Image(systemName: "pencil.circle.fill")
+                                .foregroundColor(.white)
+                                .scaleEffect(2)
+                                .opacity(userId == nil ? 1: 0),
+                            alignment: .bottomTrailing
+                        )
+                }
+            }
+            .allowsHitTesting(userId == nil ? true: false)
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
                 Text("Kevin Leon Luis Genesius")
