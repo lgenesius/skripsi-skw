@@ -14,6 +14,7 @@ struct ProfileView: View {
     var navigationTitle: NavigationTitle
     var userId: String?
     
+    @State private var presentActionSheet = false
     @State private var presentLogoutAlert = false
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
@@ -31,6 +32,119 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        if #available(iOS 15.0, *) {
+            mainBody
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text(""))
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.notYoCheese)
+                                Text(navigationTitle.title)
+                                    .foregroundColor(.notYoCheese)
+                            }
+                        }
+                    }
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            presentLogoutAlert = true
+                        } label: {
+                            Text("Logout")
+                                .foregroundColor(.notYoCheese)
+                        }
+                    }
+                }
+                .alert(
+                    "Logout",
+                    isPresented: $presentLogoutAlert,
+                    actions: {
+                        Button("Cancel", role: .cancel, action: {})
+                        Button("Logout") {
+                            sessionVM.logout()
+                        }
+                    },
+                    message: {
+                        Text("Are you sure you want to Logout?")
+                    })
+                .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
+                    Button {
+                        
+                    } label: {
+                        Text("Upload Picture")
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Remove Picture")
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+            mainBody
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text(""))
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.notYoCheese)
+                                Text(navigationTitle.title)
+                                    .foregroundColor(.notYoCheese)
+                            }
+                        }
+                    }
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            presentLogoutAlert = true
+                        } label: {
+                            Text("Logout")
+                                .foregroundColor(.notYoCheese)
+                        }
+                    }
+                }
+                .alert(isPresented: $presentLogoutAlert) {
+                    Alert(
+                        title: Text("Logout"),
+                        message: Text("Are you sure you want to Logout?"),
+                        primaryButton: .cancel(),
+                        secondaryButton: .default(Text("Logout"), action: {
+                            sessionVM.logout()
+                        })
+                    )
+                }
+                .actionSheet(isPresented: $presentActionSheet) {
+                    ActionSheet(
+                        title: Text("Select Action"),
+                        buttons: [
+                            .default(Text("Upload Picture"), action: {
+                                
+                            }),
+                            .default(Text("Remove Picture"), action: {
+                                
+                            })
+                        ]
+                    )
+                }
+        }
+    }
+}
+
+extension ProfileView {
+    
+    @ViewBuilder
+    var mainBody: some View {
         ZStack {
             Color.sambucus
                 .ignoresSafeArea()
@@ -45,54 +159,16 @@ struct ProfileView: View {
             }
             Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                 badgesViewModel.showBadgeDetail.toggle()
-            }   
+            }
             BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(Text(""))
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.notYoCheese)
-                        Text(navigationTitle.title)
-                            .foregroundColor(.notYoCheese)
-                    }
-                }
-            }
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button {
-                    presentLogoutAlert = true
-                } label: {
-                    Text("Logout")
-                        .foregroundColor(.notYoCheese)
-                }
-            }
-        }
-        .alert(isPresented: $presentLogoutAlert) {
-            Alert(
-                title: Text("Logout"),
-                message: Text("Are you sure you want to Logout?"),
-                primaryButton: .cancel(),
-                secondaryButton: .default(Text("Logout"), action: {
-                    sessionVM.logout()
-                })
-            )
-        }
     }
-}
-
-extension ProfileView {
+    
     @ViewBuilder
     var headerProfile: some View {
         HStack(alignment: .center) {
             Button {
-                print("Tapped!")
+                presentActionSheet = true
             } label: {
                 if #available(iOS 15.0, *) {
                     Circle()
