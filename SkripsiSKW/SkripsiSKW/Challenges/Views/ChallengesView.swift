@@ -93,7 +93,7 @@ extension ChallengesView {
                     
                     ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
                     
-                    BadgesView()
+                    BadgesView(badgesViewModel: badgesViewModel)
                 }
                 
                 Spacer()
