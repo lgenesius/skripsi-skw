@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BadgeAdd: View {
-    @State var isShown : Bool
+    @ObservedObject var badgesViewModel : AllBadgeViewModel
     var body: some View {
         VStack(alignment: .center){
             ZStack{
@@ -25,7 +25,7 @@ struct BadgeAdd: View {
             }.frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3.5).cornerRadius(13)
         
             
-            Button(action: { isShown.toggle() }, label: {
+            Button(action: { badgesViewModel.showBadgeDetail.toggle() }, label: {
                 Text("Add to Highlight").bold().foregroundColor(.white)
             }).frame(width: UIScreen.main.bounds.width/2).padding(.vertical, 5).border(Color.insignia).background(Color.insignia).cornerRadius(8)
             

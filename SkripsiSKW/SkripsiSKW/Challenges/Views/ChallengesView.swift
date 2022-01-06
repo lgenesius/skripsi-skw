@@ -72,37 +72,41 @@ extension ChallengesView {
     
     @ViewBuilder
     var mainBody: some View {
-        VStack {
-            dateAndPhotoProfile
-            
-            titleApp
-            
-            ScrollView {
-                LazyVStack {
-                    competitionButtons
-                    
-                    DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
-                    
-                    NavigationLink(isActive: $isExerciseLinkActivate) {
-                        WorkoutNavigation(workout: selectedExercises)
-                    } label: {
-                        EmptyView()
+        ZStack{
+            VStack {
+                dateAndPhotoProfile
+                
+                titleApp
+                
+                ScrollView {
+                    LazyVStack {
+                        competitionButtons
+                        
+                        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
+                        
+                        NavigationLink(isActive: $isExerciseLinkActivate) {
+                            WorkoutNavigation(workout: selectedExercises)
+                        } label: {
+                            EmptyView()
+                        }
+                        
+                        ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
+                        
+                        ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
+                        
+                        BadgesView(badgesViewModel: badgesViewModel)
                     }
                     
-                    ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
-                    
-                    ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
-                    
-                    BadgesView(badgesViewModel: badgesViewModel)
+                    Spacer()
                 }
                 
-                Spacer()
             }
-            Rectangle().background(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
+            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
                 badgesViewModel.showBadgeDetail.toggle()
             }
-            BadgeAdd(isShown: badgesViewModel.showBadgeDetail).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
+        
         
         .navigationBarHidden(true)
         .onAppear {

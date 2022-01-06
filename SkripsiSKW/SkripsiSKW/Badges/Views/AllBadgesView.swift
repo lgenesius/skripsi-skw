@@ -18,10 +18,10 @@ struct AllBadgesView: View {
                     LatestBadge(badgesViewModel: badgesViewModel)
                     ListOfBadge(badgesViewModel: badgesViewModel)
                 }
-                Rectangle().background(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                     badgesViewModel.showBadgeDetail.toggle()
                 }
-                BadgeAdd(isShown: badgesViewModel.showBadgeDetail).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+                BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
                 
             }
         
