@@ -101,8 +101,9 @@ extension ChallengesView {
                 }
                 
             }
-            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
+            Rectangle().fill(Color.black).ignoresSafeArea().opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
                 badgesViewModel.showBadgeDetail.toggle()
+                
             }
             BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }

@@ -10,24 +10,20 @@ import SwiftUI
 struct AllBadgesView: View {
     @ObservedObject var badgesViewModel : AllBadgeViewModel
     var body: some View {
-        NavigationView{
-            ZStack{
-                Color.sambucus
-                    .ignoresSafeArea()
-                ScrollView{
-                    LatestBadge(badgesViewModel: badgesViewModel)
-                    ListOfBadge(badgesViewModel: badgesViewModel)
-                }
-                Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
-                    badgesViewModel.showBadgeDetail.toggle()
-                }
-                BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-                
+        ZStack{
+            Color.sambucus
+                .ignoresSafeArea()
+            ScrollView{
+                LatestBadge(badgesViewModel: badgesViewModel)
+                ListOfBadge(badgesViewModel: badgesViewModel)
             }
-        
-            .navigationBarTitle(Text("Badges"))
+            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                badgesViewModel.showBadgeDetail.toggle()
+            }
+            BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
             
         }
+        .navigationTitle(Text("Badges"))
         .preferredColorScheme(.dark)
     }
 }

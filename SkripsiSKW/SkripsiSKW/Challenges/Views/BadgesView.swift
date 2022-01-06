@@ -52,7 +52,9 @@ struct BadgesView: View {
                             HStack(spacing: 15) {
                                 ForEach(0..<3) { _ in
                                     BadgeItem().onTapGesture {
-                                        badgesViewModel.showBadgeDetail.toggle()
+                                        withAnimation {
+                                            badgesViewModel.showBadgeDetail.toggle()
+                                        }
                                     }
                                 }
                             }
