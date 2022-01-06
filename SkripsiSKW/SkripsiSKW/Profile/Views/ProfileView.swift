@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var sessionVM: SessionViewModel
-    
+    @ObservedObject var badgesViewModel : AllBadgeViewModel
     var navigationTitle: NavigationTitle
     var userId: String?
     
@@ -21,12 +21,13 @@ struct ProfileView: View {
         GridItem(.flexible(), spacing: 15)
     ]
     
-    init(from navigationTitle: NavigationTitle, uId: String? = nil) {
+    init(from navigationTitle: NavigationTitle, uId: String? = nil, badgesViewModel: AllBadgeViewModel) {
         self.navigationTitle = navigationTitle
         
         if let uId = uId {
             userId = uId
         }
+        self.badgesViewModel = badgesViewModel
     }
     
     var body: some View {
@@ -38,10 +39,14 @@ struct ProfileView: View {
                 VStack {
                     headerProfile
                     top3Badges
-                    LatestBadge()
-                    ListOfBadge()
+                    LatestBadge(badgesViewModel: badgesViewModel)
+                    ListOfBadge(badgesViewModel: badgesViewModel)
                 }
             }
+            Rectangle().background(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                badgesViewModel.showBadgeDetail.toggle()
+            }   
+            BadgeAdd(isShown: badgesViewModel.showBadgeDetail).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text(""))
@@ -221,8 +226,3 @@ extension ProfileView {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView(from: .challenges, uId: "123")
-    }
-}

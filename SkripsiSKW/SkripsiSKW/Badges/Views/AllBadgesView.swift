@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct AllBadgesView: View {
+    @ObservedObject var badgesViewModel : AllBadgeViewModel
     var body: some View {
         NavigationView{
             ZStack{
                 Color.sambucus
                     .ignoresSafeArea()
                 ScrollView{
-                    LatestBadge()
-                    ListOfBadge()
+                    LatestBadge(badgesViewModel: badgesViewModel)
+                    ListOfBadge(badgesViewModel: badgesViewModel)
                 }
-                
-                BadgeAdd().opacity(0)
+                Rectangle().background(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                    badgesViewModel.showBadgeDetail.toggle()
+                }
+                BadgeAdd(isShown: badgesViewModel.showBadgeDetail).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
                 
             }
         
@@ -29,8 +32,3 @@ struct AllBadgesView: View {
     }
 }
 
-struct AllBadgesView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllBadgesView()
-    }
-}

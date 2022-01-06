@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListOfBadge: View {
+    @ObservedObject var badgesViewModel : AllBadgeViewModel
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15),
@@ -24,19 +25,13 @@ struct ListOfBadge: View {
             
             LazyVGrid(columns: gridLayout, spacing: 15) {
                 ForEach(0..<9) { _ in
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color.blueDepths)
-                        .frame(maxWidth: .infinity, minHeight: 125)
+                    BadgeItem().onTapGesture {
+                        badgesViewModel.showBadgeDetail.toggle()
                 }
+            }
             }
         }
         .padding(.top, 20)
         .padding(.horizontal)
-    }
-}
-
-struct ListOfBadge_Previews: PreviewProvider {
-    static var previews: some View {
-        ListOfBadge()
     }
 }

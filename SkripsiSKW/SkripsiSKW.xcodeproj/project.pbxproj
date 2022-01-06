@@ -54,6 +54,9 @@
 		605B75712773400F00C6EBE7 /* BadgeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605B75702773400F00C6EBE7 /* BadgeAdd.swift */; };
 		60AFCE3D277902F800DDF951 /* ListOfBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AFCE3C277902F800DDF951 /* ListOfBadge.swift */; };
 		60AFCE3F2779054600DDF951 /* LatestBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AFCE3E2779054600DDF951 /* LatestBadge.swift */; };
+		60B3F33127858584003EF656 /* BadgeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F33027858584003EF656 /* BadgeItem.swift */; };
+		60B3F3342785E795003EF656 /* AllBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F3332785E795003EF656 /* AllBadgeViewModel.swift */; };
+		60B3F3372785E7F2003EF656 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F3362785E7F2003EF656 /* Badge.swift */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
 		E14C05582775BC01008DC3AF /* WorkoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05572775BC01008DC3AF /* WorkoutType.swift */; };
@@ -185,6 +188,9 @@
 		605B75702773400F00C6EBE7 /* BadgeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeAdd.swift; sourceTree = "<group>"; };
 		60AFCE3C277902F800DDF951 /* ListOfBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBadge.swift; sourceTree = "<group>"; };
 		60AFCE3E2779054600DDF951 /* LatestBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestBadge.swift; sourceTree = "<group>"; };
+		60B3F33027858584003EF656 /* BadgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeItem.swift; sourceTree = "<group>"; };
+		60B3F3332785E795003EF656 /* AllBadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgeViewModel.swift; sourceTree = "<group>"; };
+		60B3F3362785E7F2003EF656 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838076E1490E903C83A6062 /* Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW_SkripsiSKWUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,6 +361,8 @@
 		6006B5B327708A7D00177FFB /* Badges */ = {
 			isa = PBXGroup;
 			children = (
+				60B3F3352785E7DC003EF656 /* Models */,
+				60B3F3322785E76C003EF656 /* ViewModel */,
 				6006B5B4277198D100177FFB /* Views */,
 			);
 			path = Badges;
@@ -445,8 +453,25 @@
 				605B75702773400F00C6EBE7 /* BadgeAdd.swift */,
 				60AFCE3C277902F800DDF951 /* ListOfBadge.swift */,
 				60AFCE3E2779054600DDF951 /* LatestBadge.swift */,
+				60B3F33027858584003EF656 /* BadgeItem.swift */,
 			);
 			path = BadgeComponent;
+			sourceTree = "<group>";
+		};
+		60B3F3322785E76C003EF656 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60B3F3332785E795003EF656 /* AllBadgeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		60B3F3352785E7DC003EF656 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				60B3F3362785E7F2003EF656 /* Badge.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		90CE4EC55003718049573A17 /* Frameworks */ = {
@@ -1179,11 +1204,13 @@
 				E14C05652775CB91008DC3AF /* SkipButtonView.swift in Sources */,
 				49B943B62775BF870039FD84 /* LeaderboardRow.swift in Sources */,
 				E1DF1EFE277B05C6005B3282 /* CameraViewController.swift in Sources */,
+				60B3F3372785E7F2003EF656 /* Badge.swift in Sources */,
 				602AB8AE277ADC5100DFBA1F /* JoinChallengeViewModel.swift in Sources */,
 				E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */,
 				60AFCE3D277902F800DDF951 /* ListOfBadge.swift in Sources */,
 				E1F88D3327645B1100357A45 /* FormField.swift in Sources */,
 				E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */,
+				60B3F33127858584003EF656 /* BadgeItem.swift in Sources */,
 				E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
 				E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */,
@@ -1243,6 +1270,7 @@
 				602AB8B6277ADC5100DFBA1F /* JoinChallengeView.swift in Sources */,
 				49B943B02775B5D30039FD84 /* ProgressBar.swift in Sources */,
 				E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */,
+				60B3F3342785E795003EF656 /* AllBadgeViewModel.swift in Sources */,
 				E195A22C27731210001FE151 /* NavigationTitle.swift in Sources */,
 				E1C9B0C627678AC700611DAE /* Decodable+Ext.swift in Sources */,
 				E14C05622775CAB8008DC3AF /* InfoTabView.swift in Sources */,
