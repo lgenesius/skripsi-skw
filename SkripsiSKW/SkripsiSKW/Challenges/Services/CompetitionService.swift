@@ -64,7 +64,7 @@ class CompetitionService {
         
     }
     
-    static func JoinCompetition(_ competitionCode: String, completion: @escaping (JoinChallengeEnum, Error?) -> Void){
+    static func JoinCompetition(_ competitionCode: String, sessionVM: SessionViewModel, completion: @escaping (JoinChallengeEnum, Error?) -> Void){
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
@@ -101,7 +101,7 @@ class CompetitionService {
                                 "users": FieldValue.arrayUnion([[
                                     "userCompetitionPoint" : 0,
                                     "userId" : userId,
-                                    "userName": "tester"
+                                    "userName": sessionVM.authUser?.name ?? "Nil"
                                 ]])
                             ])
                             completion(.valid, nil)

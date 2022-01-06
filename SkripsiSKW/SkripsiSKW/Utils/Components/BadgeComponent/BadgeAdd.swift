@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct BadgeAdd: View {
-    @ObservedObject var badgesViewModel : AllBadgeViewModel
+    @ObservedObject var badgesViewModel : BadgeViewModel
+    @ObservedObject var badgesListVM: BadgeListViewModel
+    
     var body: some View {
         VStack(alignment: .center){
             ZStack{
                 Rectangle().fill(Color.blueDepths)
                 VStack{
                     Spacer()
-                    Text("Title").bold()
+                    Text("\(badgesViewModel.userBadge.name)").bold()
                     Image(systemName: "circle.fill").resizable().frame(width: 94, height: 94).foregroundColor(Color.yellow)
                     
                     Text("Short Description").font(.system(size: 11)).frame(width: 173, height: 49)
@@ -25,7 +27,7 @@ struct BadgeAdd: View {
             }.frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3.5).cornerRadius(13)
         
             
-            Button(action: { badgesViewModel.showBadgeDetail.toggle() }, label: {
+            Button(action: { }, label: {
                 Text("Add to Highlight").bold().foregroundColor(.white)
             }).frame(width: UIScreen.main.bounds.width/2).padding(.vertical, 5).border(Color.insignia).background(Color.insignia).cornerRadius(8)
             

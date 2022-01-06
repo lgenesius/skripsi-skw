@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BadgeItem: View {
+    var badgeViewModel: BadgeViewModel
     
     var body: some View {
         
@@ -17,7 +18,7 @@ struct BadgeItem: View {
             .overlay(
                 ZStack{
                     VStack(alignment: .center){
-                        Text("Title").font(.system(size: 14)).foregroundColor(Color.white).multilineTextAlignment(.center)
+                        Text("\(badgeViewModel.userBadge.name)").font(.system(size: 14)).foregroundColor(Color.white).multilineTextAlignment(.center)
                         Image(systemName: "circle.fill").resizable()
                             .foregroundColor(Color.yellow).frame(width: 70, height: 70)
                     }
@@ -34,7 +35,7 @@ struct BadgeItem: View {
 
 struct BadgeItem_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeItem()
+        BadgeItem(badgeViewModel: dev.userBadgeVM)
     }
 }
 
