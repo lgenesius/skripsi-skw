@@ -9,29 +9,37 @@ import SwiftUI
 
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
+    @StateObject var badgesViewModel = AllBadgeViewModel()
     
     var body: some View {
-        VStack {
-            dateAndPhotoProfile
-            
-            titleApp
-            
-            ScrollView {
-                LazyVStack {
-                    competitionButtons
-                    
-                    DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
-                    
-                    ExercisesList()
-                    
-                    ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
-                    
-                    BadgesView()
+        ZStack{
+            VStack {
+                dateAndPhotoProfile
+                
+                titleApp
+                
+                ScrollView {
+                    LazyVStack {
+                        competitionButtons
+                        
+                        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
+                        
+                        ExercisesList()
+                        
+                        ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
+                        
+                        BadgesView(badgesViewModel: badgesViewModel)
+                    }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
+            Rectangle().background(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
+                badgesViewModel.showBadgeDetail.toggle()
+            }
+            BadgeAdd(isShown: badgesViewModel.showBadgeDetail).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
         }
+        
         .navigationBarHidden(true)
     }
 }
@@ -45,7 +53,7 @@ extension ChallengesView {
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
             NavigationLink {
-                ProfileView(from: .challenges)
+                ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
             } label: {
                 Circle()
                     .frame(width: 36, height: 36)
