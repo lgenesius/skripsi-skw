@@ -80,6 +80,7 @@
 		E1C9B0CC27678E7000611DAE /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */; };
 		E1C9B0CF2767901D00611DAE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */; };
 		E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C9B0D12767913E00611DAE /* SignInViewModel.swift */; };
+		E1D3A3102786FC3800B03B55 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3A30F2786FC3800B03B55 /* PhotoPicker.swift */; };
 		E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */; };
 		E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */; };
 		E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */; };
@@ -217,6 +218,7 @@
 		E1C9B0CB27678E7000611DAE /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		E1C9B0CE2767901D00611DAE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1C9B0D12767913E00611DAE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E1D3A30F2786FC3800B03B55 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		E1D3C923277EEFE800B4B3D5 /* WorkoutFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFinishView.swift; sourceTree = "<group>"; };
 		E1D7E4F42776E98700ECAD39 /* WorkoutNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNavigation.swift; sourceTree = "<group>"; };
 		E1D7E4F627770D6D00ECAD39 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 		E195A22727730D43001FE151 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E1D3A30D2786FC0F00B03B55 /* Components */,
 				E195A22827730D51001FE151 /* Views */,
 			);
 			path = Profile;
@@ -627,6 +630,22 @@
 				E1C9B0D12767913E00611DAE /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1D3A30D2786FC0F00B03B55 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E1D3A30E2786FC2100B03B55 /* UIKit */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E1D3A30E2786FC2100B03B55 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E1D3A30F2786FC3800B03B55 /* PhotoPicker.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		E1D7E4F32776E91A00ECAD39 /* Navigation */ = {
@@ -1235,6 +1254,7 @@
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
 				49B943B42775BF5C0039FD84 /* LeaderboardList.swift in Sources */,
 				E1C9B0D22767913E00611DAE /* SignInViewModel.swift in Sources */,
+				E1D3A3102786FC3800B03B55 /* PhotoPicker.swift in Sources */,
 				602AB8AD277ADC5100DFBA1F /* CompetitionViewModel.swift in Sources */,
 				49B943992774A5370039FD84 /* TextEditorField.swift in Sources */,
 				493871E4277B07AD00D6F794 /* CustomViewWrapper.swift in Sources */,
