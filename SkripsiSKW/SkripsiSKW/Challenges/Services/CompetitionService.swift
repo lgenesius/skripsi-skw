@@ -66,7 +66,8 @@ class CompetitionService {
                         "users": FieldValue.arrayUnion([[
                             "userCompetitionPoint" : userData.userCompetitionPoint,
                             "userId" : userData.userId,
-                            "userName": userData.userName
+                            "userName": userData.userName,
+                            "userRank": userData.userRank
                         ]])
                     ])
                     
@@ -227,19 +228,17 @@ class CompetitionService {
             }
 
             if let document = querySnapshot, document.exists {
-                var competitionQueryData = try? querySnapshot?.data(as: Competition.self) ?? nil
+                var competitionQueryData = sortedCompetition
                 
-                _ = sortedCompetition.users.enumerated().map { (index, _) in
-                    competitionQueryData!.users.mutateEach { userData in
-                        userData.mapRank(rank: index+1)
-                    }
+                for (index, _) in sortedCompetition.users.enumerated() {
+                    competitionQueryData.users[index].mapRank(rank: index+1)
                 }
-                
+
                 document.reference.updateData([
                     "users": ""
                 ])
-                
-                competitionQueryData!.users.forEach { userData in
+
+                competitionQueryData.users.forEach { userData in
                     document.reference.updateData([
                         "users": FieldValue.arrayUnion([[
                             "userCompetitionPoint" : userData.userCompetitionPoint,
@@ -248,7 +247,7 @@ class CompetitionService {
                             "userRank" : userData.userRank
                         ]])
                     ])
-                    
+
                 }
             }
         }
@@ -291,4 +290,8 @@ extension Array {
             return el
         }
      }
+    
+    public func mapWithIndex<T> (f: (Int, Element) -> T) -> [T] {
+         return zip((self.startIndex ..< self.endIndex), self).map(f)
+    }
 }

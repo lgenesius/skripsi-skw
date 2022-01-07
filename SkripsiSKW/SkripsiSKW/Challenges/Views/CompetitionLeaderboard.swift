@@ -89,10 +89,10 @@ extension CompetitionLeaderboard {
     @ViewBuilder
     private var competitionRank: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant()))")
+            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant()) Participants)")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
             HStack {
-                Text("1st Rank")
+                Text("\(competitionVM.userRanking) Rank")
                     .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
                 Spacer()
                 NavigationLink {

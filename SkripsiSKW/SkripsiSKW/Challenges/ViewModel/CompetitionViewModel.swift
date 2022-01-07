@@ -26,6 +26,7 @@ class CompetitionViewModel: ObservableObject {
     
     var dummyTotalPoint: Int = 245
     var userID: String = ""
+    var userRanking: Int = 0
     
     private var timerSubscription: AnyCancellable? = nil
     private var cancellationSet: Set<AnyCancellable> = []
@@ -47,6 +48,7 @@ class CompetitionViewModel: ObservableObject {
             userData.userId == self.userID
         })
         dummyTotalPoint = relatedData?.userCompetitionPoint ?? 0
+        userRanking = relatedData?.userRank ?? 0
         initTimer()
     }
     
