@@ -125,9 +125,11 @@ extension ChallengesView {
             NavigationLink {
                 ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
             } label: {
-                Circle()
+                Image("dummy")
+                    .resizable()
+                    .scaledToFill()
                     .frame(width: 36, height: 36)
-                    .foregroundColor(Color.notYoCheese)
+                    .clipShape(Circle())
             }
         }
         .padding(.horizontal)

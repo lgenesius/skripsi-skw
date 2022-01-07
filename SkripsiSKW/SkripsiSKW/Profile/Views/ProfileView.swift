@@ -14,7 +14,13 @@ struct ProfileView: View {
     var navigationTitle: NavigationTitle
     var userId: String?
     
+    @State private var presentActionSheet = false
     @State private var presentLogoutAlert = false
+    @State private var presentPhotoSheet = false
+    @State private var presentCheckPhoto = false
+    
+    @State private var imageData = Data()
+    
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15),
@@ -31,6 +37,134 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        if #available(iOS 15.0, *) {
+            mainBody
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text(""))
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.notYoCheese)
+                                Text(navigationTitle.title)
+                                    .foregroundColor(.notYoCheese)
+                            }
+                        }
+                    }
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            presentLogoutAlert = true
+                        } label: {
+                            Text("Logout")
+                                .foregroundColor(.notYoCheese)
+                        }
+                    }
+                }
+                .alert(
+                    "Logout",
+                    isPresented: $presentLogoutAlert,
+                    actions: {
+                        Button("Cancel", role: .cancel, action: {})
+                        Button("Logout") {
+                            sessionVM.logout()
+                        }
+                    },
+                    message: {
+                        Text("Are you sure you want to Logout?")
+                    })
+                .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
+                    Button {
+                        presentPhotoSheet = true
+                    } label: {
+                        Text("Upload Picture")
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Remove Picture")
+                    }
+                }
+                .sheet(isPresented: $presentPhotoSheet) {
+                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
+                        showCheckPhoto(status: status)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+            mainBody
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text(""))
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(
+                    leading:
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.notYoCheese)
+                                Text(navigationTitle.title)
+                                    .foregroundColor(.notYoCheese)
+                            }
+                        }),
+                    trailing:
+                        Button(action: {
+                            presentLogoutAlert = true
+                        }, label: {
+                            Text("Logout")
+                                .foregroundColor(.notYoCheese)
+                        })
+                )
+                .alert(isPresented: $presentLogoutAlert) {
+                    Alert(
+                        title: Text("Logout"),
+                        message: Text("Are you sure you want to Logout?"),
+                        primaryButton: .cancel(),
+                        secondaryButton: .default(Text("Logout"), action: {
+                            sessionVM.logout()
+                        })
+                    )
+                }
+                .actionSheet(isPresented: $presentActionSheet) {
+                    ActionSheet(
+                        title: Text("Select Action"),
+                        buttons: [
+                            .default(Text("Upload Picture"), action: {
+                                presentPhotoSheet = true
+                            }),
+                            .default(Text("Remove Picture"), action: {
+                                
+                            }),
+                            .cancel()
+                        ]
+                    )
+                }
+                .sheet(isPresented: $presentPhotoSheet) {
+                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
+                        showCheckPhoto(status: status)
+                    }
+                }
+        }
+    }
+    
+    private func showCheckPhoto(status: Bool) {
+        guard status else { return }
+        withAnimation {
+            presentCheckPhoto = true
+        }
+    }
+}
+
+extension ProfileView {
+    
+    @ViewBuilder
+    var mainBody: some View {
         ZStack {
             Color.sambucus
                 .ignoresSafeArea()
@@ -45,55 +179,47 @@ struct ProfileView: View {
             }
             Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                 badgesViewModel.showBadgeDetail.toggle()
-            }   
+            }
             BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(Text(""))
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.notYoCheese)
-                        Text(navigationTitle.title)
-                            .foregroundColor(.notYoCheese)
-                    }
-                }
-            }
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button {
-                    presentLogoutAlert = true
-                } label: {
-                    Text("Logout")
-                        .foregroundColor(.notYoCheese)
-                }
-            }
-        }
-        .alert(isPresented: $presentLogoutAlert) {
-            Alert(
-                title: Text("Logout"),
-                message: Text("Are you sure you want to Logout?"),
-                primaryButton: .cancel(),
-                secondaryButton: .default(Text("Logout"), action: {
-                    sessionVM.logout()
-                })
-            )
+            PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
         }
     }
-}
-
-extension ProfileView {
+    
     @ViewBuilder
     var headerProfile: some View {
         HStack(alignment: .center) {
-            Circle()
-                .fill(Color.notYoCheese)
-                .frame(width: 110, height: 110)
+            Button {
+                presentActionSheet = true
+            } label: {
+                if #available(iOS 15.0, *) {
+                    Image("dummy")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                        .overlay(alignment: .bottomTrailing) {
+                            Image(systemName: "pencil.circle.fill")
+                                .foregroundColor(.white)
+                                .scaleEffect(2)
+                                .opacity(userId == nil ? 1: 0)
+                        }
+                } else {
+                    // Fallback on earlier versions
+                    Image("dummy")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                        .overlay(
+                            Image(systemName: "pencil.circle.fill")
+                                .foregroundColor(.white)
+                                .scaleEffect(2)
+                                .opacity(userId == nil ? 1: 0),
+                            alignment: .bottomTrailing
+                        )
+                }
+            }
+            .allowsHitTesting(userId == nil ? true: false)
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
                 Text("Kevin Leon Luis Genesius")
