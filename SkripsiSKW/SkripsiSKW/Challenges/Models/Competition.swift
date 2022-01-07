@@ -39,4 +39,12 @@ struct CompetitionUserData: Codable {
     var userId: String
     var userCompetitionPoint: Int
     var userName: String
+    
+    func addUserPoint(injectedAddNewUserPoint: Int) -> CompetitionUserData {
+        return CompetitionUserData(userId: userId, userCompetitionPoint: (userCompetitionPoint + injectedAddNewUserPoint), userName: userName)
+    }
+    
+    mutating func updateUserPoint(addedPoint: Int) {
+        self.userCompetitionPoint += addedPoint
+    }
 }

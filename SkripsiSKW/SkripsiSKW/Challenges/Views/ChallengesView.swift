@@ -92,7 +92,7 @@ extension ChallengesView {
                         
                         ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
                         
-                        ActiveCompetitions(activeCompetitionVM: ActiveCompetitionListViewModel())
+                        ActiveCompetitions(activeCompetitionListVM: ActiveCompetitionListViewModel())
                         
                         BadgesView(badgesListVM: badgesViewModel)
                     }

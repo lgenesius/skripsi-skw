@@ -28,4 +28,16 @@ final class ActiveCompetitionListViewModel: ObservableObject {
     func fetchData() {
         competitionRepository.get()
     }
+    
+    func updateAllData(by points: Int){
+        competitionListModel.forEach {
+            CompetitionService.updateCompetitionData(competitionPoint: points, onSuccess: {
+                
+            }, onError: { String in
+                
+            }, competitionId: $0.id)
+        }
+        
+        fetchData()
+    }
 }

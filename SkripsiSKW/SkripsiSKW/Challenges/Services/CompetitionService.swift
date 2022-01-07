@@ -36,6 +36,45 @@ class CompetitionService {
         }
     }
     
+    static func updateCompetitionData(competitionPoint: Int, onSuccess: @escaping() -> Void,
+                                      onError: @escaping (_ errorMessage: String) -> Void, competitionId: String)
+    {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        Competitions.document(competitionId).getDocument { (querySnapshot, error) in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+            
+            if let document = querySnapshot, document.exists {
+                var competitionQueryData = try? querySnapshot?.data(as: Competition.self) ?? nil
+                competitionQueryData!.users.mutateEach { userData in
+                    if userData.userId == userId {
+                        userData.userCompetitionPoint += competitionPoint
+                    }
+                }
+                
+                document.reference.updateData([
+                    "users": ""
+                ])
+                
+                competitionQueryData!.users.forEach { userData in
+                    document.reference.updateData([
+                        "users": FieldValue.arrayUnion([[
+                            "userCompetitionPoint" : userData.userCompetitionPoint,
+                            "userId" : userData.userId,
+                            "userName": userData.userName
+                        ]])
+                    ])
+                    
+                }
+            }
+        }
+    }
+    
     static func CheckSameCompetition(_ competitionCode: String, completion: @escaping (Bool, Error?) -> Void) {
         var result = false
         
@@ -193,3 +232,12 @@ class CompetitionService {
         }
 }
 
+extension Array {
+    mutating func mutateEach(by transform: (inout Element) throws -> Void) rethrows {
+        self = try map { el in
+            var el = el
+            try transform(&el)
+            return el
+        }
+     }
+}

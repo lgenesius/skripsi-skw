@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ActiveCompetitions: View {
     @State private var isDropDown = true
-    @StateObject var activeCompetitionVM: ActiveCompetitionListViewModel
+    @StateObject var activeCompetitionListVM: ActiveCompetitionListViewModel
+    @EnvironmentObject var sessionVM: SessionViewModel
     var body: some View {
         VStack {
             HStack {
@@ -31,9 +32,12 @@ struct ActiveCompetitions: View {
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(activeCompetitionVM.competitionListModel) { activeCompetitionVM in
+                        ForEach(activeCompetitionListVM.competitionListModel) { activeCompetitionVM in
                             NavigationLink {
                                 CompetitionLeaderboard(activeCompetitionVM: activeCompetitionVM)
+//                                    .onAppear {
+//                                        activeCompetitionListVM.updateAllData(by: 30)
+//                                    }
                             } label: {
                                 ActiveCompetitionCard(activeCompetitionVM: activeCompetitionVM)
                             }
@@ -43,7 +47,7 @@ struct ActiveCompetitions: View {
             }
         }
         .onAppear(perform: {
-            activeCompetitionVM.fetchData()
+            activeCompetitionListVM.fetchData()
         })
         .padding(.horizontal)
         .padding(.top)

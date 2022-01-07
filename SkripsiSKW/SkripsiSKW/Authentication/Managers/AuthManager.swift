@@ -55,7 +55,6 @@ class AuthManager {
                         let injectedBadge = UserBadge(competitionId: "", name: "", description: "", image: "", goal: 0, progress: 0, recievedDate: Date(), isHighlighted: false)
                         
                         for badge in badges ?? [] {
-
                             _ = try? firestoreDocReference.collection("Badges").addDocument(from: injectedBadge.modifyBadgeFromStub(injectedBadge: badge))
                         }
                     }
