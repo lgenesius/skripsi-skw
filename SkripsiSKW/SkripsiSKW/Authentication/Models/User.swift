@@ -14,5 +14,4 @@ struct User: Codable {
     var username: String
     var challenges: [Competition]
     var totalPoint: Int = 0
-    var profileImageUrl: String
 }
