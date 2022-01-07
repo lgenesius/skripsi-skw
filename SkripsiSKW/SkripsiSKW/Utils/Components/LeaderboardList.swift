@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LeaderboardList: View {
-    @Binding var listOfData: [[String]]
+    @Binding var listOfData: [CompetitionUserData]
     var incrementIndex: Int = 0
     
     var body: some View {
@@ -27,6 +27,7 @@ struct LeaderboardList: View {
 
 struct LeaderboardList_Previews: PreviewProvider {
     static var previews: some View {
-        LeaderboardList(listOfData: .constant([["Jackie", "239"], ["Leon", "231"]]))
+        LeaderboardList(listOfData:
+        .constant( [CompetitionUserData(userId: "Jackie", userCompetitionPoint: 123, userName: "Jack"), CompetitionUserData(userId: "Leon", userCompetitionPoint: 100, userName: "Leyon")]))
     }
 }

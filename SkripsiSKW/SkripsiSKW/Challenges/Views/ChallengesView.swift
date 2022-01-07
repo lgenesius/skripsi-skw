@@ -9,34 +9,112 @@ import SwiftUI
 
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
+    @StateObject var badgesViewModel = BadgeListViewModel()
+    
+    @State private var isAlertPresent = false
+    @State private var alertIdentifier: AlertIdentifier = .caution
+    @State private var selectedExercises: WorkoutType = .squat
+    
+    @State private var isExerciseLinkActivate = false
     
     var body: some View {
-        VStack {
-            dateAndPhotoProfile
-            
-            titleApp
-            
-            ScrollView {
-                LazyVStack {
-                    competitionButtons
-                    
-                    DailyChallengesView()
-                    
-                    ExercisesList()
-                    
-                    ActiveCompetitions()
-                    
-                    BadgesView()
+        if #available(iOS 15.0, *) {
+            mainBody
+                .alert(
+                    alertIdentifier.title,
+                    isPresented: $isAlertPresent
+                ) {
+                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
+                    Button(alertIdentifier.secondaryButtonString) {
+                        secondaryAlertAction()
+                    }
+                } message: {
+                    Text(alertIdentifier.message)
                 }
-            }
-            
-            Spacer()
+        } else {
+            // Fallback on earlier versions
+            mainBody
+                .alert(isPresented: $isAlertPresent) {
+                    Alert(
+                        title: Text(alertIdentifier.title),
+                        message: Text(alertIdentifier.message),
+                        primaryButton: .cancel(),
+                        secondaryButton: .default(
+                            Text(alertIdentifier.secondaryButtonString),
+                            action: {
+                                secondaryAlertAction()
+                            })
+                    )
+                }
         }
-        .navigationBarHidden(true)
+        
+    }
+    
+    private func requestCameraAuth() {
+        let cameraAuthStatus = CameraAuthorizationManager.getCameraAuthorizationStatus()
+        
+        if cameraAuthStatus == .notRequested {
+            CameraAuthorizationManager.requestCameraAuthorization { _ in }
+        }
+    }
+    
+    private func secondaryAlertAction() {
+        switch alertIdentifier {
+        case .caution:
+            isExerciseLinkActivate = true
+        case .openSettings:
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }
     }
 }
 
 extension ChallengesView {
+    
+    @ViewBuilder
+    var mainBody: some View {
+        ZStack{
+            VStack {
+                dateAndPhotoProfile
+                
+                titleApp
+                
+                ScrollView {
+                    LazyVStack {
+                        competitionButtons
+                        
+                        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
+                        
+                        NavigationLink(isActive: $isExerciseLinkActivate) {
+                            WorkoutNavigation(workout: selectedExercises)
+                        } label: {
+                            EmptyView()
+                        }
+                        
+                        ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
+                        
+                        ActiveCompetitions(activeCompetitionListVM: ActiveCompetitionListViewModel())
+                        
+                        BadgesView(badgesListVM: badgesViewModel)
+                    }
+                    
+                    Spacer()
+                }
+                
+            }
+            Rectangle().fill(Color.black).ignoresSafeArea().opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
+                badgesViewModel.showBadgeDetail.toggle()
+                
+            }
+            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+        }
+        
+        
+        .navigationBarHidden(true)
+        .onAppear {
+            requestCameraAuth()
+            badgesViewModel.fetchUserBadges(sessionVM: sessionVM)
+        }
+    }
     
     @ViewBuilder
     var dateAndPhotoProfile: some View {
@@ -45,11 +123,13 @@ extension ChallengesView {
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
             NavigationLink {
-                ProfileView(from: .challenges)
+                ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
             } label: {
-                Circle()
+                Image("dummy")
+                    .resizable()
+                    .scaledToFill()
                     .frame(width: 36, height: 36)
-                    .foregroundColor(Color.notYoCheese)
+                    .clipShape(Circle())
             }
         }
         .padding(.horizontal)

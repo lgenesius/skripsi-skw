@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LeaderboardRow: View {
-    var rowData: [String]
+    var rowData: CompetitionUserData
     var rank: Int
     
     var body: some View {
         HStack {
-            Text("\(rank). \(rowData[0])")
+            Text("\(rank). \(rowData.userName)")
                 .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .bold))
             Spacer()
-            Text("\(rowData[1]) Points")
+            Text("\(rowData.userCompetitionPoint) Points")
                 .modifier(TextModifier(color: Color.notYoCheese, size: 17, weight: .bold))
         }
     }
@@ -24,6 +24,6 @@ struct LeaderboardRow: View {
 
 struct LeaderboardRow_Previews: PreviewProvider {
     static var previews: some View {
-        LeaderboardRow(rowData: ["Jackie Leonardy", "231"], rank: 1)
+        LeaderboardRow(rowData: CompetitionUserData(userId: "jackie leonardy", userCompetitionPoint: 123, userName: "Jack"), rank: 10)
     }
 }

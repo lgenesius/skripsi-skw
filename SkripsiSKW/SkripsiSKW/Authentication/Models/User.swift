@@ -12,5 +12,6 @@ struct User: Codable {
     var email: String
     var name: String
     var username: String
-    var badges: [String: Bool]
+    var challenges: [Competition]
+    var totalPoint: Int = 0
 }

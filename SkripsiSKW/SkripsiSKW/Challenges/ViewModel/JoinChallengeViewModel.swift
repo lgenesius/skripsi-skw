@@ -8,26 +8,6 @@
 import Foundation
 import Combine
 
-enum JoinChallengeEnum {
-    case valid
-    case moreThanTwo
-    case insideTheCompetition
-    case inValid
-    
-    fileprivate func getAlertMessage() -> (title: String, message: String) {
-        switch self {
-            case .valid:
-                return ("Valid", "Valid")
-            case .moreThanTwo:
-                return ("Limit", "You’ve already joined 2 Competitions")
-            case .insideTheCompetition:
-                return ("Same Competition", "You are already inside the competition")
-            case .inValid:
-                return ("Invalid", "Invalid Bro")
-        }
-    }
-}
-
 class JoinChallengeViewModel: ObservableObject {
     @Published var challengeCode: String = ""
     @Published var canJoin: Bool = false
@@ -50,12 +30,15 @@ class JoinChallengeViewModel: ObservableObject {
         return (title: self.alertTitle, message: self.alertMessage)
     }
     
-    func joinChallenge() {
+    func joinChallenge(sessionVM: SessionViewModel, completion: @escaping (JoinChallengeEnum) -> Void) {
         //TODO: Kasi Logic buat check kode competition lalu setup Enum Challenge Validity based on respon yang diberikan
-        self.challengeValidatity = .moreThanTwo
-        self.alertMessage = self.challengeValidatity.getAlertMessage().message
-        self.alertTitle = self.challengeValidatity.getAlertMessage().title
-        self.alertPresented.toggle()
+        CompetitionService.JoinCompetition(self.challengeCode, sessionVM: sessionVM) { canJoin, error in
+            self.challengeValidatity = canJoin
+            self.alertMessage = self.challengeValidatity.getAlertMessage().message
+            self.alertTitle = self.challengeValidatity.getAlertMessage().title
+            self.alertPresented = true
+            completion(canJoin)
+        }
     }
 }
 
@@ -63,7 +46,7 @@ extension JoinChallengeViewModel {
     private func addTextFieldSubscriber() {
         $challengeCode.debounce(for: 0.2, scheduler: DispatchQueue.main)
             .map { (text) -> Bool in
-                if text.count > 5 || text.count < 1{ return false }
+                if text.count > 5 || text.count < 1 { return false }
                 else if text.count <= 5 && text.count > 0 { return true }
                 return false
             }

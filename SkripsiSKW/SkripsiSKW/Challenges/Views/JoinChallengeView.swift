@@ -10,6 +10,9 @@ import SwiftUI
 struct JoinChallengeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject private var joinChallengeVM: JoinChallengeViewModel = JoinChallengeViewModel()
+    @State private var willJoin: Bool = false
+    @State private var presentLoading: Bool = false
+    @EnvironmentObject var sessionVM: SessionViewModel
     
     var body: some View {
         ZStack {
@@ -28,12 +31,30 @@ struct JoinChallengeView: View {
                 
                 Spacer()
                 RoundedButton(title: "Continue") {
-                    joinChallengeVM.joinChallenge()
+                    joinChallengeVM.joinChallenge(sessionVM: sessionVM) { result in
+                        switch result {
+                        case .error, .inValid, .insideTheCompetition, .moreThanTwo:
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                self.presentLoading = false
+                            }
+                            
+                        case .valid:
+                            self.presentLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                self.presentLoading = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                    }
+                    
                 }
                 .opacity(joinChallengeVM.canJoin ? 1.0 : 0.5)
                 .disabled(!joinChallengeVM.canJoin)
                 .alert(isPresented: $joinChallengeVM.alertPresented) {
-                    Alert(title: Text(joinChallengeVM.getAlertData().title), message: Text(joinChallengeVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
+                    Alert(title: Text(joinChallengeVM.getAlertData().title), message: Text(joinChallengeVM.getAlertData().message), dismissButton: .cancel(Text("Ok"), action:{
+                        self.presentLoading = false
+                    }))
                 }
                 Spacer(minLength: 300)
             }
@@ -48,7 +69,8 @@ struct JoinChallengeView: View {
                     
                 }
             }
-        }
+            LoadingCard(isLoading: presentLoading, message: "Joining Competition")
+        }  
     }
 }
 

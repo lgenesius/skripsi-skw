@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LatestBadge: View {
+    var badgesViewModel : [BadgeViewModel]
+    @ObservedObject var badgesListVM : BadgeListViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Latest Badges")
@@ -18,10 +21,11 @@ struct LatestBadge: View {
                 ))
             
             HStack(spacing: 15) {
-                ForEach(0..<3) { _ in
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color.blueDepths)
-                        .frame(maxWidth: .infinity, minHeight: 125)
+                ForEach(badgesViewModel) { badgeVM in
+                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                        badgesListVM.showBadgeDetail.toggle()
+                    }
                 }
             }
         }
@@ -30,8 +34,3 @@ struct LatestBadge: View {
     }
 }
 
-struct LatestBadge_Previews: PreviewProvider {
-    static var previews: some View {
-        LatestBadge()
-    }
-}
