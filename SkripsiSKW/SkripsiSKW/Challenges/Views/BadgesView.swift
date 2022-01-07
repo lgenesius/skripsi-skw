@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BadgesView: View {
     @State private var roundedRect: CGRect = .zero
-    @ObservedObject var badgesViewModel : AllBadgeViewModel
+    @ObservedObject var badgesListVM : BadgeListViewModel
+    
     var body: some View {
         
             VStack {
@@ -18,7 +19,7 @@ struct BadgesView: View {
                         .modifier(TextModifier(color: .white, size: 24, weight: .medium))
                     Spacer()
                     NavigationLink {
-                        AllBadgesView(badgesViewModel: badgesViewModel)
+                        AllBadgesView(badgesViewModel: badgesListVM.userBadgeListViewModel, badgesListVM: badgesListVM)
                     } label: {
                         Text("Show More")
                             .modifier(TextModifier(color: .notYoCheese, size: 14, weight: .regular))
@@ -33,9 +34,10 @@ struct BadgesView: View {
                         .background(GeometryGetter(rect: $roundedRect))
                         .overlay {
                             HStack(spacing: 15) {
-                                ForEach(0..<3) { _ in
-                                    BadgeItem().onTapGesture {
-                                        badgesViewModel.showBadgeDetail.toggle()
+                                ForEach(badgesListVM.topThree()) { badgeVM in
+                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                        badgesListVM.showBadgeDetail.toggle()
                                     }
                                 }
                             }
@@ -51,8 +53,11 @@ struct BadgesView: View {
                         .overlay(
                             HStack(spacing: 15) {
                                 ForEach(0..<3) { _ in
-                                    BadgeItem().onTapGesture {
-                                        badgesViewModel.showBadgeDetail.toggle()
+                                    ForEach(badgesListVM.userBadgeListViewModel) { badgeVM in
+                                        BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                            badgesListVM.showBadgeDetail.toggle()
+                                        }
                                     }
                                 }
                             }

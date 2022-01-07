@@ -38,8 +38,7 @@ class AuthManager {
                     }
                     
                     let firestoreDocReference = self.getUserDocRef(userId: userId)
-                    let user = User(uid: userId, email: email, name: name, username: username, badges: [:], challenges: [])
-                    
+                    let user = User(uid: userId, email: email, name: name, username: username, challenges: [])
                     guard let dict = try? user.asDictionary() else { return }
                     firestoreDocReference.setData(dict) { error in
                         if let error = error {
@@ -47,6 +46,18 @@ class AuthManager {
                         }
                     }
                     
+                    BadgeService.getBadge { badges, error in
+                        if let error = error {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        let injectedBadge = UserBadge(competitionId: "", name: "", description: "", image: "", goal: 0, progress: 0, recievedDate: Date(), isHighlighted: false)
+                        
+                        for badge in badges ?? [] {
+                            _ = try? firestoreDocReference.collection("Badges").addDocument(from: injectedBadge.modifyBadgeFromStub(injectedBadge: badge))
+                        }
+                    }
                     completion(user, nil)
                 }
             }

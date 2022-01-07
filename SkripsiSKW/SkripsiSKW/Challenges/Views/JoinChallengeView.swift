@@ -12,6 +12,7 @@ struct JoinChallengeView: View {
     @StateObject private var joinChallengeVM: JoinChallengeViewModel = JoinChallengeViewModel()
     @State private var willJoin: Bool = false
     @State private var presentLoading: Bool = false
+    @EnvironmentObject var sessionVM: SessionViewModel
     
     var body: some View {
         ZStack {
@@ -30,7 +31,7 @@ struct JoinChallengeView: View {
                 
                 Spacer()
                 RoundedButton(title: "Continue") {
-                    joinChallengeVM.joinChallenge { result in
+                    joinChallengeVM.joinChallenge(sessionVM: sessionVM) { result in
                         switch result {
                         case .error, .inValid, .insideTheCompetition, .moreThanTwo:
                             

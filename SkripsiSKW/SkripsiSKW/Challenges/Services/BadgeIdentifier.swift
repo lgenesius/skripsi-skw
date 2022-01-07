@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BadgeIdentifier: String {
+enum BadgeIdentifier: String, Codable {
     case pushup = "PushUp"
     case plank = "Plank"
     case squat = "Squat"
