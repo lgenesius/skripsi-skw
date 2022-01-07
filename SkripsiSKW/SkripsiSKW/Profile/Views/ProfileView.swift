@@ -16,6 +16,11 @@ struct ProfileView: View {
     
     @State private var presentActionSheet = false
     @State private var presentLogoutAlert = false
+    @State private var presentPhotoSheet = false
+    @State private var presentCheckPhoto = false
+    
+    @State private var imageData = Data()
+    
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15),
@@ -74,7 +79,7 @@ struct ProfileView: View {
                     })
                 .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
                     Button {
-                        
+                        presentPhotoSheet = true
                     } label: {
                         Text("Upload Picture")
                     }
@@ -83,6 +88,11 @@ struct ProfileView: View {
                         
                     } label: {
                         Text("Remove Picture")
+                    }
+                }
+                .sheet(isPresented: $presentPhotoSheet) {
+                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
+                        showCheckPhoto(status: status)
                     }
                 }
         } else {
@@ -126,7 +136,7 @@ struct ProfileView: View {
                         title: Text("Select Action"),
                         buttons: [
                             .default(Text("Upload Picture"), action: {
-                                
+                                presentPhotoSheet = true
                             }),
                             .default(Text("Remove Picture"), action: {
                                 
@@ -135,6 +145,18 @@ struct ProfileView: View {
                         ]
                     )
                 }
+                .sheet(isPresented: $presentPhotoSheet) {
+                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
+                        showCheckPhoto(status: status)
+                    }
+                }
+        }
+    }
+    
+    private func showCheckPhoto(status: Bool) {
+        guard status else { return }
+        withAnimation {
+            presentCheckPhoto = true
         }
     }
 }
@@ -159,6 +181,7 @@ extension ProfileView {
                 badgesViewModel.showBadgeDetail.toggle()
             }
             BadgeAdd(badgesViewModel: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
         }
     }
     
@@ -169,9 +192,11 @@ extension ProfileView {
                 presentActionSheet = true
             } label: {
                 if #available(iOS 15.0, *) {
-                    Circle()
-                        .fill(Color.notYoCheese)
+                    Image("dummy")
+                        .resizable()
+                        .scaledToFill()
                         .frame(width: 110, height: 110)
+                        .clipShape(Circle())
                         .overlay(alignment: .bottomTrailing) {
                             Image(systemName: "pencil.circle.fill")
                                 .foregroundColor(.white)
@@ -180,9 +205,11 @@ extension ProfileView {
                         }
                 } else {
                     // Fallback on earlier versions
-                    Circle()
-                        .fill(Color.notYoCheese)
+                    Image("dummy")
+                        .resizable()
+                        .scaledToFit()
                         .frame(width: 110, height: 110)
+                        .clipShape(Circle())
                         .overlay(
                             Image(systemName: "pencil.circle.fill")
                                 .foregroundColor(.white)

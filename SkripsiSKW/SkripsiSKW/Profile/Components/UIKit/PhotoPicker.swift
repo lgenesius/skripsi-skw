@@ -11,6 +11,7 @@ import PhotosUI
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var isPresented: Bool
     @Binding var data: Data
+    var completion: ((Bool) -> Void)
     
     func makeUIViewController(context: Context) -> some UIViewController {
         var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
@@ -36,6 +37,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            parent.data = Data()
             
             if !results.isEmpty {
                 for result in results {
@@ -43,19 +45,31 @@ struct PhotoPicker: UIViewControllerRepresentable {
                         result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] item, error in
                             if let error = error {
                                 print("Can't load image \(error.localizedDescription)")
+                                self?.parent.completion(false)
                             } else if let image = item as? UIImage {
                                 DispatchQueue.main.async {
                                     if let mediaData = image.jpegData(compressionQuality: 1) {
                                         self?.parent.data = mediaData
+                                        self?.parent.completion(true)
                                     }
                                 }
                             }
                         }
+                    } else {
+                        self.parent.completion(false)
                     }
                 }
+            } else {
+                self.parent.completion(false)
             }
             
             self.parent.isPresented = false
+        }
+        
+        private func runCompletionInMainThread(status: Bool) {
+            DispatchQueue.main.async { [weak self] in
+                self?.parent.completion(status)
+            }
         }
     }
 }

@@ -97,6 +97,7 @@
 		E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18D092771A57400C19E60 /* GeometryGetter.swift */; };
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
 		E1E18DF627706C620004436D /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF527706C620004436D /* TextModifier.swift */; };
+		E1E30D2327881331006D0241 /* PhotoCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E30D2227881331006D0241 /* PhotoCheckView.swift */; };
 		E1F32E62276DC54C0072E548 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E61276DC54C0072E548 /* Validator.swift */; };
 		E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E64276DD2380072E548 /* ActivityIndicator.swift */; };
 		E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E66276DD2B20072E548 /* ErrorText.swift */; };
@@ -235,6 +236,7 @@
 		E1E18D092771A57400C19E60 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		E1E18DF527706C620004436D /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
+		E1E30D2227881331006D0241 /* PhotoCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCheckView.swift; sourceTree = "<group>"; };
 		E1F32E61276DC54C0072E548 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E1F32E64276DD2380072E548 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E1F32E66276DD2B20072E548 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				E1D3A30E2786FC2100B03B55 /* UIKit */,
+				E1E30D2227881331006D0241 /* PhotoCheckView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				492F00F92785595700DB5498 /* BadgeIdentifier.swift in Sources */,
 				E14C05672775CC5E008DC3AF /* InfoView.swift in Sources */,
 				E1871708277DB46300A2D25A /* CountdownManager.swift in Sources */,
+				E1E30D2327881331006D0241 /* PhotoCheckView.swift in Sources */,
 				492F01012785602500DB5498 /* PreviewProvider.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
