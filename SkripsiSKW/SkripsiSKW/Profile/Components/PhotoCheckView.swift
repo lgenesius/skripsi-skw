@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PhotoCheckView: View {
+    @EnvironmentObject var sessionVM: SessionViewModel
     @Binding var isPresented: Bool
     @Binding var imageData: Data
+    @Binding var currentUser: User?
     
     var body: some View {
         if isPresented {
@@ -45,7 +47,7 @@ struct PhotoCheckView: View {
                         }
 
                         Button {
-                            
+                            updateImageAndData()
                         } label: {
                             Text("Yes")
                                 .foregroundColor(.white)
@@ -61,10 +63,30 @@ struct PhotoCheckView: View {
             
         }
     }
-}
-
-struct PhotoCheckView_Previews: PreviewProvider {
-    static var previews: some View {
-        PhotoCheckView(isPresented: .constant(true), imageData: .constant(Data()))
+    
+    private func updateImageAndData() {
+        guard let currentUser = currentUser else { return }
+        if currentUser.profileImageUrl.isEmpty {
+            PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                guard error2 == nil else { return }
+                sessionVM.authUser?.profileImageUrl = metaImageUrl
+                self.currentUser = sessionVM.authUser
+                AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                    isPresented = false
+                }
+            }
+        } else {
+            PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
+                guard error == nil else { return }
+                PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                    guard error2 == nil else { return }
+                    sessionVM.authUser?.profileImageUrl = metaImageUrl
+                    self.currentUser = sessionVM.authUser
+                    AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                        isPresented = false
+                    }
+                }
+            }
+        }
     }
 }

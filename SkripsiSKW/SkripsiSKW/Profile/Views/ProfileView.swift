@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -213,7 +214,7 @@ extension ProfileView {
                     badgesViewModel.showBadgeDetail.toggle()
                 }
                 BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-                PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
+                PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData, currentUser: $currentUser)
             }
         }
     }
@@ -224,33 +225,7 @@ extension ProfileView {
             Button {
                 presentActionSheet = true
             } label: {
-                if #available(iOS 15.0, *) {
-                    Image("dummy")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 110, height: 110)
-                        .clipShape(Circle())
-                        .overlay(alignment: .bottomTrailing) {
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0)
-                        }
-                } else {
-                    // Fallback on earlier versions
-                    Image("dummy")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 110, height: 110)
-                        .clipShape(Circle())
-                        .overlay(
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0),
-                            alignment: .bottomTrailing
-                        )
-                }
+                ProfileImageView(userId: userId, currentUser: $currentUser)
             }
             .allowsHitTesting(userId == nil ? true: false)
             Spacer()

@@ -107,4 +107,12 @@ class AuthManager {
             }
         }
     }
+    
+    func updateUser(user: User, completion: @escaping (Error?) -> Void) {
+        let firestoreUser = self.getUserDocRef(userId: user.uid)
+        guard let dict = try? user.asDictionary() else { return }
+        firestoreUser.setData(dict) { error in
+            completion(error)
+        }
+    }
 }

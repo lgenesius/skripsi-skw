@@ -103,6 +103,8 @@
 		E1E18DF32770687C0004436D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF22770687C0004436D /* DateManager.swift */; };
 		E1E18DF627706C620004436D /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18DF527706C620004436D /* TextModifier.swift */; };
 		E1E30D2327881331006D0241 /* PhotoCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E30D2227881331006D0241 /* PhotoCheckView.swift */; };
+		E1E30D252788680C006D0241 /* PhotoProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E30D242788680C006D0241 /* PhotoProfileManager.swift */; };
+		E1E30D27278870C5006D0241 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E30D26278870C5006D0241 /* ProfileImageView.swift */; };
 		E1F32E62276DC54C0072E548 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E61276DC54C0072E548 /* Validator.swift */; };
 		E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E64276DD2380072E548 /* ActivityIndicator.swift */; };
 		E1F32E67276DD2B20072E548 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F32E66276DD2B20072E548 /* ErrorText.swift */; };
@@ -247,6 +249,8 @@
 		E1E18DF22770687C0004436D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		E1E18DF527706C620004436D /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		E1E30D2227881331006D0241 /* PhotoCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCheckView.swift; sourceTree = "<group>"; };
+		E1E30D242788680C006D0241 /* PhotoProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileManager.swift; sourceTree = "<group>"; };
+		E1E30D26278870C5006D0241 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		E1F32E61276DC54C0072E548 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E1F32E64276DD2380072E548 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E1F32E66276DD2B20072E548 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
@@ -662,6 +666,7 @@
 			children = (
 				E1D3A30E2786FC2100B03B55 /* UIKit */,
 				E1E30D2227881331006D0241 /* PhotoCheckView.swift */,
+				E1E30D26278870C5006D0241 /* ProfileImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -767,6 +772,7 @@
 			children = (
 				E1E18DF22770687C0004436D /* DateManager.swift */,
 				E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */,
+				E1E30D242788680C006D0241 /* PhotoProfileManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1278,6 +1284,7 @@
 				602AB8B5277ADC5100DFBA1F /* DailyChallengesView.swift in Sources */,
 				E14C055F2775BC8E008DC3AF /* WorkoutInfoView.swift in Sources */,
 				492F010727874CF500DB5498 /* StorageService.swift in Sources */,
+				E1E30D27278870C5006D0241 /* ProfileImageView.swift in Sources */,
 				E1DF1EFB277B04C6005B3282 /* CameraView.swift in Sources */,
 				E195A22A27730D5D001FE151 /* ProfileView.swift in Sources */,
 				E1F88CFA276428F500357A45 /* SkripsiSKWApp.swift in Sources */,
@@ -1296,6 +1303,7 @@
 				E1DFB1C9277C595400EE18C0 /* StickFigureView.swift in Sources */,
 				492F01032787498900DB5498 /* BadgeRepository.swift in Sources */,
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
+				E1E30D252788680C006D0241 /* PhotoProfileManager.swift in Sources */,
 				E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */,
 				E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */,
 				602AB8B0277ADC5100DFBA1F /* DailyChallengeCard.swift in Sources */,
