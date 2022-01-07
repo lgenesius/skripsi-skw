@@ -38,7 +38,7 @@ class AuthManager {
                     }
                     
                     let firestoreDocReference = self.getUserDocRef(userId: userId)
-                    let user = User(uid: userId, email: email, name: name, username: username, challenges: [])
+                    let user = User(uid: userId, email: email, name: name, username: username, challenges: [], profileImageUrl: "")
                     guard let dict = try? user.asDictionary() else { return }
                     firestoreDocReference.setData(dict) { error in
                         if let error = error {
@@ -86,6 +86,24 @@ class AuthManager {
                     guard let decodedUser = try? User.init(fromDictionary: dict) else { return }
                     completion(decodedUser, nil)
                 }
+            }
+        }
+    }
+    
+    func getUser(
+        userId: String,
+        completion: @escaping (User?, Error?) -> Void
+    ) {
+        let firestoreUser = self.getUserDocRef(userId: userId)
+        firestoreUser.getDocument { document, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            if let dict = document?.data() {
+                let decodedUser = try? User.init(fromDictionary: dict)
+                completion(decodedUser, nil)
             }
         }
     }

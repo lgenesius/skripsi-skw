@@ -18,8 +18,10 @@ struct ProfileView: View {
     @State private var presentLogoutAlert = false
     @State private var presentPhotoSheet = false
     @State private var presentCheckPhoto = false
+    @State private var isLoading = false
     
     @State private var imageData = Data()
+    @State private var currentUser: User?
     
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
@@ -33,6 +35,7 @@ struct ProfileView: View {
         if let uId = uId {
             userId = uId
         }
+        
         self.badgesViewModel = badgesViewModel
     }
     
@@ -65,6 +68,20 @@ struct ProfileView: View {
                         }
                     }
                 }
+                .onAppear(perform: {
+                    isLoading = true
+                    if let uId = userId {
+                        AuthManager.shared.getUser(userId: uId) { user, error in
+                            self.isLoading = false
+                            guard error != nil else { return }
+                            guard let user = user else { return }
+                            self.currentUser = user
+                        }
+                    } else {
+                        isLoading = false
+                        currentUser = sessionVM.authUser
+                    }
+                })
                 .alert(
                     "Logout",
                     isPresented: $presentLogoutAlert,
@@ -121,6 +138,20 @@ struct ProfileView: View {
                                 .foregroundColor(.notYoCheese)
                         })
                 )
+                .onAppear(perform: {
+                    isLoading = true
+                    if let uId = userId {
+                        AuthManager.shared.getUser(userId: uId) { user, error in
+                            self.isLoading = false
+                            guard error != nil else { return }
+                            guard let user = user else { return }
+                            self.currentUser = user
+                        }
+                    } else {
+                        isLoading = false
+                        currentUser = sessionVM.authUser
+                    }
+                })
                 .alert(isPresented: $presentLogoutAlert) {
                     Alert(
                         title: Text("Logout"),
@@ -169,19 +200,21 @@ extension ProfileView {
             Color.sambucus
                 .ignoresSafeArea()
             
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    headerProfile
-                    top3Badges
-                    LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
-                    ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
+            if currentUser != nil {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        headerProfile
+                        top3Badges
+                        LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
+                        ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
+                    }
                 }
+                Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                    badgesViewModel.showBadgeDetail.toggle()
+                }
+                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+                PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
             }
-            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
-                badgesViewModel.showBadgeDetail.toggle()
-            }
-            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-            PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
         }
     }
     
@@ -222,14 +255,14 @@ extension ProfileView {
             .allowsHitTesting(userId == nil ? true: false)
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
-                Text("Kevin Leon Luis Genesius")
+                Text(currentUser!.name)
                     .modifier(TextModifier(
                         color: .white,
                         size: 24,
                         weight: .bold
                     ))
                     .lineLimit(1)
-                Text(userId == nil ? "3260 Points Gained": "231 Points")
+                Text(userId == nil ? "\(currentUser!.totalPoint) Points Gained": "231 Points")
                     .modifier(TextModifier(
                         color: .notYoCheese,
                         size: 18,
