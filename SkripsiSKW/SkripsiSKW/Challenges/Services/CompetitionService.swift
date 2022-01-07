@@ -268,6 +268,7 @@ class CompetitionService {
                         "userId": users!.first!.userId,
                         "userCompetitionPoint": users!.first!.userCompetitionPoint,
                         "userName": users!.first!.userName,
+                        "userRank": users!.first!.userRank
                     ] as [String : Any]
                     
                     document.reference.updateData([
