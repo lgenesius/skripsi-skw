@@ -51,9 +51,9 @@ final class PoseEstimator: NSObject, ObservableObject {
         case .squat:
             countSquats(bodyParts: bodyParts)
         case .plank:
-            countPlank(bodyParts: bodyParts )
+            countPlank(bodyParts: bodyParts)
         case .pushup:
-            break
+            countPushUp(bodyParts: bodyParts)
         }
     }
     
@@ -174,12 +174,12 @@ final class PoseEstimator: NSObject, ObservableObject {
         }else{
             kneeAboveAnkle = false
         }
-        if elbowAngleDiffDegrees < 100 && self.wasInBottomPosition && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi TANGAN angkat , jadi ini pas TANGAN posisi dorong keatas atau posisi push kemudian  TANGAN sudah turun ke posisi semula
+        if elbowAngleDiffDegrees < 100 && self.wasInBottomPosition {  // was in bottom itu posisi TANGAN angkat , jadi ini pas TANGAN posisi dorong keatas atau posisi push kemudian  TANGAN sudah turun ke posisi semula
             self.count += 1
             self.wasInBottomPosition = false
         }
         
-        if elbowAngleDiffDegrees > 160 && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi TANGAN angkat , jadi ini buat cek TANGAN uda naik blm
+        if elbowAngleDiffDegrees > 160  {  // was in bottom itu posisi TANGAN angkat , jadi ini buat cek TANGAN uda naik blm
             
             self.wasInBottomPosition = true
         }
