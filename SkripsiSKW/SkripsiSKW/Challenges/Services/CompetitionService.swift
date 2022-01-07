@@ -26,7 +26,7 @@ class CompetitionService {
         }
         
         do {
-            let newUserData = CompetitionUserData(userId: userId, userCompetitionPoint: 0, userName: sessionVM.authUser?.name ?? "Nil")
+            let newUserData = CompetitionUserData(userId: userId, userCompetitionPoint: 0, userName: sessionVM.authUser?.name ?? "Nil", userRank: 0)
             competitions = competition.addUserId(injectedUser: [newUserData])
             _ = try Competitions.addDocument(from: competitions)
             onSuccess()
@@ -140,7 +140,8 @@ class CompetitionService {
                                 "users": FieldValue.arrayUnion([[
                                     "userCompetitionPoint" : 0,
                                     "userId" : userId,
-                                    "userName": sessionVM.authUser?.name ?? "Nil"
+                                    "userName": sessionVM.authUser?.name ?? "Nil",
+                                    "userRank": 0
                                 ]])
                             ])
                             completion(.valid, nil)
@@ -199,7 +200,57 @@ class CompetitionService {
                     data.userId == userId
                 }
             }
-            completion(currentCompetition, nil)
+            
+            let currentCompetitionSorted = currentCompetition.map {
+                Competition(id: $0.id, startDateEvent: $0.startDateEvent, endDateEvent: $0.endDateEvent, competitionName: $0.competitionName, competitionDescription: $0.competitionDescription, users: $0.users.sorted {
+                    $0.userCompetitionPoint > $1.userCompetitionPoint
+                }, competitionCode: $0.competitionCode, isRunning: $0.isRunning)
+            }
+            
+            currentCompetitionSorted.forEach {
+                updateCompetitionRank(sortedCompetition: $0, $0.id!) {
+                 
+                } onError: { errorMessage in
+                    
+                }
+            }
+            completion(currentCompetitionSorted, nil)
+        }
+    }
+    
+    static func updateCompetitionRank(sortedCompetition: Competition, _ competitionId: String, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
+        
+        Competitions.document(competitionId).getDocument { (querySnapshot, error) in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            if let document = querySnapshot, document.exists {
+                var competitionQueryData = try? querySnapshot?.data(as: Competition.self) ?? nil
+                
+                _ = sortedCompetition.users.enumerated().map { (index, _) in
+                    competitionQueryData!.users.mutateEach { userData in
+                        userData.mapRank(rank: index+1)
+                    }
+                }
+                
+                document.reference.updateData([
+                    "users": ""
+                ])
+                
+                competitionQueryData!.users.forEach { userData in
+                    document.reference.updateData([
+                        "users": FieldValue.arrayUnion([[
+                            "userCompetitionPoint" : userData.userCompetitionPoint,
+                            "userId" : userData.userId,
+                            "userName" : userData.userName,
+                            "userRank" : userData.userRank
+                        ]])
+                    ])
+                    
+                }
+            }
         }
     }
     

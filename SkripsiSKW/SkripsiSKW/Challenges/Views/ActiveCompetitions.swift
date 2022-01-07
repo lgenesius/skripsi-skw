@@ -34,6 +34,11 @@ struct ActiveCompetitions: View {
                     LazyHStack(spacing: 15) {
                         ForEach(activeCompetitionListVM.competitionListModel) { activeCompetitionVM in
                             NavigationLink {
+//                                BadgeService.addBadge(badge: Badge(name: "", description: "", image: "", goal: 0, identifier: .squat)) {
+//
+//                                } onError: { errorMessage in
+//
+//                                }
                                 CompetitionLeaderboard(activeCompetitionVM: activeCompetitionVM)
 //                                    .onAppear {
 //                                        activeCompetitionListVM.updateAllData(by: 30)
