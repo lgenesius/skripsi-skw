@@ -26,15 +26,15 @@ final class CompetitionRepository: ObservableObject {
         }
     }
     
-    func add(_ competition: Competition,  onSuccess: @escaping() -> Void,
-             onError: @escaping (_ errorMessage: String) -> Void, sessionVM: SessionViewModel) {
-        
+    func createCompetition(_ competition: Competition, sessionVM: SessionViewModel,  onSuccess: @escaping() -> Void,
+             onError: @escaping (_ errorMessage: String) -> Void) {
+
         CompetitionService.createCompetition(competition: competition, onSuccess: {
             onSuccess()
         }, onError: { errorMessage in
             onError(errorMessage)
         }, sessionVM: sessionVM)
-        
+
     }
     
     func getOutOfCompetition(_ competitionId: String, onSuccess: @escaping() -> Void, onError: @escaping (_ errorMessage: String) -> Void) {
@@ -43,5 +43,11 @@ final class CompetitionRepository: ObservableObject {
         } onError: { errorMessage in
             onError(errorMessage)
         }
+    }
+    
+    func updateCompetitionData(_ competitionId: String, sessionVM: SessionViewModel, onSuccess: @escaping() -> Void,
+                               onError: @escaping (_ errorMessage: String) -> Void )
+    {
+        
     }
 }
