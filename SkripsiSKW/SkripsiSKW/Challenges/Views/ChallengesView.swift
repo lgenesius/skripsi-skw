@@ -125,11 +125,7 @@ extension ChallengesView {
             NavigationLink {
                 ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
             } label: {
-                Image("dummy")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 36, height: 36)
-                    .clipShape(Circle())
+                ProfileImageView(currentUser: $sessionVM.authUser, userId: sessionVM.authUser?.uid, width: 36, height: 36)
             }
         }
         .padding(.horizontal)

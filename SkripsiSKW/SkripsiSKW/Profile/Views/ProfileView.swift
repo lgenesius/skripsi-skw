@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -18,8 +19,10 @@ struct ProfileView: View {
     @State private var presentLogoutAlert = false
     @State private var presentPhotoSheet = false
     @State private var presentCheckPhoto = false
+    @State private var isLoading = false
     
     @State private var imageData = Data()
+    @State private var currentUser: User?
     
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
@@ -33,6 +36,7 @@ struct ProfileView: View {
         if let uId = uId {
             userId = uId
         }
+        
         self.badgesViewModel = badgesViewModel
     }
     
@@ -65,6 +69,20 @@ struct ProfileView: View {
                         }
                     }
                 }
+                .onAppear(perform: {
+                    isLoading = true
+                    if let uId = userId {
+                        AuthManager.shared.getUser(userId: uId) { user, error in
+                            self.isLoading = false
+                            guard error != nil else { return }
+                            guard let user = user else { return }
+                            self.currentUser = user
+                        }
+                    } else {
+                        isLoading = false
+                        currentUser = sessionVM.authUser
+                    }
+                })
                 .alert(
                     "Logout",
                     isPresented: $presentLogoutAlert,
@@ -85,7 +103,7 @@ struct ProfileView: View {
                     }
                     
                     Button {
-                        
+                        deleteImageAndUpdate()
                     } label: {
                         Text("Remove Picture")
                     }
@@ -121,6 +139,20 @@ struct ProfileView: View {
                                 .foregroundColor(.notYoCheese)
                         })
                 )
+                .onAppear(perform: {
+                    isLoading = true
+                    if let uId = userId {
+                        AuthManager.shared.getUser(userId: uId) { user, error in
+                            self.isLoading = false
+                            guard error != nil else { return }
+                            guard let user = user else { return }
+                            self.currentUser = user
+                        }
+                    } else {
+                        isLoading = false
+                        currentUser = sessionVM.authUser
+                    }
+                })
                 .alert(isPresented: $presentLogoutAlert) {
                     Alert(
                         title: Text("Logout"),
@@ -139,7 +171,7 @@ struct ProfileView: View {
                                 presentPhotoSheet = true
                             }),
                             .default(Text("Remove Picture"), action: {
-                                
+                                deleteImageAndUpdate()
                             }),
                             .cancel()
                         ]
@@ -159,6 +191,48 @@ struct ProfileView: View {
             presentCheckPhoto = true
         }
     }
+    
+    private func updateImageAndData() {
+        guard let currentUser = currentUser else { return }
+        isLoading = true
+        if currentUser.profileImageUrl.isEmpty {
+            PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                guard error2 == nil else { return }
+                sessionVM.authUser?.profileImageUrl = metaImageUrl
+                self.currentUser = sessionVM.authUser
+                AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                    presentCheckPhoto = false
+                    isLoading = false
+                }
+            }
+        } else {
+            PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
+                guard error == nil else { return }
+                PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                    guard error2 == nil else { return }
+                    sessionVM.authUser?.profileImageUrl = metaImageUrl
+                    self.currentUser = sessionVM.authUser
+                    AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                        presentCheckPhoto = false
+                        isLoading = false
+                    }
+                }
+            }
+        }
+    }
+    
+    private func deleteImageAndUpdate() {
+        guard let currentUser = currentUser else { return }
+        isLoading = true
+        PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
+            guard error == nil else { return }
+            sessionVM.authUser?.profileImageUrl = ""
+            self.currentUser = sessionVM.authUser
+            AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                isLoading = false
+            }
+        }
+    }
 }
 
 extension ProfileView {
@@ -169,19 +243,31 @@ extension ProfileView {
             Color.sambucus
                 .ignoresSafeArea()
             
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    headerProfile
-                    top3Badges
-                    LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
-                    ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
+            if currentUser != nil {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        headerProfile
+                        top3Badges
+                        LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
+                        ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
+                    }
                 }
+                Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
+                    badgesViewModel.showBadgeDetail.toggle()
+                }
+                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+                PhotoCheckView(isPresented: $presentCheckPhoto, isLoading: $isLoading, imageData: $imageData) { status in
+                    if status {
+                        updateImageAndData()
+                    } else {
+                        withAnimation {
+                            presentCheckPhoto = false
+                            imageData = Data()
+                        }
+                    }
+                }
+                LoadingCard(isLoading: isLoading, message: "Changing Image...")
             }
-            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
-                badgesViewModel.showBadgeDetail.toggle()
-            }
-            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-            PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData)
         }
     }
     
@@ -191,45 +277,19 @@ extension ProfileView {
             Button {
                 presentActionSheet = true
             } label: {
-                if #available(iOS 15.0, *) {
-                    Image("dummy")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 110, height: 110)
-                        .clipShape(Circle())
-                        .overlay(alignment: .bottomTrailing) {
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0)
-                        }
-                } else {
-                    // Fallback on earlier versions
-                    Image("dummy")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 110, height: 110)
-                        .clipShape(Circle())
-                        .overlay(
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0),
-                            alignment: .bottomTrailing
-                        )
-                }
+                ProfileImageView(currentUser: $currentUser, userId: userId, width: 110, height: 110)
             }
             .allowsHitTesting(userId == nil ? true: false)
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
-                Text("Kevin Leon Luis Genesius")
+                Text(currentUser!.name)
                     .modifier(TextModifier(
                         color: .white,
                         size: 24,
                         weight: .bold
                     ))
                     .lineLimit(1)
-                Text(userId == nil ? "3260 Points Gained": "231 Points")
+                Text(userId == nil ? "\(currentUser!.totalPoint) Points Gained": "231 Points")
                     .modifier(TextModifier(
                         color: .notYoCheese,
                         size: 18,

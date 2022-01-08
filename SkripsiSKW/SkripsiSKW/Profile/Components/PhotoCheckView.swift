@@ -9,7 +9,10 @@ import SwiftUI
 
 struct PhotoCheckView: View {
     @Binding var isPresented: Bool
+    @Binding var isLoading: Bool
     @Binding var imageData: Data
+    
+    var completion: (Bool) -> Void
     
     var body: some View {
         if isPresented {
@@ -32,6 +35,7 @@ struct PhotoCheckView: View {
                     
                     HStack(spacing: 20) {
                         Button {
+                            completion(false)
                             withAnimation {
                                 isPresented = false
                                 imageData = Data()
@@ -43,9 +47,10 @@ struct PhotoCheckView: View {
                                 .background(Color.insignia)
                                 .cornerRadius(10)
                         }
+                        .allowsHitTesting(isLoading ? false: true)
 
                         Button {
-                            
+                            completion(true)
                         } label: {
                             Text("Yes")
                                 .foregroundColor(.white)
@@ -53,18 +58,12 @@ struct PhotoCheckView: View {
                                 .background(Color.insignia)
                                 .cornerRadius(10)
                         }
-
+                        .allowsHitTesting(isLoading ? false: true)
                     }
                     Spacer()
                 }
             }
             
         }
-    }
-}
-
-struct PhotoCheckView_Previews: PreviewProvider {
-    static var previews: some View {
-        PhotoCheckView(isPresented: .constant(true), imageData: .constant(Data()))
     }
 }
