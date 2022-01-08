@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PhotoCheckView: View {
-    @EnvironmentObject var sessionVM: SessionViewModel
     @Binding var isPresented: Bool
+    @Binding var isLoading: Bool
     @Binding var imageData: Data
-    @Binding var currentUser: User?
+    
+    var completion: (Bool) -> Void
     
     var body: some View {
         if isPresented {
@@ -34,6 +35,7 @@ struct PhotoCheckView: View {
                     
                     HStack(spacing: 20) {
                         Button {
+                            completion(false)
                             withAnimation {
                                 isPresented = false
                                 imageData = Data()
@@ -45,9 +47,10 @@ struct PhotoCheckView: View {
                                 .background(Color.insignia)
                                 .cornerRadius(10)
                         }
+                        .allowsHitTesting(isLoading ? false: true)
 
                         Button {
-                            updateImageAndData()
+                            completion(true)
                         } label: {
                             Text("Yes")
                                 .foregroundColor(.white)
@@ -55,38 +58,12 @@ struct PhotoCheckView: View {
                                 .background(Color.insignia)
                                 .cornerRadius(10)
                         }
-
+                        .allowsHitTesting(isLoading ? false: true)
                     }
                     Spacer()
                 }
             }
             
-        }
-    }
-    
-    private func updateImageAndData() {
-        guard let currentUser = currentUser else { return }
-        if currentUser.profileImageUrl.isEmpty {
-            PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
-                guard error2 == nil else { return }
-                sessionVM.authUser?.profileImageUrl = metaImageUrl
-                self.currentUser = sessionVM.authUser
-                AuthManager.shared.updateUser(user: self.currentUser!) { _ in
-                    isPresented = false
-                }
-            }
-        } else {
-            PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
-                guard error == nil else { return }
-                PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
-                    guard error2 == nil else { return }
-                    sessionVM.authUser?.profileImageUrl = metaImageUrl
-                    self.currentUser = sessionVM.authUser
-                    AuthManager.shared.updateUser(user: self.currentUser!) { _ in
-                        isPresented = false
-                    }
-                }
-            }
         }
     }
 }

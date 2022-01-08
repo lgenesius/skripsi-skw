@@ -103,7 +103,7 @@ struct ProfileView: View {
                     }
                     
                     Button {
-                        
+                        deleteImageAndUpdate()
                     } label: {
                         Text("Remove Picture")
                     }
@@ -171,7 +171,7 @@ struct ProfileView: View {
                                 presentPhotoSheet = true
                             }),
                             .default(Text("Remove Picture"), action: {
-                                
+                                deleteImageAndUpdate()
                             }),
                             .cancel()
                         ]
@@ -189,6 +189,48 @@ struct ProfileView: View {
         guard status else { return }
         withAnimation {
             presentCheckPhoto = true
+        }
+    }
+    
+    private func updateImageAndData() {
+        guard let currentUser = currentUser else { return }
+        isLoading = true
+        if currentUser.profileImageUrl.isEmpty {
+            PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                guard error2 == nil else { return }
+                sessionVM.authUser?.profileImageUrl = metaImageUrl
+                self.currentUser = sessionVM.authUser
+                AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                    presentCheckPhoto = false
+                    isLoading = false
+                }
+            }
+        } else {
+            PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
+                guard error == nil else { return }
+                PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
+                    guard error2 == nil else { return }
+                    sessionVM.authUser?.profileImageUrl = metaImageUrl
+                    self.currentUser = sessionVM.authUser
+                    AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                        presentCheckPhoto = false
+                        isLoading = false
+                    }
+                }
+            }
+        }
+    }
+    
+    private func deleteImageAndUpdate() {
+        guard let currentUser = currentUser else { return }
+        isLoading = true
+        PhotoProfileManager.shared.deletePhoto(userId: currentUser.uid) { error in
+            guard error == nil else { return }
+            sessionVM.authUser?.profileImageUrl = ""
+            self.currentUser = sessionVM.authUser
+            AuthManager.shared.updateUser(user: self.currentUser!) { _ in
+                isLoading = false
+            }
         }
     }
 }
@@ -214,7 +256,17 @@ extension ProfileView {
                     badgesViewModel.showBadgeDetail.toggle()
                 }
                 BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
-                PhotoCheckView(isPresented: $presentCheckPhoto, imageData: $imageData, currentUser: $currentUser)
+                PhotoCheckView(isPresented: $presentCheckPhoto, isLoading: $isLoading, imageData: $imageData) { status in
+                    if status {
+                        updateImageAndData()
+                    } else {
+                        withAnimation {
+                            presentCheckPhoto = false
+                            imageData = Data()
+                        }
+                    }
+                }
+                LoadingCard(isLoading: isLoading, message: "Changing Image...")
             }
         }
     }
