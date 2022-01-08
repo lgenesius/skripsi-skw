@@ -179,7 +179,7 @@ final class PoseEstimator: NSObject, ObservableObject {
             self.wasInBottomPosition = false
         }
         
-        if elbowAngleDiffDegrees > 160  {  // was in bottom itu posisi TANGAN angkat , jadi ini buat cek TANGAN uda naik blm
+        if elbowAngleDiffDegrees > 160 && kneeAboveAnkle {  // was in bottom itu posisi TANGAN angkat , jadi ini buat cek TANGAN uda naik blm
             
             self.wasInBottomPosition = true
         }
