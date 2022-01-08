@@ -9,8 +9,10 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileImageView: View {
-    var userId: String?
     @Binding var currentUser: User?
+    var userId: String?
+    var width: CGFloat
+    var height: CGFloat
     
     var body: some View {
         if #available(iOS 15.0, *) {
@@ -19,7 +21,7 @@ struct ProfileImageView: View {
                     .resizable()
                     .indicator(.activity)
                     .scaledToFill()
-                    .frame(width: 110, height: 110)
+                    .frame(width: width, height: height)
                     .clipShape(Circle())
                     .overlay(alignment: .bottomTrailing) {
                         Image(systemName: "pencil.circle.fill")
@@ -32,7 +34,7 @@ struct ProfileImageView: View {
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(.white)
-                    .frame(width: 110, height: 110)
+                    .frame(width: width, height: height)
                     .overlay(alignment: .bottomTrailing) {
                         Image(systemName: "pencil.circle.fill")
                             .foregroundColor(.white)
@@ -47,7 +49,7 @@ struct ProfileImageView: View {
                     .resizable()
                     .indicator(.activity)
                     .scaledToFill()
-                    .frame(width: 110, height: 110)
+                    .frame(width: width, height: height)
                     .clipShape(Circle())
                     .overlay(
                         Image(systemName: "pencil.circle.fill")
@@ -60,7 +62,7 @@ struct ProfileImageView: View {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 110, height: 110)
+                    .frame(width: width, height: height)
                     .foregroundColor(.white)
                     .overlay(
                         Image(systemName: "pencil.circle.fill")

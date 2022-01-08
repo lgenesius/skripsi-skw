@@ -225,7 +225,7 @@ extension ProfileView {
             Button {
                 presentActionSheet = true
             } label: {
-                ProfileImageView(userId: userId, currentUser: $currentUser)
+                ProfileImageView(currentUser: $currentUser, userId: userId, width: 110, height: 110)
             }
             .allowsHitTesting(userId == nil ? true: false)
             Spacer()
