@@ -51,9 +51,9 @@ final class PoseEstimator: NSObject, ObservableObject {
         case .squat:
             countSquats(bodyParts: bodyParts)
         case .plank:
-            break
+            countPlank(bodyParts: bodyParts)
         case .pushup:
-            break
+            countPushUp(bodyParts: bodyParts)
         }
     }
     
@@ -83,7 +83,108 @@ final class PoseEstimator: NSObject, ObservableObject {
             self.wasInBottomPosition = true
         }
     }
-    
+    private func countPlank(bodyParts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) {
+        guard let rightKnee = bodyParts[.rightKnee]?.location,
+              let leftKnee = bodyParts[.leftKnee]?.location,
+              let rightHip = bodyParts[.rightHip]?.location,
+              let rightAnkle = bodyParts[.rightAnkle]?.location,
+              let leftAnkle = bodyParts[.leftAnkle]?.location,
+              let rightShoulder = bodyParts[.rightShoulder]?.location,
+              let rightElbow = bodyParts[.rightElbow]?.location,
+              let rightWrist = bodyParts[.rightWrist]?.location
+        else { return }
+        var feetAboveWrist = false
+        var kneeAboveWrist = false
+        var kneeAboveAnkle = false
+        let firstElbowAngle = atan2(rightShoulder.y - rightElbow.y, rightShoulder.x - rightElbow.x)
+        let secondElbowAngle = atan2(rightWrist.y - rightElbow.y, rightWrist.x - rightElbow.x)
+        var elbowAngleDiffRadians = firstElbowAngle - secondElbowAngle
+        while elbowAngleDiffRadians < 0 {
+            elbowAngleDiffRadians += CGFloat(2 * Double.pi)
+        }
+        let elbowAngleDiffDegrees = Int(elbowAngleDiffRadians * 180 / .pi)
+        
+        let firstHipAngle = atan2(rightShoulder.y - rightHip.y, rightShoulder.x - rightHip.x)
+        let secondHipAngle = atan2(rightKnee.y - rightHip.y, rightKnee.x - rightHip.x)
+        var hipAngleDiffRadians = firstHipAngle - secondHipAngle
+        while hipAngleDiffRadians < 0 {
+            hipAngleDiffRadians += CGFloat(2 * Double.pi)
+        }
+        
+        let hipAngleDiffDegrees = Int(hipAngleDiffRadians * 180 / .pi)
+        if rightAnkle.y > rightWrist.y {
+            feetAboveWrist = true //ketika naik pantatnya
+        }else{
+            feetAboveWrist = false
+        }
+        if rightKnee.y > rightWrist.y {
+            kneeAboveWrist = true //ketika naik pantatnya
+        }else{
+            kneeAboveWrist = false
+        }
+        if rightKnee.y > rightAnkle.y {
+            kneeAboveAnkle = true
+        }else{
+            kneeAboveAnkle = false
+        }
+        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees > 150  && self.wasInBottomPosition && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi pantat angkat , jadi ini pas pantat turun dan pantat sudah naik
+            self.count += 1
+            self.wasInBottomPosition = false
+        }
+        
+        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees < 120 && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi pantat angkat , jadi ini buat cek pantat uda naik blm
+            
+            self.wasInBottomPosition = true
+        }
+        
+    }
+    private func countPushUp(bodyParts: [VNHumanBodyPoseObservation.JointName: VNRecognizedPoint]) {
+        guard let rightKnee = bodyParts[.rightKnee]?.location,
+              let leftKnee = bodyParts[.leftKnee]?.location,
+              let rightHip = bodyParts[.rightHip]?.location,
+              let rightAnkle = bodyParts[.rightAnkle]?.location,
+              let leftAnkle = bodyParts[.leftAnkle]?.location,
+              let rightShoulder = bodyParts[.rightShoulder]?.location,
+              let rightElbow = bodyParts[.rightElbow]?.location,
+              let rightWrist = bodyParts[.rightWrist]?.location
+        else { return }
+        var feetAboveWrist = false
+        var kneeAboveWrist = false
+        var kneeAboveAnkle = false
+        let firstElbowAngle = atan2(rightShoulder.y - rightElbow.y, rightShoulder.x - rightElbow.x)
+        let secondElbowAngle = atan2(rightWrist.y - rightElbow.y, rightWrist.x - rightElbow.x)
+        var elbowAngleDiffRadians = firstElbowAngle - secondElbowAngle
+        while elbowAngleDiffRadians < 0 {
+            elbowAngleDiffRadians += CGFloat(2 * Double.pi)
+        }
+        let elbowAngleDiffDegrees = Int(elbowAngleDiffRadians * 180 / .pi)
+        
+        if rightAnkle.y > rightWrist.y {
+            feetAboveWrist = true //ketika naik pantatnya
+        }else{
+            feetAboveWrist = false
+        }
+        if rightKnee.y > rightWrist.y {
+            kneeAboveWrist = true //ketika naik pantatnya
+        }else{
+            kneeAboveWrist = false
+        }
+        if rightKnee.y > rightAnkle.y {
+            kneeAboveAnkle = true
+        }else{
+            kneeAboveAnkle = false
+        }
+        if elbowAngleDiffDegrees < 100 && self.wasInBottomPosition {  // was in bottom itu posisi TANGAN angkat , jadi ini pas TANGAN posisi dorong keatas atau posisi push kemudian  TANGAN sudah turun ke posisi semula
+            self.count += 1
+            self.wasInBottomPosition = false
+        }
+        
+        if elbowAngleDiffDegrees > 160 && kneeAboveAnkle {  // was in bottom itu posisi TANGAN angkat , jadi ini buat cek TANGAN uda naik blm
+            
+            self.wasInBottomPosition = true
+        }
+        
+    }
     deinit {
         subscriptions.removeAll()
     }
