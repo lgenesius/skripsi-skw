@@ -58,7 +58,6 @@ final class ActiveCompetitionViewModel: ObservableObject, Identifiable {
         .sink { [weak self] data in
             guard let self = self else { return }
             self.allUsers = data.users
-            print("data Data: \(self.allUsers)")
         }
         .store(in: &cancellables)
         
@@ -73,8 +72,6 @@ final class ActiveCompetitionViewModel: ObservableObject, Identifiable {
                 
                 self.dummyTotalPoint = self.relatedData.userCompetitionPoint
                 self.userRanking = self.relatedData.userRank
-                
-                print("related Data: \(self.userID)")
                 
                 self.initTimer()
             }
@@ -96,7 +93,6 @@ final class ActiveCompetitionViewModel: ObservableObject, Identifiable {
     
     func setData(userData: [CompetitionUserData], userID: String) {
         self.userID = userID
-        print("setData \(self.userID)")
         self.allUsers = userData
 
         initTimer()

@@ -31,7 +31,7 @@ struct ActiveCompetitionCard: View {
                 if activeCompetitionVM.competition.isRunning {
                     Button(action: {}, label: {
                         Text("Competition is Running").font(.system(size: 12)).padding(5).foregroundColor(Color.black)
-                    }).background(Color.notYoCheese).cornerRadius(8)
+                    }).background(Color.green).cornerRadius(8)
                 } else {
                     Button(action: {}, label: {
                         Text("Started on \(activeCompetitionVM.competition.startDateEvent)").font(.system(size: 12)).padding(5).foregroundColor(Color.white)
