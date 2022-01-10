@@ -71,31 +71,49 @@ class CompetitionService {
             if let document = querySnapshot, document.exists {
                 var competitionQueryData = try? querySnapshot?.data(as: Competition.self) ?? nil
                 if competitionQueryData!.isRunning {
+                    
+                    let lastData = competitionQueryData?.users.filter {
+                        $0.userId == userId
+                    }.first
+                    
                     competitionQueryData!.users.mutateEach { userData in
                         if userData.userId == userId {
                             userData.userCompetitionPoint += competitionPoint
                         }
                     }
                     
-                    document.reference.updateData([
-                        "users": []
-                    ])
+                    let newData = competitionQueryData?.users.filter({ CompetitionUserData in
+                        CompetitionUserData.userId == userId
+                    }).first
                     
-                    competitionQueryData!.users.forEach { userData in
+                    let newestData = competitionQueryData?.users.filter({ CompetitionUserData in
+                        CompetitionUserData.userId != userId
+                    })
+                    
+                    
+                    document.reference.updateData([
+                      "users": FieldValue.arrayUnion([
+                          [
+                              "userCompetitionPoint" : newData!.userCompetitionPoint,
+                              "userId" : userId,
+                              "userName": newData!.userName,
+                              "userRank": newData!.userRank
+                          ]
+                      
+                      ])
+                      
+                    ]) { error in
                         document.reference.updateData([
-                            "users": FieldValue.arrayUnion([[
-                                "userCompetitionPoint" : userData.userCompetitionPoint,
-                                "userId" : userData.userId,
-                                "userName": userData.userName,
-                                "userRank": userData.userRank
-                            ]])
+                            "users": FieldValue.arrayRemove([
+                                [
+                                    "userCompetitionPoint" : lastData!.userCompetitionPoint,
+                                    "userId" : lastData!.userId,
+                                    "userName": lastData!.userName,
+                                    "userRank": lastData!.userRank
+                                ]
+                            ])
                         ])
                     }
-                    
-//                    document.reference.updateData([
-//                        "users": FieldValue.arrayUnion([
-//                            competitionQueryData ?? []])
-//                    ])
                 }
             }
         }

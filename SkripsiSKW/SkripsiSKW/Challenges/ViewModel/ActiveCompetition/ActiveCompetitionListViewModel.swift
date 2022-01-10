@@ -35,12 +35,10 @@ final class ActiveCompetitionListViewModel: ObservableObject {
     func updateAllData(by points: Int){
         competitionListModel.forEach {
             CompetitionService.updateCompetitionData(competitionPoint: points, onSuccess: {
-                
+                self.fetchData()
             }, onError: { String in
                 
             }, competitionId: $0.id)
         }
-        
-        fetchData()
     }
 }
