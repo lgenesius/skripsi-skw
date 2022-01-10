@@ -32,7 +32,7 @@ struct ActiveCompetitions: View {
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(activeCompetitionListVM.competitionListModel) { activeCompetitionVM in
+                        ForEach($activeCompetitionListVM.competitionListModel) { $activeCompetitionVM in
                             NavigationLink {
 //                                BadgeService.addBadge(badge: Badge(name: "", description: "", image: "", goal: 0, identifier: .squat)) {
 //

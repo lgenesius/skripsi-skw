@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CompetitionLeaderboard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
+//    @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
     @EnvironmentObject var sessionVM: SessionViewModel
     @State private var willLeave: Bool = false
     @State private var presentLoading: Bool = false
@@ -47,7 +47,7 @@ struct CompetitionLeaderboard: View {
             LoadingCard(isLoading: presentLoading, message: "Leaving Competition")
         }
         .onAppear {
-            competitionVM.setData(userData: activeCompetitionVM.competition.users, userID: sessionVM.authUser?.uid ?? "")
+            activeCompetitionVM.setData(userData: activeCompetitionVM.allUsers, userID: sessionVM.authUser?.uid ?? "")
         }
         .alert(isPresented: $willLeave) {
             Alert(
@@ -55,7 +55,7 @@ struct CompetitionLeaderboard: View {
               message: Text("Are you sure you wanted to leave? All your point and ranking will be removed once you leave."),
               primaryButton: .destructive(Text("Cancel")),
               secondaryButton: .default(Text("Leave"), action: {
-                  competitionVM.leaveCompetition(competitionId: activeCompetitionVM.id)
+                  activeCompetitionVM.leaveCompetition(competitionId: activeCompetitionVM.id)
                   self.presentLoading = true
                   DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                       self.presentLoading = false
@@ -80,23 +80,24 @@ extension CompetitionLeaderboard {
         VStack(alignment: .leading, spacing: 8) {
             Text("TOTAL POINTS (300 Max)")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
-            Text("\(competitionVM.dummyTotalPoint) Points")
+            Text("\(activeCompetitionVM.dummyTotalPoint) Points")
                 .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
-            ProgressBar(value: $competitionVM.dummyTotalPointPercentage, backgroundColor: Color.oldSilver, progressBarColor: Color.notYoCheese, height: CGFloat(15))
+            ProgressBar(value: $activeCompetitionVM.dummyTotalPointPercentage, backgroundColor: Color.oldSilver, progressBarColor: Color.notYoCheese, height: CGFloat(15))
         }.padding()
     }
     
     @ViewBuilder
     private var competitionRank: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("YOUR RANK (out of \(competitionVM.getTotalParticipant()) Participants)")
+            Text("YOUR RANK (out of \(activeCompetitionVM.getTotalParticipant()) Participants)")
                 .modifier(TextModifier(color: Color.oldSilver, size: 14, weight: .regular))
             HStack {
-                Text("\(competitionVM.userRanking) Rank")
+                Text("\(activeCompetitionVM.userRanking) Rank")
                     .modifier(TextModifier(color: Color.snowflake, size: 24, weight: .bold))
                 Spacer()
                 NavigationLink {
-                    CompetitionLeaderboardDetail(competitionVM: competitionVM)
+                    CompetitionLeaderboardDetail(competitionVM: activeCompetitionVM
+                    )
                 } label: {
                     Text("See All")
                         .modifier(TextModifier(color: .notYoCheese, size: 14, weight: .regular))
@@ -108,7 +109,7 @@ extension CompetitionLeaderboard {
     
     @ViewBuilder
     private var competitionLeaderboardList: some View {
-        LeaderboardList(listOfData: $competitionVM.allUsers)
+        LeaderboardList(listOfData: $activeCompetitionVM.allUsers)
     }
     
     

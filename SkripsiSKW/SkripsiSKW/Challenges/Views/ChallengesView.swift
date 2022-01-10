@@ -10,7 +10,7 @@ import SwiftUI
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     @StateObject var badgesViewModel = BadgeListViewModel()
-    @StateObject var activeCompetViewModel = ActiveCompetitionListViewModel()
+    @StateObject var activeCompetViewModel: ActiveCompetitionListViewModel
     
     @State private var isAlertPresent = false
     @State private var alertIdentifier: AlertIdentifier = .caution
@@ -168,11 +168,5 @@ extension ChallengesView {
             }
         }
         .padding(.horizontal)
-    }
-}
-
-struct ChallengesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengesView()
     }
 }
