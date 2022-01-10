@@ -81,21 +81,21 @@ class CompetitionService {
                         "users": []
                     ])
                     
-//                    competitionQueryData!.users.forEach { userData in
-//                        document.reference.updateData([
-//                            "users": FieldValue.arrayUnion([[
-//                                "userCompetitionPoint" : userData.userCompetitionPoint,
-//                                "userId" : userData.userId,
-//                                "userName": userData.userName,
-//                                "userRank": userData.userRank
-//                            ]])
-//                        ])
-//                    }
+                    competitionQueryData!.users.forEach { userData in
+                        document.reference.updateData([
+                            "users": FieldValue.arrayUnion([[
+                                "userCompetitionPoint" : userData.userCompetitionPoint,
+                                "userId" : userData.userId,
+                                "userName": userData.userName,
+                                "userRank": userData.userRank
+                            ]])
+                        ])
+                    }
                     
-                    document.reference.updateData([
-                        "users": FieldValue.arrayUnion([
-                            competitionQueryData ?? []])
-                    ])
+//                    document.reference.updateData([
+//                        "users": FieldValue.arrayUnion([
+//                            competitionQueryData ?? []])
+//                    ])
                 }
             }
         }
