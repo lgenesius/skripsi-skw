@@ -25,8 +25,8 @@ class DeveloperPreview {
     let activeCompetitionVM = ActiveCompetitionViewModel(
         competition: Competition(
             id: "123",
-            startDateEvent: Date(),
-            endDateEvent: Date(),
+            startDateEvent: Date().shortDate,
+            endDateEvent: Date().shortDate,
             competitionName: "Competition Name",
             competitionDescription: "Competition Description",
             users: [],

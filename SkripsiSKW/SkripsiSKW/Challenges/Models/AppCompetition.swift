@@ -10,19 +10,8 @@ import FirebaseFirestoreSwift
 
 struct AppCompetition {
     @DocumentID var id: String? = UUID().uuidString
-    var startDateEvent: Date
-    var endDateEvent: Date
-    var startDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-        return formatter.string(from: startDateEvent)
-    }
-    
-    var endDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-        return formatter.string(from: endDateEvent)
-    }
+    var startDateEvent: String
+    var endDateEvent: String
     
     var competitionName: String
     var competitionDescription: String
@@ -31,7 +20,7 @@ struct AppCompetition {
     var isRunning: Bool
     var badgeIdentifier: BadgeIdentifier
     
-    func addUserId(injectedUser: [CompetitionUserData]) -> Competition {
-        return Competition(id: id, startDateEvent: startDateEvent, endDateEvent: endDateEvent, competitionName: competitionName, competitionDescription: competitionDescription, users: injectedUser, competitionCode: competitionCode, isRunning: isRunning)
+    func addUserId(injectedUser: [CompetitionUserData]) -> AppCompetition {
+        return AppCompetition(id: id, startDateEvent: startDateEvent, endDateEvent: endDateEvent, competitionName: competitionName, competitionDescription: competitionDescription, users: injectedUser, competitionCode: competitionCode, isRunning: isRunning, badgeIdentifier: badgeIdentifier)
     }
 }

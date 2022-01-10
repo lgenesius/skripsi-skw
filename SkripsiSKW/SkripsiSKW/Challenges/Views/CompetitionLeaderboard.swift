@@ -70,7 +70,7 @@ struct CompetitionLeaderboard: View {
 extension CompetitionLeaderboard {
     
     private func actionSheet() {
-        let string = "Hi, dari aplikasi Singkawang! Ayo join challengeku, masukkan kode \(activeCompetitionVM.competition.competitionCode) untuk mengikuti Challenge: \(activeCompetitionVM.competition.competitionName) yang akan segera dimulai pada tanggal \(activeCompetitionVM.competition.startDateString)"
+        let string = "Hi, dari aplikasi Singkawang! Ayo join challengeku, masukkan kode \(activeCompetitionVM.competition.competitionCode) untuk mengikuti Challenge: \(activeCompetitionVM.competition.competitionName) yang akan segera dimulai pada tanggal \(activeCompetitionVM.competition.startDateEvent)"
         let av = UIActivityViewController(activityItems: [string], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }

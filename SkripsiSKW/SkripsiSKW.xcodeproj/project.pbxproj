@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
+		4907698E278C501400A249BA /* LeaderboardProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907698D278C501400A249BA /* LeaderboardProfileData.swift */; };
 		492F00D92782F90100DB5498 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492F00D82782F90100DB5498 /* Launch Screen.storyboard */; };
 		492F00DB2783132B00DB5498 /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DA2783132B00DB5498 /* Competition.swift */; };
 		492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DD278317E300DB5498 /* CompetitionService.swift */; };
@@ -148,6 +149,7 @@
 		3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKWTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.release.xcconfig"; sourceTree = "<group>"; };
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4907698D278C501400A249BA /* LeaderboardProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardProfileData.swift; sourceTree = "<group>"; };
 		492F00D82782F90100DB5498 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		492F00DA2783132B00DB5498 /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		492F00DD278317E300DB5498 /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				602AB8AA277ADC5100DFBA1F /* CompetitionLeaderboard.swift */,
 				602AB8AB277ADC5100DFBA1F /* ChallengesView.swift */,
 				602AB8AC277ADC5100DFBA1F /* CompetitionLeaderboardDetail.swift */,
+				4907698D278C501400A249BA /* LeaderboardProfileData.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1233,6 +1236,7 @@
 				602AB8BB277ADCB000DFBA1F /* Date+Ext.swift in Sources */,
 				602AB888277ADB2400DFBA1F /* ChallengeFormViewModel.swift in Sources */,
 				492F00FB27855D4700DB5498 /* DailyChallengeListViewModel.swift in Sources */,
+				4907698E278C501400A249BA /* LeaderboardProfileData.swift in Sources */,
 				602AB8B8277ADC5100DFBA1F /* CompetitionLeaderboard.swift in Sources */,
 				E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */,
 				E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */,
