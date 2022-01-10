@@ -11,6 +11,8 @@ struct WorkoutTimerPointView: View {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @ObservedObject var poseEstimator: PoseEstimator
+    @ObservedObject var activeCompetitionVM: ActiveCompetitionListViewModel
+    
     @Binding var isWorkoutFinish: Bool
     
     @StateObject private var countdownManager = CountdownManager()
@@ -44,6 +46,8 @@ struct WorkoutTimerPointView: View {
             countdownManager.completion = {
                 withAnimation {
                     isWorkoutFinish = true
+                    //MARK: Uncomment kalau emang butuh untuk update data langsung ke database
+//                    activeCompetitionVM.updateAllData(by: poseEstimator.count)
                 }
                 poseEstimator.isActive = false
             }

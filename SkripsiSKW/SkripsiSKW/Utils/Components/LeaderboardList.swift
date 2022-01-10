@@ -16,8 +16,12 @@ struct LeaderboardList: View {
         VStack {
             ForEach(Array(listOfData.enumerated()), id: \.offset){ (index, data) in
             
-                LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex, textColor: sessionVM.authUser?.uid == data.userId ? Color.notYoCheese : Color.snowflake)
-                    .frame(height: 30)
+                NavigationLink {
+                    Text("Leaderboard detail")
+                } label: {
+                    LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex, textColor: sessionVM.authUser?.uid == data.userId ? Color.notYoCheese : Color.snowflake)
+                        .frame(height: 30)
+                }
             }
         }
         .padding()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActiveCompetitions: View {
     @State private var isDropDown = true
-    @StateObject var activeCompetitionListVM: ActiveCompetitionListViewModel
+    @ObservedObject var activeCompetitionListVM: ActiveCompetitionListViewModel
     @EnvironmentObject var sessionVM: SessionViewModel
     var body: some View {
         VStack {

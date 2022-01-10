@@ -20,11 +20,6 @@ struct LeaderboardRow: View {
             Text("\(rowData.userCompetitionPoint) Points")
                 .modifier(TextModifier(color: Color.notYoCheese, size: 17, weight: .bold))
         }
-        CompetitionService.updateCompetitionData(competitionPoint: 20, onSuccess: {
-            
-        }, onError: { errorMessage in
-            
-        }, competitionId: <#T##String#>)
     }
     
 }
