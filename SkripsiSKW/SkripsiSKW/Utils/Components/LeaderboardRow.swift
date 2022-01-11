@@ -10,20 +10,22 @@ import SwiftUI
 struct LeaderboardRow: View {
     var rowData: CompetitionUserData
     var rank: Int
+    var textColor: Color
     
     var body: some View {
         HStack {
             Text("\(rank). \(rowData.userName)")
-                .modifier(TextModifier(color: Color.snowflake, size: 17, weight: .bold))
-            Spacer()
+                .modifier(TextModifier(color: textColor, size: 17, weight: .bold))
+            Spacer(minLength: 20)
             Text("\(rowData.userCompetitionPoint) Points")
                 .modifier(TextModifier(color: Color.notYoCheese, size: 17, weight: .bold))
         }
     }
+    
 }
 
 struct LeaderboardRow_Previews: PreviewProvider {
     static var previews: some View {
-        LeaderboardRow(rowData: CompetitionUserData(userId: "jackie leonardy", userCompetitionPoint: 123, userName: "Jack"), rank: 10)
+        LeaderboardRow(rowData: CompetitionUserData(userId: "jackie leonardy", userCompetitionPoint: 123, userName: "Jack"), rank: 10, textColor: Color.notYoCheese)
     }
 }

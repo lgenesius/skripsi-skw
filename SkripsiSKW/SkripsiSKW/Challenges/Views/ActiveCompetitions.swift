@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActiveCompetitions: View {
     @State private var isDropDown = true
-    @StateObject var activeCompetitionListVM: ActiveCompetitionListViewModel
+    @ObservedObject var activeCompetitionListVM: ActiveCompetitionListViewModel
     @EnvironmentObject var sessionVM: SessionViewModel
     var body: some View {
         VStack {
@@ -32,17 +32,9 @@ struct ActiveCompetitions: View {
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(activeCompetitionListVM.competitionListModel) { activeCompetitionVM in
+                        ForEach($activeCompetitionListVM.competitionListModel) { $activeCompetitionVM in
                             NavigationLink {
-//                                BadgeService.addBadge(badge: Badge(name: "", description: "", image: "", goal: 0, identifier: .squat)) {
-//
-//                                } onError: { errorMessage in
-//
-//                                }
                                 CompetitionLeaderboard(activeCompetitionVM: activeCompetitionVM)
-//                                    .onAppear {
-//                                        activeCompetitionListVM.updateAllData(by: 30)
-//                                    }
                             } label: {
                                 ActiveCompetitionCard(activeCompetitionVM: activeCompetitionVM)
                             }

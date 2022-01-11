@@ -11,12 +11,15 @@ final class ActiveCompetitionListViewModel: ObservableObject {
     @Published private var competitionRepository = CompetitionRepository()
     @Published var competitionListModel: [ActiveCompetitionViewModel] = []
     
+    private var userID: String = ""
     private var cancellables: Set<AnyCancellable> = []
     
-    init() {
+    init(_ userID: String) {
         competitionRepository.$competitions
             .map { competitions in
-                competitions.map(ActiveCompetitionViewModel.init)
+                competitions.map { Competition in
+                    ActiveCompetitionViewModel.init(competition: Competition, userId: userID)
+                }
             }
             .sink { [weak self] competitions in
                 guard let self = self else { return }
@@ -32,12 +35,10 @@ final class ActiveCompetitionListViewModel: ObservableObject {
     func updateAllData(by points: Int){
         competitionListModel.forEach {
             CompetitionService.updateCompetitionData(competitionPoint: points, onSuccess: {
-                
+                self.fetchData()
             }, onError: { String in
                 
             }, competitionId: $0.id)
         }
-        
-        fetchData()
     }
 }

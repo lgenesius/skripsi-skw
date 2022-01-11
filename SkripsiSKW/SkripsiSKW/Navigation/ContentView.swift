@@ -18,7 +18,7 @@ struct ContentView: View {
                 
                 if sessionVM.isLoading == false {
                     if sessionVM.authUser != nil {
-                        ChallengesView()
+                        ChallengesView(activeCompetViewModel: ActiveCompetitionListViewModel(sessionVM.authUser?.uid ?? ""))
                     } else {
                         SignInView(signInVM: SignInViewModel())
                     }

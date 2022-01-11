@@ -10,6 +10,7 @@ import SwiftUI
 struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     @StateObject var badgesViewModel = BadgeListViewModel()
+    @StateObject var activeCompetViewModel: ActiveCompetitionListViewModel
     
     @State private var isAlertPresent = false
     @State private var alertIdentifier: AlertIdentifier = .caution
@@ -85,14 +86,14 @@ extension ChallengesView {
                         DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
                         
                         NavigationLink(isActive: $isExerciseLinkActivate) {
-                            WorkoutNavigation(workout: selectedExercises)
+                            WorkoutNavigation(workout: selectedExercises, activeCompetitionVM: activeCompetViewModel)
                         } label: {
                             EmptyView()
                         }
                         
                         ExercisesList(isAlertPresent: $isAlertPresent, alertIdentifier: $alertIdentifier, selectedExercises: $selectedExercises)
                         
-                        ActiveCompetitions(activeCompetitionListVM: ActiveCompetitionListViewModel())
+                        ActiveCompetitions(activeCompetitionListVM: activeCompetViewModel)
                         
                         BadgesView(badgesListVM: badgesViewModel)
                     }
@@ -167,11 +168,5 @@ extension ChallengesView {
             }
         }
         .padding(.horizontal)
-    }
-}
-
-struct ChallengesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengesView()
     }
 }

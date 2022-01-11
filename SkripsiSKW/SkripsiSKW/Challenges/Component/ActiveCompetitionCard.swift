@@ -21,14 +21,23 @@ struct ActiveCompetitionCard: View {
             
                 
             VStack(alignment: .leading){
-                Text(activeCompetitionVM.competition.competitionName).font(.system(size: 18))
+                Text(activeCompetitionVM.competition.competitionName)
+                    .modifier(TextModifier(color: Color.snowflake, size: 18, weight: .bold))
                 Text("")
-                Text(activeCompetitionVM.competition.competitionDescription).font(.system(size: 12))
+                Text(activeCompetitionVM.competition.competitionDescription).modifier(TextModifier(color: Color.snowflake, size: 12, weight: .regular))
+                    .multilineTextAlignment(.leading)
                 Spacer()
                 
-                Button(action: {}, label: {
-                    Text("Start Workout").font(.system(size: 12)).padding(5).foregroundColor(Color.black)
-                }).background(Color.yellow).cornerRadius(8)
+                if activeCompetitionVM.competition.isRunning {
+                    Button(action: {}, label: {
+                        Text("Competition is Running").font(.system(size: 12)).padding(5).foregroundColor(Color.black)
+                    }).background(Color.green).cornerRadius(8)
+                } else {
+                    Button(action: {}, label: {
+                        Text("Started on \(activeCompetitionVM.competition.startDateEvent)").font(.system(size: 12)).padding(5).foregroundColor(Color.white)
+                    }).background(Color.red).cornerRadius(8)
+                }
+                Text("From \(activeCompetitionVM.competition.startDateEvent) until \(activeCompetitionVM.competition.endDateEvent)").modifier(TextModifier(color: Color.snowflake, size: 12, weight: .bold))
                    
             }.padding()
         }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)

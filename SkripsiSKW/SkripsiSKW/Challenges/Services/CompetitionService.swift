@@ -36,6 +36,25 @@ class CompetitionService {
         }
     }
     
+    static func updateCompetition(completion: @escaping (Bool, Error?) -> Void) {
+        
+        Competitions.whereField("endDateEvent", isEqualTo: Date().shortDate).getDocuments { querySnapshot, error in
+            if let error = error {
+                completion(false, error)
+                return
+            }
+            
+            if let document = querySnapshot, !document.isEmpty {
+                for data in document.documents {
+                    data.reference.updateData([
+                        "isRunning": false
+                    ])
+                }
+                completion(true, nil)
+            }
+        }
+    }
+    
     static func updateCompetitionData(competitionPoint: Int, onSuccess: @escaping() -> Void,
                                       onError: @escaping (_ errorMessage: String) -> Void, competitionId: String)
     {
@@ -51,26 +70,50 @@ class CompetitionService {
             
             if let document = querySnapshot, document.exists {
                 var competitionQueryData = try? querySnapshot?.data(as: Competition.self) ?? nil
-                competitionQueryData!.users.mutateEach { userData in
-                    if userData.userId == userId {
-                        userData.userCompetitionPoint += competitionPoint
-                    }
-                }
-                
-                document.reference.updateData([
-                    "users": ""
-                ])
-                
-                competitionQueryData!.users.forEach { userData in
-                    document.reference.updateData([
-                        "users": FieldValue.arrayUnion([[
-                            "userCompetitionPoint" : userData.userCompetitionPoint,
-                            "userId" : userData.userId,
-                            "userName": userData.userName,
-                            "userRank": userData.userRank
-                        ]])
-                    ])
+                if competitionQueryData!.isRunning {
                     
+                    let lastData = competitionQueryData?.users.filter {
+                        $0.userId == userId
+                    }.first
+                    
+                    competitionQueryData!.users.mutateEach { userData in
+                        if userData.userId == userId {
+                            userData.userCompetitionPoint += competitionPoint
+                        }
+                    }
+                    
+                    let newData = competitionQueryData?.users.filter({ CompetitionUserData in
+                        CompetitionUserData.userId == userId
+                    }).first
+                    
+                    let newestData = competitionQueryData?.users.filter({ CompetitionUserData in
+                        CompetitionUserData.userId != userId
+                    })
+                    
+                    
+                    document.reference.updateData([
+                      "users": FieldValue.arrayUnion([
+                          [
+                              "userCompetitionPoint" : newData!.userCompetitionPoint,
+                              "userId" : userId,
+                              "userName": newData!.userName,
+                              "userRank": newData!.userRank
+                          ]
+                      
+                      ])
+                      
+                    ]) { error in
+                        document.reference.updateData([
+                            "users": FieldValue.arrayRemove([
+                                [
+                                    "userCompetitionPoint" : lastData!.userCompetitionPoint,
+                                    "userId" : lastData!.userId,
+                                    "userName": lastData!.userName,
+                                    "userRank": lastData!.userRank
+                                ]
+                            ])
+                        ])
+                    }
                 }
             }
         }
@@ -186,7 +229,7 @@ class CompetitionService {
             return
         }
         
-        Competitions.order(by: "users", descending: true).getDocuments { (querySnapshot, error) in
+        Competitions.order(by: "users", descending: true).addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 completion(nil, error)
                 return
@@ -206,14 +249,6 @@ class CompetitionService {
                 Competition(id: $0.id, startDateEvent: $0.startDateEvent, endDateEvent: $0.endDateEvent, competitionName: $0.competitionName, competitionDescription: $0.competitionDescription, users: $0.users.sorted {
                     $0.userCompetitionPoint > $1.userCompetitionPoint
                 }, competitionCode: $0.competitionCode, isRunning: $0.isRunning)
-            }
-            
-            currentCompetitionSorted.forEach {
-                updateCompetitionRank(sortedCompetition: $0, $0.id!) {
-                 
-                } onError: { errorMessage in
-                    
-                }
             }
             completion(currentCompetitionSorted, nil)
         }

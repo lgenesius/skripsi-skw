@@ -17,6 +17,8 @@ struct WorkoutCameraView: View {
     @State private var isCountdownPresent = true
     @State private var isWorkoutFinish = false
     
+    @ObservedObject var activeCompetitionVM: ActiveCompetitionListViewModel
+    
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -43,7 +45,7 @@ struct WorkoutCameraView: View {
                     // Vision Body Pose View
                     StickFigureView(poseEstimator: poseEstimator, size: geo.size)
                     
-                    WorkoutTimerPointView(poseEstimator: poseEstimator, isWorkoutFinish: $isWorkoutFinish)
+                    WorkoutTimerPointView(poseEstimator: poseEstimator, activeCompetitionVM: activeCompetitionVM, isWorkoutFinish: $isWorkoutFinish)
                 } else {
                     ZStack {
                         Color.black.opacity(0.7)

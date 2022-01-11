@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CompetitionLeaderboardDetail: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var competitionVM: CompetitionViewModel
+    @ObservedObject var competitionVM: ActiveCompetitionViewModel
     
     var body: some View {
         ZStack {
@@ -109,6 +109,6 @@ extension CompetitionLeaderboardDetail {
 
 struct CompetitionLeaderboardDetail_Previews: PreviewProvider {
     static var previews: some View {
-        CompetitionLeaderboardDetail(competitionVM: CompetitionViewModel())
+        CompetitionLeaderboardDetail(competitionVM: dev.activeCompetitionVM)
     }
 }

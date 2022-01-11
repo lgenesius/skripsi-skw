@@ -10,19 +10,19 @@ import FirebaseFirestoreSwift
 
 struct Competition: Codable {
     @DocumentID var id: String? = UUID().uuidString
-    var startDateEvent: Date
-    var endDateEvent: Date
-    var startDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-        return formatter.string(from: startDateEvent)
-    }
+    var startDateEvent: String
+    var endDateEvent: String
+//    var startDateString: String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "EEEE, dd 'of' MMMM"
+//        return formatter.string(from: startDateEvent)
+//    }
     
-    var endDateString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-        return formatter.string(from: endDateEvent)
-    }
+//    var endDateString: String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "EEEE, dd 'of' MMMM"
+//        return formatter.string(from: endDateEvent)
+//    }
     
     var competitionName: String
     var competitionDescription: String

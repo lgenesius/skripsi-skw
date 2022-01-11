@@ -9,13 +9,23 @@ import SwiftUI
 
 struct LeaderboardList: View {
     @Binding var listOfData: [CompetitionUserData]
+    @EnvironmentObject var sessionVM: SessionViewModel
     var incrementIndex: Int = 0
     
     var body: some View {
         VStack {
             ForEach(Array(listOfData.enumerated()), id: \.offset){ (index, data) in
-                LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex)
-                    .frame(height: 30)
+            
+                NavigationLink {
+                    if data.userId == sessionVM.authUser?.uid {
+                        ProfileView(from: .competition, badgesViewModel: BadgeListViewModel())
+                    } else {
+                        LeaderboardRowDetail(leaderbordVM: LeaderboardRowDetailViewModel(userId: data.userId, sessionVM: sessionVM.authUser!), userID: data.userId)
+                    }
+                } label: {
+                    LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex, textColor: sessionVM.authUser?.uid == data.userId ? Color.notYoCheese : Color.snowflake)
+                        .frame(height: 30)
+                }
             }
         }
         .padding()
