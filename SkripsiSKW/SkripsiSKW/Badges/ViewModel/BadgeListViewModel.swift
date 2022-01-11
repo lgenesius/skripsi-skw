@@ -45,6 +45,8 @@ class BadgeListViewModel: ObservableObject {
         badgeRepository.getUserBadges(sessionVM: sessionVM)
     }
     
-    
+    func fetchUserDetailBadges(userId: String) {
+        badgeRepository.getUserDetailBadges(userId: userId)
+    }
 }
 

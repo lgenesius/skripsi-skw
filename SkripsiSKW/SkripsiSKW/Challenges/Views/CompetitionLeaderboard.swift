@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CompetitionLeaderboard: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-//    @StateObject private var competitionVM: CompetitionViewModel = CompetitionViewModel()
     @EnvironmentObject var sessionVM: SessionViewModel
     @State private var willLeave: Bool = false
     @State private var presentLoading: Bool = false

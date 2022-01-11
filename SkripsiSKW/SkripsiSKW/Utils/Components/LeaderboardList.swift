@@ -17,7 +17,11 @@ struct LeaderboardList: View {
             ForEach(Array(listOfData.enumerated()), id: \.offset){ (index, data) in
             
                 NavigationLink {
-                    Text("Leaderboard detail")
+                    if data.userId == sessionVM.authUser?.uid {
+                        ProfileView(from: .competition, badgesViewModel: BadgeListViewModel())
+                    } else {
+                        LeaderboardRowDetail(leaderbordVM: LeaderboardRowDetailViewModel(userId: data.userId, sessionVM: sessionVM.authUser!), userID: data.userId)
+                    }
                 } label: {
                     LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex, textColor: sessionVM.authUser?.uid == data.userId ? Color.notYoCheese : Color.snowflake)
                         .frame(height: 30)

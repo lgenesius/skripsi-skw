@@ -30,4 +30,30 @@ class UserService {
             }
         }
     }
+    
+    static func getUserDetailBadges(userId: String, completion: @escaping([UserBadge]?, Error?) -> Void) {
+        Users.document(userId).collection("Badges").getDocuments { querySnapshot, error in
+            if let error = error { return completion(nil, error) }
+            guard let document = querySnapshot, !document.isEmpty else { return completion(nil, error) }
+            
+            let userDetailBadges = document.documents.compactMap {
+                try? $0.data(as: UserBadge.self)
+            }
+            print(userDetailBadges)
+            completion(userDetailBadges, nil)
+        }
+    }
+    
+    static func getUserData(userId: String, completion: @escaping (User?, Error?) -> Void) {
+        Users.document(userId).getDocument { querySnapshot, error in
+            if let error = error {
+                return completion(nil, error)
+            }
+            
+            if let document = querySnapshot, document.exists {
+                let relatedUserData = try? querySnapshot?.data(as: User.self)
+                return completion(relatedUserData, nil)
+            }
+        }
+    }
 }

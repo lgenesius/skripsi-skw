@@ -38,4 +38,13 @@ final class BadgeRepository: ObservableObject {
             self.userBadges = userBadges ?? []
         }
     }
+    
+    func getUserDetailBadges(userId: String) {
+        UserService.getUserDetailBadges(userId: userId) { userBadges, error in
+            if error != nil {
+                return
+            }
+            self.userBadges = userBadges ?? []
+        }
+    }
 }

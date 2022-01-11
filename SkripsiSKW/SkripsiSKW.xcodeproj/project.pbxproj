@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08FED15BF113DD926CE76D48 /* Pods_SkripsiSKW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */; };
 		4907698E278C501400A249BA /* LeaderboardProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907698D278C501400A249BA /* LeaderboardProfileData.swift */; };
+		49076992278CB00C00A249BA /* LeaderboardRowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49076991278CB00C00A249BA /* LeaderboardRowDetail.swift */; };
 		492F00D92782F90100DB5498 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 492F00D82782F90100DB5498 /* Launch Screen.storyboard */; };
 		492F00DB2783132B00DB5498 /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DA2783132B00DB5498 /* Competition.swift */; };
 		492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F00DD278317E300DB5498 /* CompetitionService.swift */; };
@@ -41,6 +42,7 @@
 		49B943B02775B5D30039FD84 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943AF2775B5D30039FD84 /* ProgressBar.swift */; };
 		49B943B42775BF5C0039FD84 /* LeaderboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943B32775BF5C0039FD84 /* LeaderboardList.swift */; };
 		49B943B62775BF870039FD84 /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B943B52775BF870039FD84 /* LeaderboardRow.swift */; };
+		49CC82A0278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC829F278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		602AB888277ADB2400DFBA1F /* ChallengeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* ChallengeFormViewModel.swift */; };
 		602AB8AD277ADC5100DFBA1F /* CompetitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */; };
@@ -150,6 +152,7 @@
 		40EDACAC5A9A5A5D5D4F49D1 /* Pods-SkripsiSKWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.release.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.release.xcconfig"; sourceTree = "<group>"; };
 		43425A1B2668FFB659F9BC87 /* Pods-SkripsiSKWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKWTests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKWTests/Pods-SkripsiSKWTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4907698D278C501400A249BA /* LeaderboardProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardProfileData.swift; sourceTree = "<group>"; };
+		49076991278CB00C00A249BA /* LeaderboardRowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRowDetail.swift; sourceTree = "<group>"; };
 		492F00D82782F90100DB5498 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		492F00DA2783132B00DB5498 /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		492F00DD278317E300DB5498 /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 		49B943AF2775B5D30039FD84 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		49B943B32775BF5C0039FD84 /* LeaderboardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardList.swift; sourceTree = "<group>"; };
 		49B943B52775BF870039FD84 /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
+		49CC829F278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRorwDetailViewModel.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionViewModel.swift; sourceTree = "<group>"; };
 		602AB89D277ADC5100DFBA1F /* JoinChallengeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChallengeViewModel.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 				492F00FE27855DE500DB5498 /* DailyChallenge */,
 				602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */,
 				602AB89D277ADC5100DFBA1F /* JoinChallengeViewModel.swift */,
+				49CC829F278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -960,6 +965,7 @@
 				49B943AF2775B5D30039FD84 /* ProgressBar.swift */,
 				49B943B32775BF5C0039FD84 /* LeaderboardList.swift */,
 				49B943B52775BF870039FD84 /* LeaderboardRow.swift */,
+				49076991278CB00C00A249BA /* LeaderboardRowDetail.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1240,6 +1246,7 @@
 				602AB8B8277ADC5100DFBA1F /* CompetitionLeaderboard.swift in Sources */,
 				E1D7E4F927770DB700ECAD39 /* View+Ext.swift in Sources */,
 				E1F32E69276DEDAD0072E548 /* LoadingCard.swift in Sources */,
+				49076992278CB00C00A249BA /* LeaderboardRowDetail.swift in Sources */,
 				492F00DE278317E300DB5498 /* CompetitionService.swift in Sources */,
 				E1DF1F00277B109F005B3282 /* CameraViewWrapper.swift in Sources */,
 				E1DFB1C7277C592500EE18C0 /* Stick.swift in Sources */,
@@ -1251,6 +1258,7 @@
 				E1E30D2327881331006D0241 /* PhotoCheckView.swift in Sources */,
 				492F01012785602500DB5498 /* PreviewProvider.swift in Sources */,
 				E1C9B0C42767893800611DAE /* SessionViewModel.swift in Sources */,
+				49CC82A0278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift in Sources */,
 				E1F32E65276DD2380072E548 /* ActivityIndicator.swift in Sources */,
 				492F00E72784BB8600DB5498 /* ActiveCompetitionListViewModel.swift in Sources */,
 				492F00F1278554E000DB5498 /* Challenge.swift in Sources */,
