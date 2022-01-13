@@ -65,6 +65,7 @@
 		60B3F33127858584003EF656 /* BadgeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F33027858584003EF656 /* BadgeItem.swift */; };
 		60B3F3342785E795003EF656 /* BadgeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F3332785E795003EF656 /* BadgeListViewModel.swift */; };
 		60B3F3372785E7F2003EF656 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3F3362785E7F2003EF656 /* Badge.swift */; };
+		60BB8F482790B24900DBD10C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BB8F472790B24900DBD10C /* Toast.swift */; };
 		7BBFE4C374FA8664FBECA48E /* Pods_SkripsiSKW_SkripsiSKWUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */; };
 		CFD88E9217A33CFDC1F661E9 /* Pods_SkripsiSKWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA815118771BF737070232A /* Pods_SkripsiSKWTests.framework */; };
 		E14C05582775BC01008DC3AF /* WorkoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C05572775BC01008DC3AF /* WorkoutType.swift */; };
@@ -211,6 +212,7 @@
 		60B3F33027858584003EF656 /* BadgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeItem.swift; sourceTree = "<group>"; };
 		60B3F3332785E795003EF656 /* BadgeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeListViewModel.swift; sourceTree = "<group>"; };
 		60B3F3362785E7F2003EF656 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		60BB8F472790B24900DBD10C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		86F481335812061D3FC4100D /* Pods_SkripsiSKW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838076E1490E903C83A6062 /* Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; path = "Target Support Files/Pods-SkripsiSKW-SkripsiSKWUITests/Pods-SkripsiSKW-SkripsiSKWUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		91DCE5D29A964E62E220A67F /* Pods_SkripsiSKW_SkripsiSKWUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkripsiSKW_SkripsiSKWUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -966,6 +968,7 @@
 				49B943B32775BF5C0039FD84 /* LeaderboardList.swift */,
 				49B943B52775BF870039FD84 /* LeaderboardRow.swift */,
 				49076991278CB00C00A249BA /* LeaderboardRowDetail.swift */,
+				60BB8F472790B24900DBD10C /* Toast.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				E1D7E4F52776E98700ECAD39 /* WorkoutNavigation.swift in Sources */,
 				60B3F33127858584003EF656 /* BadgeItem.swift in Sources */,
 				E1D7E4FD27770E0000ECAD39 /* WorkoutRotationView.swift in Sources */,
+				60BB8F482790B24900DBD10C /* Toast.swift in Sources */,
 				E1F88D352764723800357A45 /* RoundedButton.swift in Sources */,
 				E1DF1EF4277B033F005B3282 /* WorkoutCameraView.swift in Sources */,
 				E1D7E4F727770D6D00ECAD39 /* DeviceRotationViewModifier.swift in Sources */,
