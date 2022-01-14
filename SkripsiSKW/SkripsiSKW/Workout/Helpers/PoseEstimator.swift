@@ -79,7 +79,10 @@ final class PoseEstimator: NSObject, ObservableObject {
         
         let hipHeight = rightHip.y
         let kneeHeight = rightKnee.y
-        if hipHeight < kneeHeight {
+        
+        let diff = hipHeight - kneeHeight
+        
+        if diff < 0.1 {
             self.wasInBottomPosition = true
         }
     }
