@@ -62,7 +62,7 @@ struct ProfileView: View {
                     
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button {
-                            presentLogoutAlert = true
+                            sessionVM.logout()
                         } label: {
                             Text("Logout")
                                 .foregroundColor(.notYoCheese)
@@ -83,18 +83,6 @@ struct ProfileView: View {
                         currentUser = sessionVM.authUser
                     }
                 })
-                .alert(
-                    "Logout",
-                    isPresented: $presentLogoutAlert,
-                    actions: {
-                        Button("Cancel", role: .cancel, action: {})
-                        Button("Logout") {
-                            sessionVM.logout()
-                        }
-                    },
-                    message: {
-                        Text("Are you sure you want to Logout?")
-                    })
                 .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
                     Button {
                         presentPhotoSheet = true
@@ -133,7 +121,7 @@ struct ProfileView: View {
                         }),
                     trailing:
                         Button(action: {
-                            presentLogoutAlert = true
+                            sessionVM.logout()
                         }, label: {
                             Text("Logout")
                                 .foregroundColor(.notYoCheese)
@@ -153,16 +141,6 @@ struct ProfileView: View {
                         currentUser = sessionVM.authUser
                     }
                 })
-                .alert(isPresented: $presentLogoutAlert) {
-                    Alert(
-                        title: Text("Logout"),
-                        message: Text("Are you sure you want to Logout?"),
-                        primaryButton: .cancel(),
-                        secondaryButton: .default(Text("Logout"), action: {
-                            sessionVM.logout()
-                        })
-                    )
-                }
                 .actionSheet(isPresented: $presentActionSheet) {
                     ActionSheet(
                         title: Text("Select Action"),
