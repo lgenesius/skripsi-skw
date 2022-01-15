@@ -15,9 +15,10 @@ struct SignInView: View {
             VStack {
                 Spacer()
                 Group {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.red)
-                        .frame(width: 114, height: 114)
+                    Image("logo").resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 130, height: 130)
+                        .cornerRadius(10)
                     
                     FormField(value: $signInVM.email, placeholder: "Enter your email...")
                         .padding(.top, 104)

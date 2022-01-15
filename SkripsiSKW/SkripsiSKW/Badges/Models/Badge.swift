@@ -25,10 +25,11 @@ struct UserBadge: Codable {
     var image : String
     var goal : Int
     var progress : Int
-    var recievedDate : Date
+    var recievedDate : String
     var isHighlighted : Bool
+    var identifier: String
     
     func modifyBadgeFromStub(injectedBadge: Badge) -> UserBadge {
-        return UserBadge(competitionId: injectedBadge.id ?? "", name: injectedBadge.name, description: injectedBadge.description, image: injectedBadge.image, goal: injectedBadge.goal, progress: progress, recievedDate: recievedDate, isHighlighted: isHighlighted)
+        return UserBadge(competitionId: injectedBadge.id ?? "", name: injectedBadge.name, description: injectedBadge.description, image: injectedBadge.image, goal: injectedBadge.goal, progress: progress, recievedDate: recievedDate, isHighlighted: isHighlighted, identifier: injectedBadge.identifier.rawValue)
     }
 }

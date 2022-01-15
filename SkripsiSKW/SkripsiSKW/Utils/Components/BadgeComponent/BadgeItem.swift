@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct BadgeItem: View {
     var badgeViewModel: BadgeViewModel
@@ -19,12 +20,15 @@ struct BadgeItem: View {
                 ZStack{
                     VStack(alignment: .center){
                         Text("\(badgeViewModel.userBadge.name)").font(.system(size: 14)).foregroundColor(Color.white).multilineTextAlignment(.center)
-                        Image(systemName: "circle.fill").resizable()
-                            .foregroundColor(Color.yellow).frame(width: 70, height: 70)
+                        WebImage(url: URL(string: badgeViewModel.userBadge.image))
+                            .resizable()
+                            .indicator(.activity)
+                            .scaledToFill()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                            .foregroundColor(Color.yellow)
                     }
-                    if true {
-                        Rectangle().fill(Color.black).opacity(true ? 0.5 :0)
-                    }
+                    Rectangle().fill(Color.black).opacity(badgeViewModel.userBadge.progress < badgeViewModel.userBadge.goal ? 0.3 : 0).cornerRadius(13)
                 }
                 
             )

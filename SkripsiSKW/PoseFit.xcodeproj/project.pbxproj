@@ -265,14 +265,14 @@
 		E1F32E68276DEDAD0072E548 /* LoadingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCard.swift; sourceTree = "<group>"; };
 		E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAuthorizationManager.swift; sourceTree = "<group>"; };
 		E1F3A2A32785A072002181E5 /* AlertIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIdentifier.swift; sourceTree = "<group>"; };
-		E1F88CF6276428F500357A45 /* SkripsiSKW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkripsiSKW.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F88CF6276428F500357A45 /* PoseFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoseFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWApp.swift; sourceTree = "<group>"; };
 		E1F88CFB276428F500357A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1F88CFD276428F600357A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1F88D00276428F600357A45 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E1F88D06276428F600357A45 /* SkripsiSKWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkripsiSKWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F88D06276428F600357A45 /* PoseFitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoseFitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88D0A276428F600357A45 /* SkripsiSKWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWTests.swift; sourceTree = "<group>"; };
-		E1F88D10276428F600357A45 /* SkripsiSKWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkripsiSKWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F88D10276428F600357A45 /* PoseFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoseFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88D14276428F600357A45 /* SkripsiSKWUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWUITests.swift; sourceTree = "<group>"; };
 		E1F88D16276428F600357A45 /* SkripsiSKWUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1F88D282764511200357A45 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -821,9 +821,9 @@
 		E1F88CF7276428F500357A45 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1F88CF6276428F500357A45 /* SkripsiSKW.app */,
-				E1F88D06276428F600357A45 /* SkripsiSKWTests.xctest */,
-				E1F88D10276428F600357A45 /* SkripsiSKWUITests.xctest */,
+				E1F88CF6276428F500357A45 /* PoseFit.app */,
+				E1F88D06276428F600357A45 /* PoseFitTests.xctest */,
+				E1F88D10276428F600357A45 /* PoseFitUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1005,9 +1005,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1F88CF5276428F500357A45 /* SkripsiSKW */ = {
+		E1F88CF5276428F500357A45 /* PoseFit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1F88D1A276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKW" */;
+			buildConfigurationList = E1F88D1A276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFit" */;
 			buildPhases = (
 				96AB102E09A442FC208BA242 /* [CP] Check Pods Manifest.lock */,
 				E1F88CF2276428F500357A45 /* Sources */,
@@ -1019,14 +1019,14 @@
 			);
 			dependencies = (
 			);
-			name = SkripsiSKW;
+			name = PoseFit;
 			productName = SkripsiSKW;
-			productReference = E1F88CF6276428F500357A45 /* SkripsiSKW.app */;
+			productReference = E1F88CF6276428F500357A45 /* PoseFit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E1F88D05276428F600357A45 /* SkripsiSKWTests */ = {
+		E1F88D05276428F600357A45 /* PoseFitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1F88D1D276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKWTests" */;
+			buildConfigurationList = E1F88D1D276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFitTests" */;
 			buildPhases = (
 				E075D93D445B7760DEF7BB4D /* [CP] Check Pods Manifest.lock */,
 				E1F88D02276428F600357A45 /* Sources */,
@@ -1038,14 +1038,14 @@
 			dependencies = (
 				E1F88D08276428F600357A45 /* PBXTargetDependency */,
 			);
-			name = SkripsiSKWTests;
+			name = PoseFitTests;
 			productName = SkripsiSKWTests;
-			productReference = E1F88D06276428F600357A45 /* SkripsiSKWTests.xctest */;
+			productReference = E1F88D06276428F600357A45 /* PoseFitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E1F88D0F276428F600357A45 /* SkripsiSKWUITests */ = {
+		E1F88D0F276428F600357A45 /* PoseFitUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1F88D20276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKWUITests" */;
+			buildConfigurationList = E1F88D20276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFitUITests" */;
 			buildPhases = (
 				342AFD9F3D5365C01BD12DF1 /* [CP] Check Pods Manifest.lock */,
 				E1F88D0C276428F600357A45 /* Sources */,
@@ -1058,9 +1058,9 @@
 			dependencies = (
 				E1F88D12276428F600357A45 /* PBXTargetDependency */,
 			);
-			name = SkripsiSKWUITests;
+			name = PoseFitUITests;
 			productName = SkripsiSKWUITests;
-			productReference = E1F88D10276428F600357A45 /* SkripsiSKWUITests.xctest */;
+			productReference = E1F88D10276428F600357A45 /* PoseFitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1086,7 +1086,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E1F88CF1276428F500357A45 /* Build configuration list for PBXProject "SkripsiSKW" */;
+			buildConfigurationList = E1F88CF1276428F500357A45 /* Build configuration list for PBXProject "PoseFit" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1099,9 +1099,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1F88CF5276428F500357A45 /* SkripsiSKW */,
-				E1F88D05276428F600357A45 /* SkripsiSKWTests */,
-				E1F88D0F276428F600357A45 /* SkripsiSKWUITests */,
+				E1F88CF5276428F500357A45 /* PoseFit */,
+				E1F88D05276428F600357A45 /* PoseFitTests */,
+				E1F88D0F276428F600357A45 /* PoseFitUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1378,12 +1378,12 @@
 /* Begin PBXTargetDependency section */
 		E1F88D08276428F600357A45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E1F88CF5276428F500357A45 /* SkripsiSKW */;
+			target = E1F88CF5276428F500357A45 /* PoseFit */;
 			targetProxy = E1F88D07276428F600357A45 /* PBXContainerItemProxy */;
 		};
 		E1F88D12276428F600357A45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E1F88CF5276428F500357A45 /* SkripsiSKW */;
+			target = E1F88CF5276428F500357A45 /* PoseFit */;
 			targetProxy = E1F88D11276428F600357A45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1511,10 +1511,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = TATAZHHLZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";
@@ -1531,7 +1532,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skw.SkripsiSKW;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PoseFit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1544,10 +1545,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = A5LXCCW6FT;
+				DEVELOPMENT_TEAM = TATAZHHLZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";
@@ -1564,7 +1566,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skw.SkripsiSKW;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PoseFit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1593,7 +1595,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkripsiSKW.app/SkripsiSKW";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PoseFit.app/PoseFit";
 			};
 			name = Debug;
 		};
@@ -1619,7 +1621,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SkripsiSKW.app/SkripsiSKW";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PoseFit.app/PoseFit";
 			};
 			name = Release;
 		};
@@ -1674,7 +1676,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1F88CF1276428F500357A45 /* Build configuration list for PBXProject "SkripsiSKW" */ = {
+		E1F88CF1276428F500357A45 /* Build configuration list for PBXProject "PoseFit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1F88D18276428F600357A45 /* Debug */,
@@ -1683,7 +1685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1F88D1A276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKW" */ = {
+		E1F88D1A276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1F88D1B276428F600357A45 /* Debug */,
@@ -1692,7 +1694,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1F88D1D276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKWTests" */ = {
+		E1F88D1D276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1F88D1E276428F600357A45 /* Debug */,
@@ -1701,7 +1703,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1F88D20276428F600357A45 /* Build configuration list for PBXNativeTarget "SkripsiSKWUITests" */ = {
+		E1F88D20276428F600357A45 /* Build configuration list for PBXNativeTarget "PoseFitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1F88D21276428F600357A45 /* Debug */,

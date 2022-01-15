@@ -52,7 +52,7 @@ class AuthManager {
                             return
                         }
                         
-                        let injectedBadge = UserBadge(competitionId: "", name: "", description: "", image: "", goal: 0, progress: 0, recievedDate: Date(), isHighlighted: false)
+                        let injectedBadge = UserBadge(competitionId: "", name: "", description: "", image: "", goal: 0, progress: 0, recievedDate: "", isHighlighted: false, identifier: "")
                         
                         for badge in badges ?? [] {
                             _ = try? firestoreDocReference.collection("Badges").addDocument(from: injectedBadge.modifyBadgeFromStub(injectedBadge: badge))
