@@ -33,5 +33,5 @@ class DeveloperPreview {
             competitionCode: "123",
             isRunning: true), userId: "")
     
-    let userBadgeVM = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date(), isHighlighted: false))
+    let userBadgeVM = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date().shortDate, isHighlighted: false, identifier: ""))
 }

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SkripsiSKW.xcodeproj">
+      location = "group:/Users/jackieleonardy/Documents/Skripsi/skripsi-skw/SkripsiSKW/PoseFit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
