@@ -19,7 +19,7 @@ enum WorkoutType {
         case .plank:
             return "Plank"
         case .pushup:
-            return "Push Up"
+            return "PushUp"
         }
     }
     

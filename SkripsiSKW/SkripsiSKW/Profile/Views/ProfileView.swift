@@ -331,19 +331,15 @@ extension ProfileView {
                 ))
             
             HStack(spacing: 15) {
-                ForEach(0..<3) { _ in
-                    Button {
-                        
-                    } label: {
-                        RoundedRectangle(cornerRadius: 13)
-                            .fill(Color.blueDepths)
-                            .frame(maxWidth: .infinity, minHeight: 125)
-                    }
-                }
+                ForEach(badgesViewModel.topThree()) { badgeVM in
+                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                                        badgesViewModel.selectBadgeViewModel(badgeVM: badgeVM)
+                                        badgesViewModel.showBadgeDetail.toggle()
+                                    }
             }
         }
         .padding(.horizontal)
     }
-    
+    }
 }
 

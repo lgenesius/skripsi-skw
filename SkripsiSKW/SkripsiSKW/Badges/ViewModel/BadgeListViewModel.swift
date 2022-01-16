@@ -11,7 +11,7 @@ import SwiftUI
 class BadgeListViewModel: ObservableObject {
     @Published var userBadgeListViewModel: [BadgeViewModel] = []
     @Published private var badgeRepository = BadgeRepository()
-    @Published var selectedBadgeViewModel: BadgeViewModel = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date(), isHighlighted: true))
+    @Published var selectedBadgeViewModel: BadgeViewModel = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date().shortDate, isHighlighted: true, identifier: ""))
     @Published var showBadgeDetail: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
@@ -25,7 +25,11 @@ class BadgeListViewModel: ObservableObject {
     }
     
     func topThree() -> [BadgeViewModel] {
-        if !userBadgeListViewModel.isEmpty { return Array(userBadgeListViewModel[0...2]) }
+        if !userBadgeListViewModel.isEmpty {
+                    return Array(userBadgeListViewModel.filter {
+                        $0.userBadge.isHighlighted == true
+                    })
+                }
         return []
     }
     

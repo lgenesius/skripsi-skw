@@ -47,7 +47,10 @@ struct WorkoutTimerPointView: View {
                 withAnimation {
                     isWorkoutFinish = true
                     //MARK: Uncomment kalau emang butuh untuk update data langsung ke database
-//                    activeCompetitionVM.updateAllData(by: poseEstimator.count)
+                    activeCompetitionVM.updateAllData(by: poseEstimator.count)
+                                        UserService.updateBadge(with: poseEstimator.workoutType!.title, point: poseEstimator.count) { error in
+
+                                        }
                 }
                 poseEstimator.isActive = false
             }

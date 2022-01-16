@@ -123,8 +123,10 @@ extension ChallengesView {
             Text(DateManager.shared.getCurrentDayAndDateLongVersion())
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
             Spacer()
-            NavigationLink {
-                ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
+            Button {
+                UserService.updateBadge(with: WorkoutType.pushup.title, point: 100) { error in
+
+                }
             } label: {
                 ProfileImageView(currentUser: $sessionVM.authUser, userId: sessionVM.authUser?.uid, width: 36, height: 36)
             }

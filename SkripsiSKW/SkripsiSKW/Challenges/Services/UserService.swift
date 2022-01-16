@@ -32,7 +32,7 @@ class UserService {
     }
     
     static func getUserDetailBadges(userId: String, completion: @escaping([UserBadge]?, Error?) -> Void) {
-        Users.document(userId).collection("Badges").getDocuments { querySnapshot, error in
+        Users.document(userId).collection("Badges").getDocuments { (querySnapshot, error) in
             if let error = error { return completion(nil, error) }
             guard let document = querySnapshot, !document.isEmpty else { return completion(nil, error) }
             
@@ -56,4 +56,33 @@ class UserService {
             }
         }
     }
+    
+    static func updateBadge(with identifier: String, point by: Int, completion: @escaping(Error?) -> Void) {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                return
+            }
+            Users.document(userId).collection("Badges").whereField("identifier", isEqualTo: identifier).getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    return completion(error)
+                }
+
+                if let document = querySnapshot, !document.isEmpty {
+                    for userBadge in document.documents {
+                        let relatedUserBadge = try? userBadge.data(as: UserBadge.self)
+                        if relatedUserBadge!.progress + by < relatedUserBadge!.goal {
+                            userBadge.reference.updateData([
+                                "progress": relatedUserBadge!.progress + by
+                            ])
+                        } else {
+                            userBadge.reference.updateData([
+                                "progress": relatedUserBadge!.progress + by,
+                                "receivedDate": Date().shortDate
+                            ])
+                        }
+                    }
+                    return completion(nil)
+                }
+
+            }
+        }
 }
