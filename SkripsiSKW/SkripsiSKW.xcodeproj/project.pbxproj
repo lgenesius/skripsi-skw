@@ -265,7 +265,7 @@
 		E1F32E68276DEDAD0072E548 /* LoadingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCard.swift; sourceTree = "<group>"; };
 		E1F3A2A127857F44002181E5 /* CameraAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAuthorizationManager.swift; sourceTree = "<group>"; };
 		E1F3A2A32785A072002181E5 /* AlertIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIdentifier.swift; sourceTree = "<group>"; };
-		E1F88CF6276428F500357A45 /* SkripsiSKW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkripsiSKW.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F88CF6276428F500357A45 /* PoseFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoseFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F88CF9276428F500357A45 /* SkripsiSKWApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkripsiSKWApp.swift; sourceTree = "<group>"; };
 		E1F88CFB276428F500357A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1F88CFD276428F600357A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -821,7 +821,7 @@
 		E1F88CF7276428F500357A45 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1F88CF6276428F500357A45 /* SkripsiSKW.app */,
+				E1F88CF6276428F500357A45 /* PoseFit.app */,
 				E1F88D06276428F600357A45 /* SkripsiSKWTests.xctest */,
 				E1F88D10276428F600357A45 /* SkripsiSKWUITests.xctest */,
 			);
@@ -1021,7 +1021,7 @@
 			);
 			name = SkripsiSKW;
 			productName = SkripsiSKW;
-			productReference = E1F88CF6276428F500357A45 /* SkripsiSKW.app */;
+			productReference = E1F88CF6276428F500357A45 /* PoseFit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E1F88D05276428F600357A45 /* SkripsiSKWTests */ = {
@@ -1531,7 +1531,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skw.SkripsiSKW;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PoseFit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1564,7 +1564,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.skw.SkripsiSKW;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PoseFit;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
