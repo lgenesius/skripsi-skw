@@ -14,7 +14,7 @@ enum AlertIdentifier {
     var title: String {
         switch self {
         case .caution:
-            return "Caution!"
+            return "Warmp Up First!"
         case .openSettings:
             return "Unauthorized Camera Access"
         }
@@ -23,7 +23,7 @@ enum AlertIdentifier {
     var message: String {
         switch self {
         case .caution:
-            return "You can't stop once you started your workout. Are you sure you want to start?"
+            return "Warm up first because you cannot stop once you started. Are you sure ?"
         case .openSettings:
             return "You need to give permission in Settings to access camera in order to use the exercise feature."
         }
