@@ -247,6 +247,9 @@ extension ProfileView {
                 LoadingCard(isLoading: isLoading, message: "Changing Image...")
             }
         }
+        .onAppear {
+            badgesViewModel.fetchUserBadges(sessionVM: sessionVM)
+        }
     }
     
     @ViewBuilder
@@ -316,6 +319,7 @@ extension ProfileView {
                         .cornerRadius(10)
                 }
             }
+            Spacer()
         }
         .padding()
     }

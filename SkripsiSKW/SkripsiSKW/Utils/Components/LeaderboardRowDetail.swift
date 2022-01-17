@@ -130,6 +130,7 @@ struct LeaderboardRowDetail: View {
                         .cornerRadius(10)
                 }
             }
+            Spacer()
         }
         .padding()
     }

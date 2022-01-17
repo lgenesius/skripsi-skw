@@ -11,6 +11,7 @@ struct LeaderboardList: View {
     @Binding var listOfData: [CompetitionUserData]
     @EnvironmentObject var sessionVM: SessionViewModel
     var incrementIndex: Int = 0
+    @StateObject var badgesViewModel = BadgeListViewModel()
     
     var body: some View {
         VStack {
@@ -18,7 +19,7 @@ struct LeaderboardList: View {
             
                 NavigationLink {
                     if data.userId == sessionVM.authUser?.uid {
-                        ProfileView(from: .competition, badgesViewModel: BadgeListViewModel())
+                        ProfileView(from: .competition, badgesViewModel: badgesViewModel)
                     } else {
                         LeaderboardRowDetail(leaderbordVM: LeaderboardRowDetailViewModel(userId: data.userId, sessionVM: sessionVM.authUser!), userID: data.userId)
                     }

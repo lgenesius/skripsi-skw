@@ -39,7 +39,6 @@ class UserService {
             let userDetailBadges = document.documents.compactMap {
                 try? $0.data(as: UserBadge.self)
             }
-            print(userDetailBadges)
             completion(userDetailBadges, nil)
         }
     }
