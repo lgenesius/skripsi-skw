@@ -40,7 +40,7 @@ struct ExercisesList: View {
                             Button {
                                 selectCardAction(index: index)
                             } label: {
-                                ExerciseCard()
+                                ExerciseCard(title: exercises[index].title, description: exercises[index].benefitsDesc, image: "placeholderImage")
                             }
                         }
                     }

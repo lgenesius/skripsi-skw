@@ -48,11 +48,11 @@ enum WorkoutType {
     var benefitsDesc: String {
         switch self {
         case .squat:
-            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
+            return "The benefits are to strengthens your core, reduces the risk of injury, crushes calories, and boost athletic ability and strength."
         case .plank:
-            return ""
+            return "The benefits are improve your posture, can help reduce low back pain, enhance your balance  and can lead to increase flexibility."
         case .pushup:
-            return ""
+            return "The benefits are to improve your posture, strengthens your core, improve upper-body strength, improve heart health, and strengthen your bones."
         }
     }
     

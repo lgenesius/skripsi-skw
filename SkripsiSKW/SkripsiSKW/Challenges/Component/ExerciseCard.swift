@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ExerciseCard: View {
+    let title: String
+    let description: String
+    let image: String
+    
     var body: some View {
         ZStack(alignment: .topLeading){
-            Image("placeholderImage")
+            Image(image)
             
                 .overlay(
                     LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
@@ -19,9 +23,11 @@ struct ExerciseCard: View {
             
                 
             VStack(alignment: .leading){
-                Text("asd").font(.system(size: 18))
+                Text(title).font(.system(size: 18))
                 Text("")
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam sit vitae, justo, eu, blandit parturient. Et ut purus viverra vestibulum id at a.").font(.system(size: 12))
+                Text(description)
+                    .font(.system(size: 12))
+                    .multilineTextAlignment(.leading)
                 Spacer()
                 
                 Button(action: {}, label: {
@@ -30,11 +36,5 @@ struct ExerciseCard: View {
                    
             }.padding()
         }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
-    }
-}
-
-struct ExerciseCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ExerciseCard()
     }
 }
