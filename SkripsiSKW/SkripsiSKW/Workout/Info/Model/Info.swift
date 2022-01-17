@@ -20,14 +20,14 @@ struct Infos {
         var infos = [Info]()
         infos.append(
             Info(
-                imageName: "dummy",
+                imageName: "info1",
                 title: "Show Full Body in Camera Frame",
                 description: "Please show your full body from your head to your ankle in order to improve the accuracy of the body pose-detection."
             )
         )
         infos.append(
             Info(
-                imageName: "dummy",
+                imageName: "info2",
                 title: "Don’t Wear Flowing or Robe-like Cloth",
                 description: "Please don’t wear robe or cloak-like clothing when you started exercising using this feature because it can reduces detection accuracy."
             )
@@ -40,7 +40,7 @@ struct Infos {
             )
         )
         infos.append(
-            Info(imageName: workoutType.imageString,
+            Info(imageName: workoutType.infoImageString,
                  title: workoutType.workoutTitleInfo,
                  description: workoutType.workoutDesc,
                  completion: { status in

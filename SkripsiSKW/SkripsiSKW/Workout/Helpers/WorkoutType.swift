@@ -56,6 +56,17 @@ enum WorkoutType {
         }
     }
     
+    var infoImageString: String {
+        switch self {
+        case .squat:
+            return "squatInfo"
+        case .plank:
+            return "plankInfo"
+        case .pushup:
+            return "pushupInfo"
+        }
+    }
+    
     var benefitsDesc: String {
         switch self {
         case .squat:
