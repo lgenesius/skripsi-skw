@@ -35,7 +35,7 @@ struct WorkoutInfoView: View {
                 )
                 
                 TabIndicator(
-                    count: 3,
+                    count: 4,
                     current: $currentIndex
                 )
             }

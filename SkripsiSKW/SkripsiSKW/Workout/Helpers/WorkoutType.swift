@@ -34,14 +34,25 @@ enum WorkoutType {
         }
     }
     
+    var workoutTitleInfo: String {
+        switch self {
+        case .squat:
+            return "Facing the Front of Camera"
+        case .plank:
+            return "Facing the side of Camera"
+        case .pushup:
+            return "Facing the side of Camera"
+        }
+    }
+    
     var workoutDesc: String {
         switch self {
         case .squat:
-            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
+            return "During squat exercise, please facing the front of camera in order to detect your body pose accurately."
         case .plank:
-            return ""
+            return "During plank exercise, please facing the side of camera in order to detect your body pose accurately."
         case .pushup:
-            return ""
+            return "During pushup exercise, please facing the side of camera in order to detect your body pose accurately."
         }
     }
     

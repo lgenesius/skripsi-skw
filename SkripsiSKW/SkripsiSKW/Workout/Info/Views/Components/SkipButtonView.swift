@@ -14,14 +14,14 @@ struct SkipButtonView: View {
         HStack {
             Spacer()
             Button {
-                currentIndex = 2
+                currentIndex = 3
             } label: {
                 Text("Skip")
                     .foregroundColor(.white)
             }
         }
-        .opacity(currentIndex != 2 ? 1: 0)
-        .allowsHitTesting(currentIndex != 2 ? true: false)
+        .opacity(currentIndex != 3 ? 1: 0)
+        .allowsHitTesting(currentIndex != 3 ? true: false)
         .padding()
     }
 }
