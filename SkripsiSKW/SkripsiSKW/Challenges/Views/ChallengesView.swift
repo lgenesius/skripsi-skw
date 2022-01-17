@@ -136,7 +136,7 @@ extension ChallengesView {
     @ViewBuilder
     var titleApp: some View {
         HStack {
-            Text("Nama App")
+            Text("PoseFit")
                 .modifier(TextModifier(color: .white, size: 34, weight: .medium))
             Spacer()
         }
