@@ -57,6 +57,7 @@ struct WorkoutCameraView: View {
             }
         }
         .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
             poseEstimator.workoutType = workoutType
             if workoutType.orientation == .landscape {
                 AppDelegate.orientationLock = .all
@@ -65,6 +66,7 @@ struct WorkoutCameraView: View {
             }
         }
         .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
             AppDelegate.orientationLock = .portrait // Unlocking the rotation when leaving the view
         }
     }

@@ -34,25 +34,58 @@ enum WorkoutType {
         }
     }
     
+    var workoutTitleInfo: String {
+        switch self {
+        case .squat:
+            return "Facing the Front of Camera"
+        case .plank:
+            return "Facing the side of Camera"
+        case .pushup:
+            return "Facing the side of Camera"
+        }
+    }
+    
     var workoutDesc: String {
         switch self {
         case .squat:
-            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
+            return "During squat exercise, please facing the front of camera in order to detect your body pose accurately."
         case .plank:
-            return ""
+            return "During plank exercise, please facing the side of camera in order to detect your body pose accurately."
         case .pushup:
-            return ""
+            return "During pushup exercise, please facing the side of camera in order to detect your body pose accurately."
+        }
+    }
+    
+    var infoImageString: String {
+        switch self {
+        case .squat:
+            return "squatInfo"
+        case .plank:
+            return "plankInfo"
+        case .pushup:
+            return "pushupInfo"
+        }
+    }
+    
+    var placeholderImage: String {
+        switch self {
+        case .squat:
+            return "placeholderImage2"
+        case .plank:
+            return "placeholderImage3"
+        case .pushup:
+            return "placeholderImage"
         }
     }
     
     var benefitsDesc: String {
         switch self {
         case .squat:
-            return "A good warm-up before a workout dilates your blood vessels, ensuring that your muscles are well supplied with oxygen."
+            return "The benefits are to strengthens your core, reduces the risk of injury, crushes calories, and boost athletic ability and strength."
         case .plank:
-            return ""
+            return "The benefits are improve your posture, can help reduce low back pain, enhance your balance  and can lead to increase flexibility."
         case .pushup:
-            return ""
+            return "The benefits are to improve your posture, strengthens your core, improve upper-body strength, improve heart health, and strengthen your bones."
         }
     }
     

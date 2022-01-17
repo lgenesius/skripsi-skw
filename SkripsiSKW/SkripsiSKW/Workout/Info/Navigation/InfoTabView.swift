@@ -14,8 +14,8 @@ struct InfoTabView: View {
     
     var body: some View {
         TabView(selection: $currentIndex) {
-            ForEach(0..<3) { index in
-                if index == 2 {
+            ForEach(0..<4) { index in
+                if index == 3 {
                     InfoView(
                         isInfoPresent: $isInfoPresent,
                         info: infos[index],
