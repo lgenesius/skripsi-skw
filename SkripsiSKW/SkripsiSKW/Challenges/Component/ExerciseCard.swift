@@ -15,6 +15,8 @@ struct ExerciseCard: View {
     var body: some View {
         ZStack(alignment: .topLeading){
             Image(image)
+                .resizable()
+                .scaledToFit()
             
                 .overlay(
                     LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)

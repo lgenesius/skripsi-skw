@@ -30,6 +30,7 @@ struct InfoView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300, height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Spacer()
             
