@@ -12,18 +12,6 @@ struct Competition: Codable {
     @DocumentID var id: String? = UUID().uuidString
     var startDateEvent: String
     var endDateEvent: String
-//    var startDateString: String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-//        return formatter.string(from: startDateEvent)
-//    }
-    
-//    var endDateString: String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "EEEE, dd 'of' MMMM"
-//        return formatter.string(from: endDateEvent)
-//    }
-    
     var competitionName: String
     var competitionDescription: String
     var users: [CompetitionUserData]

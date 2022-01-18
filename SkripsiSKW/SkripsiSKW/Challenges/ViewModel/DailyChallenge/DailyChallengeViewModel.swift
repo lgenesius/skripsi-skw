@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 class DailyChallengeViewModel: ObservableObject, Identifiable {
-    @Published var challenge: Challenge
+    @Published var challenge: DailyChallenge
     
     var id = ""
     private var cancellables: Set<AnyCancellable> = []
     
-    init(challenge: Challenge) {
+    init(challenge: DailyChallenge) {
         self.challenge = challenge
         $challenge.compactMap {
             $0.id
