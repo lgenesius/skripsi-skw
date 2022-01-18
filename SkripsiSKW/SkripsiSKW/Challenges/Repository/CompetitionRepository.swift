@@ -18,7 +18,8 @@ final class CompetitionRepository: ObservableObject {
     }
     
     func get() {
-        CompetitionService.getCompetition { competitions, error in
+        CompetitionService.getCompetition { [weak self] competitions, error in
+            guard let self = self else { return }
             if error != nil {
                 return
             }
