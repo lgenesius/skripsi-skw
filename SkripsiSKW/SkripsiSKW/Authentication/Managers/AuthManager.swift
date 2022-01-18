@@ -58,6 +58,8 @@ class AuthManager {
                             _ = try? firestoreDocReference.collection("Badges").addDocument(from: injectedBadge.modifyBadgeFromStub(injectedBadge: badge))
                         }
                     }
+                    
+                    DailyChallengeService.registeringDailyChallenge(with: userId)
                     completion(user, nil)
                 }
             }
