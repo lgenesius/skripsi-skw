@@ -226,7 +226,7 @@ extension ProfileView {
                     VStack {
                         headerProfile
                         top3Badges
-                        LatestBadge(badgesViewModel: badgesViewModel.topThree(), badgesListVM: badgesViewModel)
+                        LatestBadge(badgesViewModel: badgesViewModel.latestBadge(), badgesListVM: badgesViewModel)
                         ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
                     }
                 }
@@ -336,14 +336,14 @@ extension ProfileView {
             
             HStack(spacing: 15) {
                 ForEach(badgesViewModel.topThree()) { badgeVM in
-                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                        badgesViewModel.selectBadgeViewModel(badgeVM: badgeVM)
-                                        badgesViewModel.showBadgeDetail.toggle()
-                                    }
+                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                        badgesViewModel.selectBadgeViewModel(badgeVM: badgeVM)
+                        badgesViewModel.showBadgeDetail.toggle()
+                    }
+                }
             }
-        }
-        .padding(.horizontal)
-    }
+        
+        }.padding(.horizontal, 20)
     }
 }
 

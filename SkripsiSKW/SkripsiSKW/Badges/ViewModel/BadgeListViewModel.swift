@@ -37,20 +37,19 @@ class BadgeListViewModel: ObservableObject {
         }
         return []
     }
-//    func latestBadge() -> [BadgeViewModel] {
-////        if !userBadgeListViewModel.isEmpty {
-////            let latest = Array(userBadgeListViewModel.filter {
-////                $0.userBadge.recievedDate
-////            })
-////
-////            if top3.isEmpty{
-////                return Array(userBadgeListViewModel.prefix(3))
-////            }else{
-////                return top3
-////            }
-////        }
-////        return []
-//    }
+    func latestBadge() -> [BadgeViewModel] {
+        if !userBadgeListViewModel.isEmpty {
+            let latest = Array(userBadgeListViewModel.sorted{
+                $0.userBadge.recievedDate > $1.userBadge.recievedDate
+            })
+            if latest.isEmpty{
+                return Array(userBadgeListViewModel.prefix(3))
+            }else{
+                return Array(latest.prefix(3))
+            }
+        }
+        return []
+    }
     init() {
         badgeRepository.$userBadges
             .map { userBadges in
