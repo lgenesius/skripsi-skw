@@ -19,50 +19,61 @@ struct ChallengesView: View {
     @State private var isExerciseLinkActivate = false
     
     var body: some View {
-        
-        VStack {
-            Button {
-                DailyChallengeService.resetDailyChallenge()
-            } label: {
-                Text("Reset User Data")
-                    .modifier(TextModifier(color: .white, size: 14, weight: .medium))
-                    .frame(width: 165, height: 37)
-                    .background(Color.insignia)
-                    .cornerRadius(6)
+        if sessionVM.authUser?.uid == "l7hepPtIS7WGffmPSkwiOr3yKOb2" {
+            VStack {
+                Button {
+                    DailyChallengeService.resetDailyChallenge()
+                } label: {
+                    Text("Reset User Data")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: 165, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
+                
+                Button {
+                    sessionVM.logout()
+                } label: {
+                    Text("Log out")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: 165, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
             }
-            
-
         }
-//        if #available(iOS 15.0, *) {
-//            mainBody
-//                .alert(
-//                    alertIdentifier.title,
-//                    isPresented: $isAlertPresent
-//                ) {
-//                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
-//                    Button(alertIdentifier.secondaryButtonString) {
-//                        secondaryAlertAction()
-//                    }
-//                } message: {
-//                    Text(alertIdentifier.message)
-//                }
-//        } else {
-//            // Fallback on earlier versions
-//            mainBody
-//                .alert(isPresented: $isAlertPresent) {
-//                    Alert(
-//                        title: Text(alertIdentifier.title),
-//                        message: Text(alertIdentifier.message),
-//                        primaryButton: .cancel(),
-//                        secondaryButton: .default(
-//                            Text(alertIdentifier.secondaryButtonString),
-//                            action: {
-//                                secondaryAlertAction()
-//                            })
-//                    )
-//                }
-//        }
         
+        else {
+            if #available(iOS 15.0, *) {
+                mainBody
+                    .alert(
+                        alertIdentifier.title,
+                        isPresented: $isAlertPresent
+                    ) {
+                        Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
+                        Button(alertIdentifier.secondaryButtonString) {
+                            secondaryAlertAction()
+                        }
+                    } message: {
+                        Text(alertIdentifier.message)
+                    }
+            } else {
+                // Fallback on earlier versions
+                mainBody
+                    .alert(isPresented: $isAlertPresent) {
+                        Alert(
+                            title: Text(alertIdentifier.title),
+                            message: Text(alertIdentifier.message),
+                            primaryButton: .cancel(),
+                            secondaryButton: .default(
+                                Text(alertIdentifier.secondaryButtonString),
+                                action: {
+                                    secondaryAlertAction()
+                                })
+                        )
+                    }
+            }
+        }
     }
     
     private func requestCameraAuth() {
