@@ -27,10 +27,16 @@ struct DailyChallengeCard: View {
                 Text("")
                 Text(dailyChallengeVM.challenge.challengeDescription).font(.system(size: 12))
                 Spacer()
+                if(dailyChallengeVM.dailyChallengeUserData.isCompleted) {
+                    Text("Completed").modifier(TextModifier(color: Color.green, size: 15, weight: .medium))
+                } else {
+                    Text("On Going").modifier(TextModifier(color: Color.red, size: 15, weight: .medium))
+                }
                 HStack{
                     ProgressBar(value: $dailyChallengeVM.dummyTotalPointPercentage, backgroundColor: Color.snowflake, progressBarColor: Color.notYoCheese, height: CGFloat(10))
                     Text("\(dailyChallengeVM.dailyChallengeUserData.progress) / \(dailyChallengeVM.challenge.challengeGoal)").font(.system(size: 12)).fontWeight(.bold)
                 }.frame(width: (Screen.width-75)/1.5)
+
              
                    
 
