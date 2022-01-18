@@ -84,4 +84,19 @@ class UserService {
 
             }
         }
+    
+    static func getAllUser(completion: @escaping ([User]?, Error?) -> Void) {
+        Users.getDocuments { querySnapshot, error in
+            if let error = error {
+                return completion(nil, error)
+            }
+            
+            if let document = querySnapshot, !document.isEmpty {
+                let userBadgesQueryData = document.documents.compactMap {
+                    try? $0.data(as: User.self)
+                }
+                completion(userBadgesQueryData, nil)
+            }
+        }
+    }
 }

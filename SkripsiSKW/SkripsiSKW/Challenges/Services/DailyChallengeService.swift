@@ -30,6 +30,38 @@ class DailyChallengeService {
         }
     }
     
+    static func resetDailyChallenge() {
+        var userss: [User] = []
+        UserService.getAllUser { users, error in
+            userss = users ?? []
+            dailyChallenge.getDocuments { querySnapshot, error in
+                if error != nil {
+                    return
+                }
+                
+                let badgesQueryData = querySnapshot?.documents.compactMap {
+                    try? $0.data(as: DailyChallenge.self)
+                } ?? []
+                
+                for badgeQueryData in badgesQueryData {
+                    dailyChallenge.document(badgeQueryData.id!).collection("Users").getDocuments { querySnapshots, error in
+                        if let document = querySnapshots, !document.isEmpty {
+                            var index = 0
+                            for userDailyChallenge in document.documents {
+                                userDailyChallenge.reference.updateData([
+                                    "progress": 0,
+                                    "isCompleted": false,
+                                    "userId": userss[index].uid
+                                ])
+                                index += 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     static func updateDailyChallenge(with identifier: String, point by: Int, completion: @escaping(Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
