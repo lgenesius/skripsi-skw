@@ -47,6 +47,26 @@ class DailyChallengeService {
         }
     }
     
+    static func getUserDailyChallenge(with by: String, completion: @escaping(DailyChallengeUserData?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        dailyChallenge.document(by).collection("Users").whereField("userId", isEqualTo: userId).getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(nil, error) }
+            
+            if let document = querySnapshot, !document.isEmpty {
+                let userDailyChallenges = document.documents.compactMap {
+                    try? $0.data(as: DailyChallengeUserData.self)
+                }
+                
+                let currentUserDailyChallenge = userDailyChallenges.filter { $0.userId == userId }.first
+                
+                completion(currentUserDailyChallenge, nil)
+            }
+        }
+    }
+    
     static func updateDailyChallenge(with identifier: String, point by: Int, completion: @escaping(Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             return

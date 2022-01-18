@@ -31,7 +31,8 @@ final class BadgeRepository: ObservableObject {
     }
     
     func getUserBadges(sessionVM: SessionViewModel) {
-        UserService.getUserBadges(sessionVM: sessionVM) { userBadges, error in
+        UserService.getUserBadges(sessionVM: sessionVM) { [weak self] userBadges, error in
+            guard let self = self else { return }
             if error != nil {
                 return
             }
@@ -40,7 +41,8 @@ final class BadgeRepository: ObservableObject {
     }
     
     func getUserDetailBadges(userId: String) {
-        UserService.getUserDetailBadges(userId: userId) { userBadges, error in
+        UserService.getUserDetailBadges(userId: userId) { [weak self] userBadges, error in
+            guard let self = self else { return }
             if error != nil {
                 return
             }

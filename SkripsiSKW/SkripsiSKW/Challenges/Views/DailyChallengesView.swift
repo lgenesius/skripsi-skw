@@ -33,13 +33,17 @@ struct DailyChallengesView: View {
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
-                        ForEach(dailyChallengeListVM.dailyChallengeListModel) { dailyChallengeVM in
-                            DailyChallengeCard(dailyChallengeVM:dailyChallengeVM )
+                        ForEach($dailyChallengeListVM.dailyChallengeListModel) { $dailyChallengeVM in
+                            DailyChallengeCard(dailyChallengeVM:
+                                                dailyChallengeVM )
                         }
                     }
                 }
             }
         }
+        .onAppear(perform: {
+            dailyChallengeListVM.fetchData()
+        })
         .padding(.horizontal)
         .padding(.top)
     }
