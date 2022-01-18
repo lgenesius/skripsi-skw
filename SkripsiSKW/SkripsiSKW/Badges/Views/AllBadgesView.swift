@@ -16,7 +16,7 @@ struct AllBadgesView: View {
             Color.sambucus
                 .ignoresSafeArea()
             ScrollView{
-                LatestBadge(badgesViewModel: badgesListVM.topThree(), badgesListVM: badgesListVM)
+                LatestBadge(badgesViewModel: badgesListVM.latestBadge(), badgesListVM: badgesListVM)
                 ListOfBadge(badgesViewModel: badgesListVM.userBadgeListViewModel, badgesListVM: badgesListVM)
             }
             Rectangle().fill(Color.black).opacity(badgesListVM.showBadgeDetail ? 0.5 : 0).onTapGesture {
