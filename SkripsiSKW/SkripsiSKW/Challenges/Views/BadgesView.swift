@@ -35,16 +35,14 @@ struct BadgesView: View {
                         .background(GeometryGetter(rect: $roundedRect))
                         .overlay {
                             HStack(spacing: 15) {
-                                if(badgesListVM.topThree().isEmpty){
-                                    Text("Please Highlight Your Badges")
-                                }else{
-                                    ForEach(badgesListVM.topThree()) { badgeVM in
-                                        BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                                            badgesListVM.showBadgeDetail.toggle()
-                                        }
+                                
+                                ForEach(badgesListVM.latestBadge()) { badgeVM in
+                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                        badgesListVM.showBadgeDetail.toggle()
                                     }
                                 }
+                                
                                 
                             }
                             .padding()
@@ -58,16 +56,14 @@ struct BadgesView: View {
                         .background(GeometryGetter(rect: $roundedRect))
                         .overlay(
                             HStack(spacing: 15) {
-                                if(badgesListVM.topThree().isEmpty){
-                                    Text("Please Highlight Your Badges")
-                                }else{
-                                    ForEach(badgesListVM.topThree()) { badgeVM in
-                                        BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                                            badgesListVM.showBadgeDetail.toggle()
-                                        }
+                                
+                                ForEach(badgesListVM.latestBadge()) { badgeVM in
+                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                        badgesListVM.showBadgeDetail.toggle()
                                     }
                                 }
+                                
                                     
                                 
                             }
