@@ -18,9 +18,9 @@ class DeveloperPreview {
     static let instance = DeveloperPreview()
     private init() {}
     
-    let challenge = Challenge(id: "123")
+    let challenge = DailyChallenge(challengeName: "", challengeDescription: "", challengeCompletion: 0, challengeGoal: 0, challengeIdentifier: "")
     
-    let dailyChallengeVM = DailyChallengeViewModel(challenge: Challenge(id: "123"))
+    let dailyChallengeVM = DailyChallengeViewModel(challenge: DailyChallenge(challengeName: "", challengeDescription: "", challengeCompletion: 0, challengeGoal: 0, challengeIdentifier: ""))
     
     let activeCompetitionVM = ActiveCompetitionViewModel(
         competition: Competition(
