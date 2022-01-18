@@ -75,7 +75,7 @@ class UserService {
                         } else {
                             userBadge.reference.updateData([
                                 "progress": relatedUserBadge!.progress + by,
-                                "receivedDate": Date().shortDate
+                                "receivedDate": Date()
                             ])
                         }
                     }

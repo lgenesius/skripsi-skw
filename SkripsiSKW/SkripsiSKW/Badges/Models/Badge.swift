@@ -25,7 +25,7 @@ struct UserBadge: Codable {
     var image : String
     var goal : Int
     var progress : Int
-    var recievedDate : String
+    var recievedDate : Date
     var isHighlighted : Bool
     var identifier: String
     

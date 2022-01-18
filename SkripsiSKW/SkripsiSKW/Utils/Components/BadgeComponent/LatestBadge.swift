@@ -21,12 +21,17 @@ struct LatestBadge: View {
                 ))
             
             HStack(spacing: 15) {
-                ForEach(badgesViewModel) { badgeVM in
-                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                        badgesListVM.showBadgeDetail.toggle()
+                if badgesViewModel.isEmpty{
+                    Text("Theres is no latest badge yet")
+                }else{
+                    ForEach(badgesViewModel) { badgeVM in
+                        BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                            badgesListVM.showBadgeDetail.toggle()
+                        }
                     }
                 }
+                
             }
         }
         .padding(.top, 20)

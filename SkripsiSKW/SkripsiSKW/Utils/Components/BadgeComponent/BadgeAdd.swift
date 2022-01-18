@@ -33,7 +33,7 @@ struct BadgeAdd: View {
                                         if badgesViewModel.userBadge.progress < badgesViewModel.userBadge.goal {
                                             Text("Progress \(badgesViewModel.userBadge.progress) / \(badgesViewModel.userBadge.goal)").bold().font(.system(size: 9)).foregroundColor(.white).padding(.bottom, 9)
                                         } else {
-                                            Text("Received Date \(badgesViewModel.userBadge.recievedDate)").bold().font(.system(size: 9)).foregroundColor(.white).padding(.bottom, 9)
+                                            Text("Received Date \(badgesViewModel.userBadge.recievedDate.shortDate)").bold().font(.system(size: 9)).foregroundColor(.white).padding(.bottom, 9)
                                         }
                 }.foregroundColor(Color.white)
             }.frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3.5).cornerRadius(13)

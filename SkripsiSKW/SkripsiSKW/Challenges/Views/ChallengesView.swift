@@ -122,7 +122,7 @@ extension ChallengesView {
         HStack {
             Text(DateManager.shared.getCurrentDayAndDateLongVersion())
                 .modifier(TextModifier(color: .notYoCheese, size: 17, weight: .regular))
-            Spacer()
+            Spacer()    
             NavigationLink {
                 ProfileView( from: .challenges, badgesViewModel: badgesViewModel)
             } label: {

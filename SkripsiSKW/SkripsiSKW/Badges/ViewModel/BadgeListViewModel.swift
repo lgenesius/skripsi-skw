@@ -11,7 +11,7 @@ import SwiftUI
 class BadgeListViewModel: ObservableObject {
     @Published var userBadgeListViewModel: [BadgeViewModel] = []
     @Published private var badgeRepository = BadgeRepository()
-    @Published var selectedBadgeViewModel: BadgeViewModel = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date().shortDate, isHighlighted: true, identifier: ""))
+    @Published var selectedBadgeViewModel: BadgeViewModel = BadgeViewModel(userBadge: UserBadge(competitionId: "", name: "", description: "", image: "", goal: 123, progress: 0, recievedDate: Date(), isHighlighted: true, identifier: ""))
     @Published var showBadgeDetail: Bool = false
     
     private var cancellables: Set<AnyCancellable> = []
@@ -26,13 +26,31 @@ class BadgeListViewModel: ObservableObject {
     
     func topThree() -> [BadgeViewModel] {
         if !userBadgeListViewModel.isEmpty {
-                    return Array(userBadgeListViewModel.filter {
-                        $0.userBadge.isHighlighted == true
-                    })
-                }
+            let top3 = Array(userBadgeListViewModel.filter {
+                $0.userBadge.isHighlighted == true
+            })
+            if top3.isEmpty{
+                return Array(userBadgeListViewModel.prefix(3))
+            }else{
+                return top3
+            }
+        }
         return []
     }
-    
+//    func latestBadge() -> [BadgeViewModel] {
+////        if !userBadgeListViewModel.isEmpty {
+////            let latest = Array(userBadgeListViewModel.filter {
+////                $0.userBadge.recievedDate
+////            })
+////
+////            if top3.isEmpty{
+////                return Array(userBadgeListViewModel.prefix(3))
+////            }else{
+////                return top3
+////            }
+////        }
+////        return []
+//    }
     init() {
         badgeRepository.$userBadges
             .map { userBadges in
