@@ -21,7 +21,7 @@ struct DailyChallengePopOver: View {
                     Spacer()
                     HStack (spacing: 0){
                         Text("Reward: ").modifier(TextModifier(color: Color.snowflake, size: 14, weight: .medium))
-                        Text("\(dailyChallengeVM.challenge.challengeGoal) Points").modifier(TextModifier(color: Color.notYoCheese, size: 14, weight: .black))
+                        Text("\(dailyChallengeVM.challenge.challengeCompletion) Points").modifier(TextModifier(color: Color.notYoCheese, size: 14, weight: .black))
                     }
                     if dailyChallengeVM.challenge.challengeIdentifier == "PushUp" {
                         NavigationLink {
