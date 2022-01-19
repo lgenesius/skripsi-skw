@@ -117,7 +117,14 @@ extension ChallengesView {
             }
             BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
             
-            DailyChallengePopOver(dailyChallengeVM: dailyChallengesViewModel.selectedDailyChallengeVM, dailyChallengeListVM: dailyChallengesViewModel).opacity(dailyChallengesViewModel.showDailyChallengeDetail ? 1 : 0)
+            DailyChallengePopOver(
+                dailyChallengeVM: dailyChallengesViewModel.selectedDailyChallengeVM,
+                dailyChallengeListVM: dailyChallengesViewModel,
+                selectedExercises: $selectedExercises,
+                alertIdentifier: $alertIdentifier,
+                isAlertPresent: $isAlertPresent
+            )
+                .opacity(dailyChallengesViewModel.showDailyChallengeDetail ? 1 : 0)
             
         }
         

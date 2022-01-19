@@ -10,6 +10,9 @@ import SwiftUI
 struct DailyChallengePopOver: View {
     @ObservedObject var dailyChallengeVM : DailyChallengeViewModel
     @ObservedObject var dailyChallengeListVM: DailyChallengeListViewModel
+    @Binding var selectedExercises: WorkoutType
+    @Binding var alertIdentifier: AlertIdentifier
+    @Binding var isAlertPresent: Bool
     
     var body: some View {
         VStack(alignment: .center){
@@ -24,8 +27,8 @@ struct DailyChallengePopOver: View {
                         Text("\(dailyChallengeVM.challenge.challengeCompletion) Points").modifier(TextModifier(color: Color.notYoCheese, size: 14, weight: .black))
                     }
                     if dailyChallengeVM.challenge.challengeIdentifier == "PushUp" {
-                        NavigationLink {
-                           CreateChallengeView()
+                        Button {
+                            selectCardAction(workoutType: .pushup)
                         } label: {
                             Text("Start Push Up")
                                 .modifier(TextModifier(color: .white, size: 14, weight: .medium))
@@ -34,8 +37,8 @@ struct DailyChallengePopOver: View {
                                 .cornerRadius(6)
                         }
                     } else if dailyChallengeVM.challenge.challengeIdentifier == "Squat" {
-                        NavigationLink {
-                           CreateChallengeView()
+                        Button {
+                            selectCardAction(workoutType: .squat)
                         } label: {
                             Text("Start Squat")
                                 .modifier(TextModifier(color: .white, size: 14, weight: .medium))
@@ -50,10 +53,24 @@ struct DailyChallengePopOver: View {
         }
             
     }
-}
-
-struct DailyChallengePopOver_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyChallengePopOver(dailyChallengeVM: DailyChallengeViewModel(challenge: dev.challenge), dailyChallengeListVM: DailyChallengeListViewModel())
+    
+    private func selectCardAction(workoutType: WorkoutType) {
+        selectedExercises = workoutType
+        
+        let status = CameraAuthorizationManager.getCameraAuthorizationStatus()
+        if status == .unauthorized {
+            alertIdentifier = .openSettings
+            isAlertPresent = true
+            return
+        }
+        
+        alertIdentifier = .caution
+       isAlertPresent = true
     }
 }
+
+//struct DailyChallengePopOver_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DailyChallengePopOver(dailyChallengeVM: DailyChallengeViewModel(challenge: dev.challenge), dailyChallengeListVM: DailyChallengeListViewModel())
+//    }
+//}
