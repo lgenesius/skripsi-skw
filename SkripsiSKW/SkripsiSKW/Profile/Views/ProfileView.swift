@@ -23,6 +23,7 @@ struct ProfileView: View {
     
     @State private var imageData = Data()
     @State private var currentUser: User?
+    @State private var badgeAlert = false
     
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
@@ -233,7 +234,7 @@ extension ProfileView {
                 Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                     badgesViewModel.showBadgeDetail.toggle()
                 }
-                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel, errorAlert: $badgeAlert).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
                 PhotoCheckView(isPresented: $presentCheckPhoto, isLoading: $isLoading, imageData: $imageData) { status in
                     if status {
                         updateImageAndData()

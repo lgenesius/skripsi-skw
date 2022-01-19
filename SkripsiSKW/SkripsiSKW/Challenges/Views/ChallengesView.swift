@@ -16,6 +16,7 @@ struct ChallengesView: View {
     @State private var isAlertPresent = false
     @State private var alertIdentifier: AlertIdentifier = .caution
     @State private var selectedExercises: WorkoutType = .squat
+    @State private var badgeAlert = false
     
     @State private var isExerciseLinkActivate = false
     
@@ -33,6 +34,7 @@ struct ChallengesView: View {
                 } message: {
                     Text(alertIdentifier.message)
                 }
+            
         } else {
             // Fallback on earlier versions
             mainBody
@@ -115,7 +117,7 @@ extension ChallengesView {
                     dailyChallengesViewModel.showDailyChallengeDetail.toggle()
                 }
             }
-            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel, errorAlert: $badgeAlert).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
             
             DailyChallengePopOver(
                 dailyChallengeVM: dailyChallengesViewModel.selectedDailyChallengeVM,

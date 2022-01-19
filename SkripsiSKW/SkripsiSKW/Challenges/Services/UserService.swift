@@ -84,4 +84,62 @@ class UserService {
 
             }
         }
+    
+    
+    static func highlightBadge(id: String, completion: @escaping(Bool, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        Users.document(userId).collection("Badges").getDocuments { queryso, erur in
+            if let error = erur {
+                return completion(false, error)
+            }
+            if let document = queryso, !document.isEmpty {
+                var userDetailBadges = document.documents.compactMap {
+                    try? $0.data(as: UserBadge.self)
+                }
+                userDetailBadges = userDetailBadges.filter { $0.isHighlighted == true }
+                if userDetailBadges.count == 3 {
+                    completion(false, nil)
+                } else {
+                    Users.document(userId).collection("Badges").document(id).getDocument {
+                        (querySnapshot, error) in
+                        
+                        if let error = error {
+                            return completion(false, error)
+                        }
+
+                        if let document = querySnapshot, document.exists {
+                            document.reference.updateData([
+                                    "isHighlighted": true
+                                ])
+                            return completion(true, nil)
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    static func removeBadge(id: String, completion: @escaping(Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        Users.document(userId).collection("Badges").document(id).getDocument {
+            (querySnapshot, error) in
+            
+            if let error = error {
+                return completion(error)
+            }
+
+            if let document = querySnapshot, document.exists {
+                document.reference.updateData([
+                        "isHighlighted": false
+                    ])
+                return completion(nil)
+            }
+        }
+    }
 }

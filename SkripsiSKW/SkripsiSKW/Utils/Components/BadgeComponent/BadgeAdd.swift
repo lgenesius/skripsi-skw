@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 struct BadgeAdd: View {
     @ObservedObject var badgesViewModel : BadgeViewModel
     @ObservedObject var badgesListVM: BadgeListViewModel
+    @EnvironmentObject var sessionVM: SessionViewModel
+    @Binding var errorAlert: Bool
     
     var body: some View {
         VStack(alignment: .center){
@@ -40,11 +42,27 @@ struct BadgeAdd: View {
         
             
             if badgesViewModel.userBadge.progress >= badgesViewModel.userBadge.goal && !badgesViewModel.userBadge.isHighlighted {
-                            Button(action: { }, label: {
+                            Button(action: {
+                                UserService.highlightBadge(id: badgesViewModel.userBadge.id ?? "") { canAdd, error  in
+                                    if error != nil { return }
+                                    if !canAdd {
+                                        errorAlert = true
+                                    } else {
+                                        badgesListVM.fetchUserBadges(sessionVM: sessionVM)
+                                        badgesListVM.showBadgeDetail.toggle()
+                                    }
+                                }
+                            }, label: {
                                 Text("Add to Highlight").bold().foregroundColor(.white)
                             }).frame(width: UIScreen.main.bounds.width/2).padding(.vertical, 5).border(Color.insignia).background(Color.insignia).cornerRadius(8)
                         } else if badgesViewModel.userBadge.isHighlighted {
-                            Button(action: { }, label: {
+                            Button(action: {
+                                UserService.removeBadge(id: badgesViewModel.userBadge.id ?? "") { error in
+                                    if error != nil { return }
+                                    badgesListVM.fetchUserBadges(sessionVM: sessionVM)
+                                    badgesListVM.showBadgeDetail.toggle()
+                                }   
+                            }, label: {
                                 Text("Remove").bold().foregroundColor(.white)
                             }).frame(width: UIScreen.main.bounds.width/2).padding(.vertical, 5).border(Color.insignia).background(Color.insignia).cornerRadius(8)
                         }

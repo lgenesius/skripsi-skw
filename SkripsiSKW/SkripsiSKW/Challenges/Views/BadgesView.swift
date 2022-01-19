@@ -75,7 +75,7 @@ struct BadgesView: View {
                         )
                 }
             }
-                .padding(.horizontal)
+        .padding(.horizontal)
         .padding(.top)
     }
 }
