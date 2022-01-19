@@ -38,8 +38,10 @@ struct BadgesView: View {
                                 
                                 ForEach(badgesListVM.latestBadge()) { badgeVM in
                                     BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                                        badgesListVM.showBadgeDetail.toggle()
+                                        withAnimation {
+                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                            badgesListVM.showBadgeDetail.toggle()
+                                        }
                                     }
                                 }
                                 
@@ -59,8 +61,10 @@ struct BadgesView: View {
                                 
                                 ForEach(badgesListVM.latestBadge()) { badgeVM in
                                     BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                        badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                                        badgesListVM.showBadgeDetail.toggle()
+                                        withAnimation {
+                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+                                            badgesListVM.showBadgeDetail.toggle()
+                                        }
                                     }
                                 }
                                 

@@ -11,6 +11,7 @@ struct ChallengesView: View {
     @EnvironmentObject var sessionVM: SessionViewModel
     @StateObject var badgesViewModel = BadgeListViewModel()
     @StateObject var activeCompetViewModel: ActiveCompetitionListViewModel
+    @StateObject var dailyChallengesViewModel: DailyChallengeListViewModel = DailyChallengeListViewModel()
     
     @State private var isAlertPresent = false
     @State private var alertIdentifier: AlertIdentifier = .caution
@@ -83,7 +84,7 @@ extension ChallengesView {
                     LazyVStack {
                         competitionButtons
                         
-                        DailyChallengesView()
+                        DailyChallengesView(dailyChallengeListVM: dailyChallengesViewModel)
                         
                         NavigationLink(isActive: $isExerciseLinkActivate) {
                             WorkoutNavigation(workout: selectedExercises, activeCompetitionVM: activeCompetViewModel)
@@ -103,10 +104,21 @@ extension ChallengesView {
                 
             }
             Rectangle().fill(Color.black).ignoresSafeArea().opacity(badgesViewModel.showBadgeDetail ? 0.7 : 0).onTapGesture {
-                badgesViewModel.showBadgeDetail.toggle()
+                withAnimation {
+                    badgesViewModel.showBadgeDetail.toggle()
+                }
                 
             }
+            
+            Rectangle().fill(Color.black).ignoresSafeArea().opacity(dailyChallengesViewModel.showDailyChallengeDetail ? 0.7 : 0).onTapGesture {
+                withAnimation {
+                    dailyChallengesViewModel.showDailyChallengeDetail.toggle()
+                }
+            }
             BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+            
+            DailyChallengePopOver(dailyChallengeVM: dailyChallengesViewModel.selectedDailyChallengeVM, dailyChallengeListVM: dailyChallengesViewModel).opacity(dailyChallengesViewModel.showDailyChallengeDetail ? 1 : 0)
+            
         }
         
         

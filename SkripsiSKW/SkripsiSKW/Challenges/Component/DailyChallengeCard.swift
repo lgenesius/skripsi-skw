@@ -12,42 +12,32 @@ struct DailyChallengeCard: View {
     
     var body: some View {
         ZStack(alignment: .topLeading){
-            Image("placeholderImage")
-                .overlay(
-                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
-                ).cornerRadius(13)
-              
+//            Image("placeholderImage")
+//                .overlay(
+//                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
+//                ).cornerRadius(13)
+            Color.blueDepths.ignoresSafeArea()
             
                 
             VStack(alignment: .leading){
                 HStack(){
                     Text(dailyChallengeVM.challenge.challengeName).modifier(TextModifier(color: Color.snowflake, size: 18, weight: .bold))
-                    Text("(\(dailyChallengeVM.challenge.challengeGoal))").font(.system(size: 18)).fontWeight(.regular)
+                    Text("(\(dailyChallengeVM.challenge.challengeGoal) Times )").font(.system(size: 18)).fontWeight(.regular)
                 }
-                Text("")
-                Text(dailyChallengeVM.challenge.challengeDescription).font(.system(size: 12))
                 Spacer()
                 if(dailyChallengeVM.dailyChallengeUserData.isCompleted) {
-                    Text("Completed").modifier(TextModifier(color: Color.green, size: 15, weight: .medium))
+                    HStack(spacing: 20){
+                        ProgressBar(value: $dailyChallengeVM.dummyTotalPointPercentage, backgroundColor: Color.snowflake, progressBarColor: Color.green, height: CGFloat(10))
+                        Text("\(dailyChallengeVM.dailyChallengeUserData.progress) / \(dailyChallengeVM.challenge.challengeGoal)").font(.system(size: 12)).fontWeight(.bold)
+                    }
                 } else {
-                    Text("On Going").modifier(TextModifier(color: Color.red, size: 15, weight: .medium))
+                    HStack(spacing: 20){
+                        ProgressBar(value: $dailyChallengeVM.dummyTotalPointPercentage, backgroundColor: Color.snowflake, progressBarColor: Color.notYoCheese, height: CGFloat(10))
+                        Text("\(dailyChallengeVM.dailyChallengeUserData.progress) / \(dailyChallengeVM.challenge.challengeGoal)").font(.system(size: 12)).fontWeight(.bold)
+                    }
                 }
-                HStack{
-                    ProgressBar(value: $dailyChallengeVM.dummyTotalPointPercentage, backgroundColor: Color.snowflake, progressBarColor: Color.notYoCheese, height: CGFloat(10))
-                    Text("\(dailyChallengeVM.dailyChallengeUserData.progress) / \(dailyChallengeVM.challenge.challengeGoal)").font(.system(size: 12)).fontWeight(.bold)
-                }.frame(width: (Screen.width-75)/1.5)
-
-             
-                   
-
-//                Button(action: {}, label: {
-//                    Text("Start Workout").font(.system(size: 12)).padding(5).foregroundColor(Color.black)
-//                }).background(Color.yellow).cornerRadius(8)
-                   
             }.padding()
-        }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
-        
-            
+        }.cornerRadius(13)
     }
 }
 

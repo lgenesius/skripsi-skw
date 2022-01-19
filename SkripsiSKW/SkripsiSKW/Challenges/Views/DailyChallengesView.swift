@@ -9,13 +9,13 @@ import SwiftUI
 
 struct DailyChallengesView: View {
     @State private var isDropDown = true
-    @StateObject var dailyChallengeListVM: DailyChallengeListViewModel = DailyChallengeListViewModel()
+    @ObservedObject var dailyChallengeListVM: DailyChallengeListViewModel
     
     
     var body: some View {
         VStack {
             HStack {
-                Text("Daily Challenges")
+                Text("Today's Challenges")
                     .modifier(TextModifier(color: .white, size: 24, weight: .medium))
                 Spacer()
                 Button {
@@ -29,15 +29,21 @@ struct DailyChallengesView: View {
                 }
             }
             
-            
             if isDropDown {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 15) {
-                        ForEach($dailyChallengeListVM.dailyChallengeListModel) { $dailyChallengeVM in
-                            DailyChallengeCard(dailyChallengeVM:
-                                                dailyChallengeVM )
-                        }
+                VStack {
+                ForEach($dailyChallengeListVM.dailyChallengeListModel) { $dailyChallengeVM in
+                    VStack {
+                        DailyChallengeCard(dailyChallengeVM:
+                                            dailyChallengeVM )
+                            .onTapGesture {
+                                withAnimation {
+                                    dailyChallengeListVM.selectBadgeViewModel(dailyChallengeVM: dailyChallengeVM)
+                                    
+                                    dailyChallengeListVM.showDailyChallengeDetail.toggle()
+                                }
+                            }
                     }
+                }
                 }
             }
         }
