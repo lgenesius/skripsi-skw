@@ -115,11 +115,7 @@ final class PoseEstimator: NSObject, ObservableObject {
         }
         
         let hipAngleDiffDegrees = Int(hipAngleDiffRadians * 180 / .pi)
-        if rightAnkle.y > rightWrist.y {
-            feetAboveWrist = true //ketika naik pantatnya
-        }else{
-            feetAboveWrist = false
-        }
+     
         if rightKnee.y > rightWrist.y {
             kneeAboveWrist = true //ketika naik pantatnya
         }else{
@@ -130,12 +126,12 @@ final class PoseEstimator: NSObject, ObservableObject {
         }else{
             kneeAboveAnkle = false
         }
-        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees > 150  && self.wasInBottomPosition && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi pantat angkat , jadi ini pas pantat turun dan pantat sudah naik
+        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees > 150  && self.wasInBottomPosition && kneeAboveAnkle && kneeAboveWrist  {  // was in bottom itu posisi pantat angkat , jadi ini pas pantat turun dan pantat sudah naik
             self.count += 1
             self.wasInBottomPosition = false
         }
         
-        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees < 120 && kneeAboveAnkle && kneeAboveWrist && feetAboveWrist {  // was in bottom itu posisi pantat angkat , jadi ini buat cek pantat uda naik blm
+        if elbowAngleDiffDegrees > 75 && hipAngleDiffDegrees < 130 && kneeAboveAnkle && kneeAboveWrist {  // was in bottom itu posisi pantat angkat , jadi ini buat cek pantat uda naik blm
             
             self.wasInBottomPosition = true
         }

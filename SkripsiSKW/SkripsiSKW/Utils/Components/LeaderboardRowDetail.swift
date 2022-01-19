@@ -13,8 +13,7 @@ struct LeaderboardRowDetail: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var badgesViewModel : BadgeListViewModel = BadgeListViewModel()
     @StateObject var leaderbordVM: LeaderboardRowDetailViewModel
-    var rank: Int = 0
-    
+    var rank: Int
     private let gridLayout = [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15),
@@ -96,7 +95,7 @@ struct LeaderboardRowDetail: View {
                                 .fill(Color.bubonicBrown)
                                 .frame(width: 34, height: 34)
                                 .overlay {
-                                    Text("2nd")
+                                    Text(NumberManager.shared.getRank(rank: rank))
                                         .modifier(TextModifier(
                                             color: .white,
                                             size: 12,
@@ -109,7 +108,7 @@ struct LeaderboardRowDetail: View {
                                 .fill(Color.bubonicBrown)
                                 .frame(width: 34, height: 34)
                                 .overlay(
-                                    Text("2nd")
+                                    Text(NumberManager.shared.getRank(rank: rank))
                                         .modifier(TextModifier(
                                             color: .white,
                                             size: 12,
@@ -118,16 +117,13 @@ struct LeaderboardRowDetail: View {
                                 )
                         }
                     
-                    Text("8 Badges")
-                        .modifier(TextModifier(
-                            color: .white,
-                            size: 18,
-                            weight: .bold
-                        ))
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .background(Color.blueDepths)
-                        .cornerRadius(10)
+                    Text(badgesViewModel.badgeCount())
+                            .modifier(TextModifier(
+                                color: .notYoCheese,
+                                size: 18,
+                                weight: .bold
+                            ))
+                        
                 }
             }
             Spacer()
@@ -146,13 +142,10 @@ struct LeaderboardRowDetail: View {
                 ))
             
             HStack(spacing: 15) {
-                ForEach(0..<3) { _ in
-                    Button {
-                        
-                    } label: {
-                        RoundedRectangle(cornerRadius: 13)
-                            .fill(Color.blueDepths)
-                            .frame(maxWidth: .infinity, minHeight: 125)
+                ForEach(badgesViewModel.topThree()) { badgeVM in
+                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+                        badgesViewModel.selectBadgeViewModel(badgeVM: badgeVM)
+                        badgesViewModel.showBadgeDetail.toggle()
                     }
                 }
             }
