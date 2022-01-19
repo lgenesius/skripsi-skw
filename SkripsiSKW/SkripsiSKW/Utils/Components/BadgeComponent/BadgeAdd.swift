@@ -8,11 +8,32 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+public enum BadgeAlert {
+    case error
+    case done
+    case remove
+    case null
+    
+    func getAlertMessage() -> (title: String, message: String) {
+        switch self {
+            case .error:
+                return ("Error: ", "You can't add more than 3 badges, remove one!")
+            case .done:
+                return ("Done: ", "Successfully added the Badge")
+            case .remove:
+                return ("Remove: ", "Successfully removed the Badge")
+            case .null :
+                return ("", ":")
+        }
+    }
+}
+
 struct BadgeAdd: View {
     @ObservedObject var badgesViewModel : BadgeViewModel
     @ObservedObject var badgesListVM: BadgeListViewModel
     @EnvironmentObject var sessionVM: SessionViewModel
-    @Binding var errorAlert: Bool
+    @Binding var errorAlert: BadgeAlert
+    @Binding var badgeAlert: Bool
     
     var body: some View {
         VStack(alignment: .center){
@@ -46,10 +67,17 @@ struct BadgeAdd: View {
                                 UserService.highlightBadge(id: badgesViewModel.userBadge.id ?? "") { canAdd, error  in
                                     if error != nil { return }
                                     if !canAdd {
-                                        errorAlert = true
+                                        withAnimation {
+                                            errorAlert = .error
+                                            badgeAlert.toggle()
+                                        }
                                     } else {
-                                        badgesListVM.fetchUserBadges(sessionVM: sessionVM)
-                                        badgesListVM.showBadgeDetail.toggle()
+                                        withAnimation {
+                                            badgesListVM.fetchUserBadges(sessionVM: sessionVM)
+                                            badgesListVM.showBadgeDetail.toggle()
+                                            errorAlert = .done
+                                            badgeAlert.toggle()
+                                        }
                                     }
                                 }
                             }, label: {
@@ -60,7 +88,11 @@ struct BadgeAdd: View {
                                 UserService.removeBadge(id: badgesViewModel.userBadge.id ?? "") { error in
                                     if error != nil { return }
                                     badgesListVM.fetchUserBadges(sessionVM: sessionVM)
-                                    badgesListVM.showBadgeDetail.toggle()
+                                    withAnimation {
+                                        errorAlert = .remove
+                                        badgesListVM.showBadgeDetail.toggle()
+                                        badgeAlert.toggle()
+                                    }
                                 }   
                             }, label: {
                                 Text("Remove").bold().foregroundColor(.white)

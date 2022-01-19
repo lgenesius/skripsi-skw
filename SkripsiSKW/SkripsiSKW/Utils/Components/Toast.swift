@@ -11,18 +11,22 @@ struct Toast: View {
     let toastMsg : String
     @Binding var show: Bool
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Spacer()
-            HStack {
+            HStack(alignment: .center) {
                 Text(toastMsg)
-            }.font(.headline)
+                    .modifier(TextModifier(color: Color.snowflake, size: 14, weight: .bold))
+                    .frame(alignment: .center)
+            }
+            .frame(alignment: .center)
+            .font(.headline)
             .foregroundColor(.primary)
-                .padding([.top,.bottom],20)
+                .padding([.top,.bottom],10)
                 .padding([.leading,.trailing],40)
             .background(Color(UIColor.secondarySystemBackground))
             .clipShape(Capsule())
         }
-        .frame(width: UIScreen.main.bounds.width / 1.25)
+        .frame(width: UIScreen.main.bounds.width / 1, alignment: .center)
         .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
         .onTapGesture {
             withAnimation {

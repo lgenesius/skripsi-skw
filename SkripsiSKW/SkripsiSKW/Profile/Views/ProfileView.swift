@@ -23,6 +23,8 @@ struct ProfileView: View {
     
     @State private var imageData = Data()
     @State private var currentUser: User?
+    
+    @State private var badgeAlertEnum: BadgeAlert = .null
     @State private var badgeAlert = false
     
     private let gridLayout = [
@@ -84,6 +86,7 @@ struct ProfileView: View {
                         currentUser = sessionVM.authUser
                     }
                 })
+                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
                     Button {
                         presentPhotoSheet = true
@@ -142,6 +145,7 @@ struct ProfileView: View {
                         currentUser = sessionVM.authUser
                     }
                 })
+                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .actionSheet(isPresented: $presentActionSheet) {
                     ActionSheet(
                         title: Text("Select Action"),
@@ -234,7 +238,7 @@ extension ProfileView {
                 Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
                     badgesViewModel.showBadgeDetail.toggle()
                 }
-                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel, errorAlert: $badgeAlert).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+                BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel, errorAlert: $badgeAlertEnum, badgeAlert: $badgeAlert).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
                 PhotoCheckView(isPresented: $presentCheckPhoto, isLoading: $isLoading, imageData: $imageData) { status in
                     if status {
                         updateImageAndData()

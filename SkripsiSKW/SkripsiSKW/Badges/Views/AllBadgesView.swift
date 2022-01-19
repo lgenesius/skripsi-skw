@@ -11,6 +11,7 @@ struct AllBadgesView: View {
     var badgesViewModel : [BadgeViewModel]
     @ObservedObject var badgesListVM : BadgeListViewModel
     @State private var badgeAlert = false
+    @State private var badgeAlertEnum: BadgeAlert = .null
     var body: some View {
         ZStack{
             Color.sambucus
@@ -24,7 +25,7 @@ struct AllBadgesView: View {
                     badgesListVM.showBadgeDetail.toggle()
                 }
             }
-            BadgeAdd(badgesViewModel: badgesListVM.selectedBadgeViewModel, badgesListVM: badgesListVM, errorAlert: $badgeAlert).opacity(badgesListVM.showBadgeDetail  ? 1 : 0)
+            BadgeAdd(badgesViewModel: badgesListVM.selectedBadgeViewModel, badgesListVM: badgesListVM, errorAlert: $badgeAlertEnum, badgeAlert: $badgeAlert).opacity(badgesListVM.showBadgeDetail  ? 1 : 0)
             
         }
         .navigationTitle(Text("Badges"))
