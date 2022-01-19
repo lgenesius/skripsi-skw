@@ -12,8 +12,10 @@ struct ActiveCompetitionCard: View {
     
     var body: some View {
         ZStack(alignment: .topLeading){
-            Image("placeholderImage")
-            
+            Image("medalFilter")
+                .resizable()
+                .scaledToFill()
+                .clipped()
                 .overlay(
                     LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
                 ).cornerRadius(13)

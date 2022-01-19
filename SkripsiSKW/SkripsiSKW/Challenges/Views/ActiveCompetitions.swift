@@ -37,11 +37,11 @@ struct ActiveCompetitions: View {
                                 CompetitionLeaderboard(activeCompetitionVM: activeCompetitionVM)
                             } label: {
                                 ActiveCompetitionCard(activeCompetitionVM: activeCompetitionVM)
-                                    .padding(.trailing, 10)
+                                    .padding(.trailing, 14)
                             }
                         }
                     }
-                    .padding(.horizontal, 8)
+                    .padding(.horizontal, 14)
                 }
             }
         }
