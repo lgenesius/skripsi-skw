@@ -41,10 +41,11 @@ struct ExercisesList: View {
                                 selectCardAction(index: index)
                             } label: {
                                 ExerciseCard(title: exercises[index].title, description: exercises[index].benefitsDesc, image: exercises[index].placeholderImage)
-                                    .padding(.horizontal)
+                                    .padding(.trailing, 10)
                             }
                         }
                     }
+                    .padding(.horizontal, 16)
                 }
             }
         }
