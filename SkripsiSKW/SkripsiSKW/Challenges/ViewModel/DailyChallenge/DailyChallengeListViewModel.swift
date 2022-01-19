@@ -11,8 +11,13 @@ import Combine
 class DailyChallengeListViewModel: ObservableObject {
     @Published private var challengeRepository = ChallengeRepository()
     @Published var dailyChallengeListModel: [DailyChallengeViewModel] = []
-    
+    @Published var selectedDailyChallengeVM: DailyChallengeViewModel = DailyChallengeViewModel(challenge: DailyChallenge(challengeName: "", challengeDescription: "", challengeCompletion: 0, challengeGoal: 0, challengeIdentifier: ""))
+    @Published var showDailyChallengeDetail: Bool = false
     private var cancellables: Set<AnyCancellable> = []
+    
+    func selectBadgeViewModel(dailyChallengeVM: DailyChallengeViewModel) {
+        self.selectedDailyChallengeVM = dailyChallengeVM
+    }
     
     init() {
         challengeRepository.$challenges

@@ -44,6 +44,7 @@
 		49CC82A0278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CC829F278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift */; };
 		49F007F927969748005B2339 /* DailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F007F827969748005B2339 /* DailyChallenge.swift */; };
 		49F007FB27969A8E005B2339 /* DailyChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F007FA27969A8E005B2339 /* DailyChallengeService.swift */; };
+		49F9D4612797B41400B34D23 /* DailyChallengePopOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F9D4602797B41400B34D23 /* DailyChallengePopOver.swift */; };
 		60096AC22774B0BD0002B6B4 /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */; };
 		602AB888277ADB2400DFBA1F /* ChallengeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B94394277474030039FD84 /* ChallengeFormViewModel.swift */; };
 		602AB8AD277ADC5100DFBA1F /* CompetitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */; };
@@ -194,6 +195,7 @@
 		49CC829F278D16C0006C5EB6 /* LeaderboardRorwDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRorwDetailViewModel.swift; sourceTree = "<group>"; };
 		49F007F827969748005B2339 /* DailyChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallenge.swift; sourceTree = "<group>"; };
 		49F007FA27969A8E005B2339 /* DailyChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengeService.swift; sourceTree = "<group>"; };
+		49F9D4602797B41400B34D23 /* DailyChallengePopOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallengePopOver.swift; sourceTree = "<group>"; };
 		60096AC12774B0BD0002B6B4 /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		602AB89C277ADC5100DFBA1F /* CompetitionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitionViewModel.swift; sourceTree = "<group>"; };
 		602AB89D277ADC5100DFBA1F /* JoinChallengeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChallengeViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				602AB8AB277ADC5100DFBA1F /* ChallengesView.swift */,
 				602AB8AC277ADC5100DFBA1F /* CompetitionLeaderboardDetail.swift */,
 				4907698D278C501400A249BA /* LeaderboardProfileData.swift */,
+				49F9D4602797B41400B34D23 /* DailyChallengePopOver.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1325,6 +1328,7 @@
 				E1E18D0A2771A57400C19E60 /* GeometryGetter.swift in Sources */,
 				E1E30D252788680C006D0241 /* PhotoProfileManager.swift in Sources */,
 				E1871705277D8F7200A2D25A /* WorkoutTimerPointView.swift in Sources */,
+				49F9D4612797B41400B34D23 /* DailyChallengePopOver.swift in Sources */,
 				E1D3C924277EEFE800B4B3D5 /* WorkoutFinishView.swift in Sources */,
 				602AB8B0277ADC5100DFBA1F /* DailyChallengeCard.swift in Sources */,
 				E1F88D30276452AC00357A45 /* SignInView.swift in Sources */,
