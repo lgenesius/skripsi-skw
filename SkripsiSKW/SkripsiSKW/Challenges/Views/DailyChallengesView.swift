@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DailyChallengesView: View {
     @State private var isDropDown = true
-    @ObservedObject var dailyChallengeListVM: DailyChallengeListViewModel
+    @StateObject var dailyChallengeListVM: DailyChallengeListViewModel = DailyChallengeListViewModel()
     
     
     var body: some View {

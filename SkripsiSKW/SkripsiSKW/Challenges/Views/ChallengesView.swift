@@ -83,7 +83,7 @@ extension ChallengesView {
                     LazyVStack {
                         competitionButtons
                         
-                        DailyChallengesView(dailyChallengeListVM: DailyChallengeListViewModel())
+                        DailyChallengesView()
                         
                         NavigationLink(isActive: $isExerciseLinkActivate) {
                             WorkoutNavigation(workout: selectedExercises, activeCompetitionVM: activeCompetViewModel)
