@@ -62,10 +62,7 @@ struct LeaderboardRowDetail: View {
                     ListOfBadge(badgesViewModel: badgesViewModel.userBadgeListViewModel, badgesListVM: badgesViewModel)
                 }
             }
-            Rectangle().fill(Color.black).opacity(badgesViewModel.showBadgeDetail ? 0.5 : 0).onTapGesture {
-                badgesViewModel.showBadgeDetail.toggle()
-            }
-            BadgeAdd(badgesViewModel: badgesViewModel.selectedBadgeViewModel, badgesListVM: badgesViewModel, errorAlert: .constant(.null), badgeAlert: .constant(false)).opacity(badgesViewModel.showBadgeDetail ? 1 : 0)
+
         }
     }
     
