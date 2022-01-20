@@ -29,8 +29,8 @@ struct InfoView: View {
             Image(info.imageName)
                 .resizable()
                 .scaledToFit()
+                .cornerRadius(10)
                 .frame(width: 300, height: 300)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Spacer()
             
