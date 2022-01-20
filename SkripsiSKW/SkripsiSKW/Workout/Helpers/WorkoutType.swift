@@ -17,7 +17,7 @@ enum WorkoutType {
         case .squat:
             return "Squat"
         case .plank:
-            return "Plank"
+            return "Plank Hip Raise"
         case .pushup:
             return "PushUp"
         }
@@ -37,11 +37,11 @@ enum WorkoutType {
     var workoutTitleInfo: String {
         switch self {
         case .squat:
-            return "Facing the Front of Camera"
+            return "Squat Exercise Guide"
         case .plank:
-            return "Facing the side of Camera"
+            return "Plank Hip Raise Guide"
         case .pushup:
-            return "Facing the side of Camera"
+            return "Push Up Exercise Guide"
         }
     }
     

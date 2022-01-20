@@ -16,7 +16,6 @@ struct ExerciseCard: View {
         ZStack(alignment: .topLeading){
             Image(image)
                 .resizable()
-                .scaledToFill()
                 .overlay(
                     LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
                 ).cornerRadius(13)
