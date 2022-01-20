@@ -34,7 +34,7 @@ struct Infos {
         )
         infos.append(
             Info(
-                imageName: "dummy",
+                imageName: "info3",
                 title: "Please Appear Alone in Camera Frame",
                 description: "Attempting to detect body poses in dense crowd scenes is likely to produce inaccurate results."
             )
