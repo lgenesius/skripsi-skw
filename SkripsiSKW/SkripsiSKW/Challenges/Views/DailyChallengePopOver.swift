@@ -15,42 +15,41 @@ struct DailyChallengePopOver: View {
     @Binding var isAlertPresent: Bool
     
     var body: some View {
-        VStack(alignment: .center){
-            ZStack{
-                Color.blueDepths.ignoresSafeArea()
-                VStack(spacing: 10){
-                    Text("Description").bold()
-                    Text("\(dailyChallengeVM.challenge.challengeDescription)").font(.system(size: 11))
-                    Spacer()
-                    HStack (spacing: 0){
-                        Text("Reward: ").modifier(TextModifier(color: Color.snowflake, size: 14, weight: .medium))
-                        Text("\(dailyChallengeVM.challenge.challengeCompletion) Points").modifier(TextModifier(color: Color.notYoCheese, size: 14, weight: .black))
-                    }
-                    if dailyChallengeVM.challenge.challengeIdentifier == "PushUp" {
-                        Button {
-                            selectCardAction(workoutType: .pushup)
-                        } label: {
-                            Text("Start Push Up")
-                                .modifier(TextModifier(color: .white, size: 14, weight: .medium))
-                                .frame(width: 165, height: 37)
-                                .background(Color.insignia)
-                                .cornerRadius(6)
-                        }
-                    } else if dailyChallengeVM.challenge.challengeIdentifier == "Squat" {
-                        Button {
-                            selectCardAction(workoutType: .squat)
-                        } label: {
-                            Text("Start Squat")
-                                .modifier(TextModifier(color: .white, size: 14, weight: .medium))
-                                .frame(width: 165, height: 37)
-                                .background(Color.insignia)
-                                .cornerRadius(6)
-                        }
-                    }
 
-                }.padding(.init(top: 20, leading: 16, bottom: 16, trailing: 16))
-            }.frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3.5).cornerRadius(13)
-        }
+        VStack(spacing: 10){
+            Text("Description").bold()
+            Text("\(dailyChallengeVM.challenge.challengeDescription)").font(.system(size: 11))
+                .multilineTextAlignment(.center)
+            Spacer()
+            HStack (spacing: 0){
+                Text("Reward: ").modifier(TextModifier(color: Color.snowflake, size: 14, weight: .medium))
+                Text("\(dailyChallengeVM.challenge.challengeCompletion) Points").modifier(TextModifier(color: Color.notYoCheese, size: 14, weight: .black))
+            }
+            if dailyChallengeVM.challenge.challengeIdentifier == "PushUp" {
+                Button {
+                    selectCardAction(workoutType: .pushup)
+                } label: {
+                    Text("Start Push Up")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: 165, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
+            } else if dailyChallengeVM.challenge.challengeIdentifier == "Squat" {
+                Button {
+                    selectCardAction(workoutType: .squat)
+                } label: {
+                    Text("Start Squat")
+                        .modifier(TextModifier(color: .white, size: 14, weight: .medium))
+                        .frame(width: 165, height: 37)
+                        .background(Color.insignia)
+                        .cornerRadius(6)
+                }
+            }
+
+        }.padding(.init(top: 20, leading: 16, bottom: 16, trailing: 16))
+        .background(Color.blueDepths)
+    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3.5).cornerRadius(13)
             
     }
     

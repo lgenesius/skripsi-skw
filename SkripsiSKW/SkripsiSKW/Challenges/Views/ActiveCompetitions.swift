@@ -31,17 +31,16 @@ struct ActiveCompetitions: View {
             
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 15) {
+                    LazyHStack(spacing: 10) {
                         ForEach($activeCompetitionListVM.competitionListModel) { $activeCompetitionVM in
                             NavigationLink {
                                 CompetitionLeaderboard(activeCompetitionVM: activeCompetitionVM)
                             } label: {
                                 ActiveCompetitionCard(activeCompetitionVM: activeCompetitionVM)
-                                    .padding(.trailing, 14)
+                                    .frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
                             }
                         }
                     }
-                    .padding(.horizontal, 14)
                 }
             }
         }

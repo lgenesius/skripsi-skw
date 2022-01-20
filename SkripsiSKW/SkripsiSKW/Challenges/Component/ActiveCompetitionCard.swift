@@ -11,16 +11,6 @@ struct ActiveCompetitionCard: View {
     var activeCompetitionVM: ActiveCompetitionViewModel
     
     var body: some View {
-        ZStack(alignment: .topLeading){
-            Image("medalFilter")
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .overlay(
-                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
-                ).cornerRadius(13)
-              
-            
                 
             VStack(alignment: .leading){
                 Text(activeCompetitionVM.competition.competitionName)
@@ -41,13 +31,16 @@ struct ActiveCompetitionCard: View {
                 }
                 Text("From \(activeCompetitionVM.competition.startDateEvent) until \(activeCompetitionVM.competition.endDateEvent)").modifier(TextModifier(color: Color.snowflake, size: 12, weight: .bold))
                    
-            }.padding()
-        }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
-    }
-}
-
-struct ActiveCompetitionCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ActiveCompetitionCard(activeCompetitionVM: dev.activeCompetitionVM)
+            }.padding(.horizontal, 16)
+                .padding(.vertical)
+                    .background(
+                        Image("medalFilter")
+                            .resizable()
+                            .scaledToFill()
+                            .overlay(
+                                LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
+                            ).cornerRadius(13)
+                    )
+                    .cornerRadius(8)
     }
 }

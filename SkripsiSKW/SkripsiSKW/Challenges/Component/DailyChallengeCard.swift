@@ -12,10 +12,7 @@ struct DailyChallengeCard: View {
     
     var body: some View {
         ZStack(alignment: .topLeading){
-//            Image("placeholderImage")
-//                .overlay(
-//                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
-//                ).cornerRadius(13)
+
             Color.blueDepths.ignoresSafeArea()
             
                 
@@ -38,7 +35,7 @@ struct DailyChallengeCard: View {
                 }
             }.padding()
         }.cornerRadius(13)
-        .shadow(color: Color.black, radius: 10, x: 0, y: 0)
+        .shadow(color: Color.black, radius: 2, x: 0, y: 3)
     }
 }
 

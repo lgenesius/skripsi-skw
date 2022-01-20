@@ -35,17 +35,16 @@ struct ExercisesList: View {
             
             if isDropDown {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 15) {
+                    LazyHStack(spacing: 2) {
                         ForEach(0..<3) { index in
                             Button {
                                 selectCardAction(index: index)
                             } label: {
                                 ExerciseCard(title: exercises[index].title, description: exercises[index].benefitsDesc, image: exercises[index].placeholderImage)
-                                    .padding(.trailing, 10)
+                                    .frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
                             }
                         }
                     }
-                    .padding(.horizontal, 16)
                 }
             }
         }

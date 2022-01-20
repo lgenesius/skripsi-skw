@@ -13,14 +13,7 @@ struct ExerciseCard: View {
     let image: String
     
     var body: some View {
-        ZStack(alignment: .topLeading){
-            Image(image)
-                .resizable()
-                .overlay(
-                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
-                ).cornerRadius(13)
-              
-            
+        
                 
             VStack(alignment: .leading){
                 Text(title).font(.system(size: 18))
@@ -34,7 +27,17 @@ struct ExerciseCard: View {
                     Text("Start Workout").font(.system(size: 12)).padding(5).foregroundColor(Color.black)
                 }).background(Color.yellow).cornerRadius(8)
                    
-            }.padding()
-        }.frame(width: Screen.width-75, height: 187).foregroundColor(Color.white)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical)
+                .background(
+                    Image(image)
+                        .resizable()
+                        .scaledToFill()
+                        .overlay(
+                            LinearGradient(gradient: Gradient(colors: [.black.opacity(0.75) ,.clear]), startPoint: .leading, endPoint: .trailing)
+                        ).cornerRadius(13)
+                )
+                .cornerRadius(8)
     }
 }
