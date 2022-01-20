@@ -1526,7 +1526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = XJ33WS9HWL;
+				DEVELOPMENT_TEAM = TATAZHHLZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";
@@ -1559,7 +1559,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"SkripsiSKW/Preview Content\"";
-				DEVELOPMENT_TEAM = XJ33WS9HWL;
+				DEVELOPMENT_TEAM = TATAZHHLZ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please let us use the camera...";

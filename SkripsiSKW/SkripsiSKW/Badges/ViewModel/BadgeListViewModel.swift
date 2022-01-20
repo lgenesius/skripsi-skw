@@ -30,7 +30,7 @@ class BadgeListViewModel: ObservableObject {
                 $0.userBadge.isHighlighted == true
             })
             if top3.isEmpty{
-                return latestBadge()
+                return Array(userBadgeListViewModel.prefix(3))
             }else{
                 return top3
             }
