@@ -30,10 +30,7 @@ struct AllBadgesView: View {
         }
         .navigationTitle(Text("Badges"))
         .preferredColorScheme(.dark)
-        .alert(isPresented: $badgeAlert) {
-            Alert(title: Text("Highlighted Badge Limit"), message: Text("You can't put more than 3 highlight badge, remove one"), dismissButton: .cancel(Text("Ok"), action:{
-            }))
-        }
+        .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
     }
 }
 

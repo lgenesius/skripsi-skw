@@ -25,6 +25,7 @@ struct ChallengesView: View {
     var body: some View {
         if #available(iOS 15.0, *) {
             mainBody
+                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .alert(
                     alertIdentifier.title,
                     isPresented: $isAlertPresent
@@ -40,6 +41,7 @@ struct ChallengesView: View {
         } else {
             // Fallback on earlier versions
             mainBody
+                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .alert(isPresented: $isAlertPresent) {
                     Alert(
                         title: Text(alertIdentifier.title),
