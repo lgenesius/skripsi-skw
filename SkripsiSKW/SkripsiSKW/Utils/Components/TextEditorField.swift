@@ -63,19 +63,21 @@ struct TextEditorField: View {
                 .background(Color.blueDepths)
                 .overlay(
                     ZStack {
-                        HStack(alignment: .top) {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.blueDepths, lineWidth: 1.0)
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.blueDepths, lineWidth: 1.0)
+                        
+                        VStack {
                             if value.isEmpty {
-                                VStack(alignment: .leading) {
+                                HStack {
                                     Text(placeholder)
                                         .font(Font.system(size: 17))
                                         .foregroundColor(.gray)
                                     Spacer()
                                 }
-                                .padding(.leading, 10)
                             }
+                            Spacer()
                         }
+                        .padding(24)
                     }
                     .allowsHitTesting(false)
                 )
