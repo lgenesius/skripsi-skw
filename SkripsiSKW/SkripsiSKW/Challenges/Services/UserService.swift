@@ -56,6 +56,25 @@ class UserService {
         }
     }
     
+    static func updateUserPoint(point by: Int, completion: @escaping(Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        Users.document(userId).getDocument { querySnapshot, error in
+            if let error = error {
+                return completion(error)
+            }
+            
+            if let document = querySnapshot, document.exists {
+                document.reference.updateData([
+                    "totalPoint": FieldValue.increment(Int64(by))
+                ])
+                return completion(nil)
+            }
+        }
+    }
+    
     static func updateBadge(with identifier: String, point by: Int, completion: @escaping(Error?) -> Void) {
             guard let userId = Auth.auth().currentUser?.uid else {
                 return
