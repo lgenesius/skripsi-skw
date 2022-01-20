@@ -21,7 +21,7 @@ struct LeaderboardList: View {
                     if data.userId == sessionVM.authUser?.uid {
                         ProfileView(from: .competition, badgesViewModel: badgesViewModel)
                     } else {
-                        LeaderboardRowDetail(leaderbordVM: LeaderboardRowDetailViewModel(userId: data.userId, sessionVM: sessionVM.authUser!), userID: data.userId)
+                        LeaderboardRowDetail(leaderbordVM: LeaderboardRowDetailViewModel(userId: data.userId, sessionVM: sessionVM.authUser!), rank: index+1+incrementIndex, userID: data.userId)
                     }
                 } label: {
                     LeaderboardRow(rowData: data, rank: index + 1 + incrementIndex, textColor: sessionVM.authUser?.uid == data.userId ? Color.notYoCheese : Color.snowflake)

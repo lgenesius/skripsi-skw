@@ -27,7 +27,7 @@ struct BadgeItem: View {
                                                     .frame(width: 70, height: 70)
                                                     .clipShape(Circle())
                                                     .foregroundColor(Color.yellow)
-                    }
+                    }.padding(.horizontal,8)
                     Rectangle().fill(Color.black).opacity(badgeViewModel.userBadge.progress < badgeViewModel.userBadge.goal ? 0.3 : 0).cornerRadius(13)
                 }
                 

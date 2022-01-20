@@ -40,6 +40,7 @@ struct ProfileView: View {
             userId = uId
         }
         
+        
         self.badgesViewModel = badgesViewModel
     }
     
@@ -282,47 +283,13 @@ extension ProfileView {
                         weight: .medium
                     ))
                 
-                HStack {
-                    if userId != nil {
-                        if #available(iOS 15.0, *) {
-                            Circle()
-                                .fill(Color.bubonicBrown)
-                                .frame(width: 34, height: 34)
-                                .overlay {
-                                    Text("2nd")
-                                        .modifier(TextModifier(
-                                            color: .white,
-                                            size: 12,
-                                            weight: .medium
-                                        ))
-                                }
-                        } else {
-                            // Fallback on earlier versions
-                            Circle()
-                                .fill(Color.bubonicBrown)
-                                .frame(width: 34, height: 34)
-                                .overlay(
-                                    Text("2nd")
-                                        .modifier(TextModifier(
-                                            color: .white,
-                                            size: 12,
-                                            weight: .medium
-                                        ))
-                                )
-                        }
-                    }
-                    
-                    Text("8 Badges")
+                Text(badgesViewModel.badgeCount())
                         .modifier(TextModifier(
-                            color: .white,
+                            color: .notYoCheese,
                             size: 18,
                             weight: .bold
                         ))
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .background(Color.blueDepths)
-                        .cornerRadius(10)
-                }
+                
             }
             Spacer()
         }
