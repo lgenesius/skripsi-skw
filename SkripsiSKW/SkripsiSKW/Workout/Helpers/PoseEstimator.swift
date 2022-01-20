@@ -65,6 +65,10 @@ final class PoseEstimator: NSObject, ObservableObject {
               let leftAnkle = bodyParts[.leftAnkle]?.location
         else { return }
         
+        let defaultCGPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        guard rightKnee != defaultCGPoint, rightHip != defaultCGPoint, rightAnkle != defaultCGPoint else { return }
+        
         let firstAngle = atan2(rightHip.y - rightKnee.y, rightHip.x - rightKnee.x)
         let secondAngle = atan2(rightAnkle.y - rightKnee.y, rightAnkle.x - rightKnee.x)
         var angleDiffRadians = firstAngle - secondAngle
@@ -96,6 +100,11 @@ final class PoseEstimator: NSObject, ObservableObject {
               let rightElbow = bodyParts[.rightElbow]?.location,
               let rightWrist = bodyParts[.rightWrist]?.location
         else { return }
+        
+        let defaultCGPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        guard rightKnee != defaultCGPoint, rightHip != defaultCGPoint, rightAnkle != defaultCGPoint, rightShoulder != defaultCGPoint, rightElbow != defaultCGPoint, rightWrist != defaultCGPoint else { return }
+        
         var feetAboveWrist = false
         var kneeAboveWrist = false
         var kneeAboveAnkle = false
@@ -147,6 +156,11 @@ final class PoseEstimator: NSObject, ObservableObject {
               let rightElbow = bodyParts[.rightElbow]?.location,
               let rightWrist = bodyParts[.rightWrist]?.location
         else { return }
+        
+        let defaultCGPoint = CGPoint(x: 0.0, y: 1.0)
+        
+        guard rightKnee != defaultCGPoint, rightAnkle != defaultCGPoint, rightShoulder != defaultCGPoint, rightElbow != defaultCGPoint, rightWrist != defaultCGPoint else { return }
+        
         var feetAboveWrist = false
         var kneeAboveWrist = false
         var kneeAboveAnkle = false
