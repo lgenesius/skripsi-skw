@@ -38,6 +38,7 @@ struct DailyChallengeCard: View {
                 }
             }.padding()
         }.cornerRadius(13)
+        .shadow(color: Color.black, radius: 10, x: 0, y: 0)
     }
 }
 

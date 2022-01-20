@@ -17,60 +17,62 @@ struct JoinChallengeView: View {
     var body: some View {
         ZStack {
             Color.sambucus.ignoresSafeArea()
-            VStack(alignment: .center, spacing: 24) {
-                if #available(iOS 14.0, *) {
-                    VStack(spacing: 0) {
-                        codeTextField
-                    }
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
-                } else {
-                    VStack(spacing: 0) {
-                        codeTextField
-                    }
-                }
-                
-                Spacer()
-                RoundedButton(title: "Continue") {
-                    joinChallengeVM.joinChallenge(sessionVM: sessionVM) { result in
-                        switch result {
-                        case .error, .inValid, .insideTheCompetition, .moreThanTwo:
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                self.presentLoading = false
-                            }
-                            
-                        case .valid:
-                            self.presentLoading = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                self.presentLoading = false
-                                presentationMode.wrappedValue.dismiss()
-                            }
+            ScrollView {
+                VStack(alignment: .center, spacing: 24) {
+                    if #available(iOS 14.0, *) {
+                        VStack(spacing: 0) {
+                            codeTextField
+                        }
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                    } else {
+                        VStack(spacing: 0) {
+                            codeTextField
                         }
                     }
                     
+                    Spacer()
+                    RoundedButton(title: "Continue") {
+                        joinChallengeVM.joinChallenge(sessionVM: sessionVM) { result in
+                            switch result {
+                            case .error, .inValid, .insideTheCompetition, .moreThanTwo:
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    self.presentLoading = false
+                                }
+                                
+                            case .valid:
+                                self.presentLoading = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    self.presentLoading = false
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                        }
+                        
+                    }
+                    .opacity(joinChallengeVM.canJoin ? 1.0 : 0.5)
+                    .disabled(!joinChallengeVM.canJoin)
+                    .alert(isPresented: $joinChallengeVM.alertPresented) {
+                        Alert(title: Text(joinChallengeVM.getAlertData().title), message: Text(joinChallengeVM.getAlertData().message), dismissButton: .cancel(Text("Ok"), action:{
+                            self.presentLoading = false
+                        }))
+                    }
+                    Spacer(minLength: 300)
                 }
-                .opacity(joinChallengeVM.canJoin ? 1.0 : 0.5)
-                .disabled(!joinChallengeVM.canJoin)
-                .alert(isPresented: $joinChallengeVM.alertPresented) {
-                    Alert(title: Text(joinChallengeVM.getAlertData().title), message: Text(joinChallengeVM.getAlertData().message), dismissButton: .cancel(Text("Ok"), action:{
-                        self.presentLoading = false
-                    }))
-                }
-                Spacer(minLength: 300)
-            }
-            .padding(.top, 24)
-            .navigationTitle("Join Competition")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                CustomToolbarTwoButtons(toolbarLeadingTitle: "Cancel", leadingAction: {
-                    presentationMode.wrappedValue.dismiss()
-                }, toolbarTrailingTitle: "") {
-                    
-                }
+                .padding(.top, 24)
             }
             LoadingCard(isLoading: presentLoading, message: "Joining Competition")
-        }  
+        }
+        .navigationTitle("Join Competition")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            CustomToolbarTwoButtons(toolbarLeadingTitle: "Cancel", leadingAction: {
+                presentationMode.wrappedValue.dismiss()
+            }, toolbarTrailingTitle: "") {
+                
+            }
+        }
     }
 }
 

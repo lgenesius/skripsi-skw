@@ -100,14 +100,16 @@ extension CreateChallengeView {
             Color.sambucus
                 .ignoresSafeArea()
             
-            VStack (alignment: .leading, spacing: 24) {
-                competitionName
-                competitionDecription
-                competitionPeriodSegmented
-                datePicker
-                Spacer()
+            ScrollView {
+                VStack (alignment: .leading, spacing: 24) {
+                    competitionName
+                    competitionDecription
+                    competitionPeriodSegmented
+                    datePicker
+                    Spacer()
+                }
+                .padding(.top, 24)
             }
-            .padding(.top, 24)
             
             VStack {
                 startDatePicker
