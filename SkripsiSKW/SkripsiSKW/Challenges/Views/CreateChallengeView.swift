@@ -16,18 +16,8 @@ struct CreateChallengeView: View {
     @State private var endButton: Bool = false
     
     var body: some View {
-        ZStack {
-            Color.sambucus
-                .ignoresSafeArea()
-            
-            VStack (alignment: .leading, spacing: 24) {
-                competitionName
-                competitionDecription
-                competitionPeriodSegmented
-                datePicker
-                Spacer()
-            }
-            .padding(.top, 24)
+        if #available(iOS 15.0, *) {
+            mainBody
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
             .navigationBarBackButtonHidden(true)
@@ -36,7 +26,7 @@ struct CreateChallengeView: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Text("cancel")
+                        Text("Cancel")
                             .foregroundColor(.notYoCheese)
                     }
                 }
@@ -58,15 +48,46 @@ struct CreateChallengeView: View {
                     .disabled(!createFormVM.isValid)
                 }
             }
-            VStack {
-                startDatePicker
-                endDatePicker
+            .alert(
+                createFormVM.getAlertData().title,
+                isPresented: $createFormVM.alertPresented
+            ) {
+                Button("Ok", role: .cancel, action: {})
+            } message: {
+                Text(createFormVM.getAlertData().message)
             }
-            
-            LoadingCard(isLoading: createFormVM.isLoading, message: "Creating Competition...")
-        }
-        .alert(isPresented: $createFormVM.alertPresented) {
-            Alert(title: Text(createFormVM.getAlertData().title), message: Text(createFormVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
+        } else {
+            mainBody
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(Text("Create Competition"))
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Cancel")
+                            .foregroundColor(.notYoCheese)
+                    }),
+                trailing:
+                    Button(action: {
+                        createFormVM
+                            .createChallenge(sessionVM: sessionVM) {
+                                if !createFormVM.alertPresented {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                                createFormVM.isLoading = false
+                            }
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(.notYoCheese)
+                    })
+                    .opacity(createFormVM.isValid ? 1.0 : 0.5)
+                    .disabled(!createFormVM.isValid)
+            )
+            .alert(isPresented: $createFormVM.alertPresented) {
+                Alert(title: Text(createFormVM.getAlertData().title), message: Text(createFormVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
+            }
         }
     }
 }
@@ -74,12 +95,36 @@ struct CreateChallengeView: View {
 extension CreateChallengeView {
     
     @ViewBuilder
+    private var mainBody: some View {
+        ZStack {
+            Color.sambucus
+                .ignoresSafeArea()
+            
+            VStack (alignment: .leading, spacing: 24) {
+                competitionName
+                competitionDecription
+                competitionPeriodSegmented
+                datePicker
+                Spacer()
+            }
+            .padding(.top, 24)
+            
+            VStack {
+                startDatePicker
+                endDatePicker
+            }
+            
+            LoadingCard(isLoading: createFormVM.isLoading, message: "Creating Competition...")
+        }
+    }
+    
+    @ViewBuilder
     private var competitionName: some View {
         VStack(alignment: .leading) {
             Text("Competition Name")
                 .modifier(TextModifier(color: .snowflake, size: 17, weight: .regular))
                 .padding(.horizontal)
-            FormField(value: $createFormVM.competitionName, placeholder: "competition name")
+            FormField(value: $createFormVM.competitionName, placeholder: "Competition name")
             
             ErrorText(errorMessage: createFormVM.competitionNameErrorMessage)
         }

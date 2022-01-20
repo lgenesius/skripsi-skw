@@ -20,9 +20,7 @@ struct TextEditorField: View {
     var body: some View {
         if #available(iOS 15.0, *) {
            
-            Group {
-                TextEditor(text: $value)
-            }
+            TextEditor(text: $value)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
                 .font(Font.system(size: 17))
