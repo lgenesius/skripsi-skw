@@ -55,6 +55,10 @@ struct WorkoutTimerPointView: View {
                     DailyChallengeService.updateDailyChallenge(with: poseEstimator.workoutType!.title, point: poseEstimator.count) { error in
                         
                     }
+                    
+                    UserService.updateUserPoint(point: poseEstimator.count) { error in
+                        
+                    }
                 }
                 poseEstimator.isActive = false
             }

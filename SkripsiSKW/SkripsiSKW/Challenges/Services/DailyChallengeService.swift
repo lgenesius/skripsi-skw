@@ -103,8 +103,12 @@ class DailyChallengeService {
                                     "progress": currentDC!.challengeGoal,
                                     "isCompleted": true
                                 ])
+                                UserService.updateUserPoint(point: currentDC!.challengeGoal) { error in
+                                    
+                                }
                             }
                         }
+                        completion(nil)
                     }
                 }
             }
