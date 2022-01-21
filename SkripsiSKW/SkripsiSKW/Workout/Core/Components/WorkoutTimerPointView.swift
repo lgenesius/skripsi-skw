@@ -69,10 +69,14 @@ struct WorkoutTimerPointView: View {
             countdownManager.pause()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            countdownManager.startCountdown()
+            if poseEstimator.isActive {
+                countdownManager.startCountdown()
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            countdownManager.startIfPaused()
+            if poseEstimator.isActive {
+                countdownManager.startIfPaused()
+            }
         }
     }
     
