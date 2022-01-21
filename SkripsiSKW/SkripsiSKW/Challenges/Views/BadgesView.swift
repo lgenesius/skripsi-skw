@@ -27,29 +27,29 @@ struct BadgesView: View {
                     }
                 }
                 
-                if #available(iOS 15.0, *) {
-                    RoundedRectangle(cornerRadius: 13)
-                        .fill(Color.midnightExpress)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 154)
-                        .background(GeometryGetter(rect: $roundedRect))
-                        .overlay {
-                            HStack(spacing: 15) {
-                                
-                                ForEach(badgesListVM.latestBadge()) { badgeVM in
-                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
-                                        withAnimation {
-                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
-                                            badgesListVM.showBadgeDetail.toggle()
-                                        }
-                                    }
-                                }
-                                
-                                
-                            }
-                            .padding()
-                        }
-                } else {
+//                if #available(iOS 15.0, *) {
+//                    RoundedRectangle(cornerRadius: 13)
+//                        .fill(Color.midnightExpress)
+//                        .frame(maxWidth: .infinity)
+//                        .frame(height: 154)
+//                        .background(GeometryGetter(rect: $roundedRect))
+//                        .overlay {
+//                            HStack(spacing: 15) {
+//                                
+//                                ForEach(badgesListVM.latestBadge()) { badgeVM in
+//                                    BadgeItem(badgeViewModel: badgeVM) .onTapGesture {
+//                                        withAnimation {
+//                                            badgesListVM.selectBadgeViewModel(badgeVM: badgeVM)
+//                                            badgesListVM.showBadgeDetail.toggle()
+//                                        }
+//                                    }
+//                                }
+//                                
+//                                
+//                            }
+//                            .padding()
+//                        }
+//                } else {
                     // Fallback on earlier versions
                     RoundedRectangle(cornerRadius: 13)
                         .fill(Color.midnightExpress)
@@ -73,7 +73,7 @@ struct BadgesView: View {
                             }
                             .padding()
                         )
-                }
+//                }
             }
         .padding(.horizontal)
         .padding(.top)

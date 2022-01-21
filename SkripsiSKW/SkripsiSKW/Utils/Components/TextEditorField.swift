@@ -18,38 +18,38 @@ struct TextEditorField: View {
     }
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-           
-            TextEditor(text: $value)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .font(Font.system(size: 17))
-                .frame(height: 140)
-                .padding(16)
-                .cornerRadius(5)
-                .background(Color.blueDepths)
-                .overlay {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.blueDepths, lineWidth: 1.0)
-                        
-                        VStack {
-                            if value.isEmpty {
-                                HStack {
-                                    Text(placeholder)
-                                        .font(Font.system(size: 17))
-                                        .foregroundColor(.gray)
-                                    Spacer()
-                                }
-                            }
-                            Spacer()
-                        }
-                        .padding(24)
-                    }
-                    .allowsHitTesting(false)
-                }
-                .padding(.horizontal)
-        } else {
+//        if #available(iOS 15.0, *) {
+//           
+//            TextEditor(text: $value)
+//                .autocapitalization(.none)
+//                .disableAutocorrection(true)
+//                .font(Font.system(size: 17))
+//                .frame(height: 140)
+//                .padding(16)
+//                .cornerRadius(5)
+//                .background(Color.blueDepths)
+//                .overlay {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 5)
+//                            .stroke(Color.blueDepths, lineWidth: 1.0)
+//                        
+//                        VStack {
+//                            if value.isEmpty {
+//                                HStack {
+//                                    Text(placeholder)
+//                                        .font(Font.system(size: 17))
+//                                        .foregroundColor(.gray)
+//                                    Spacer()
+//                                }
+//                            }
+//                            Spacer()
+//                        }
+//                        .padding(24)
+//                    }
+//                    .allowsHitTesting(false)
+//                }
+//                .padding(.horizontal)
+//        } else {
             // Fallback on earlier versions
             TextEditor(text: $value)
                 .autocapitalization(.none)
@@ -80,7 +80,7 @@ struct TextEditorField: View {
                     .allowsHitTesting(false)
                 )
                 .padding(.horizontal)
-        }
+//        }
     }
 }
 

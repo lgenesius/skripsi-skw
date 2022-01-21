@@ -16,47 +16,47 @@ struct CreateChallengeView: View {
     @State private var endButton: Bool = false
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-            mainBody
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(Text("Create Competition"))
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Text("Cancel")
-                            .foregroundColor(.notYoCheese)
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        createFormVM
-                            .createChallenge(sessionVM: sessionVM) {
-                                if !createFormVM.alertPresented {
-                                    presentationMode.wrappedValue.dismiss()
-                                }
-                                createFormVM.isLoading = false
-                            }
-                    } label: {
-                        Text("Save")
-                            .foregroundColor(.notYoCheese)
-                    }
-                    .opacity(createFormVM.isValid ? 1.0 : 0.5)
-                    .disabled(!createFormVM.isValid)
-                }
-            }
-            .alert(
-                createFormVM.getAlertData().title,
-                isPresented: $createFormVM.alertPresented
-            ) {
-                Button("Ok", role: .cancel, action: {})
-            } message: {
-                Text(createFormVM.getAlertData().message)
-            }
-        } else {
+//        if #available(iOS 15.0, *) {
+//            mainBody
+//            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitle(Text("Create Competition"))
+//            .navigationBarBackButtonHidden(true)
+//            .toolbar {
+//                ToolbarItemGroup(placement: .navigationBarLeading) {
+//                    Button {
+//                        presentationMode.wrappedValue.dismiss()
+//                    } label: {
+//                        Text("Cancel")
+//                            .foregroundColor(.notYoCheese)
+//                    }
+//                }
+//
+//                ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                    Button {
+//                        createFormVM
+//                            .createChallenge(sessionVM: sessionVM) {
+//                                if !createFormVM.alertPresented {
+//                                    presentationMode.wrappedValue.dismiss()
+//                                }
+//                                createFormVM.isLoading = false
+//                            }
+//                    } label: {
+//                        Text("Save")
+//                            .foregroundColor(.notYoCheese)
+//                    }
+//                    .opacity(createFormVM.isValid ? 1.0 : 0.5)
+//                    .disabled(!createFormVM.isValid)
+//                }
+//            }
+//            .alert(
+//                createFormVM.getAlertData().title,
+//                isPresented: $createFormVM.alertPresented
+//            ) {
+//                Button("Ok", role: .cancel, action: {})
+//            } message: {
+//                Text(createFormVM.getAlertData().message)
+//            }
+//        } else {
             mainBody
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("Create Competition"))
@@ -88,7 +88,7 @@ struct CreateChallengeView: View {
             .alert(isPresented: $createFormVM.alertPresented) {
                 Alert(title: Text(createFormVM.getAlertData().title), message: Text(createFormVM.getAlertData().message), dismissButton: .cancel(Text("Ok")))
             }
-        }
+//        }
     }
 }
 

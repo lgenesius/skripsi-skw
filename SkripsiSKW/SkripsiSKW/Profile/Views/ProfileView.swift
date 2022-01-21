@@ -45,54 +45,54 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-            mainBody
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(Text(""))
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            HStack {
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(.notYoCheese)
-                                Text(navigationTitle.title)
-                                    .foregroundColor(.notYoCheese)
-                            }
-                        }
-                    }
-                    
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button {
-                            sessionVM.logout()
-                        } label: {
-                            Text("Logout")
-                                .foregroundColor(.notYoCheese)
-                        }
-                    }
-                }
-                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
-                .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
-                    Button {
-                        presentPhotoSheet = true
-                    } label: {
-                        Text("Upload Picture")
-                    }
-                    
-                    Button {
-                        deleteImageAndUpdate()
-                    } label: {
-                        Text("Remove Picture")
-                    }
-                }
-                .sheet(isPresented: $presentPhotoSheet) {
-                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
-                        showCheckPhoto(status: status)
-                    }
-                }
-        } else {
+//        if #available(iOS 15.0, *) {
+//            mainBody
+//                .navigationBarTitleDisplayMode(.inline)
+//                .navigationTitle(Text(""))
+//                .navigationBarBackButtonHidden(true)
+//                .toolbar {
+//                    ToolbarItemGroup(placement: .navigationBarLeading) {
+//                        Button {
+//                            presentationMode.wrappedValue.dismiss()
+//                        } label: {
+//                            HStack {
+//                                Image(systemName: "chevron.left")
+//                                    .foregroundColor(.notYoCheese)
+//                                Text(navigationTitle.title)
+//                                    .foregroundColor(.notYoCheese)
+//                            }
+//                        }
+//                    }
+//                    
+//                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+//                        Button {
+//                            sessionVM.logout()
+//                        } label: {
+//                            Text("Logout")
+//                                .foregroundColor(.notYoCheese)
+//                        }
+//                    }
+//                }
+//                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
+//                .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
+//                    Button {
+//                        presentPhotoSheet = true
+//                    } label: {
+//                        Text("Upload Picture")
+//                    }
+//                    
+//                    Button {
+//                        deleteImageAndUpdate()
+//                    } label: {
+//                        Text("Remove Picture")
+//                    }
+//                }
+//                .sheet(isPresented: $presentPhotoSheet) {
+//                    PhotoPicker(isPresented: $presentPhotoSheet, data: $imageData) { status in
+//                        showCheckPhoto(status: status)
+//                    }
+//                }
+//        } else {
             // Fallback on earlier versions
             mainBody
                 .navigationBarTitleDisplayMode(.inline)
@@ -138,7 +138,7 @@ struct ProfileView: View {
                         showCheckPhoto(status: status)
                     }
                 }
-        }
+//        }
     }
     
     private func showCheckPhoto(status: Bool) {

@@ -23,22 +23,22 @@ struct ChallengesView: View {
     @State private var isExerciseLinkActivate = false
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-            mainBody
-                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
-                .alert(
-                    alertIdentifier.title,
-                    isPresented: $isAlertPresent
-                ) {
-                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
-                    Button(alertIdentifier.secondaryButtonString) {
-                        secondaryAlertAction()
-                    }
-                } message: {
-                    Text(alertIdentifier.message)
-                }
-            
-        } else {
+//        if #available(iOS 15.0, *) {
+//            mainBody
+//                .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
+//                .alert(
+//                    alertIdentifier.title,
+//                    isPresented: $isAlertPresent
+//                ) {
+//                    Button(alertIdentifier.primaryButtonString, role: .cancel, action: {})
+//                    Button(alertIdentifier.secondaryButtonString) {
+//                        secondaryAlertAction()
+//                    }
+//                } message: {
+//                    Text(alertIdentifier.message)
+//                }
+//
+//        } else {
             // Fallback on earlier versions
             mainBody
                 .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
@@ -54,7 +54,7 @@ struct ChallengesView: View {
                             })
                     )
                 }
-        }
+//        }
         
     }
     

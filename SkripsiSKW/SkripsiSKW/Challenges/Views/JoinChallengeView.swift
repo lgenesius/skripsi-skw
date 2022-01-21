@@ -19,16 +19,16 @@ struct JoinChallengeView: View {
             Color.sambucus.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .center, spacing: 24) {
-                    if #available(iOS 14.0, *) {
+//                    if #available(iOS 14.0, *) {
                         VStack(spacing: 0) {
                             codeTextField
                         }
                         .ignoresSafeArea(.keyboard, edges: .bottom)
-                    } else {
-                        VStack(spacing: 0) {
-                            codeTextField
-                        }
-                    }
+//                    } else {
+//                        VStack(spacing: 0) {
+//                            codeTextField
+//                        }
+//                    }
                     
                     Spacer()
                     RoundedButton(title: "Continue") {
@@ -79,18 +79,18 @@ struct JoinChallengeView: View {
 extension JoinChallengeView {
     @ViewBuilder
     private var codeTextField: some View {
-        if #available(iOS 15.0, *) {
-            TextField("Enter Code", text: $joinChallengeVM.challengeCode, prompt: Text("Enter Code"))
-                .multilineTextAlignment(.center)
-                .modifier(TextFieldModifier(fontSize: 34, backgroundColor: Color.clear, textColor: Color.white, weight: .bold))
-                .textInputAutocapitalization(.characters)
-        } else {
+//        if #available(iOS 15.0, *) {
+//            TextField("Enter Code", text: $joinChallengeVM.challengeCode, prompt: Text("Enter Code"))
+//                .multilineTextAlignment(.center)
+//                .modifier(TextFieldModifier(fontSize: 34, backgroundColor: Color.clear, textColor: Color.white, weight: .bold))
+//                .textInputAutocapitalization(.characters)
+//        } else {
             // Fallback on earlier versions
             TextField("Enter Code", text: $joinChallengeVM.challengeCode)
                 .multilineTextAlignment(.center)
                 .modifier(TextFieldModifier(fontSize: 34, backgroundColor: Color.clear, textColor: Color.white, weight: .bold))
                 .autocapitalization(.allCharacters)
-        }
+//        }
         Text("Type the competition code you want to join")
             .modifier(TextModifier(color: Color.snowflake, size: 13, weight: .bold))
         

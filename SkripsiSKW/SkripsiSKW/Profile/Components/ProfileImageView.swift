@@ -16,34 +16,34 @@ struct ProfileImageView: View {
     
     var body: some View {
         if currentUser != nil {
-            if #available(iOS 15.0, *) {
-                if !currentUser!.profileImageUrl.isEmpty {
-                    WebImage(url: URL(string: currentUser!.profileImageUrl))
-                        .resizable()
-                        .indicator(.activity)
-                        .scaledToFill()
-                        .frame(width: width, height: height)
-                        .clipShape(Circle())
-                        .overlay(alignment: .bottomTrailing) {
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0)
-                        }
-                } else {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.white)
-                        .frame(width: width, height: height)
-                        .overlay(alignment: .bottomTrailing) {
-                            Image(systemName: "pencil.circle.fill")
-                                .foregroundColor(.white)
-                                .scaleEffect(2)
-                                .opacity(userId == nil ? 1: 0)
-                        }
-                }
-            } else {
+//            if #available(iOS 15.0, *) {
+//                if !currentUser!.profileImageUrl.isEmpty {
+//                    WebImage(url: URL(string: currentUser!.profileImageUrl))
+//                        .resizable()
+//                        .indicator(.activity)
+//                        .scaledToFill()
+//                        .frame(width: width, height: height)
+//                        .clipShape(Circle())
+//                        .overlay(alignment: .bottomTrailing) {
+//                            Image(systemName: "pencil.circle.fill")
+//                                .foregroundColor(.white)
+//                                .scaleEffect(2)
+//                                .opacity(userId == nil ? 1: 0)
+//                        }
+//                } else {
+//                    Image(systemName: "person.circle.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .foregroundColor(.white)
+//                        .frame(width: width, height: height)
+//                        .overlay(alignment: .bottomTrailing) {
+//                            Image(systemName: "pencil.circle.fill")
+//                                .foregroundColor(.white)
+//                                .scaleEffect(2)
+//                                .opacity(userId == nil ? 1: 0)
+//                        }
+//                }
+//            } else {
                 // Fallback on earlier versions
                 if !currentUser!.profileImageUrl.isEmpty {
                     WebImage(url: URL(string: currentUser!.profileImageUrl))
@@ -73,7 +73,7 @@ struct ProfileImageView: View {
                             alignment: .bottomTrailing
                         )
                 }
-            }
+//            }
         }
     }
 }

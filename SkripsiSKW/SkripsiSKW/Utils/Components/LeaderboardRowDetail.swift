@@ -87,19 +87,19 @@ struct LeaderboardRowDetail: View {
                     ))
                 
                 HStack {
-                        if #available(iOS 15.0, *) {
-                            Circle()
-                                .fill(Color.bubonicBrown)
-                                .frame(width: 34, height: 34)
-                                .overlay {
-                                    Text(NumberManager.shared.getRank(rank: rank))
-                                        .modifier(TextModifier(
-                                            color: .white,
-                                            size: 12,
-                                            weight: .medium
-                                        ))
-                                }
-                        } else {
+//                        if #available(iOS 15.0, *) {
+//                            Circle()
+//                                .fill(Color.bubonicBrown)
+//                                .frame(width: 34, height: 34)
+//                                .overlay {
+//                                    Text(NumberManager.shared.getRank(rank: rank))
+//                                        .modifier(TextModifier(
+//                                            color: .white,
+//                                            size: 12,
+//                                            weight: .medium
+//                                        ))
+//                                }
+//                        } else {
                             // Fallback on earlier versions
                             Circle()
                                 .fill(Color.bubonicBrown)
@@ -112,7 +112,7 @@ struct LeaderboardRowDetail: View {
                                             weight: .medium
                                         ))
                                 )
-                        }
+//                        }
                     
                     Text(badgesViewModel.badgeCount())
                             .modifier(TextModifier(

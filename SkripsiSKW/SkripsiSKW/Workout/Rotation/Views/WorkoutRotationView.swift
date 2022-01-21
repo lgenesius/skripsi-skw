@@ -45,19 +45,3 @@ struct WorkoutRotationView: View {
         }
     }
 }
-
-struct WorkoutRotationView_Previews: PreviewProvider {
-    static var previews: some View {
-        if #available(iOS 15.0, *) {
-            WorkoutRotationView(isOrientationPresent: .constant(true), completion: {
-                
-            })
-                .previewInterfaceOrientation(.landscapeLeft)
-        } else {
-            // Fallback on earlier versions
-            WorkoutRotationView(isOrientationPresent: .constant(true), completion: {
-                
-            })
-        }
-    }
-}
