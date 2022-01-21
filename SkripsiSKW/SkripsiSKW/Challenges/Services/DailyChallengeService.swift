@@ -94,17 +94,20 @@ class DailyChallengeService {
                     if let document = querySnapshots, !document.isEmpty {
                         for userDailyChallenge in document.documents {
                             let relatedUserDC = try? userDailyChallenge.data(as: DailyChallengeUserData.self)
-                            if relatedUserDC!.progress + by < currentDC!.challengeGoal {
-                                userDailyChallenge.reference.updateData([
-                                    "progress": relatedUserDC!.progress + by
-                                ])
-                            } else {
-                                userDailyChallenge.reference.updateData([
-                                    "progress": currentDC!.challengeGoal,
-                                    "isCompleted": true
-                                ])
-                                UserService.updateUserPoint(point: currentDC!.challengeCompletion) { error in
-                                    
+                            
+                            if !relatedUserDC!.isCompleted {
+                                if relatedUserDC!.progress + by < currentDC!.challengeGoal {
+                                    userDailyChallenge.reference.updateData([
+                                        "progress": relatedUserDC!.progress + by
+                                    ])
+                                } else {
+                                    userDailyChallenge.reference.updateData([
+                                        "progress": currentDC!.challengeGoal,
+                                        "isCompleted": true
+                                    ])
+                                    UserService.updateUserPoint(point: currentDC!.challengeCompletion) { error in
+                                        
+                                    }
                                 }
                             }
                         }
