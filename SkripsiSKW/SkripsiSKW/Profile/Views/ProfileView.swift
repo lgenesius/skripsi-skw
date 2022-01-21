@@ -73,20 +73,6 @@ struct ProfileView: View {
                         }
                     }
                 }
-                .onAppear(perform: {
-                    isLoading = true
-                    if let uId = userId {
-                        AuthManager.shared.getUser(userId: uId) { user, error in
-                            self.isLoading = false
-                            guard error != nil else { return }
-                            guard let user = user else { return }
-                            self.currentUser = user
-                        }
-                    } else {
-                        isLoading = false
-                        currentUser = sessionVM.authUser
-                    }
-                })
                 .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .confirmationDialog("Select Action", isPresented: $presentActionSheet, titleVisibility: .visible) {
                     Button {
@@ -132,20 +118,6 @@ struct ProfileView: View {
                                 .foregroundColor(.notYoCheese)
                         })
                 )
-                .onAppear(perform: {
-                    isLoading = true
-                    if let uId = userId {
-                        AuthManager.shared.getUser(userId: uId) { user, error in
-                            self.isLoading = false
-                            guard error != nil else { return }
-                            guard let user = user else { return }
-                            self.currentUser = user
-                        }
-                    } else {
-                        isLoading = false
-                        currentUser = sessionVM.authUser
-                    }
-                })
                 .overlay(overlayView: Toast.init(toastMsg: badgeAlertEnum.getAlertMessage().message, show: $badgeAlert), show: $badgeAlert)
                 .actionSheet(isPresented: $presentActionSheet) {
                     ActionSheet(
@@ -182,8 +154,8 @@ struct ProfileView: View {
         if currentUser.profileImageUrl.isEmpty {
             PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
                 guard error2 == nil else { return }
-                sessionVM.authUser?.profileImageUrl = metaImageUrl
-                self.currentUser = sessionVM.authUser
+                self.currentUser?.profileImageUrl = metaImageUrl
+                sessionVM.authUser = self.currentUser
                 AuthManager.shared.updateUser(user: self.currentUser!) { _ in
                     presentCheckPhoto = false
                     isLoading = false
@@ -194,8 +166,9 @@ struct ProfileView: View {
                 guard error == nil else { return }
                 PhotoProfileManager.shared.savePhoto(userId: currentUser.uid, imageData: imageData) { metaImageUrl, error2 in
                     guard error2 == nil else { return }
-                    sessionVM.authUser?.profileImageUrl = metaImageUrl
-                    self.currentUser = sessionVM.authUser
+                    self.currentUser?.profileImageUrl = metaImageUrl
+                    sessionVM.authUser = self.currentUser
+                    
                     AuthManager.shared.updateUser(user: self.currentUser!) { _ in
                         presentCheckPhoto = false
                         isLoading = false
@@ -254,6 +227,13 @@ extension ProfileView {
             }
         }
         .onAppear {
+            isLoading = true
+            AuthManager.shared.getUser(userId: sessionVM.authUser!.uid) { user, error in
+                self.isLoading = false
+                guard error == nil else { return }
+                guard let user = user else { return }
+                self.currentUser = user
+            }
             badgesViewModel.fetchUserBadges(sessionVM: sessionVM)
         }
     }
