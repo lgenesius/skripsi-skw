@@ -34,4 +34,10 @@ class CountdownManager: ObservableObject {
     func pause() {
         timer.invalidate()
     }
+    
+    func startIfPaused() {
+        if !timer.isValid {
+            startCountdown()
+        }
+    }
 }

@@ -71,6 +71,9 @@ struct WorkoutTimerPointView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             countdownManager.startCountdown()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            countdownManager.startIfPaused()
+        }
     }
     
     @ViewBuilder
