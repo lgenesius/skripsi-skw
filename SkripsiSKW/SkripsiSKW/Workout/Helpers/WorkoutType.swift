@@ -48,11 +48,11 @@ enum WorkoutType {
     var workoutDesc: String {
         switch self {
         case .squat:
-            return "During squat exercise, please facing the front of camera in order to detect your body pose accurately."
+            return "During squat exercise, please face the front of camera in order to detect your body pose accurately and don't be too far from the camera (just until all your body is detected)."
         case .plank:
-            return "During plank exercise, please facing the side of camera in order to detect your body pose accurately."
+            return "During plank exercise, please facing the side of camera in order to detect your body pose accurately and don't be too far from the camera (just until all your body is detected)."
         case .pushup:
-            return "During pushup exercise, please facing the side of camera in order to detect your body pose accurately."
+            return "During pushup exercise, please facing the side of camera in order to detect your body pose accurately and don't be too far from the camera (just until all your body is detected)."
         }
     }
     

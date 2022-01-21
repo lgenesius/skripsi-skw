@@ -62,12 +62,16 @@ final class PoseEstimator: NSObject, ObservableObject {
               let leftKnee = bodyParts[.leftKnee]?.location,
               let rightHip = bodyParts[.rightHip]?.location,
               let rightAnkle = bodyParts[.rightAnkle]?.location,
-              let leftAnkle = bodyParts[.leftAnkle]?.location
+              let leftAnkle = bodyParts[.leftAnkle]?.location,
+              let neck = bodyParts[.neck]?.location
         else { return }
         
         let defaultCGPoint = CGPoint(x: 0.0, y: 1.0)
         
         guard rightKnee != defaultCGPoint, rightHip != defaultCGPoint, rightAnkle != defaultCGPoint else { return }
+        
+        let distanceNeckAndAnkle = neck.distance(to: rightKnee)
+        guard distanceNeckAndAnkle > 0.3 else { return }
         
         let firstAngle = atan2(rightHip.y - rightKnee.y, rightHip.x - rightKnee.x)
         let secondAngle = atan2(rightAnkle.y - rightKnee.y, rightAnkle.x - rightKnee.x)
@@ -228,5 +232,11 @@ extension PoseEstimator: AVCaptureVideoDataOutputSampleBufferDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.bodyParts = bodyParts
         }
+    }
+}
+
+extension CGPoint {
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt(pow(x - point.x, 2) + pow(y - point.y, 2))
     }
 }

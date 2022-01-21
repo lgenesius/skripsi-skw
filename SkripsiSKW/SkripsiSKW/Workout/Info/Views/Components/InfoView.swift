@@ -19,7 +19,7 @@ struct InfoView: View {
             Text(info.title)
                 .modifier(TextModifier(
                     color: .white,
-                    size: 34,
+                    size: 30,
                     weight: .bold
                 ))
                 .multilineTextAlignment(.center)
@@ -30,7 +30,7 @@ struct InfoView: View {
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(10)
-                .frame(width: 300, height: 300)
+                .frame(width: 250, height: 250)
             
             Spacer()
             
