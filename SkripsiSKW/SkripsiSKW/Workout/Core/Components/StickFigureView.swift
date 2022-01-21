@@ -21,7 +21,7 @@ struct StickFigureView: View {
                     poseEstimator.bodyParts[.root]!.location,
                 ], size: size)
                 .stroke(lineWidth: 5.0)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 
                 // Left leg
                 Stick(points: [
@@ -31,7 +31,7 @@ struct StickFigureView: View {
                     poseEstimator.bodyParts[.root]!.location,
                 ], size: size)
                 .stroke(lineWidth: 5.0)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 
                 // Right arm
                 Stick(points: [
@@ -41,7 +41,7 @@ struct StickFigureView: View {
                     poseEstimator.bodyParts[.neck]!.location,
                 ], size: size)
                 .stroke(lineWidth: 5.0)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 
                 // Left arm
                 Stick(points: [
@@ -51,7 +51,7 @@ struct StickFigureView: View {
                     poseEstimator.bodyParts[.neck]!.location,
                 ], size: size)
                 .stroke(lineWidth: 5.0)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 
                 // Root to nose
                 Stick(points: [
@@ -60,7 +60,7 @@ struct StickFigureView: View {
                     poseEstimator.bodyParts[.nose]!.location,
                 ], size: size)
                 .stroke(lineWidth: 5.0)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
             }
         }
     }

@@ -77,7 +77,7 @@ struct WorkoutTimerPointView: View {
     var countdownText: some View {
         if #available(iOS 15.0, *) {
             RoundedRectangle(cornerRadius: 13)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 .frame(width: 186, height: 105)
                 .overlay {
                     Text("\(timeString(time: countdownManager.secondsRemaining))")
@@ -90,7 +90,7 @@ struct WorkoutTimerPointView: View {
         } else {
             // Fallback on earlier versions
             RoundedRectangle(cornerRadius: 13)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 .frame(width: 186, height: 105)
                 .overlay(
                     Text("\(timeString(time: countdownManager.secondsRemaining))")
@@ -107,7 +107,7 @@ struct WorkoutTimerPointView: View {
     var countText: some View {
         if #available(iOS 15.0, *) {
             RoundedRectangle(cornerRadius: 13)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 .frame(width: 105, height: 105)
                 .overlay {
                     Text("\(poseEstimator.count)")
@@ -120,7 +120,7 @@ struct WorkoutTimerPointView: View {
         } else {
             // Fallback on earlier versions
             RoundedRectangle(cornerRadius: 13)
-                .fill(Color.insignia)
+                .fill(Color.notYoCheese)
                 .frame(width: 105, height: 105)
                 .overlay(
                     Text("\(poseEstimator.count)")
